@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using System;
 using UnityEngine.UI;
+using System.Linq;
 
 public class LobbyController: MonoBehaviourPunCallbacks
 {
@@ -18,8 +19,15 @@ public class LobbyController: MonoBehaviourPunCallbacks
     public bool connected;
     public GameObject PreRoomCanvas;
 
+    //playerName
+    [SerializeField] GameObject PlayerListItemPrefab;
+    [SerializeField] Transform playerListContent;
+
     void Awake()
     {
+        
+
+
         MaxPlayers = 2;
         if (instance != null && instance == this)
             gameObject.SetActive(false);
@@ -115,6 +123,11 @@ public class LobbyController: MonoBehaviourPunCallbacks
             Debug.Log("Pronto Pra Iniciar");
 
         }
+         Player[] players = PhotonNetwork.PlayerList;
+         for (int i = 0; i < players.Count(); i++)
+         {
+             Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(players[i]);
+        }
     }
     public override void OnDisconnected(DisconnectCause cause)
     {
@@ -137,6 +150,11 @@ public class LobbyController: MonoBehaviourPunCallbacks
     private void ChangeScene(string sceneName)
     {
         PhotonNetwork.LoadLevel(sceneName);
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(newPlayer);
     }
     #endregion
 
