@@ -11,9 +11,13 @@ public class LobbyController: MonoBehaviourPunCallbacks
     public byte PlayersConectados, MaxPlayers;
     public static LobbyController instance;
     public GameObject LobbyCanvas;
+    public GameObject StartButton;
     public GameObject RoomCanvas;
     public Text NumeroJogadores;
+    public Text NomeSala;
     public bool connected;
+    public GameObject PreRoomCanvas;
+
     void Awake()
     {
         MaxPlayers = 2;
@@ -34,6 +38,8 @@ public class LobbyController: MonoBehaviourPunCallbacks
     private void Update()
     {
         this.NumeroJogadores.text = PlayersConectados.ToString();
+        if(PhotonNetwork.InRoom)
+        PlayersConectados = PhotonNetwork.CurrentRoom.PlayerCount;
         if (PhotonNetwork.IsConnected == true)
             this.connected = true;
     }
@@ -59,6 +65,7 @@ public class LobbyController: MonoBehaviourPunCallbacks
         this.LobbyCanvas.SetActive(false);
         this.RoomCanvas.SetActive(true);
         Debug.Log("Estamos agora na sala, Jogadores Conectados: " + PlayersConectados);
+
     }
 
     public void JoinRoom()
@@ -80,7 +87,20 @@ public class LobbyController: MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("Entrou na sala");
-        PlayersConectados = PhotonNetwork.CurrentRoom.PlayerCount;
+        if (this.LobbyCanvas.activeInHierarchy)
+        {
+            this.LobbyCanvas.SetActive (false);
+            this.RoomCanvas.SetActive(true);
+        }
+        if(PhotonNetwork.IsMasterClient)
+        {
+            this.StartButton.SetActive(true);
+        }
+        else 
+        {
+            this.StartButton.SetActive(false);
+        }
+       // PlayersConectados = PhotonNetwork.CurrentRoom.PlayerCount;
         Debug.Log("Player Conectados: " + PlayersConectados);
         //PhotonNetwork.LoadLevel("Aguardando");
         if (PlayersConectados != MaxPlayers)
@@ -110,6 +130,8 @@ public class LobbyController: MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         Debug.Log("Um player desconectou");
+        this.RoomCanvas.SetActive(false);
+        this.LobbyCanvas.SetActive(true);
     }
 
     private void ChangeScene(string sceneName)
@@ -117,6 +139,40 @@ public class LobbyController: MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel(sceneName);
     }
     #endregion
+
+    #region Some other Methods
+    public void salvanomesala(string nomePlaceholder)
+    {
+        NomeSala.text = nomePlaceholder;
+
+    }
+
+    public void botaocriarsala()
+    {
+        this.LobbyCanvas.SetActive(false);
+        this.PreRoomCanvas.SetActive(true);
+    }
+    public void voltarButton()
+    {
+        this.LobbyCanvas.SetActive(true);
+        this.PreRoomCanvas.SetActive(false);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #endregion
+
+
 }
 
 
