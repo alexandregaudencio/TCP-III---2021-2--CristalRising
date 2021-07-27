@@ -1,1 +1,10 @@
-paluo
+21-23/07/2021
+
+modelos adicionados 
+	Weapon
+	Spell
+
+propriedades adicionadas
+	Status
+	Stributos
+	

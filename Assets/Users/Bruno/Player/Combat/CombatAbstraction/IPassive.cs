@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Deffencive 
+public interface IPassive
 {
-    void Use();
+    void BuildElement();
 }

@@ -1,19 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Spells :CombatControl, Neutral, Deffencive
+public abstract class Spells : CombatControl, IPassive
 {
     public List<Status> status;
     public Attibute attibut;
-    public new AnimationClip animation;
+    protected Animator animator;
+    protected GameObject clone;
+
+    
     public virtual void BuildElement()
     {
         throw new System.NotImplementedException();
-    }
-    public virtual void Use()
-    {
-        throw new System.NotImplementedException();
-    }
-    public virtual void CallAnimation() { 
     }
 }
