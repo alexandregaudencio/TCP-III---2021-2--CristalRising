@@ -1,12 +1,14 @@
-﻿public class Ice : Spells, Effect
+﻿using UnityEngine;
+
+public class Ice : Spells, IEffect
 {
     public override void Use()
     {
-        base.Use();
     }
-    public void Apply()
+    public void Apply(Transform target)
     {
         this.Use();
-        throw new System.NotImplementedException();
+        this.animator = target.GetComponentInChildren<Animator>();
+        this.animator.SetTrigger("Applay");
     }
 }

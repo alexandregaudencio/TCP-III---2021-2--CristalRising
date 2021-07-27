@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MangerBullet : MonoBehaviour
 {
-    public Transform position;
+    public Transform bulletTransform;
     public Vector3 foward;
     void Start()
     {

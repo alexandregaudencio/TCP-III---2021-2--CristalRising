@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Neutral
+public interface IActive
 {
-    void BuildElement();
+    void Use();
+    void Reload();
+    void Aim();
 }
