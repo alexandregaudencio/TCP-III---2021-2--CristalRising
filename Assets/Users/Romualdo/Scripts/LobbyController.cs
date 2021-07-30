@@ -6,6 +6,7 @@ using Photon.Realtime;
 using System;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class LobbyController: MonoBehaviourPunCallbacks
 {
@@ -50,6 +51,19 @@ public class LobbyController: MonoBehaviourPunCallbacks
         PlayersConectados = PhotonNetwork.CurrentRoom.PlayerCount;
         if (PhotonNetwork.IsConnected == true)
             this.connected = true;
+
+        
+            if (PhotonNetwork.PlayerList.Length == RoomConfigs.maxRoomPlayers)
+            {
+                SceneManager.LoadScene(RoomConfigs.CharacterSelectionSceneIndex);
+            //PhotonNetwork.LoadLevel(RoomConfigs.CharacterSelectionSceneIndex);
+
+        }
+        /*if (PhotonNetwork.PlayerList.Length == RoomConfigs.maxRoomPlayers)
+        {
+            SceneManager.LoadScene(RoomConfigs.CharacterSelectionSceneIndex);
+
+        }*/
     }
 
 
@@ -102,11 +116,11 @@ public class LobbyController: MonoBehaviourPunCallbacks
         }
         if(PhotonNetwork.IsMasterClient)
         {
-            this.StartButton.SetActive(true);
+           // this.StartButton.SetActive(true);
         }
         else 
         {
-            this.StartButton.SetActive(false);
+           // this.StartButton.SetActive(false);
         }
        // PlayersConectados = PhotonNetwork.CurrentRoom.PlayerCount;
         Debug.Log("Player Conectados: " + PlayersConectados);
@@ -147,9 +161,9 @@ public class LobbyController: MonoBehaviourPunCallbacks
         this.LobbyCanvas.SetActive(true);
     }
 
-    private void ChangeScene(string sceneName)
+   private void ChangeScene(string sceneName)
     {
-        PhotonNetwork.LoadLevel(sceneName);
+       PhotonNetwork.LoadLevel(sceneName);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
