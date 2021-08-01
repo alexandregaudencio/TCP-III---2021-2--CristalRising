@@ -15,7 +15,7 @@ MonoBehaviour:
   bullet: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 2100000, guid: f0a6a86e908f6204ab518387a784ed36, type: 2}
   size: {x: 0.4, y: 0.4, z: 0.4}
-  speed: 30
+  speed: 80
   name: bullet
   bulletTimeout: 3
   vfxPrefab: {fileID: 1112026749624224104, guid: 5315f8e79cf7f1e408d45b00804496c9,

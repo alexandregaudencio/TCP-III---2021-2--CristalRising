@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
-    public List<GameObject> activeGroup;
-    public List<GameObject> inactiveGroup;
+    private List<GameObject> activeGroup;
+    private List<GameObject> inactiveGroup;
     public ScriptableObject projectable;
     public int size;
     void Start()

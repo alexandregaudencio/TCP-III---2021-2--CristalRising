@@ -4,10 +4,14 @@ using UnityEngine;
 
 public abstract class CombatControl : MonoBehaviour, IActive
 {
-    public int Hertz;
+    public float Hertz;
     public int Limit;
     protected int count;
 
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
     public virtual void Aim()
     {
         throw new System.NotImplementedException();
@@ -20,7 +24,6 @@ public abstract class CombatControl : MonoBehaviour, IActive
 
     public virtual void Use()
     {
-        Debug.LogWarning("função User na classe CombatControl esta sendo chamada.");
-        //throw new System.NotImplementedException();
+        throw new System.NotImplementedException();
     }
 }

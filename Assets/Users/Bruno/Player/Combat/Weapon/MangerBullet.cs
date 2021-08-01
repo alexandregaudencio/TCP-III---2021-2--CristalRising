@@ -5,15 +5,4 @@ using UnityEngine;
 public class MangerBullet : MonoBehaviour
 {
     public Transform bulletTransform;
-    public Vector3 foward;
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
