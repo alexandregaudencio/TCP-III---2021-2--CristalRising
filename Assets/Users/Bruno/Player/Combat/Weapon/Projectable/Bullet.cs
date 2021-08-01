@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour
                 Timeout();
                 return;
             }
-            else
+            if(hit.collider != null)
             {
                 //detecta se atingiu o alvo e aplica todas as
                 //animações magicas se houver e o dano causado pelo artefato
@@ -62,7 +62,9 @@ public class Bullet : MonoBehaviour
         else
         {
             transform.position = hit.point;
-            if (GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Explosion"))
+            Animator ani = GetComponentInChildren<Animator>();
+            //if (GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Explosion"))
+            if (ani.GetCurrentAnimatorStateInfo(0).IsName("Explosion") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
                 Timeout();
 

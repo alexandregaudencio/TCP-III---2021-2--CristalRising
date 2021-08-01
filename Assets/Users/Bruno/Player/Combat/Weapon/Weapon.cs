@@ -2,19 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(MangerBullet))]
 [RequireComponent(typeof(Pool))]
 public class Weapon : CombatControl
 {
-    private Transform direction;
-    private Transform target;
     private MangerBullet mangerBullet;
     private Pool bulletPool;
-    private GameObject temp;
     private RaycastHit hit;
     public float maxBulletDistance;
     public GameObject speels;
+    private float timeCount;
+    public Image cross;
 
     private Vector3 mark;
 
@@ -29,28 +29,47 @@ public class Weapon : CombatControl
     }
     private void FixedUpdate()
     {
-#if test
-
-        if (Physics.Raycast(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.forward, out hit, maxBulletDistance))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition).origin, Camera.main.ScreenPointToRay(Input.mousePosition).direction, out hit, maxBulletDistance))
         {
-            Debug.DrawLine(mangerBullet.bulletTransform.position, hit.point, Color.red);
+            Debug.DrawLine(transform.position, hit.point, Color.red);
             mark = hit.point;
-
         }
         else
         {
-            Debug.DrawLine(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.position + mangerBullet.bulletTransform.forward * maxBulletDistance);
-            mark = mangerBullet.bulletTransform.forward * 1000;
+            mark = Camera.main.ScreenPointToRay(Input.mousePosition).direction * maxBulletDistance;
+            Debug.DrawLine(transform.position, mark);
         }
-#endif
+        if (Physics.Raycast(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.forward, out hit, maxBulletDistance))
+        {
+            Debug.DrawLine(mangerBullet.bulletTransform.position, hit.point, Color.green);
+            //mark = hit.point;
+        }
+    }
+    private void Update()
+    {
+        this.timeCount -= Time.deltaTime;
+        Aim();
     }
     public override void Use()
     {
+        if (this.count >= this.Limit)
+        {
+            return;
+        }
+        if (this.timeCount <= 0.001f)
+        {
+            this.timeCount = this.Hertz;
+        }
+        else
+        {
+            return;
+        }
+        this.count++;
         GameObject go;
         go = bulletPool.GetEllement();
         go.GetComponent<Bullet>().Inicialize();
 
-        float distance = Vector3.Distance(mangerBullet.bulletTransform.position, mark);
+        float distance = Vector3.Distance(mangerBullet.bulletTransform.position, hit.point);
         go.GetComponent<Bullet>().TimeOfArrival(distance);
 
         //coloca magia na bala
@@ -60,5 +79,15 @@ public class Weapon : CombatControl
         //seta a posição da bala
         go.transform.SetPositionAndRotation(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.rotation);
 
+    }
+    public override void Reload()
+    {
+        count = 0;
+    }
+
+    public override void Aim()
+    {
+        transform.LookAt(mark);
+        cross.rectTransform.position = Input.mousePosition;
     }
 }
