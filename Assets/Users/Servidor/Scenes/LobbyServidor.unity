@@ -223,7 +223,7 @@ PrefabInstance:
     - target: {fileID: 618111916082370422, guid: 82445f544fbbe57499687a3e6c034e47,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 618111916082370422, guid: 82445f544fbbe57499687a3e6c034e47,
         type: 3}
@@ -443,7 +443,7 @@ PrefabInstance:
     - target: {fileID: 9054244356093080242, guid: 82445f544fbbe57499687a3e6c034e47,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9054244356688152282, guid: 82445f544fbbe57499687a3e6c034e47,
         type: 3}
@@ -751,12 +751,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1628341471 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9054244355112361645, guid: 82445f544fbbe57499687a3e6c034e47,
-    type: 3}
-  m_PrefabInstance: {fileID: 937169171}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1723677060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -824,6 +818,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LobbyManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3645052539129683390, guid: 32c06d8f98083cb4ebba4d3cf892fd25,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3645052539129683391, guid: 32c06d8f98083cb4ebba4d3cf892fd25,
         type: 3}
       propertyPath: NomeSala
@@ -843,7 +842,7 @@ PrefabInstance:
         type: 3}
       propertyPath: StartButton
       value: 
-      objectReference: {fileID: 1628341471}
+      objectReference: {fileID: 0}
     - target: {fileID: 3645052539129683391, guid: 32c06d8f98083cb4ebba4d3cf892fd25,
         type: 3}
       propertyPath: nomesalinha
@@ -901,7 +900,7 @@ RectTransform:
   m_Children:
   - {fileID: 2052750309}
   m_Father: {fileID: 1338250624}
-  m_RootOrder: 9
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
