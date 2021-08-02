@@ -138,7 +138,7 @@ public class LobbyController: MonoBehaviourPunCallbacks
 
         }
          Player[] players = PhotonNetwork.PlayerList;
-         for (int i = 0; i < players.Count(); i++)
+         for (int i = 0; i < PhotonNetwork.CurrentRoom.Players.Count(); i++)
          {
              Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(players[i]);
         }
@@ -151,8 +151,8 @@ public class LobbyController: MonoBehaviourPunCallbacks
     public void QuitRoom()
     {
         PhotonNetwork.LeaveRoom();
-        this.RoomCanvas.SetActive(false);
-        this.LobbyCanvas.SetActive(true);
+       // this.RoomCanvas.SetActive(false);
+       // this.LobbyCanvas.SetActive(true);
     }
     public override void OnLeftRoom()
     {
