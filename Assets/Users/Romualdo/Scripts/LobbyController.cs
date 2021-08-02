@@ -84,6 +84,8 @@ public class LobbyController: MonoBehaviourPunCallbacks
     public void CreateRoom(string roomname)
     {
         PhotonNetwork.CreateRoom(roomname);
+        NomeSala.text = roomname;
+        // roomname = string.Format("Sala");
         this.LobbyCanvas.SetActive(false);
         this.RoomCanvas.SetActive(true);
         Debug.Log("Estamos agora na sala, Jogadores Conectados: " + PlayersConectados);
@@ -173,12 +175,14 @@ public class LobbyController: MonoBehaviourPunCallbacks
     #endregion
 
     #region Some other Methods
+   
+    /*
     public void salvanomesala(string nomePlaceholder)
     {
         NomeSala.text = nomePlaceholder;
 
     }
-
+    */
     public void botaocriarsala()
     {
         this.LobbyCanvas.SetActive(false);
