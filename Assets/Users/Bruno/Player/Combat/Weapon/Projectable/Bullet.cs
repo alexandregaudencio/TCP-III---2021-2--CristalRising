@@ -8,7 +8,6 @@ public class Bullet : MonoBehaviour
     public float speed;
     public float existenceTomeout;
     private float countTime;
-    public GameObject body;
     public IEffect effect;
     [HideInInspector]
     public Pool pool;
@@ -17,6 +16,8 @@ public class Bullet : MonoBehaviour
     private new Transform transform;
     private bool fired;
     public RaycastHit hit;
+    [HideInInspector]
+    public string animationName;
     public void Inicialize()
     {
         countTime = 0;
@@ -27,49 +28,10 @@ public class Bullet : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(true);
         }
         this.gameObject.SetActive(true);
-        GetComponentInChildren<MeshRenderer>().gameObject.SetActive(true);
     }
     void Update()
     {
-        //mover a bala pra frente
-        if (fired)
-        {
-
-            timeOfArrival -= Time.deltaTime;
-            countTime += Time.deltaTime;
-
-            // desativa e retorna a bala para a piscina apos um tempo
-            if (countTime >= existenceTomeout)
-            {
-                Timeout();
-                return;
-            }
-            if(hit.collider != null)
-            {
-                //detecta se atingiu o alvo e aplica todas as
-                //animações magicas se houver e o dano causado pelo artefato
-                //e desativa e retorna a bala para a piscina apos um tempo
-                if (timeOfArrival <= 0)
-                {
-                    CombineWithMaic();
-                    CalculateDamage();
-                    fired = false;
-                }
-            }
-
-            transform.position += transform.forward * speed * Time.deltaTime;
-        }
-        else
-        {
-            transform.position = hit.point;
-            Animator ani = GetComponentInChildren<Animator>();
-            //if (GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Explosion"))
-            if (ani.GetCurrentAnimatorStateInfo(0).IsName("Explosion") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-            {
-                Timeout();
-
-            }
-        }
+        BulletLife();
     }
     public void Timeout()
     {
@@ -89,13 +51,54 @@ public class Bullet : MonoBehaviour
     }
     public void CombineWithMaic()
     {
-        effect.Apply(transform);
+        effect.Apply(GetComponentInChildren<Animator>());
     }
     public void CalculateDamage()
     {
     }
-    public void Inject(GameObject effect)
+    private void DetectCollier()
     {
-        this.effect = effect.GetComponent<IEffect>();
+        if (hit.collider != null)
+        {
+            //detecta se atingiu o alvo e aplica todas as
+            //animações magicas se houver e o dano causado pelo artefato
+            //e desativa e retorna a bala para a piscina apos um tempo
+            if (timeOfArrival <= 0)
+            {
+                CombineWithMaic();
+                CalculateDamage();
+                fired = false;
+            }
+        }
+    }
+    private void BulletLife()
+    {
+        //mover a bala pra frente
+        if (fired)
+        {
+            timeOfArrival -= Time.deltaTime;
+            countTime += Time.deltaTime;
+
+            // desativa e retorna a bala para a piscina apos um tempo
+            if (countTime >= existenceTomeout)
+            {
+                Timeout();
+                return;
+            }
+            DetectCollier();
+
+            transform.position += transform.forward * speed * Time.deltaTime;
+        }
+        else
+        {
+            transform.position = hit.point;
+            Animator ani = GetComponentInChildren<Animator>();
+
+            if (ani.GetCurrentAnimatorStateInfo(0).IsName(animationName) && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                Timeout();
+
+            }
+        }
     }
 }

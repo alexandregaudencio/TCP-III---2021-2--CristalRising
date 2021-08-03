@@ -7,7 +7,7 @@ public class Pool : MonoBehaviour
 {
     private List<GameObject> activeGroup;
     private List<GameObject> inactiveGroup;
-    public ScriptableObject projectable;
+    public GameObject projectable;
     public int size;
     void Start()
     {
@@ -16,7 +16,7 @@ public class Pool : MonoBehaviour
 
         for (int i = 0; i < size; i++)
         {
-            inactiveGroup.Add((projectable as ProjectableFactory).BulletFactory(this));
+            inactiveGroup.Add(projectable.GetComponent< ProjectableFactory>().BulletFactory(this));
         }
     }
 
@@ -40,7 +40,7 @@ public class Pool : MonoBehaviour
         GameObject go;
         if (!HalfEmpty())
         {
-            inactiveGroup.Add((projectable as ProjectableFactory).BulletFactory(this));
+            inactiveGroup.Add(projectable.GetComponent<ProjectableFactory>().BulletFactory(this));
         }
         go = inactiveGroup[0];
         inactiveGroup.Remove(go);

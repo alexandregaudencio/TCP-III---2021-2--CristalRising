@@ -7,15 +7,18 @@ public class Controle : MonoBehaviour
     private new Transform transform;
     public float speed;
     public Weapon gun;
+    public Spells spell;
+    public Animator animator;
+    private GameObject aux;
     void Start()
     {
         this.transform = GetComponent<Transform>();
+        aux = Instantiate(animator.gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetButton("A"))
         {
             transform.Rotate(Vector3.up * -speed * 20 * Time.deltaTime);
@@ -32,12 +35,14 @@ public class Controle : MonoBehaviour
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0))
+        {
             gun.Use();
         }
-        if (Input.GetButton("Space"))
+        if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("foi");
+            (spell as IActive).Aim();
+            (spell as IEffect).Apply(aux.GetComponent<Animator>());
         }
     }
 }
