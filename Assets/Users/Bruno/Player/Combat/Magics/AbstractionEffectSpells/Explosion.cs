@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
-public class Ice : Spells, IEffect
+public class Explosion : Spells, IEffect
 {
     public override void Use()
     {
     }
-    public void Apply(Transform target)
+    public void Apply(Animator animator)
     {
         this.Use();
-        this.animator = target.GetComponentInChildren<Animator>();
+        this.animator = animator;
         this.animator.SetTrigger("Applay");
     }
 }

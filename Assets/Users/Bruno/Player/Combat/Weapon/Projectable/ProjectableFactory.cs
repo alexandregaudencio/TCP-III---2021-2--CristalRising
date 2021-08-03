@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Data", menuName = "Weapon/Bullet", order = 1)]
-public class ProjectableFactory : ScriptableObject
+public class ProjectableFactory : MonoBehaviour
 {
     public Mesh bullet;
     public Material material;
@@ -13,6 +12,8 @@ public class ProjectableFactory : ScriptableObject
     public new string name;
     public float bulletTimeout;
     public GameObject vfxPrefab;
+    public GameObject speel;
+    public string animationName;
 
     public GameObject BulletFactory(Pool pool)
     {
@@ -22,10 +23,14 @@ public class ProjectableFactory : ScriptableObject
 
         go.AddComponent<Bullet>();
         go.GetComponent<Bullet>().speed = speed;
-        go.GetComponent<Bullet>().body = BulletBody(go.transform);
-        go.GetComponent<Bullet>().effect = BulletEffect(go.transform).GetComponent<IEffect>();
+        go.GetComponent<Bullet>().effect = speel.GetComponent<IEffect>();
         go.GetComponent<Bullet>().existenceTomeout = bulletTimeout;
         go.GetComponent<Bullet>().pool = pool;
+        go.GetComponent<Bullet>().animationName = animationName;
+
+        BulletEffect(go.transform);
+        BulletBody(go.transform);
+
         for (int i = 0; i < go.transform.childCount; i++)
         {
             go.transform.GetChild(i).gameObject.SetActive(false);

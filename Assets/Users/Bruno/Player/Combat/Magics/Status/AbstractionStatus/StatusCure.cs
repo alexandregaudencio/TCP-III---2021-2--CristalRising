@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Data", menuName = "Spell/Cure", order = 1)]
-public class Cure : Status
+public class StatusCure : Status
 {
     public float value;
 }

@@ -4,10 +4,11 @@ using UnityEngine;
 public abstract class Spells : CombatControl, IPassive
 {
     public List<Status> status;
-    public Attibute attibut;
-    protected Animator animator;
-    protected GameObject clone;
 
+    public Attibute attibut;
+    [HideInInspector]
+    public Animator animator;
+    protected GameObject clone;
     
     public virtual void BuildElement()
     {

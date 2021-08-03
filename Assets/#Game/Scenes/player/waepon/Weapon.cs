@@ -12,7 +12,6 @@ public class Weapon : CombatControl
     private Pool bulletPool;
     private RaycastHit hit;
     public float maxBulletDistance;
-    public GameObject speels;
     private float timeCount;
     public Image cross;
 
@@ -22,10 +21,6 @@ public class Weapon : CombatControl
     {
         mangerBullet = GetComponent<MangerBullet>();
         this.bulletPool = GetComponent<Pool>();
-    }
-    private void Start()
-    {
-
     }
     private void FixedUpdate()
     {
@@ -72,10 +67,7 @@ public class Weapon : CombatControl
         float distance = Vector3.Distance(mangerBullet.bulletTransform.position, hit.point);
         go.GetComponent<Bullet>().TimeOfArrival(distance);
 
-        //coloca magia na bala
-        go.GetComponent<Bullet>().Inject(speels);
         go.GetComponent<Bullet>().hit = hit;
-
         //seta a posição da bala
         go.transform.SetPositionAndRotation(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.rotation);
 
