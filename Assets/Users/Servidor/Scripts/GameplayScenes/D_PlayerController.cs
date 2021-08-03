@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
-public class PlayerController : MonoBehaviour
+
+public class D_PlayerController : MonoBehaviour
 {
     [SerializeField] GameObject cameraHolder;
     [SerializeField] float mouseSensitivity;
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        
+
         if (!PV.IsMine)
             return;
         Look();
