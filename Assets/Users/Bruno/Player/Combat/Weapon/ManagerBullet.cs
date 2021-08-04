@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IPassive
+public class ManagerBullet : MonoBehaviour
 {
-    void BuildElement();
+    public Transform bulletTransform;
 }

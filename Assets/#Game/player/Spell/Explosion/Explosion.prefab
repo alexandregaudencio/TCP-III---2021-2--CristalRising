@@ -40,11 +40,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1240039504776826110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ac1dbc759d9f14eacf9e2d8dd7e9b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c46bc1730cbfd6449b05711bb6a91f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hertz: 2
-  Limit: 10
+  Hertz: 0
+  Limit: 0
   status: []
   attibut:
     strenght: 0
@@ -54,4 +54,4 @@ MonoBehaviour:
     weapon: 0
     spell: 0
     armature: 0
-  vfx: {fileID: 1112026749624224104, guid: 5315f8e79cf7f1e408d45b00804496c9, type: 3}
+  animator: {fileID: 0}

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(MangerBullet))]
+[RequireComponent(typeof(ManagerBullet))]
 [RequireComponent(typeof(Pool))]
 public class Weapon : CombatControl
 {
-    private MangerBullet mangerBullet;
+    private ManagerBullet mangerBullet;
     private Pool bulletPool;
     private RaycastHit hit;
     public float maxBulletDistance;
@@ -19,7 +19,7 @@ public class Weapon : CombatControl
 
     private void Awake()
     {
-        mangerBullet = GetComponent<MangerBullet>();
+        mangerBullet = GetComponent<ManagerBullet>();
         this.bulletPool = GetComponent<Pool>();
     }
     private void FixedUpdate()
