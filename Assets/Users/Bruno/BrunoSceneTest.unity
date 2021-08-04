@@ -436,7 +436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7adf6b1dfe74aa743a36dbfafb982ad9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 61d82b6ccb5479844ab34b17f525ea04, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -822,13 +822,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1352727017}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2595d565366a7004d9f6704aacd63136, type: 3}
+  m_Script: {fileID: 11500000, guid: fc330531be39dd44499e997f1f893760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
   gun: {fileID: 1991474699}
-  spell: {fileID: 7064896876616478443, guid: 117f492f0ae1f4f4baaa81eb3133d886, type: 3}
-  animator: {fileID: 5671244720831030243, guid: 4423493abb0efe84eaa9fbb3602d4713,
+  spell: {fileID: 7064896876616478443, guid: fe1b6bfd69320ad4b8294cdc9487dd1e, type: 3}
+  animator: {fileID: 5671244720831030243, guid: 047e265ff194c4a4fb2f70151d997d6a,
     type: 3}
 --- !u!1 &1935209593
 GameObject:
@@ -973,12 +973,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1991474695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03dc81e596ebb3545adaf4660705b690, type: 3}
+  m_Script: {fileID: 11500000, guid: 245a50264eeb8b7409900877b901a809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Hertz: 0.1
-  Limit: 100
-  maxBulletDistance: 300
+  Limit: 10
+  maxBulletDistance: 100
   cross: {fileID: 643566794}
 --- !u!114 &1991474700
 MonoBehaviour:
@@ -989,7 +989,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1991474695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ae00cdd28a257541a2514a2152e5500, type: 3}
+  m_Script: {fileID: 11500000, guid: cb8f9666591632a4792310560a59e0a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletTransform: {fileID: 1271424963}
@@ -1002,10 +1002,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1991474695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c49b11660553a048887e0399e58f497, type: 3}
+  m_Script: {fileID: 11500000, guid: a64b28a2ebbd28b4b90d07d837fd89e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectable: {fileID: 4550851850432627775, guid: 0708cb16bd26e6840adc451bd8351df7,
+  projectable: {fileID: 4550851850432627775, guid: d273d5c3e0e04e44ebfa70d2b2856ee0,
     type: 3}
   size: 10
 --- !u!1 &2098650687

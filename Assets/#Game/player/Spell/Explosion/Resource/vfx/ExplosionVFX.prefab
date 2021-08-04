@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1112026749624224101}
   - component: {fileID: 1112026749624224099}
   m_Layer: 0
-  m_Name: IceExplosionVFX
+  m_Name: ExplosionVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,7 +90,7 @@ Animator:
   m_GameObject: {fileID: 1112026749624224104}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d06e05578df25474cbc22deb7e16bf00, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0a7f63078e5e864439c7b1abc28896c1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
