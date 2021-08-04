@@ -977,8 +977,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hertz: 0.1
-  Limit: 10
-  maxBulletDistance: 100
+  Limit: 50
+  maxBulletDistance: 200
   cross: {fileID: 643566794}
 --- !u!114 &1991474700
 MonoBehaviour:
