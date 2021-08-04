@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-    public struct Attibute
+    public struct Attribute
 {
     public float strenght;
     public float defense;

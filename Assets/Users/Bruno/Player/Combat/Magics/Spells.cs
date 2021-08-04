@@ -5,7 +5,7 @@ public abstract class Spells : CombatControl, IPassive
 {
     public List<Status> status;
 
-    public Attibute attibut;
+    public Attribute attibut;
     [HideInInspector]
     public Animator animator;
     protected GameObject clone;

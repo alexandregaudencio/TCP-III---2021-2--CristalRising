@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6173182880272087631}
   - component: {fileID: 1636361746966425183}
   m_Layer: 0
-  m_Name: BaseBullet
+  m_Name: BulletFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,16 +40,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4550851850432627775}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdf2a48350c4a91489cf8b7026b4265e, type: 3}
+  m_Script: {fileID: 11500000, guid: bce27fb7ae2e84d4aadee69cb61eb103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: f0a6a86e908f6204ab518387a784ed36, type: 2}
+  bullet: {fileID: 0}
+  material: {fileID: 0}
   size: {x: 0.1, y: 0.1, z: 0.1}
   speed: 50
   name: bullet
   bulletTimeout: 3
-  vfxPrefab: {fileID: 1112026749624224104, guid: 5315f8e79cf7f1e408d45b00804496c9,
+  vfxPrefab: {fileID: 1112026749624224104, guid: 627dc2cb67e23634694127942738b883,
     type: 3}
-  speel: {fileID: 1240039504776826110, guid: 2e3b02451cd98294781b8498f2fa5a56, type: 3}
+  speel: {fileID: 1240039504776826110, guid: 45c87c4281a9c214cafac9b36b9a0853, type: 3}
   animationName: Explosion
