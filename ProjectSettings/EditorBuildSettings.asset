@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/#Game/Scene/LobbyServidor.unity
+    path: Assets/#Game/Scene/Oficional_LobbyServidor.unity
     guid: 142d0f6fccb0aaf45b7050a66515ae94
   - enabled: 0
     path: Assets/Users/Servidor/Scenes/SampleScene.unity
@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Users/Servidor/Scenes/GameSarahTeste.unity
     guid: 1e9409f0dca5ec94e9c961d0762c3248
   - enabled: 1
-    path: Assets/Users/Servidor/SampleScene.unity
+    path: Assets/#Game/Scene/Oficial_CharacterSelection.unity
     guid: 90b1f4eed49db314ca0fa6b1a2c110c6
   - enabled: 1
-    path: Assets/Users/Servidor/CharacterSelectionScene.unity
+    path: Assets/#Game/Scene/Oficial_Gameplay.unity
     guid: e13414db45174484a9ebb71ff738c59e
   m_configObjects: {}
