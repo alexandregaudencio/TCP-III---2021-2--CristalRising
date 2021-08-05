@@ -22,7 +22,7 @@ public class Weapon : CombatControl
         mangerBullet = GetComponent<ManagerBullet>();
         this.bulletPool = GetComponent<Pool>();
     }
-    private void FixedUpdate()
+    private void Update()
     {
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition).origin, Camera.main.ScreenPointToRay(Input.mousePosition).direction, out hit, maxBulletDistance))
         {
@@ -39,9 +39,6 @@ public class Weapon : CombatControl
             Debug.DrawLine(mangerBullet.bulletTransform.position, hit.point, Color.green);
             //mark = hit.point;
         }
-    }
-    private void Update()
-    {
         this.timeCount -= Time.deltaTime;
         Aim();
     }
@@ -80,6 +77,6 @@ public class Weapon : CombatControl
     public override void Aim()
     {
         transform.LookAt(mark);
-        cross.rectTransform.position = Input.mousePosition;
+        //cross.rectTransform.position = Input.mousePosition;
     }
 }

@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce27fb7ae2e84d4aadee69cb61eb103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
-  material: {fileID: 0}
+  bullet: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100000, guid: f0a6a86e908f6204ab518387a784ed36, type: 2}
   size: {x: 0.1, y: 0.1, z: 0.1}
   speed: 50
   name: bullet
