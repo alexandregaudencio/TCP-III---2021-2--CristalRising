@@ -14,6 +14,7 @@ public class Weapon : CombatControl
     public float maxBulletDistance;
     private float timeCount;
     public Image cross;
+    private Camera cam;
 
     private Vector3 mark;
 
@@ -21,17 +22,18 @@ public class Weapon : CombatControl
     {
         mangerBullet = GetComponent<ManagerBullet>();
         this.bulletPool = GetComponent<Pool>();
+        cam = GetComponent<Camera>();
     }
     private void Update()
     {
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition).origin, Camera.main.ScreenPointToRay(Input.mousePosition).direction, out hit, maxBulletDistance))
+        if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition).origin, cam.ScreenPointToRay(Input.mousePosition).direction, out hit, maxBulletDistance))
         {
             Debug.DrawLine(transform.position, hit.point, Color.red);
             mark = hit.point;
         }
         else
         {
-            mark = Camera.main.ScreenPointToRay(Input.mousePosition).direction * maxBulletDistance;
+            mark = cam.ScreenPointToRay(Input.mousePosition).direction * maxBulletDistance;
             Debug.DrawLine(transform.position, mark);
         }
         if (Physics.Raycast(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.forward, out hit, maxBulletDistance))

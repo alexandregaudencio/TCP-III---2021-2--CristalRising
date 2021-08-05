@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,13 +26,19 @@ public class PlayerController : MonoBehaviour {
     public Text debug;
     private bool jump, groundCheck;
 
+    PhotonView PV;
     void Start () {
         baseFOV = normalCam.fieldOfView;
         playerRb = GetComponent<Rigidbody> ();
         Cursor.lockState = CursorLockMode.Locked;
     }
-
+    private void Awake()
+    {
+        PV = GetComponent<PhotonView>();
+    }
     void Update () {
+        if (!PV.IsMine)
+            return;
         CameraRotation ();
         Jumping ();
 
@@ -55,6 +62,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void FixedUpdate () {
+        if (!PV.IsMine)
+            return;
         Sprinting ();
 
         // float horAxis = Input.GetAxisRaw ("Horizontal");
