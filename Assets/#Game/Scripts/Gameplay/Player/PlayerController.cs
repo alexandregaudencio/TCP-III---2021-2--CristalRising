@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class d_PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
     [SerializeField] private Transform player;
     [SerializeField][Range (1, 50)] public int moveSpeed;
     [SerializeField][Range (1, 3)] private int sprintModifier;
