@@ -1,7 +1,7 @@
 ﻿public static class RoomConfigs
 {
     //CreateRoomC
-    public const int maxRoomPlayers = 1;
+    public const int maxRoomPlayers = 2;
 
     //characterSelection
     public const int characterSelectionMaxTime = 5;
