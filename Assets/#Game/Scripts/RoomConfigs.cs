@@ -7,7 +7,7 @@
     public const int characterSelectionMaxTime = 5;
 
     //Gameplay
-    public const int gameplayMaxTime = 120;
+    public const int gameplayMaxTime = 12;
 
     //SceneIndex
     public const int menuSceneIndex = 0;
