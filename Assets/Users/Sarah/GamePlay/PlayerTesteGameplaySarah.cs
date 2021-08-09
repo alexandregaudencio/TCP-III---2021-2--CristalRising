@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class PlayerTesteGameplaySarah : MonoBehaviour
 {
@@ -13,9 +12,12 @@ public class PlayerTesteGameplaySarah : MonoBehaviour
     public GameObject _objeto2; //Objeto 2
     public float _distance; //Armazena a distância
     public bool areaCheck;
-    public float points;
 
-    public TMP_Text timeToDisplay;
+  
+    public int id;
+    public bool colissionTeam1;
+    public bool colissionTeam2;
+
 
     // Update is called once per frame
     private void Start()
@@ -23,7 +25,8 @@ public class PlayerTesteGameplaySarah : MonoBehaviour
         instance = this;
         _distance =0;
         areaCheck = false;
-        points = 0;
+        colissionTeam1 = false;
+        colissionTeam2 = false;
     }
     void Update()
     {
@@ -37,6 +40,7 @@ public class PlayerTesteGameplaySarah : MonoBehaviour
         this.transform.Translate(Vector3.forward * vert * Movespeed * Time.deltaTime);
         this.transform.localRotation *= Quaternion.AngleAxis(horz * Turnspeed * Time.deltaTime, Vector3.up);
     }
+   
     private void Distance()
     {
         _distance = Vector3.Distance(_objeto1.transform.position, _objeto2.transform.position); //Calculamos a distância e atribuimos a variável
@@ -52,23 +56,24 @@ public class PlayerTesteGameplaySarah : MonoBehaviour
         }
 
     }
+    void OnTriggerStay(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("area"))
+        {
+            if (id == 0) colissionTeam1 = true;
+            if (id == 1) colissionTeam2 = true;
+        }
+    }
     void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.CompareTag("area"))
         {
             areaCheck = false;
+            if (id == 0) colissionTeam1 = false;
+            if (id == 1) colissionTeam2 = false;
         }
     }
-    void OnTriggerStay(Collider collision)
-    {
-        if (collision.gameObject.CompareTag("area"))
-        {
-            points+=Time.deltaTime;
-            //Debug.Log(points);
-            string tempTimer = string.Format("{0:00}", points);
-            timeToDisplay.text = tempTimer;
-        }
-    }
-
+   
+    
 
 }
