@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class CircleAreaPoints : MonoBehaviour
@@ -8,6 +9,11 @@ public class CircleAreaPoints : MonoBehaviour
     public static CircleAreaPoints instance;
     public float pointsTeam1;
     public float pointsTeam2;
+
+    [SerializeField] int maxPoints;
+
+    [SerializeField] Image pointsBarImageTeam1;
+    [SerializeField] Image pointsBarImageTeam2;
 
     [SerializeField] TMP_Text pointsUiTeam1;
     [SerializeField] TMP_Text pointsUiTeam2;
@@ -30,8 +36,8 @@ public class CircleAreaPoints : MonoBehaviour
         countPlayerinAreaTeam1 = 0;
         countPlayerinAreaTeam2 = 0;
         instance = this;
-       
-        
+
+
     }
 
     // Update is called once per frame
@@ -39,7 +45,9 @@ public class CircleAreaPoints : MonoBehaviour
     {
         AreaCheck();
         PointsControl();
+
         
+
     }
     private void AreaCheck()
     {
@@ -66,7 +74,10 @@ public class CircleAreaPoints : MonoBehaviour
     {
         countPlayerinAreaTeam1 = 0;
         countPlayerinAreaTeam2 = 0;
-            for (int i = 0; i < Team1.Length; i++)
+        pointsBarImageTeam1.fillAmount = pointsTeam1 / maxPoints;
+        pointsBarImageTeam2.fillAmount = pointsTeam2 / maxPoints;
+
+        for (int i = 0; i < Team1.Length; i++)
             {
                 if (Team1[i].colissionTeam1 == true)
                 {
@@ -122,12 +133,10 @@ public class CircleAreaPoints : MonoBehaviour
                 pointsUiTeam2.text = pointStringTeam2;
             }
             else
-            {
-               
+                 {
                     if (endingGame) return;
                     EndGamebyPoints();
-                }
-            
+                } 
         }
             
      
