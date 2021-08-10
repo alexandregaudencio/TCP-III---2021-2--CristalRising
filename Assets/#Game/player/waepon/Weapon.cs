@@ -16,18 +16,27 @@ public class Weapon : CombatControl
     private float timeCount;
     public Image cross;
     public Camera cam;
-    public Transform pivot;
 
     private Vector3 mark;
+    private PhotonView pv;
 
     private void Awake()
     {
         mangerBullet = GetComponent<ManagerBullet>();
         this.bulletPool = GetComponent<Pool>();
+        pv = GetComponentInParent<PhotonView>();
+    }
+    private void Start()
+    {
+        if (!pv.IsMine)
+        {
+            Destroy(cam);
+        }
     }
     private void Update()
     {
-        if (!GetComponent<PhotonView>().IsMine) {
+        if (!pv.IsMine)
+        {
             return;
         }
         if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition).origin, cam.ScreenPointToRay(Input.mousePosition).direction, out hit, maxBulletDistance))
@@ -50,10 +59,6 @@ public class Weapon : CombatControl
     }
     public override void Use()
     {
-        if (!GetComponent<PhotonView>().IsMine)
-        {
-            return;
-        }
         if (this.count >= this.Limit)
         {
             return;
@@ -69,7 +74,9 @@ public class Weapon : CombatControl
         this.count++;
         GameObject go;
         go = bulletPool.GetEllement();
-        go.GetComponent<Bullet>().Inicialize();
+        if (!go)
+            return;
+        go.GetComponent<Bullet>().photonView.RPC("Inicialize", RpcTarget.All);
 
         float distance = Vector3.Distance(mangerBullet.bulletTransform.position, hit.point);
         go.GetComponent<Bullet>().TimeOfArrival(distance);
@@ -81,19 +88,11 @@ public class Weapon : CombatControl
     }
     public override void Reload()
     {
-        if (!GetComponent<PhotonView>().IsMine)
-        {
-            return;
-        }
         count = 0;
     }
 
     public override void Aim()
     {
-        if (!GetComponent<PhotonView>().IsMine)
-        {
-            return;
-        }
         transform.LookAt(mark);
         //cross.rectTransform.position = Input.mousePosition;
     }

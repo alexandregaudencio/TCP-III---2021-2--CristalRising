@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.SceneManagement;
 
-public class LobbyController: MonoBehaviourPunCallbacks
+public class LobbyController : MonoBehaviourPunCallbacks
 {
     public byte PlayersConectados, MaxPlayers;
     public static LobbyController instance;
@@ -26,7 +26,7 @@ public class LobbyController: MonoBehaviourPunCallbacks
 
     void Awake()
     {
-        
+
 
 
         MaxPlayers = 2;
@@ -42,20 +42,20 @@ public class LobbyController: MonoBehaviourPunCallbacks
     private void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
-       
+
     }
     private void Update()
     {
         this.NumeroJogadores.text = PlayersConectados.ToString();
-        if(PhotonNetwork.InRoom)
-        PlayersConectados = PhotonNetwork.CurrentRoom.PlayerCount;
+        if (PhotonNetwork.InRoom)
+            PlayersConectados = PhotonNetwork.CurrentRoom.PlayerCount;
         if (PhotonNetwork.IsConnected == true)
             this.connected = true;
 
-        
-            if (PhotonNetwork.PlayerList.Length == RoomConfigs.maxRoomPlayers)
-            {
-                SceneManager.LoadScene(RoomConfigs.CharacterSelectionSceneIndex);
+
+        if (PhotonNetwork.PlayerList.Length == RoomConfigs.maxRoomPlayers)
+        {
+            SceneManager.LoadScene(RoomConfigs.CharacterSelectionSceneIndex);
             //PhotonNetwork.LoadLevel(RoomConfigs.CharacterSelectionSceneIndex);
 
         }
@@ -79,7 +79,7 @@ public class LobbyController: MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("Conectamos e agora estamos prontos pra primeira Sala");
-       //PhotonNetwork.JoinRandomRoom();
+        //PhotonNetwork.JoinRandomRoom();
     }
     public void CreateRoom(string roomname)
     {
@@ -95,7 +95,7 @@ public class LobbyController: MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsConnected == true)
         {
             PhotonNetwork.JoinRandomRoom();
-            
+
         }
         else
         {
@@ -111,18 +111,18 @@ public class LobbyController: MonoBehaviourPunCallbacks
         Debug.Log("Entrou na sala");
         if (this.LobbyCanvas.activeInHierarchy)
         {
-            this.LobbyCanvas.SetActive (false);
+            this.LobbyCanvas.SetActive(false);
             this.RoomCanvas.SetActive(true);
         }
-        if(PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient)
         {
-           // this.StartButton.SetActive(true);
+            // this.StartButton.SetActive(true);
         }
-        else 
+        else
         {
-           // this.StartButton.SetActive(false);
+            // this.StartButton.SetActive(false);
         }
-       // PlayersConectados = PhotonNetwork.CurrentRoom.PlayerCount;
+        // PlayersConectados = PhotonNetwork.CurrentRoom.PlayerCount;
         Debug.Log("Player Conectados: " + PlayersConectados);
         //PhotonNetwork.LoadLevel("Aguardando");
         if (PlayersConectados != MaxPlayers)
@@ -137,10 +137,10 @@ public class LobbyController: MonoBehaviourPunCallbacks
             Debug.Log("Pronto Pra Iniciar");
 
         }
-         Player[] players = PhotonNetwork.PlayerList;
-         for (int i = 0; i < PhotonNetwork.CurrentRoom.Players.Count(); i++)
-         {
-             Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(players[i]);
+        Player[] players = PhotonNetwork.PlayerList;
+        for (int i = 0; i < PhotonNetwork.CurrentRoom.Players.Count(); i++)
+        {
+            Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(players[i]);
         }
     }
     public override void OnDisconnected(DisconnectCause cause)
@@ -151,8 +151,8 @@ public class LobbyController: MonoBehaviourPunCallbacks
     public void QuitRoom()
     {
         PhotonNetwork.LeaveRoom();
-       // this.RoomCanvas.SetActive(false);
-       // this.LobbyCanvas.SetActive(true);
+        // this.RoomCanvas.SetActive(false);
+        // this.LobbyCanvas.SetActive(true);
     }
     public override void OnLeftRoom()
     {
@@ -161,14 +161,14 @@ public class LobbyController: MonoBehaviourPunCallbacks
         this.LobbyCanvas.SetActive(true);
     }
 
-   private void ChangeScene(string sceneName)
+    private void ChangeScene(string sceneName)
     {
-       PhotonNetwork.LoadLevel(sceneName);
+        PhotonNetwork.LoadLevel(sceneName);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-       Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(newPlayer);
+        Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(newPlayer);
     }
     #endregion
 

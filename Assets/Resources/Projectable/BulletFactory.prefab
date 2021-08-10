@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6173182880272087631}
   - component: {fileID: 1636361746966425183}
+  - component: {fileID: -6931618774849674993}
   m_Layer: 0
   m_Name: BulletFactory
   m_TagString: Untagged
@@ -43,13 +44,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce27fb7ae2e84d4aadee69cb61eb103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: f0a6a86e908f6204ab518387a784ed36, type: 2}
-  size: {x: 0.1, y: 0.1, z: 0.1}
-  speed: 50
-  name: bullet
-  bulletTimeout: 3
+  bullet: {fileID: 1950577220578794793, guid: 10fa861c6d710bb4bbe71188bfb0f293, type: 3}
   vfxPrefab: {fileID: 1112026749624224104, guid: 627dc2cb67e23634694127942738b883,
     type: 3}
   speel: {fileID: 1240039504776826110, guid: 45c87c4281a9c214cafac9b36b9a0853, type: 3}
   animationName: Explosion
+--- !u!114 &-6931618774849674993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4550851850432627775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: 0
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
