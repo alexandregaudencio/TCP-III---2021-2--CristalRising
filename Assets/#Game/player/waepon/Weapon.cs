@@ -1,4 +1,5 @@
 ﻿#define test
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,8 @@ public class Weapon : CombatControl
     public float maxBulletDistance;
     private float timeCount;
     public Image cross;
-    private Camera cam;
+    public Camera cam;
+    public Transform pivot;
 
     private Vector3 mark;
 
@@ -22,19 +24,21 @@ public class Weapon : CombatControl
     {
         mangerBullet = GetComponent<ManagerBullet>();
         this.bulletPool = GetComponent<Pool>();
-        cam = GetComponent<Camera>();
     }
     private void Update()
     {
+        if (!GetComponent<PhotonView>().IsMine) {
+            return;
+        }
         if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition).origin, cam.ScreenPointToRay(Input.mousePosition).direction, out hit, maxBulletDistance))
         {
-            Debug.DrawLine(transform.position, hit.point, Color.red);
+            Debug.DrawLine(cam.transform.position, hit.point, Color.red);
             mark = hit.point;
         }
         else
         {
             mark = cam.ScreenPointToRay(Input.mousePosition).direction * maxBulletDistance;
-            Debug.DrawLine(transform.position, mark);
+            Debug.DrawLine(mangerBullet.transform.position, mark);
         }
         if (Physics.Raycast(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.forward, out hit, maxBulletDistance))
         {
@@ -46,6 +50,10 @@ public class Weapon : CombatControl
     }
     public override void Use()
     {
+        if (!GetComponent<PhotonView>().IsMine)
+        {
+            return;
+        }
         if (this.count >= this.Limit)
         {
             return;
@@ -73,11 +81,19 @@ public class Weapon : CombatControl
     }
     public override void Reload()
     {
+        if (!GetComponent<PhotonView>().IsMine)
+        {
+            return;
+        }
         count = 0;
     }
 
     public override void Aim()
     {
+        if (!GetComponent<PhotonView>().IsMine)
+        {
+            return;
+        }
         transform.LookAt(mark);
         //cross.rectTransform.position = Input.mousePosition;
     }
