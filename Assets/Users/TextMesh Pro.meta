@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: f54d1bd14bd3ca042bd867b519fee8cc
+=======
+<<<<<<< Updated upstream:Assets/Users/Romualdo/Prefabs/Spawners.meta
+guid: e4d0ffbf495fae7488ed96b5018c2f22
+=======
+guid: f54d1bd14bd3ca042bd867b519fee8cc
+>>>>>>> Stashed changes:Assets/Users/TextMesh Pro.meta
+>>>>>>> Stashed changes
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
