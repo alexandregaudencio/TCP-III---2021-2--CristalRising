@@ -5,11 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
-    [SerializeField] private Transform player;
     [SerializeField][Range (1, 50)] public int moveSpeed;
     [SerializeField][Range (1, 3)] private int sprintModifier;
     [SerializeField] private Transform cameraPivot;
-    [SerializeField] private Transform camera;
     [SerializeField] private float jumpForce;
     [SerializeField] private float maxFallSpeed;
     [SerializeField] private float fallMultiplier;
@@ -108,12 +106,11 @@ public class PlayerController : MonoBehaviour {
         maxRotationY = Mathf.Clamp (maxRotationY - (Input.GetAxisRaw ("Mouse Y") * 2 * 100 * Time.deltaTime), -30, 30);
 
         // Rotação da câmera através do mouse.
-        player.Rotate (0, rotationX, 0, Space.World);
-        camera.rotation = Quaternion.Lerp (camera.rotation, Quaternion.Euler (maxRotationY * 2, player.eulerAngles.y, 0), 100 * Time.deltaTime);
+        transform.Rotate (0, rotationX, 0, Space.World);
+        normalCam.transform.rotation = Quaternion.Lerp (normalCam.transform.rotation, Quaternion.Euler (maxRotationY * 2, transform.eulerAngles.y, 0), 100 * Time.deltaTime);
 
         // Posição da câmera acompanha a posição do jogador.
-        cameraPivot.position = Vector3.Lerp (cameraPivot.position, player.position, 50 * Time.deltaTime);
-
+        normalCam.transform.position = Vector3.Lerp (normalCam.transform.position, normalCam.transform.position, 50 * Time.deltaTime);
     }
 
     private void Jumping () {
@@ -146,7 +143,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Move o jogador na direção que está virado
-        dir = player.TransformVector (new Vector3 (horAxis, 0, verAxis).normalized);
+        dir = transform.TransformVector (new Vector3 (horAxis, 0, verAxis).normalized);
         playerRb.MovePosition (playerRb.position + dir * adjustedSpeed * Time.deltaTime);
 
     }
