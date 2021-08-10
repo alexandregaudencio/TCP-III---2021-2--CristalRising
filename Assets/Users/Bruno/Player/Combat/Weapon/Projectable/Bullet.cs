@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviourPun
 {
     public float speed;
     public float existenceTomeout;
@@ -14,20 +15,28 @@ public class Bullet : MonoBehaviour
     private float timeOfArrival;
     private float distance;
     private new Transform transform;
-    private bool fired;
+    private bool fired = false;
     public RaycastHit hit;
     [HideInInspector]
     public string animationName;
+
+    [PunRPC]
+    public void ActiveAll(bool value)
+    {
+        for (int i = 0; i < transform.childCount; i++) {
+            transform.GetChild(i).gameObject.SetActive(value);
+        }
+        this.gameObject.SetActive(value);
+    }
+
+    [PunRPC]
     public void Inicialize()
     {
         countTime = 0;
         this.transform = gameObject.transform;
         fired = true;
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.SetActive(true);
-        }
-        this.gameObject.SetActive(true);
+        photonView.RPC("ActiveAll", RpcTarget.All,true);
+        
     }
     void Update()
     {
@@ -40,6 +49,7 @@ public class Bullet : MonoBehaviour
         {
             transform.GetChild(i).gameObject.SetActive(false);
         }
+        this.gameObject.transform.position = Vector3.zero;
         this.gameObject.SetActive(false);
         this.pool.SetEllement(this.gameObject);
     }

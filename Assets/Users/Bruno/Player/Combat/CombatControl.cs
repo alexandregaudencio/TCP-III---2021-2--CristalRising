@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public abstract class CombatControl : MonoBehaviour, IActive
+using Photon.Pun;
+public abstract class CombatControl : MonoBehaviourPun, IActive
 {
     public float Hertz;
     public int Limit;

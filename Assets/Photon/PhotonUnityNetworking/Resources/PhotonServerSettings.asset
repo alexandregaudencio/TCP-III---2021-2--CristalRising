@@ -40,6 +40,15 @@ MonoBehaviour:
   - RespawnSpaceship
   - SendTimer
   - RPCStartGame
+  - BulletEffect
+  - ToRealte
+  - Inicialize
+  - hide
+  - DesableAll
+  - ActiveAll
+  - ToCharge
+  - BulletFactory
+  - AddMoreElement
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

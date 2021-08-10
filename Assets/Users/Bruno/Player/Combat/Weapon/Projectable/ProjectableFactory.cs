@@ -2,63 +2,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
+using System.IO;
 
-public class ProjectableFactory : MonoBehaviour
+public class ProjectableFactory : MonoBehaviourPun
 {
-    public Mesh bullet;
-    public Material material;
-    public Vector3 size;
-    public float speed;
-    public new string name;
-    public float bulletTimeout;
+    public GameObject bullet;
     public GameObject vfxPrefab;
     public GameObject speel;
-    public string animationName;
+    public String animationName;
+    private List<GameObject> obj;
 
     public GameObject BulletFactory(Pool pool)
     {
-        GameObject go = new GameObject();
+        GameObject b = PhotonNetwork.Instantiate(Path.Combine("Projectable", bullet.name), Vector3.zero, Quaternion.identity);
 
-        go.name = name;
+        b.GetComponent<Bullet>().effect = speel.GetComponent<IEffect>();
+        b.GetComponent<Bullet>().animationName = animationName;
 
-        go.AddComponent<Bullet>();
-        go.GetComponent<Bullet>().speed = speed;
-        go.GetComponent<Bullet>().effect = speel.GetComponent<IEffect>();
-        go.GetComponent<Bullet>().existenceTomeout = bulletTimeout;
-        go.GetComponent<Bullet>().pool = pool;
-        go.GetComponent<Bullet>().animationName = animationName;
+        b.GetComponent<Bullet>().pool = pool;
 
-        BulletEffect(go.transform);
-        BulletBody(go.transform);
+        BulletEffect(b.transform);
 
-        for (int i = 0; i < go.transform.childCount; i++)
-        {
-            go.transform.GetChild(i).gameObject.SetActive(false);
-        }
-        go.SetActive(false);
-        return go;
-    }
-    private GameObject BulletBody(Transform parent)
-    {
-        GameObject mesh = new GameObject();
-
-        mesh.name = "mesh_" + name;
-
-        mesh.AddComponent<MeshFilter>();
-        mesh.AddComponent<MeshRenderer>();
-        mesh.GetComponent<MeshRenderer>().material = material;
-        mesh.GetComponent<MeshFilter>().mesh = this.bullet;
-        mesh.GetComponent<Transform>().localScale = this.size;
-        mesh.GetComponent<Transform>().parent = parent;
-        return mesh;
+        return b;
     }
 
     //esse efeito tem que está junto da magia
-    private GameObject BulletEffect(Transform parent)
+    public void BulletEffect(Transform parent)
     {
-        GameObject vfx = Instantiate(vfxPrefab);
+        var vfx = PhotonNetwork.Instantiate(Path.Combine("Projectable/Explosion/vfx", vfxPrefab.name), Vector3.zero, Quaternion.identity);
         vfx.transform.parent = parent;
-        vfx.transform.position = Vector3.zero;
-        return vfx;
     }
 }
