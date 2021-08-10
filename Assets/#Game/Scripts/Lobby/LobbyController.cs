@@ -19,6 +19,7 @@ public class LobbyController: MonoBehaviourPunCallbacks
     public Text NomeSala;
     public bool connected;
     public GameObject PreRoomCanvas;
+    public byte NextPlayerTeam;
 
     //playerName
     [SerializeField] GameObject PlayerListItemPrefab;
@@ -52,13 +53,18 @@ public class LobbyController: MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsConnected == true)
             this.connected = true;
 
-        
-            if (PhotonNetwork.PlayerList.Length == RoomConfigs.maxRoomPlayers)
+         /*
+        if (PhotonNetwork.PlayerList.Length == RoomConfigs.maxRoomPlayers)
             {
                 SceneManager.LoadScene(RoomConfigs.CharacterSelectionSceneIndex);
             //PhotonNetwork.LoadLevel(RoomConfigs.CharacterSelectionSceneIndex);
 
-        }
+            }
+         /*
+
+
+
+
         /*if (PhotonNetwork.PlayerList.Length == RoomConfigs.maxRoomPlayers)
         {
             SceneManager.LoadScene(RoomConfigs.CharacterSelectionSceneIndex);
@@ -191,7 +197,19 @@ public class LobbyController: MonoBehaviourPunCallbacks
     }
 
 
+    public void ChoosingBlueTeam()
+    {
+        Debug.Log("<color=blue>Escolhi time Azul</color>");
+        NextPlayerTeam = 2;
+        PlayerAssister.T2.CallGetTeam();
+    }
 
+    public void ChoosingRedTeam()
+    {
+        Debug.Log("<color=red>Escolhi time Vermelho</color>");
+        NextPlayerTeam = 1;
+        PlayerAssister.T2.CallGetTeam();
+    }
 
 
 

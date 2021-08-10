@@ -40,6 +40,8 @@ MonoBehaviour:
   - RespawnSpaceship
   - SendTimer
   - RPCStartGame
+  - RPC_GetTeam
+  - RPC_SentTeam
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
