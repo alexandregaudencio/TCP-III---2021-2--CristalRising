@@ -30,12 +30,12 @@ public class Weapon : CombatControl
     {
         if (!pv.IsMine)
         {
-            Destroy(cam);
+            cam.gameObject.SetActive(false);
         }
     }
     private void Update()
     {
-        if (!pv.IsMine)
+        if (!pv.IsMine || !cam)
         {
             return;
         }
@@ -57,9 +57,10 @@ public class Weapon : CombatControl
         this.timeCount -= Time.deltaTime;
         Aim();
     }
+    [PunRPC]
     public override void Use()
     {
-        if (!photonView.IsMine)
+        if (!photonView.IsMine || !cam)
             return;
         if (this.count >= this.Limit)
         {
@@ -77,14 +78,22 @@ public class Weapon : CombatControl
 
         bulletPool.photonView.RPC("GetEllement", RpcTarget.All);
 
-        GetComponent<Pool>().selected.GetComponent<Bullet>().photonView.RPC("Inicialize", RpcTarget.All);
+        var bullet = PhotonView.Find(GetComponent<Pool>().selected).gameObject.GetComponent<Bullet>();
+        bullet.photonView.RPC("Inicialize", RpcTarget.All);
 
         float distance = Vector3.Distance(mangerBullet.bulletTransform.position, hit.point);
-        GetComponent<Pool>().selected.GetComponent<Bullet>().TimeOfArrival(distance);
-
-        GetComponent<Pool>().selected.GetComponent<Bullet>().hit = hit;
+        bullet.photonView.RPC("TimeOfArrival",RpcTarget.All,distance);
+        photonView.RPC("prepareBullet", RpcTarget.All, GetComponent<Pool>().selected);
+        Debug.Log("valor no tiro" + hit.point.ToString());
+       
+    }
+    [PunRPC]
+    private void prepareBullet(int id) {
+        var bullet = PhotonView.Find(id).gameObject.GetComponent<Bullet>();
+        bullet.hit = hit;
+        Debug.Log(bullet.photonView.ViewID + bullet.hit.point.ToString() + "");
         //seta a posição da bala
-        GetComponent<Pool>().selected.transform.SetPositionAndRotation(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.rotation);
+        bullet.transform.SetPositionAndRotation(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.rotation);
 
     }
     public override void Reload()

@@ -23,7 +23,8 @@ public class Controle : MonoBehaviourPun
     {
         if (Input.GetMouseButtonDown(0))
         {
-            gun.Use();
+            //gun.Use();
+            gun.GetComponent<PhotonView>().RPC("prepareBullet", RpcTarget.All);
         }
         if (Input.GetMouseButtonDown(1))
         {
