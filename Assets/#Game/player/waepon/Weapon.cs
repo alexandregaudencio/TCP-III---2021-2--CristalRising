@@ -59,6 +59,8 @@ public class Weapon : CombatControl
     }
     public override void Use()
     {
+        if (!photonView.IsMine)
+            return;
         if (this.count >= this.Limit)
         {
             return;
@@ -72,18 +74,17 @@ public class Weapon : CombatControl
             return;
         }
         this.count++;
-        GameObject go;
-        go = bulletPool.GetEllement();
-        if (!go)
-            return;
-        go.GetComponent<Bullet>().photonView.RPC("Inicialize", RpcTarget.All);
+
+        bulletPool.photonView.RPC("GetEllement", RpcTarget.All);
+
+        GetComponent<Pool>().selected.GetComponent<Bullet>().photonView.RPC("Inicialize", RpcTarget.All);
 
         float distance = Vector3.Distance(mangerBullet.bulletTransform.position, hit.point);
-        go.GetComponent<Bullet>().TimeOfArrival(distance);
+        GetComponent<Pool>().selected.GetComponent<Bullet>().TimeOfArrival(distance);
 
-        go.GetComponent<Bullet>().hit = hit;
+        GetComponent<Pool>().selected.GetComponent<Bullet>().hit = hit;
         //seta a posição da bala
-        go.transform.SetPositionAndRotation(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.rotation);
+        GetComponent<Pool>().selected.transform.SetPositionAndRotation(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.rotation);
 
     }
     public override void Reload()

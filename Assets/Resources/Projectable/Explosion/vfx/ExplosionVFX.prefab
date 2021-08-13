@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1112026749624224099}
   - component: {fileID: -1238135066054512126}
   - component: {fileID: 7762193091324892342}
-  - component: {fileID: 4665950097162812177}
   m_Layer: 0
   m_Name: ExplosionVFX
   m_TagString: Untagged
@@ -141,15 +140,3 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters: []
   m_SynchronizeLayers: []
---- !u!114 &4665950097162812177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112026749624224104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d69622ef123a61745acf5d80ef764aa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

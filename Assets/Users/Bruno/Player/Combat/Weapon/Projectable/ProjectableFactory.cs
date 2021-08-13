@@ -7,32 +7,46 @@ using Photon.Realtime;
 using ExitGames.Client.Photon;
 using System.IO;
 
-public class ProjectableFactory : MonoBehaviourPun
+public class ProjectableFactory : MonoBehaviourPunCallbacks
 {
-    public GameObject bullet;
+    public static ProjectableFactory instance;
+    public GameObject bulletPrefab;
     public GameObject vfxPrefab;
     public GameObject speel;
     public String animationName;
-    private List<GameObject> obj;
 
-    public GameObject BulletFactory(Pool pool)
+    private void Awake()
     {
-        GameObject b = PhotonNetwork.Instantiate(Path.Combine("Projectable", bullet.name), Vector3.zero, Quaternion.identity);
-
-        b.GetComponent<Bullet>().effect = speel.GetComponent<IEffect>();
-        b.GetComponent<Bullet>().animationName = animationName;
-
-        b.GetComponent<Bullet>().pool = pool;
-
-        BulletEffect(b.transform);
-
-        return b;
+        instance = this;
     }
+    public int BulletFactory()
+    {
+        GameObject b = PhotonNetwork.Instantiate(Path.Combine("Projectable", bulletPrefab.name), Vector3.zero, Quaternion.identity);
+        return b.GetComponent<PhotonView>().ViewID;
+    }
+    [PunRPC]
+    public void BulletSetUp(int bulletDd, int poolId)
+    {
+        var bullet = PhotonView.Find(bulletDd).gameObject;
+        var pool = PhotonView.Find(poolId).gameObject;
 
+        bullet.GetComponent<Bullet>().effect = speel.GetComponent<IEffect>();
+        bullet.GetComponent<Bullet>().animationName = animationName;
+
+        bullet.GetComponent<Bullet>().pool = pool.GetComponent<Pool>();
+    }
     //esse efeito tem que está junto da magia
-    public void BulletEffect(Transform parent)
+    public int BulletEffect()
     {
         var vfx = PhotonNetwork.Instantiate(Path.Combine("Projectable/Explosion/vfx", vfxPrefab.name), Vector3.zero, Quaternion.identity);
-        vfx.transform.parent = parent;
+        return vfx.GetComponent<PhotonView>().ViewID;
+    }
+    [PunRPC]
+    public void PhotonSetParent(int bulletId, int vfxID)
+    {
+        GameObject b = PhotonView.Find(bulletId).gameObject;
+        GameObject v = PhotonView.Find(vfxID).gameObject;
+
+        v.transform.SetParent(b.transform);
     }
 }

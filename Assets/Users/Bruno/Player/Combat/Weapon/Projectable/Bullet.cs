@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Bullet : MonoBehaviourPun
+public class Bullet : MonoBehaviourPunCallbacks
 {
     public float speed;
     public float existenceTomeout;
@@ -19,14 +19,26 @@ public class Bullet : MonoBehaviourPun
     public RaycastHit hit;
     [HideInInspector]
     public string animationName;
+    private GameObject photonBullet;
+
+    private void Start()
+    {
+        photonBullet = PhotonView.Find(photonView.ViewID).gameObject;
+    }
 
     [PunRPC]
     public void ActiveAll(bool value)
     {
-        for (int i = 0; i < transform.childCount; i++) {
-            transform.GetChild(i).gameObject.SetActive(value);
+        GameObject me = PhotonView.Find(photonView.ViewID).gameObject;
+
+        PhotonView.Find(me.GetComponentInChildren<PhotonView>().ViewID).gameObject.SetActive(value);
+
+        if (!value)
+        {
+            me.transform.position = Vector3.zero;
         }
-        this.gameObject.SetActive(value);
+
+        me.gameObject.SetActive(value);
     }
 
     [PunRPC]
@@ -35,23 +47,21 @@ public class Bullet : MonoBehaviourPun
         countTime = 0;
         this.transform = gameObject.transform;
         fired = true;
-        photonView.RPC("ActiveAll", RpcTarget.All,true);
-        
+        photonView.RPC("ActiveAll", RpcTarget.All, true);
+
     }
     void Update()
     {
         BulletLife();
     }
+    [PunRPC]
     public void Timeout()
     {
         countTime = 0;
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.SetActive(false);
-        }
-        this.gameObject.transform.position = Vector3.zero;
-        this.gameObject.SetActive(false);
-        this.pool.SetEllement(this.gameObject);
+
+        GetComponent<PhotonView>().RPC("ActiveAll", RpcTarget.All, false);
+
+        pool.photonView.RPC("SetEllement", RpcTarget.All, photonView.ViewID);
     }
 
     public void TimeOfArrival(float distance)
@@ -59,9 +69,11 @@ public class Bullet : MonoBehaviourPun
         this.distance = distance;
         timeOfArrival = distance / speed;
     }
+    [PunRPC]
     public void CombineWithMaic()
     {
-        effect.Apply(GetComponentInChildren<Animator>());
+        var temp = GetComponentInChildren<Animator>();
+        //effect.Apply(ViewID);
     }
     public void CalculateDamage()
     {
@@ -75,7 +87,9 @@ public class Bullet : MonoBehaviourPun
             //e desativa e retorna a bala para a piscina apos um tempo
             if (timeOfArrival <= 0)
             {
-                CombineWithMaic();
+                if (photonView.IsMine)
+                    photonView.RPC("CombineWithMaic", RpcTarget.All);
+                //CombineWithMaic();
                 CalculateDamage();
                 fired = false;
             }
@@ -92,7 +106,9 @@ public class Bullet : MonoBehaviourPun
             // desativa e retorna a bala para a piscina apos um tempo
             if (countTime >= existenceTomeout)
             {
-                Timeout();
+                if (photonView.IsMine)
+                    photonView.RPC("Timeout", RpcTarget.All);
+                //Timeout();
                 return;
             }
             DetectCollier();
@@ -101,14 +117,26 @@ public class Bullet : MonoBehaviourPun
         }
         else
         {
-            transform.position = hit.point;
-            Animator ani = GetComponentInChildren<Animator>();
+            EndAniamtion();
+            //if (photonView.IsMine)
+            //    photonView.RPC("EndAniamtion", RpcTarget.All);
+        }
+    }
+    [PunRPC]
+    private void EndAniamtion()
+    {
+        if (!hit.collider)
+        {
+            return;
+        }
+        transform.position = hit.point;
+        Animator ani = GetComponentInChildren<Animator>();
 
-            if (ani.GetCurrentAnimatorStateInfo(0).IsName(animationName) && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-            {
-                Timeout();
-
-            }
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName(animationName) && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+            //Timeout();
+            if (photonView.IsMine)
+                photonView.RPC("Timeout", RpcTarget.All);
         }
     }
 }
