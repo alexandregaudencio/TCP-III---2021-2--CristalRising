@@ -52,7 +52,7 @@ public class Bullet : MonoBehaviourPunCallbacks
     }
     void Update()
     {
-        BulletLife();
+        photonView.RPC("BulletLife", RpcTarget.All);
     }
     [PunRPC]
     public void Timeout()
@@ -63,9 +63,10 @@ public class Bullet : MonoBehaviourPunCallbacks
 
         pool.photonView.RPC("SetEllement", RpcTarget.All, photonView.ViewID);
     }
-
+    [PunRPC]
     public void TimeOfArrival(float distance)
     {
+        Debug.Log("TimeOfArrival");
         this.distance = distance;
         timeOfArrival = distance / speed;
     }
@@ -78,13 +79,16 @@ public class Bullet : MonoBehaviourPunCallbacks
     public void CalculateDamage()
     {
     }
+    [PunRPC]
     private void DetectCollier()
     {
+        Debug.Log(hit.point.ToString());
         if (hit.collider != null)
         {
             //detecta se atingiu o alvo e aplica todas as
             //animações magicas se houver e o dano causado pelo artefato
             //e desativa e retorna a bala para a piscina apos um tempo
+            Debug.Log(timeOfArrival);
             if (timeOfArrival <= 0)
             {
                 if (photonView.IsMine)
@@ -95,6 +99,7 @@ public class Bullet : MonoBehaviourPunCallbacks
             }
         }
     }
+    [PunRPC]
     private void BulletLife()
     {
         //mover a bala pra frente
@@ -111,15 +116,16 @@ public class Bullet : MonoBehaviourPunCallbacks
                 //Timeout();
                 return;
             }
-            DetectCollier();
+            //DetectCollier(); 
+            if (photonView.IsMine)
+                photonView.RPC("DetectCollier", RpcTarget.All);
 
             transform.position += transform.forward * speed * Time.deltaTime;
         }
         else
         {
-            EndAniamtion();
-            //if (photonView.IsMine)
-            //    photonView.RPC("EndAniamtion", RpcTarget.All);
+            //EndAniamtion();
+            photonView.RPC("EndAniamtion", RpcTarget.All);
         }
     }
     [PunRPC]
@@ -135,8 +141,7 @@ public class Bullet : MonoBehaviourPunCallbacks
         if (ani.GetCurrentAnimatorStateInfo(0).IsName(animationName) && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
             //Timeout();
-            if (photonView.IsMine)
-                photonView.RPC("Timeout", RpcTarget.All);
+            photonView.RPC("Timeout", RpcTarget.All);
         }
     }
 }

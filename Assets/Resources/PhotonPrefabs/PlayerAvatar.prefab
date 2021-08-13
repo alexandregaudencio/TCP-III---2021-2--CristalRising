@@ -479,12 +479,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64b28a2ebbd28b4b90d07d837fd89e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeGroup: []
-  inactiveGroup: []
+  activeGroup: 
+  inactiveGroup: 
   projectable: {fileID: 4550851850432627775, guid: d273d5c3e0e04e44ebfa70d2b2856ee0,
     type: 3}
   count: 10
-  selected: {fileID: 0}
+  selected: 0
 --- !u!114 &261208917441878200
 MonoBehaviour:
   m_ObjectHideFlags: 0
