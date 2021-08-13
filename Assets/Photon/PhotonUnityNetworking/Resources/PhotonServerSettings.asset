@@ -49,6 +49,17 @@ MonoBehaviour:
   - ToCharge
   - BulletFactory
   - AddMoreElement
+  - PhotonSetParent
+  - CombineWithMaic
+  - Apply
+  - EndAniamtion
+  - Timeout
+  - BulletSetUp
+  - SetEllement
+  - GetEllement
+  - OpenFactory
+  - Start
+  - add
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

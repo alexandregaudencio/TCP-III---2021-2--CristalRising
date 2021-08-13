@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
+using Photon.Pun;
 
 public class Explosion : Spells, IEffect
 {
     public override void Use()
     {
     }
-    public void Apply(Animator animator)
+    [PunRPC]
+    public void Apply(int animatorId)
     {
         this.Use();
-        this.animator = animator;
+        this.animator = PhotonView.Find(animatorId).GetComponent<Animator>();
+        //this.animator = animator;
         this.animator.SetTrigger("Applay");
     }
 }
