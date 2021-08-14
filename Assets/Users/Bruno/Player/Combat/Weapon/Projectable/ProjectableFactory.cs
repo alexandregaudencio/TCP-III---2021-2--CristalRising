@@ -2,63 +2,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
+using System.IO;
 
-public class ProjectableFactory : MonoBehaviour
+public class ProjectableFactory : MonoBehaviourPunCallbacks
 {
-    public Mesh bullet;
-    public Material material;
-    public Vector3 size;
-    public float speed;
-    public new string name;
-    public float bulletTimeout;
+    public static ProjectableFactory instance;
+    public GameObject bulletPrefab;
     public GameObject vfxPrefab;
     public GameObject speel;
-    public string animationName;
+    public String animationName;
 
-    public GameObject BulletFactory(Pool pool)
+    private void Awake()
     {
-        GameObject go = new GameObject();
-
-        go.name = name;
-
-        go.AddComponent<Bullet>();
-        go.GetComponent<Bullet>().speed = speed;
-        go.GetComponent<Bullet>().effect = speel.GetComponent<IEffect>();
-        go.GetComponent<Bullet>().existenceTomeout = bulletTimeout;
-        go.GetComponent<Bullet>().pool = pool;
-        go.GetComponent<Bullet>().animationName = animationName;
-
-        BulletEffect(go.transform);
-        BulletBody(go.transform);
-
-        for (int i = 0; i < go.transform.childCount; i++)
-        {
-            go.transform.GetChild(i).gameObject.SetActive(false);
-        }
-        go.SetActive(false);
-        return go;
+        instance = this;
     }
-    private GameObject BulletBody(Transform parent)
+    public int BulletFactory()
     {
-        GameObject mesh = new GameObject();
-
-        mesh.name = "mesh_" + name;
-
-        mesh.AddComponent<MeshFilter>();
-        mesh.AddComponent<MeshRenderer>();
-        mesh.GetComponent<MeshRenderer>().material = material;
-        mesh.GetComponent<MeshFilter>().mesh = this.bullet;
-        mesh.GetComponent<Transform>().localScale = this.size;
-        mesh.GetComponent<Transform>().parent = parent;
-        return mesh;
+        GameObject b = PhotonNetwork.Instantiate(Path.Combine("Projectable", bulletPrefab.name), Vector3.zero, Quaternion.identity);
+        return b.GetComponent<PhotonView>().ViewID;
     }
+    [PunRPC]
+    public void BulletSetUp(int bulletDd, int poolId)
+    {
+        var bullet = PhotonView.Find(bulletDd).gameObject;
+        var pool = PhotonView.Find(poolId).gameObject;
 
+        bullet.GetComponent<Bullet>().effect = speel.GetComponent<IEffect>();
+        bullet.GetComponent<Bullet>().animationName = animationName;
+
+        bullet.GetComponent<Bullet>().pool = pool.GetComponent<Pool>();
+    }
     //esse efeito tem que está junto da magia
-    private GameObject BulletEffect(Transform parent)
+    public int BulletEffect()
     {
-        GameObject vfx = Instantiate(vfxPrefab);
-        vfx.transform.parent = parent;
-        vfx.transform.position = Vector3.zero;
-        return vfx;
+        var vfx = PhotonNetwork.Instantiate(Path.Combine("Projectable/Explosion/vfx", vfxPrefab.name), Vector3.zero, Quaternion.identity);
+        return vfx.GetComponent<PhotonView>().ViewID;
+    }
+    [PunRPC]
+    public void PhotonSetParent(int bulletId, int vfxID)
+    {
+        GameObject b = PhotonView.Find(bulletId).gameObject;
+        GameObject v = PhotonView.Find(vfxID).gameObject;
+
+        v.transform.SetParent(b.transform);
     }
 }
