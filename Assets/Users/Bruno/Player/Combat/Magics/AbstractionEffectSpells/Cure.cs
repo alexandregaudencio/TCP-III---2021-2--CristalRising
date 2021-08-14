@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Cure : Spells, IEffect
 {
@@ -12,10 +13,12 @@ public class Cure : Spells, IEffect
     public override void Use()
     {
     }
-    public void Apply(Animator animator)
+    [PunRPC]
+    public void Apply(int animatorId)
     {
         this.Use();
-        this.animator = animator;
+        this.animator = PhotonView.Find(animatorId).GetComponent<Animator>();
+        //this.animator = animator;
         this.animator.Play("Active");
     }
 }
