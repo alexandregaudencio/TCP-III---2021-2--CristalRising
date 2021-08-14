@@ -83,8 +83,8 @@ public class Weapon : CombatControl
 
         float distance = Vector3.Distance(mangerBullet.bulletTransform.position, hit.point);
         bullet.photonView.RPC("TimeOfArrival",RpcTarget.All,distance);
+
         photonView.RPC("prepareBullet", RpcTarget.All, GetComponent<Pool>().selected);
-        Debug.Log("valor no tiro" + hit.point.ToString());
        
     }
     [PunRPC]
