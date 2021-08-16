@@ -40,6 +40,25 @@ MonoBehaviour:
   - RespawnSpaceship
   - SendTimer
   - RPCStartGame
+  - ActiveAll
+  - add
+  - AddMoreElement
+  - Apply
+  - BulletLife
+  - BulletSetUp
+  - CombineWithMaic
+  - DetectCollier
+  - EndAniamtion
+  - GetEllement
+  - Inicialize
+  - OpenFactory
+  - PhotonSetParent
+  - prepareBullet
+  - SetEllement
+  - TimeOfArrival
+  - Timeout
+  - Use
+  - ActiveInstance
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

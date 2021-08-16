@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Cure : Spells, IEffect
 {
@@ -12,6 +13,7 @@ public class Cure : Spells, IEffect
     public override void Use()
     {
     }
+    [PunRPC]
     public void Apply(Animator animator)
     {
         this.Use();
