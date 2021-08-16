@@ -1,25 +1,73 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
-public class Pool : MonoBehaviour
+public class Pool : MonoBehaviourPun
 {
-    private List<GameObject> activeGroup;
-    private List<GameObject> inactiveGroup;
+    public List<int> activeGroup;
+    public List<int> inactiveGroup;
+
     public GameObject projectable;
-    public int size;
+    public int count;
+    private GameObject factory = null;
+    public int selected;
+    [PunRPC]
+    private void OpenFactory(int id)
+    {
+        factory = PhotonView.Find(id).gameObject;
+    }
     void Start()
     {
-        activeGroup = new List<GameObject>();
-        inactiveGroup = new List<GameObject>();
+        activeGroup = new List<int>();
+        inactiveGroup = new List<int>();
 
-        for (int i = 0; i < size; i++)
+        if (photonView.IsMine)
         {
-            inactiveGroup.Add(projectable.GetComponent< ProjectableFactory>().BulletFactory(this));
+            var obj = PhotonNetwork.Instantiate(Path.Combine("Projectable", projectable.name), Vector3.zero, Quaternion.identity, 0);
+            photonView.RPC("OpenFactory", RpcTarget.AllViaServer, obj.gameObject.GetComponent<PhotonView>().ViewID);
+            for (int i = 0; i < count; i++)
+            {
+                photonView.RPC("AddMoreElement", RpcTarget.AllViaServer);
+            }
+
         }
+
+        //AddMoreElement();
     }
 
+    [PunRPC]
+    private void AddMoreElement()
+    {
+        var f = factory.GetComponent<ProjectableFactory>();
+
+        int bulletId;
+        int vfxId;
+
+        if (photonView.IsMine)
+        {
+            bulletId = f.BulletFactory();
+            vfxId = f.BulletEffect();
+
+            GameObject bullet = PhotonView.Find(bulletId).gameObject; ;
+
+            f.photonView.RPC("PhotonSetParent", RpcTarget.All, bulletId, vfxId);
+
+            f.photonView.RPC("BulletSetUp", RpcTarget.All, bulletId, photonView.ViewID);
+
+            bullet.GetComponent<Bullet>().photonView.RPC("ActiveAll", RpcTarget.All, false);
+
+            photonView.RPC("add", RpcTarget.AllBufferedViaServer, bulletId);
+
+        }
+    }
+    [PunRPC]
+    private void add(int id)
+    {
+        inactiveGroup.Add(id);
+    }
     private bool HalfEmpty()
     {
         if (inactiveGroup.Count > 1)
@@ -29,22 +77,25 @@ public class Pool : MonoBehaviour
         return false;
     }
 
-    internal void SetEllement(GameObject go)
+    public void In(int id)
     {
-        inactiveGroup.Add(go);
-        activeGroup.Remove(go);
+        inactiveGroup.Add(id);
+        activeGroup.Remove(id);
     }
-
-    public GameObject GetEllement()
+    public void Out(int id)
     {
-        GameObject go;
+        inactiveGroup.Remove(id);
+        activeGroup.Add(id);
+    }
+    [PunRPC]
+    public int ActiveInstance()
+    {
+        if (!photonView.IsMine)
+            return -1;
         if (!HalfEmpty())
         {
-            inactiveGroup.Add(projectable.GetComponent<ProjectableFactory>().BulletFactory(this));
+            AddMoreElement();
         }
-        go = inactiveGroup[0];
-        inactiveGroup.Remove(go);
-        activeGroup.Add(go);
-        return go;
+        return inactiveGroup[0];
     }
 }

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Controle : MonoBehaviour
+public class Controle : MonoBehaviourPun
 {
     private new Transform transform;
     public float speed;
@@ -23,6 +24,8 @@ public class Controle : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             gun.Use();
+            //if (photonView.IsMine)
+            //    gun.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
         }
         if (Input.GetMouseButtonDown(1))
         {
