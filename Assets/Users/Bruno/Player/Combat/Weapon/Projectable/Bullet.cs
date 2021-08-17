@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Bullet : MonoBehaviourPunCallbacks
+public class Bullet : MonoBehaviourPun, Damage
 {
     public float speed;
+    public float damage;
     public float existenceTomeout;
     private float countTime;
     public IEffect effect;
@@ -19,12 +20,8 @@ public class Bullet : MonoBehaviourPunCallbacks
     public Vector3 hit;
     [HideInInspector]
     public string animationName;
-    private GameObject photonBullet;
-
-    private void Start()
-    {
-        photonBullet = PhotonView.Find(photonView.ViewID).gameObject;
-    }
+    [HideInInspector]
+    public GameObject target { private get; set; }
 
     [PunRPC]
     public void ActiveAll(bool value)
@@ -65,7 +62,7 @@ public class Bullet : MonoBehaviourPunCallbacks
         countTime = 0;
         pool.In(photonView.ViewID);
         ActiveAll(false);
- 
+
     }
     public void TimeOfArrival(float distance)
     {
@@ -78,9 +75,6 @@ public class Bullet : MonoBehaviourPunCallbacks
         var vfx = GetComponentInChildren<Animator>();
         vfx.transform.position = hit;
         effect.Apply(vfx);
-    }
-    public void CalculateDamage()
-    {
     }
     [PunRPC]
     private void DetectCollier()
@@ -104,7 +98,6 @@ public class Bullet : MonoBehaviourPunCallbacks
             timeOfArrival -= Time.deltaTime;
             countTime += Time.deltaTime;
 
-            Debug.Log(countTime);
             // desativa e retorna a bala para a piscina apos um tempo
             if (countTime >= existenceTomeout)
             {
@@ -133,5 +126,18 @@ public class Bullet : MonoBehaviourPunCallbacks
         {
             Timeout();
         }
+    }
+    public void CalculateDamage()
+    {
+        if (target)
+        {
+            var playerProperty = target.GetComponent<PlayerProperty>();
+            playerProperty.life -= damage;
+        }
+    }
+
+    public GameObject GetTarget()
+    {
+        return target;
     }
 }

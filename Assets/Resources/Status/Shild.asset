@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b31a6a4d2c31b4e941fdbcc18e1830, type: 3}
-  m_Name: Cure
-  m_EditorClassIdentifier: 
+  m_Script: {fileID: 0}
+  m_Name: Shild
+  m_EditorClassIdentifier: Assembly-CSharp::Shild
   icon: {fileID: 0}
   duration: 10
-  value: 30

@@ -24,8 +24,9 @@ public class Controle : MonoBehaviourPun
         if (Input.GetMouseButtonDown(0))
         {
             gun.Use();
-            //if (photonView.IsMine)
-            //    gun.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
+        }
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            gun.Reload();
         }
         if (Input.GetMouseButtonDown(1))
         {
