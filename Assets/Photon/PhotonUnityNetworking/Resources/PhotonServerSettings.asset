@@ -42,6 +42,25 @@ MonoBehaviour:
   - RPCStartGame
   - RPC_GetTeam
   - RPC_SentTeam
+  - RPC_SETTime
+  - ActiveAll
+  - add
+  - AddMoreElement
+  - Apply
+  - BulletLife
+  - BulletSetUp
+  - CombineWithMaic
+  - DetectCollier
+  - EndAniamtion
+  - GetEllement
+  - Inicialize
+  - OpenFactory
+  - PhotonSetParent
+  - prepareBullet
+  - SetEllement
+  - TimeOfArrival
+  - Timeout
+  - Use
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
