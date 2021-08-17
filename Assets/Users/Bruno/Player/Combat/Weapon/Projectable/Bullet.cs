@@ -132,7 +132,7 @@ public class Bullet : MonoBehaviourPun, Damage
         if (target)
         {
             var playerProperty = target.GetComponent<PlayerProperty>();
-            playerProperty.life -= damage;
+            //playerProperty.life -= damage;
         }
     }
 
