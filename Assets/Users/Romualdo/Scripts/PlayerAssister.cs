@@ -40,7 +40,7 @@ public class PlayerAssister : MonoBehaviour
 
     void Update()
     {
-
+        DontDestroyOnLoad(this.gameObject);
         index = SceneManager.GetActiveScene().buildIndex;
         
         
