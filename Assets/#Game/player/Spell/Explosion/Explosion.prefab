@@ -43,14 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c46bc1730cbfd6449b05711bb6a91f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hertz: 0
-  Limit: 0
+  Hertz: 0.2
+  Limit: 50
   status:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: fdc7307ae89710d4388c43f5774efeb8, type: 2}
   attibut:
-    strenght: 0
+    strenght: -15
     defense: 0
-    speed: 0
+    speed: -10
     shield: 0
     weapon: 0
     spell: 0

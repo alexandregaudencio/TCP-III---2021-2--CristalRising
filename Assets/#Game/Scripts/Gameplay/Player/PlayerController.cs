@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] [Range(1, 50)] public int moveSpeed;
+    [SerializeField] [Range(1, 50)] public float moveSpeed;
     [SerializeField] [Range(1, 3)] private int sprintModifier;
     [SerializeField] private Transform cameraPivot;
-    [SerializeField] private float jumpForce;
+    [SerializeField] public float jumpForce;
     [SerializeField] private float maxFallSpeed;
     [SerializeField] private float fallMultiplier;
 

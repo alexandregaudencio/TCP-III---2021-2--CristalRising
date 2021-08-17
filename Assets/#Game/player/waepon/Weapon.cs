@@ -85,6 +85,8 @@ public class Weapon : CombatControl
         Vector3 pos = mangerBullet.bulletTransform.position;
         Vector3 rot = mangerBullet.bulletTransform.rotation.eulerAngles;
 
+        bullet.target = this.gameObject;
+
         bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot);
     }
     public override void Reload()
