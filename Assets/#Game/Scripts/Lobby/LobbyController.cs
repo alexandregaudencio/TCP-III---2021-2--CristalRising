@@ -55,13 +55,13 @@ public class LobbyController: MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsConnected == true)
             this.connected = true;
         
-         /*
-        if (PhotonNetwork.PlayerList.Length == RoomConfigs.maxRoomPlayers)
-            {
-                SceneManager.LoadScene(RoomConfigs.CharacterSelectionSceneIndex);
+         
+       // if (PhotonNetwork.PlayerList.Length == RoomConfigs.maxRoomPlayers)
+           // {
+               // SceneManager.LoadScene(RoomConfigs.CharacterSelectionSceneIndex);
             //PhotonNetwork.LoadLevel(RoomConfigs.CharacterSelectionSceneIndex);
 
-            }
+            //}
          /*
 
 
@@ -191,7 +191,16 @@ public class LobbyController: MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
+<<<<<<< Updated upstream
        Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(newPlayer);
+=======
+
+       Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(newPlayer);
+
+        Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(newPlayer);
+
+
+>>>>>>> Stashed changes
     }
     #endregion
 
@@ -232,7 +241,7 @@ public class LobbyController: MonoBehaviourPunCallbacks
 
     public void TrocarCenaJogo()
     {
-        SceneManager.LoadScene("Gameplay");
+        SceneManager.LoadScene("Oficial_CharacterSelection");
     }
 
 
