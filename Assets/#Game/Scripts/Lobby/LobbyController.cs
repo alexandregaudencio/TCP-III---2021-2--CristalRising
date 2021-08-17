@@ -20,7 +20,9 @@ public class LobbyController: MonoBehaviourPunCallbacks
     public bool connected;
     public GameObject PreRoomCanvas;
     public byte NextPlayerTeam;
-
+    public PhotonView PV;
+    public byte RedTeam;
+    public byte BlueTeam;
     //playerName
     [SerializeField] GameObject PlayerListItemPrefab;
     [SerializeField] Transform playerListContent;
@@ -52,7 +54,7 @@ public class LobbyController: MonoBehaviourPunCallbacks
         PlayersConectados = PhotonNetwork.CurrentRoom.PlayerCount;
         if (PhotonNetwork.IsConnected == true)
             this.connected = true;
-
+        
          /*
         if (PhotonNetwork.PlayerList.Length == RoomConfigs.maxRoomPlayers)
             {
@@ -117,25 +119,40 @@ public class LobbyController: MonoBehaviourPunCallbacks
         Debug.Log("Entrou na sala");
         if (this.LobbyCanvas.activeInHierarchy)
         {
-            this.LobbyCanvas.SetActive (false);
+            this.LobbyCanvas.SetActive(false);
             this.RoomCanvas.SetActive(true);
         }
+
+        Debug.Log("Player Conectados: " + PlayersConectados);
+
         if(PhotonNetwork.IsMasterClient)
         {
-           // this.StartButton.SetActive(true);
+            ChoosingRedTeam();
         }
-        else 
+        else
         {
-           // this.StartButton.SetActive(false);
+            PlayerAssister.T2.MyTeam = this.NextPlayerTeam;
         }
-       // PlayersConectados = PhotonNetwork.CurrentRoom.PlayerCount;
-        Debug.Log("Player Conectados: " + PlayersConectados);
-        //PhotonNetwork.LoadLevel("Aguardando");
+
+      
+        
+        /*
+        if(this.NextPlayerTeam == 1)
+        {
+            ChoosingRedTeam();
+            this.RedTeam++;
+        }
+       else if(this.NextPlayerTeam==2)
+        {
+            ChoosingBlueTeam();
+            this.BlueTeam++;
+        }
+        */
         if (PlayersConectados != MaxPlayers)
         {
             Debug.Log("Esperando Players");
         }
-
+      
         else
         {
 
@@ -174,7 +191,12 @@ public class LobbyController: MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
+<<<<<<< Updated upstream
        Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(newPlayer);
+=======
+        Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(newPlayer);
+
+>>>>>>> Stashed changes
     }
     #endregion
 
@@ -202,6 +224,7 @@ public class LobbyController: MonoBehaviourPunCallbacks
         Debug.Log("<color=blue>Escolhi time Azul</color>");
         NextPlayerTeam = 2;
         PlayerAssister.T2.CallGetTeam();
+        this.BlueTeam++;
     }
 
     public void ChoosingRedTeam()
@@ -209,9 +232,13 @@ public class LobbyController: MonoBehaviourPunCallbacks
         Debug.Log("<color=red>Escolhi time Vermelho</color>");
         NextPlayerTeam = 1;
         PlayerAssister.T2.CallGetTeam();
+        this.RedTeam++;
     }
 
-
+    public void TrocarCenaJogo()
+    {
+        SceneManager.LoadScene("Gameplay");
+    }
 
 
 
