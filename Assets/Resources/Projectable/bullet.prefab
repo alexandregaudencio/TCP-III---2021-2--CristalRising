@@ -47,8 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  existenceTomeout: 3
+  damage: 10
+  existenceTomeout: 1
   pool: {fileID: 0}
+  hit: {x: 0, y: 0, z: 0}
   animationName: 
 --- !u!114 &3168647795763510970
 MonoBehaviour:

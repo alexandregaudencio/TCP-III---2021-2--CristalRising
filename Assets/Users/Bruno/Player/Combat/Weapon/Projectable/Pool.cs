@@ -77,23 +77,25 @@ public class Pool : MonoBehaviourPun
         return false;
     }
 
-    [PunRPC]
-    internal void SetEllement(int id)
+    public void In(int id)
     {
         inactiveGroup.Add(id);
         activeGroup.Remove(id);
     }
-    [PunRPC]
-    public void GetEllement()
+    public void Out(int id)
     {
-        if (!photonView.IsMine && photonView.IsMine)
-            return;
+        inactiveGroup.Remove(id);
+        activeGroup.Add(id);
+    }
+    [PunRPC]
+    public int ActiveInstance()
+    {
+        if (!photonView.IsMine)
+            return -1;
         if (!HalfEmpty())
         {
-            photonView.RPC("AddMoreElement", RpcTarget.All);
+            AddMoreElement();
         }
-        selected = inactiveGroup[0];
-        inactiveGroup.Remove(selected);
-        activeGroup.Add(selected);
+        return inactiveGroup[0];
     }
 }
