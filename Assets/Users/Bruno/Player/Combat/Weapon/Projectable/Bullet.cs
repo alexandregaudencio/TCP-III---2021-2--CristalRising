@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Bullet : MonoBehaviourPunCallbacks
+public class Bullet : MonoBehaviourPun, Damage
 {
     public float speed;
+    public float damage;
     public float existenceTomeout;
     private float countTime;
     public IEffect effect;
@@ -16,15 +17,11 @@ public class Bullet : MonoBehaviourPunCallbacks
     private float distance;
     private new Transform transform;
     private bool fired = false;
-    public RaycastHit hit;
+    public Vector3 hit;
     [HideInInspector]
     public string animationName;
-    private GameObject photonBullet;
-
-    private void Start()
-    {
-        photonBullet = PhotonView.Find(photonView.ViewID).gameObject;
-    }
+    [HideInInspector]
+    public GameObject target { private get; set; }
 
     [PunRPC]
     public void ActiveAll(bool value)
@@ -42,61 +39,54 @@ public class Bullet : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void Inicialize()
+    public void Inicialize(Vector3 point, float timeOfArrival, Vector3 pos, Vector3 rot)
     {
+        pool.Out(photonView.ViewID);
+        pool.ActiveInstance();
+        hit = point;
         countTime = 0;
         this.transform = gameObject.transform;
         fired = true;
-        photonView.RPC("ActiveAll", RpcTarget.All, true);
+        ActiveAll(true);
+        TimeOfArrival(timeOfArrival);
+        transform.SetPositionAndRotation(pos, Quaternion.Euler(rot));
 
     }
     void Update()
     {
-        photonView.RPC("BulletLife", RpcTarget.All);
+        BulletLife();
     }
     [PunRPC]
     public void Timeout()
     {
         countTime = 0;
+        pool.In(photonView.ViewID);
+        ActiveAll(false);
 
-        GetComponent<PhotonView>().RPC("ActiveAll", RpcTarget.All, false);
-
-        pool.photonView.RPC("SetEllement", RpcTarget.All, photonView.ViewID);
     }
-    [PunRPC]
     public void TimeOfArrival(float distance)
     {
-        Debug.Log("TimeOfArrival");
         this.distance = distance;
         timeOfArrival = distance / speed;
     }
     [PunRPC]
     public void CombineWithMaic()
     {
-        var temp = GetComponentInChildren<Animator>();
-        //effect.Apply(ViewID);
-    }
-    public void CalculateDamage()
-    {
+        var vfx = GetComponentInChildren<Animator>();
+        vfx.transform.position = hit;
+        effect.Apply(vfx);
     }
     [PunRPC]
     private void DetectCollier()
     {
-        Debug.Log(hit.point.ToString());
-        if (hit.collider != null)
+        //detecta se atingiu o alvo e aplica todas as
+        //animações magicas se houver e o dano causado pelo artefato
+        //e desativa e retorna a bala para a piscina apos um tempo
+        if (timeOfArrival <= 0)
         {
-            //detecta se atingiu o alvo e aplica todas as
-            //animações magicas se houver e o dano causado pelo artefato
-            //e desativa e retorna a bala para a piscina apos um tempo
-            Debug.Log(timeOfArrival);
-            if (timeOfArrival <= 0)
-            {
-                if (photonView.IsMine)
-                    photonView.RPC("CombineWithMaic", RpcTarget.All);
-                //CombineWithMaic();
-                CalculateDamage();
-                fired = false;
-            }
+            CombineWithMaic();
+            CalculateDamage();
+            fired = false;
         }
     }
     [PunRPC]
@@ -111,37 +101,43 @@ public class Bullet : MonoBehaviourPunCallbacks
             // desativa e retorna a bala para a piscina apos um tempo
             if (countTime >= existenceTomeout)
             {
-                if (photonView.IsMine)
-                    photonView.RPC("Timeout", RpcTarget.All);
-                //Timeout();
+                Timeout();
                 return;
             }
-            //DetectCollier(); 
-            if (photonView.IsMine)
-                photonView.RPC("DetectCollier", RpcTarget.All);
+            DetectCollier();
 
             transform.position += transform.forward * speed * Time.deltaTime;
         }
         else
         {
-            //EndAniamtion();
-            photonView.RPC("EndAniamtion", RpcTarget.All);
+            EndAniamtion();
         }
     }
-    [PunRPC]
     private void EndAniamtion()
     {
-        if (!hit.collider)
+        if (transform == null)
         {
             return;
         }
-        transform.position = hit.point;
+        transform.position = hit;
         Animator ani = GetComponentInChildren<Animator>();
 
         if (ani.GetCurrentAnimatorStateInfo(0).IsName(animationName) && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
-            //Timeout();
-            photonView.RPC("Timeout", RpcTarget.All);
+            Timeout();
         }
+    }
+    public void CalculateDamage()
+    {
+        if (target)
+        {
+            var playerProperty = target.GetComponent<PlayerProperty>();
+            playerProperty.life -= damage;
+        }
+    }
+
+    public GameObject GetTarget()
+    {
+        return target;
     }
 }

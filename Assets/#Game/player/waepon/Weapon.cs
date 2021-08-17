@@ -35,7 +35,7 @@ public class Weapon : CombatControl
     }
     private void Update()
     {
-        if (!pv.IsMine || !cam)
+        if (!pv.IsMine)
         {
             return;
         }
@@ -60,7 +60,7 @@ public class Weapon : CombatControl
     [PunRPC]
     public override void Use()
     {
-        if (!photonView.IsMine || !cam)
+        if (!photonView.IsMine)
             return;
         if (this.count >= this.Limit)
         {
@@ -76,25 +76,18 @@ public class Weapon : CombatControl
         }
         this.count++;
 
-        bulletPool.photonView.RPC("GetEllement", RpcTarget.All);
 
-        var bullet = PhotonView.Find(GetComponent<Pool>().selected).gameObject.GetComponent<Bullet>();
-        bullet.photonView.RPC("Inicialize", RpcTarget.All);
+        var bullet = PhotonView.Find(GetComponent<Pool>().ActiveInstance()).gameObject.GetComponent<Bullet>();
+
 
         float distance = Vector3.Distance(mangerBullet.bulletTransform.position, hit.point);
-        bullet.photonView.RPC("TimeOfArrival",RpcTarget.All,distance);
 
-        photonView.RPC("prepareBullet", RpcTarget.All, GetComponent<Pool>().selected);
-       
-    }
-    [PunRPC]
-    private void prepareBullet(int id) {
-        var bullet = PhotonView.Find(id).gameObject.GetComponent<Bullet>();
-        bullet.hit = hit;
-        Debug.Log(bullet.photonView.ViewID + bullet.hit.point.ToString() + "");
-        //seta a posição da bala
-        bullet.transform.SetPositionAndRotation(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.rotation);
+        Vector3 pos = mangerBullet.bulletTransform.position;
+        Vector3 rot = mangerBullet.bulletTransform.rotation.eulerAngles;
 
+        bullet.target = this.gameObject;
+
+        bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot);
     }
     public override void Reload()
     {

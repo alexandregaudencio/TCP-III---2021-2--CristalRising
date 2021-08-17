@@ -14,11 +14,10 @@ public class Cure : Spells, IEffect
     {
     }
     [PunRPC]
-    public void Apply(int animatorId)
+    public void Apply(Animator animator)
     {
         this.Use();
-        this.animator = PhotonView.Find(animatorId).GetComponent<Animator>();
-        //this.animator = animator;
+        this.animator = animator;
         this.animator.Play("Active");
     }
 }
