@@ -12,6 +12,6 @@
     //SceneIndex
     public const int menuSceneIndex = 0;
     public const int CharacterSelectionSceneIndex = 1;
-    public const int gameplaySceneIndex = 2;
+    public const int gameplaySceneIndex = 4;
 
 }

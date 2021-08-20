@@ -35,7 +35,7 @@ public class Controle : MonoBehaviourPun
             if (spell)
             {
                 (spell as IActive).Aim();
-                (spell as IEffect).Apply(aux.GetComponent<Animator>().gameObject.GetComponent<PhotonView>().ViewID);
+                (spell as IEffect).Apply(aux.GetComponent<Animator>());
             }
         }
     }

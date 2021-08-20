@@ -28,7 +28,7 @@ public class PlayerAssister : MonoBehaviour
            
             PV.RPC("RPC_GetTeam", RpcTarget.MasterClient);
         }
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
         
     }
 
@@ -40,7 +40,7 @@ public class PlayerAssister : MonoBehaviour
 
     void Update()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
         index = SceneManager.GetActiveScene().buildIndex;
         
         
