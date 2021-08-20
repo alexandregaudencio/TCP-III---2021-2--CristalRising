@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -26,6 +27,9 @@ public class PlayerProperty : MonoBehaviour
         bufferMaxJumpHight = maxJumpHeight;
 
         bufferlife = life;
+        if (GetComponent<PhotonView>().IsMine) {
+            textUiLife.SetActive(true);
+        }
     }
     private void Update()
     {

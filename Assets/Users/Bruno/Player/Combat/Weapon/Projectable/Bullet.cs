@@ -39,24 +39,24 @@ public class Bullet : MonoBehaviourPun, Damage
     }
 
     [PunRPC]
-    public void Inicialize(Vector3 point, float timeOfArrival, Vector3 pos, Vector3 rot)
+    public void Inicialize(Vector3 point, float timeOfArrival, Vector3 pos, Vector3 rot, int targetId)
     {
+        target = PhotonView.Find(targetId).gameObject;
         pool.Out(photonView.ViewID);
         pool.ActiveInstance();
         hit = point;
         countTime = 0;
         this.transform = gameObject.transform;
         fired = true;
-        ActiveAll(true);
         TimeOfArrival(timeOfArrival);
         transform.SetPositionAndRotation(pos, Quaternion.Euler(rot));
+        ActiveAll(true);
 
     }
     void Update()
     {
         BulletLife();
     }
-    [PunRPC]
     public void Timeout()
     {
         countTime = 0;
@@ -69,27 +69,24 @@ public class Bullet : MonoBehaviourPun, Damage
         this.distance = distance;
         timeOfArrival = distance / speed;
     }
-    [PunRPC]
     public void CombineWithMaic()
     {
         var vfx = GetComponentInChildren<Animator>();
         vfx.transform.position = hit;
         effect.Apply(vfx);
     }
-    [PunRPC]
     private void DetectCollier()
     {
-        //detecta se atingiu o alvo e aplica todas as
-        //animações magicas se houver e o dano causado pelo artefato
-        //e desativa e retorna a bala para a piscina apos um tempo
         if (timeOfArrival <= 0)
         {
+            //por algum motivo que eu n sei se eu colocar o fired = false embaixo dessas duas funções
+            //o fired não é setado imediatamente com false, o que ocasiona em erro por chamar as funções 
+            //mais de uma vez;
+            fired = false;
             CombineWithMaic();
             CalculateDamage();
-            fired = false;
         }
     }
-    [PunRPC]
     private void BulletLife()
     {
         //mover a bala pra frente
@@ -131,8 +128,10 @@ public class Bullet : MonoBehaviourPun, Damage
     {
         if (target)
         {
+            Debug.Log(target);
             var playerProperty = target.GetComponent<PlayerProperty>();
-            //playerProperty.life -= damage;
+            if (playerProperty)
+                playerProperty.life -= damage;
         }
     }
 

@@ -8,26 +8,29 @@ public class Explosion : Spells, IEffect
     public override void Use()
     {
     }
-    [PunRPC]
     public void Apply(Animator animator)
     {
-        //target = animator.gameObject.GetComponentInParent<Bullet>().GetTarget();
-        //if (!target)
-        //    return;
+        target = animator.gameObject.GetComponentInParent<Bullet>().GetTarget();
+        if (!target)
+            return;
         this.Use();
         this.animator = animator;
         this.animator.SetTrigger("Applay");
-        //foreach (var s in status)
-        //{
-        //    if (s.duration > maxDuration)
-        //        maxDuration = s.duration;
-        //}
-        //target.GetComponent<PlayerProperty>().SetAttribute(this.attibut);
+        foreach (var s in status)
+        {
+            if (s.duration > maxDuration)
+                maxDuration = s.duration;
+        }
+        Debug.Log(target);
+        var e = target.GetComponent<PlayerProperty>();
+        if (e)
+            e.SetAttribute(this.attibut);
     }
     private void Update()
     {
         maxDuration -= Time.deltaTime;
-        if (maxDuration <= 0) {
+        if (maxDuration <= 0)
+        {
             target.GetComponent<PlayerProperty>().Nomalize();
         }
     }

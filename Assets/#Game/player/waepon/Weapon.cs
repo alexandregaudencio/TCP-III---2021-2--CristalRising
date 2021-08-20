@@ -79,15 +79,25 @@ public class Weapon : CombatControl
 
         var bullet = PhotonView.Find(GetComponent<Pool>().ActiveInstance()).gameObject.GetComponent<Bullet>();
 
-
         float distance = Vector3.Distance(mangerBullet.bulletTransform.position, hit.point);
 
         Vector3 pos = mangerBullet.bulletTransform.position;
         Vector3 rot = mangerBullet.bulletTransform.rotation.eulerAngles;
 
-        bullet.target = this.gameObject;
 
-        bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot);
+
+        if (!hit.collider)
+            bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID);
+        else
+        {
+            PhotonView targetId = hit.collider.gameObject.GetComponent<PhotonView>();
+            if (!targetId)
+            {
+                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID);
+            }
+            else
+                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, targetId.ViewID);
+        }
     }
     public override void Reload()
     {
