@@ -61,6 +61,7 @@ MonoBehaviour:
   - TimeOfArrival
   - Timeout
   - Use
+  - ActiveInstance
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

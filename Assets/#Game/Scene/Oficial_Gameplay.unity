@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 1918332426}
   - component: {fileID: 1918332425}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Instantiate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,9 +444,9 @@ MonoBehaviour:
   meutime: 0
   JogadorEscolhido: 0
   PlayersEscolhidos:
-  - {fileID: 2624851946070786208, guid: 00207f8d367380f478978ad2e83205ee, type: 3}
-  - {fileID: 9129769161172744751, guid: f0444882aea86b34ab010dbbd9b02c71, type: 3}
-  - {fileID: 8682069184117752970, guid: d1cc4f3d7d5f2e9448f8a4027782c2b9, type: 3}
+  - {fileID: 134812347425223253, guid: 282a653609ed9ae4bb918477fcbb541b, type: 3}
+  - {fileID: 134812347425223253, guid: 282a653609ed9ae4bb918477fcbb541b, type: 3}
+  - {fileID: 134812347425223253, guid: 282a653609ed9ae4bb918477fcbb541b, type: 3}
 --- !u!4 &1918332426
 Transform:
   m_ObjectHideFlags: 0

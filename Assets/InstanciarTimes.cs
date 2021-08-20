@@ -21,9 +21,18 @@ public class InstanciarTimes : MonoBehaviour
         {
             if (PV.IsMine)
             { 
+                if(GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().MyTeam== 1)
+                {
                 meutime = GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().MyTeam;
                 JogadorEscolhido = GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().jogadorEscolhido;
                 PV.RPC("RPCStartGame", PhotonNetwork.PlayerList[i], this.SpawnPointsA[i].transform.position, this.SpawnPointsA[i].transform.rotation);
+                }
+               else if (GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().MyTeam == 2)
+                {
+                    meutime = GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().MyTeam;
+                    JogadorEscolhido = GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().jogadorEscolhido;
+                    PV.RPC("RPCStartGame", PhotonNetwork.PlayerList[i], this.SpawnPointsB[i].transform.position, this.SpawnPointsB[i].transform.rotation);
+                }
             }
         }
 
