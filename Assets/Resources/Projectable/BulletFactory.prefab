@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce27fb7ae2e84d4aadee69cb61eb103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1950577220578794793, guid: 10fa861c6d710bb4bbe71188bfb0f293,
+  bulletPrefab: {fileID: 1950577220578794793, guid: b3a8700b5c8a99e4aa75206355a2969e,
     type: 3}
-  vfxPrefab: {fileID: 1112026749624224104, guid: 627dc2cb67e23634694127942738b883,
+  vfxPrefab: {fileID: 1112026749624224104, guid: a69eedb3e9f10df4fa7787f5d31a9819,
     type: 3}
   speel: {fileID: 1240039504776826110, guid: 45c87c4281a9c214cafac9b36b9a0853, type: 3}
   animationName: Explosion
