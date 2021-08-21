@@ -1,8 +1,8 @@
-﻿#define test
-using Photon.Pun;
+﻿using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(ManagerBullet))]
@@ -46,8 +46,9 @@ public class Weapon : CombatControl
         }
         else
         {
-            mark = cam.ScreenPointToRay(Input.mousePosition).direction * maxBulletDistance;
-            Debug.DrawLine(mangerBullet.transform.position, mark);
+            var origin = cam.ScreenPointToRay(new Vector2(Screen.width/2, Screen.height / 2)).origin;
+            mark = (cam.transform.forward * maxBulletDistance) + origin;
+            Debug.DrawLine(mangerBullet.transform.position, mark, Color.yellow);
         }
         if (Physics.Raycast(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.forward, out hit, maxBulletDistance))
         {
@@ -83,8 +84,6 @@ public class Weapon : CombatControl
 
         Vector3 pos = mangerBullet.bulletTransform.position;
         Vector3 rot = mangerBullet.bulletTransform.rotation.eulerAngles;
-
-
 
         if (!hit.collider)
             bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID);

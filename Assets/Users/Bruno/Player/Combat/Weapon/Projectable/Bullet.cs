@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviourPun, Damage
     private float distance;
     private new Transform transform;
     private bool fired = false;
+    [HideInInspector]
     public Vector3 hit;
     [HideInInspector]
     public string animationName;
@@ -128,7 +129,6 @@ public class Bullet : MonoBehaviourPun, Damage
     {
         if (target)
         {
-            Debug.Log(target);
             var playerProperty = target.GetComponent<PlayerProperty>();
             if (playerProperty)
                 playerProperty.life -= damage;

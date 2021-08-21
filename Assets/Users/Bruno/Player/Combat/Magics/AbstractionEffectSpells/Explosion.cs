@@ -21,7 +21,6 @@ public class Explosion : Spells, IEffect
             if (s.duration > maxDuration)
                 maxDuration = s.duration;
         }
-        Debug.Log(target);
         var e = target.GetComponent<PlayerProperty>();
         if (e)
             e.SetAttribute(this.attibut);
