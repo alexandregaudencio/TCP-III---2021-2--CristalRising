@@ -16,52 +16,65 @@ public class InstanciarTimes : MonoBehaviour
     //public byte meutime, JogadorEscolhido;
     public GameObject[] Characters;
 
-    private PhotonTeamsManager photonTeamsManager;
+    private void Awake()
+    {
+        PV = GetComponent<PhotonView>();
+    }
+
+
     void Start()
     {
-        foreach (Player player in PhotonNetwork.PlayerList)
-        {
-            string pTeam = player.GetPhotonTeam().Name;
-            //Debug.Log("Time de" + player.NickName + ": " + pTeam);
 
-            if (pTeam == "Blue")
-            {
-
-            }
-            if (pTeam == "Red")
-            {
-
-            }
-
-        }
-
+        InstantiatingPlayersCharacters();
     //    PV = GetComponent<PhotonView>();
     //    for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
     //   {
-            
-    //        if (PV.IsMine)
-    //        { 
-    ////            if(GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().MyTeam== 1)
-    ////            {
-    ////            meutime = GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().MyTeam;
-    ////            JogadorEscolhido = GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().jogadorEscolhido;
-    //              PV.RPC("RPCStartGame", PhotonNetwork.PlayerList[i], this.SpawnPointsBlue[i].transform.position, this.SpawnPointsBlue[i].transform.rotation);
-    ////            }
-    ////           else if (GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().MyTeam == 2)
-    ////            {
-    ////                meutime = GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().MyTeam;
-    ////                JogadorEscolhido = GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().jogadorEscolhido;
-    ////                PV.RPC("RPCStartGame", PhotonNetwork.PlayerList[i], this.SpawnPointsB[i].transform.position, this.SpawnPointsB[i].transform.rotation);
-    ////            }
-    //        }
-    //    }
+
+        //        if (PV.IsMine)
+        //        { 
+        ////            if(GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().MyTeam== 1)
+        ////            {
+        ////            meutime = GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().MyTeam;
+        ////            JogadorEscolhido = GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().jogadorEscolhido;
+        //PV.RPC("RPCStartGame", player, this.SpawnPointsBlue[i].transform.position, this.SpawnPointsBlue[i].transform.rotation);
+        ////            }
+        ////           else if (GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().MyTeam == 2)
+        ////            {
+        ////                meutime = GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().MyTeam;
+        ////                JogadorEscolhido = GameObject.Find("PlayerAssister").GetComponent<PlayerAssister>().jogadorEscolhido;
+        ////                PV.RPC("RPCStartGame", PhotonNetwork.PlayerList[i], this.SpawnPointsB[i].transform.position, this.SpawnPointsB[i].transform.rotation);
+        ////            }
+        //        }
+        //    }
 
     }
 
-    //[PunRPC]
-    //void RPCStartGame(Vector3 spawnPos, Quaternion spawnRot)
-    //{
-    //    //myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), spawnPos, spawnRot, 0);
-    //    myAvatar = PhotonNetwork.Instantiate(Characters[0].name, spawnPos, spawnRot);
-    //}
+    private void InstantiatingPlayersCharacters()
+    {
+
+        //foreach (Player player in PhotonNetwork.PlayerList)
+        //{
+            string pTeam = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
+        //    //Debug.Log("Time de" + player.NickName + ": " + pTeam);
+
+            if (pTeam == "Blue")
+            {
+                PV.RPC("RPCStartGame", PhotonNetwork.LocalPlayer, SpawnPointsBlue[0].transform.position, SpawnPointsBlue[0].transform.rotation);
+                //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), 
+                //SpawnPointsBlue[0].transform.position, SpawnPointsBlue[0].transform.rotation, 0);
+            }
+            if (pTeam == "Red")
+            {
+                PV.RPC("RPCStartGame", PhotonNetwork.LocalPlayer, SpawnPointsRed[0].transform.position, SpawnPointsRed[0].transform.rotation);
+            }
+
+        //}
+    }
+
+    [PunRPC]
+    void RPCStartGame(Vector3 spawnPos, Quaternion spawnRot)
+    {
+        //myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), spawnPos, spawnRot, 0);
+        myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), spawnPos, spawnRot);
+    }
 }
