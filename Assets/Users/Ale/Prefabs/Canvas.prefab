@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 159185568434007664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2684, y: 1.2684, z: 1.2684}
   m_Children:
   - {fileID: 4079662946454771564}
   m_Father: {fileID: 507459870233239262}
@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 50.199997, y: -37}
+  m_AnchoredPosition: {x: 56.8, y: -37}
   m_SizeDelta: {x: 80.35951, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7712579081212343792
@@ -735,7 +735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 208.1, y: -0.04}
+  m_AnchoredPosition: {x: 198.2, y: -0.04}
   m_SizeDelta: {x: 100, y: 44.491745}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!198 &7468871807846152054
@@ -821,7 +821,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 3.8
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -990,7 +990,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.22
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1373,7 +1373,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 90, z: 0}
-    m_Scale: {x: 0, y: 0.6, z: 1}
+    m_Scale: {x: 0, y: 0.04, z: 1.45}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -1695,6 +1695,15 @@ ParticleSystem:
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.73130167
+          value: 0.6304306
+          inSlope: -1.9295965
+          outSlope: -1.9295965
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.5037806
         - serializedVersion: 3
           time: 1
           value: 0

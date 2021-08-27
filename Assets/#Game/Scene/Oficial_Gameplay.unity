@@ -518,8 +518,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1918332426}
-  - component: {fileID: 1918332425}
   - component: {fileID: 1918332427}
+  - component: {fileID: 1918332425}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f4e0324cf2ca4587af745f028acf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myAvatar: {fileID: 134812347425223253, guid: 282a653609ed9ae4bb918477fcbb541b, type: 3}
+  myAvatar: {fileID: 0}
   SpawnPointsBlue:
   - {fileID: 1916848035}
   - {fileID: 1916848034}
