@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/#Game/Scene/Oficial_Gameplay.unity
     guid: e13414db45174484a9ebb71ff738c59e
-  - enabled: 1
-    path: Assets/Users/Romualdo/Cenas/GamePlay.unity
-    guid: 91c752e6a4396d849be675aaca9fb224
   m_configObjects: {}
