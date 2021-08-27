@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float jumpForce;
     [SerializeField] private float maxFallSpeed;
     [SerializeField] private float fallMultiplier;
+    public Animator animator;
 
     private Vector3 dir;
     private Rigidbody playerRb;
@@ -113,7 +114,6 @@ public class PlayerController : MonoBehaviour
         // Declaração da rotação da câmera e angulação mínima e máxima.
         rotationX = Mathf.Lerp(rotationX, Input.GetAxisRaw("Mouse X") * 2, 100 * Time.deltaTime);
         maxRotationY = Mathf.Clamp(maxRotationY - (Input.GetAxisRaw("Mouse Y") * 2 * 100 * Time.deltaTime), -30, 30);
-
         // Rotação da câmera através do mouse.
         transform.Rotate(0, rotationX, 0, Space.World);
         normalCam.transform.rotation = Quaternion.Lerp(normalCam.transform.rotation, Quaternion.Euler(maxRotationY * 2, transform.eulerAngles.y, 0), 100 * Time.deltaTime);
@@ -129,6 +129,7 @@ public class PlayerController : MonoBehaviour
         {
             // groundCheck = false;
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            animator.SetTrigger("jump");
         }
 
         if (playerRb.velocity.y < 0 && playerRb.velocity.y > maxFallSpeed)
@@ -147,7 +148,22 @@ public class PlayerController : MonoBehaviour
 
         float adjustedSpeed = moveSpeed;
         if (isSprinting) adjustedSpeed *= sprintModifier;
-
+        if (horAxis > 0)
+        {
+            animator.SetTrigger("right");
+        }
+        if (horAxis < 0)
+        {
+            animator.SetTrigger("left");
+        }
+        if (verAxis > 0)
+        {
+            animator.SetTrigger("forward");
+        }
+        if (verAxis < 0)
+        {
+            animator.SetTrigger("back");
+        }
         // Controla o campo de visão se o jogador estiver correndo
         if (isSprinting)
         {

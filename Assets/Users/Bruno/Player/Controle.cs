@@ -11,6 +11,7 @@ public class Controle : MonoBehaviourPun
     public Spells spell;
     public Animator animator;
     private GameObject aux;
+    public Animator playerAnim;
     void Start()
     {
         this.transform = GetComponent<Transform>();
@@ -27,7 +28,9 @@ public class Controle : MonoBehaviourPun
             //if (photonView.IsMine)
             //    gun.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
         }
-        if (Input.GetKeyDown(KeyCode.E)) {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            playerAnim.SetTrigger("attack");
             gun.Reload();
         }
         if (Input.GetMouseButtonDown(1))
