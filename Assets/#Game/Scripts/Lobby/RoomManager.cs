@@ -1,34 +1,26 @@
 ﻿using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Photon.Realtime;
-using TMPro;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     //[SerializeField] private int maxPlayersRoom;
 
-    private DefineTeam defineTeam;
+    //private DefineTeam defineTeam;
 
     private void Awake()
     {
-        defineTeam = GetComponent<DefineTeam>();
+        //defineTeam = GetComponent<DefineTeam>();
     }
 
     private void Update()
     {
         //PARA TESTES
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             DefineTeamAndGo();
         }
 
-        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount == RoomConfigs.maxRoomPlayers)
-        {
-            DefineTeamAndGo();
-        }
     }
 
 
@@ -55,9 +47,19 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public void DefineTeamAndGo()
     {
-        defineTeam.TeamDefinition();
+       GetComponent<DefineTeam>().TeamDefinition();
         PhotonNetwork.LoadLevel(RoomConfigs.CharSelecSceneIndex);
     }
+
+    public override void OnJoinedRoom()
+    {
+        if (PhotonNetwork.CurrentRoom.PlayerCount == RoomConfigs.maxRoomPlayers)
+        {
+            DefineTeamAndGo();
+        }
+        base.OnJoinedRoom();
+    }
+
 
 
 }

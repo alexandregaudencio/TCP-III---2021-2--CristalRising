@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Photon.Pun;
+﻿using UnityEngine;
 using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
 //using TMPro;
@@ -19,7 +16,7 @@ public class ShowPlayerTeamMates : PhotonTeamsManager
         TryGetTeamMembers(1, out playersTeamBlue);
         TryGetTeamMembers(2, out playersTeamRed);
 
-        GUILayout.BeginHorizontal();
+        GUILayout.BeginVertical();
         GUILayout.Label("Team Blue");
         foreach (Player p in playersTeamBlue)
         {
