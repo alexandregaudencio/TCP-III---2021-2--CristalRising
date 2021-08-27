@@ -24,7 +24,7 @@ public class PlayerNameManager : MonoBehaviour
     public void OnUsernameInputValueChange()
     {
         PhotonNetwork.NickName = usernameInput.text;
-        Debug.Log(PhotonNetwork.NickName);
+        //Debug.Log(PhotonNetwork.NickName);
         PlayerPrefs.SetString("username", usernameInput.text);
     }
 }

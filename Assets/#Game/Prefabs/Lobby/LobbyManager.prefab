@@ -9,7 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3645052539129683384}
+  - component: {fileID: 5008126389281067172}
+  - component: {fileID: 2692061464438290706}
   - component: {fileID: 3645052539129683391}
+  - component: {fileID: 1274545145}
   m_Layer: 0
   m_Name: LobbyManager
   m_TagString: Untagged
@@ -31,6 +34,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5008126389281067172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3645052539129683390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f57683f2164d845b3195ce5c4e7387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanvasLoadingConnection: {fileID: 0}
+--- !u!114 &2692061464438290706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3645052539129683390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7560e8a77a835a1468eed47bd9e0861c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3645052539129683391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,8 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86afa68adfd81554b932aa3cb9434dc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanvasLoading: {fileID: 0}
   PlayersConectados: 0
-  MaxPlayers: 0
   LobbyCanvas: {fileID: 0}
   StartButton: {fileID: 0}
   RoomCanvas: {fileID: 0}
@@ -52,6 +80,29 @@ MonoBehaviour:
   NomeSala: {fileID: 0}
   connected: 0
   PreRoomCanvas: {fileID: 0}
-  PlayerListItemPrefab: {fileID: 9205626599932168087, guid: 763c65f9a1cb5234785eb4000fdf9f4b,
+  NextPlayerTeam: 0
+  PV: {fileID: 0}
+  RedTeam: 0
+  BlueTeam: 0
+  PlayerListItemPrefab: {fileID: 9205626599932168087, guid: 6fe27d6ba32dad74889476b701288819,
     type: 3}
   playerListContent: {fileID: 0}
+  startGameButton: {fileID: 0}
+--- !u!114 &1274545145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3645052539129683390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf50916bbfdcda4fb4adf43733af4f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listFoldIsOpen: 1
+  teamsList:
+  - Name: Blue
+    Code: 1
+  - Name: Red
+    Code: 2
