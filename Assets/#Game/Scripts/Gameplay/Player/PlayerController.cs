@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         baseFOV = normalCam.fieldOfView;
         playerRb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
+        animator.speed = 10;
     }
     private void Awake()
     {
@@ -95,6 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("chao"))
         {
+            animator.SetBool("onFloor", true);
             groundCheck = true;
             debug.text = "Grounded";
         }
@@ -106,6 +108,7 @@ public class PlayerController : MonoBehaviour
         {
             groundCheck = false;
             debug.text = "Not Grounded";
+            animator.SetBool("onFloor", false);
         }
     }
 
