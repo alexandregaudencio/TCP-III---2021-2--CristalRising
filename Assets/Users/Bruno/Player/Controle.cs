@@ -17,20 +17,25 @@ public class Controle : MonoBehaviourPun
         this.transform = GetComponent<Transform>();
         if (aux)
             aux = Instantiate(animator.gameObject);
+        playerAnim.speed = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0))
         {
+            playerAnim.SetTrigger("attack");
             gun.Use();
             //if (photonView.IsMine)
             //    gun.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            playerAnim.SetTrigger("attack");
             gun.Reload();
         }
         if (Input.GetMouseButtonDown(1))
