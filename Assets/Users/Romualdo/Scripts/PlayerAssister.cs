@@ -23,7 +23,7 @@ public class PlayerAssister : MonoBehaviour
         
         if(PV.IsMine)
         {
-            Debug.Log("teste is mine");
+            //Debug.Log("teste is mine");
             T2 = this;
            
             PV.RPC("RPC_GetTeam", RpcTarget.MasterClient);
@@ -117,7 +117,7 @@ public class PlayerAssister : MonoBehaviour
     [PunRPC]
     void RPC_GetTeam()
     {
-        MyTeam = LobbyController.instance.NextPlayerTeam;
+        //MyTeam = LobbyController.instance.NextPlayerTeam;
         PV.RPC("RPC_SentTeam", RpcTarget.OthersBuffered, MyTeam);
     }
 
