@@ -35,7 +35,7 @@ public class SceneController : MonoBehaviourPunCallbacks
         }
     }
 
- private void UIUpdate()
+    private void UIUpdate()
     {
         string tempTimer = string.Format("{0:00}", waintingRoomTimer.CurrentTime);
         timeToDisplay.text = tempTimer;
@@ -51,6 +51,8 @@ public class SceneController : MonoBehaviourPunCallbacks
         
     }
 
+
+    //não sei se ta certo fazer isso aqui em ONPLAYERENTEREDROOM
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
        
@@ -66,9 +68,9 @@ public class SceneController : MonoBehaviourPunCallbacks
     {
         waintingRoomTimer.CurrentTime = timeIn;
     }
-    public void DelayCancel()
-    {
-        PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene(RoomConfigs.menuSceneIndex);
-    }
+    //public void DelayCancel()
+    //{
+    //    PhotonNetwork.LeaveRoom();
+    //    SceneManager.LoadScene(RoomConfigs.menuSceneIndex);
+    //}
 }

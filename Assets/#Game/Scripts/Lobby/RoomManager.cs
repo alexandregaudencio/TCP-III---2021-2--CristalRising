@@ -21,6 +21,12 @@ public class RoomManager : MonoBehaviourPunCallbacks
             DefineTeamAndGo();
         }
 
+
+        if (PhotonNetwork.CurrentRoom.PlayerCount == RoomConfigs.maxRoomPlayers)
+        {
+            DefineTeamAndGo();
+        }
+
     }
 
 
@@ -53,10 +59,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        if (PhotonNetwork.CurrentRoom.PlayerCount == RoomConfigs.maxRoomPlayers)
-        {
-            DefineTeamAndGo();
-        }
+
         base.OnJoinedRoom();
     }
 

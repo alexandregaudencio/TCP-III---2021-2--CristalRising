@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
-using System;
-using UnityEngine.UI;
 using System.Linq;
-using UnityEngine.SceneManagement;
-using Photon.Pun.UtilityScripts;
+
 
 
 public class LobbyController: MonoBehaviourPunCallbacks
