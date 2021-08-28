@@ -10,6 +10,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        PhotonNetwork.AutomaticallySyncScene = true;
         //defineTeam = GetComponent<DefineTeam>();
     }
 
@@ -55,11 +56,12 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        //if(PhotonNetwork.IsMasterClient &&        if (PhotonNetwork.CurrentRoom.PlayerCount == RoomConfigs.maxRoomPlayers)
-        //    {
-        //        DefineTeamAndGo();
-        //    }
-
+        //if(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount == RoomConfigs.maxRoomPlayer)
+        ////if(PhotonNetwork.IsMasterClient &&        if (PhotonNetwork.CurrentRoom.PlayerCount == RoomConfigs.maxRoomPlayers)
+        ////    {
+        ////        DefineTeamAndGo();
+        ////    }
+        //if(PhotonNetwork.CurrentRoom.PlayerCount = )
         base.OnJoinedRoom();
     }
 
