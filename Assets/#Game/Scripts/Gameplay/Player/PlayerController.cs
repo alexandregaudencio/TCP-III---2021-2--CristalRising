@@ -31,18 +31,25 @@ public class PlayerController : MonoBehaviour
     PhotonView PV;
     void Start()
     {
-        baseFOV = normalCam.fieldOfView;
+        if (!PV.IsMine)
+            Destroy(normalCam);
+        else
+        {
+            baseFOV = normalCam.fieldOfView;
+        }
         playerRb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         animator.speed = 10;
 
         string team = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
+
         if (team == "Red")
         {
             Debug.Log("Red");
-            teamIdentify.GetComponent<Renderer>().material.SetColor("_Color",Color.red);
+            teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         }
-        else {
+        else
+        {
             Debug.Log("Blue");
             teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
         }
