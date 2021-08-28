@@ -39,6 +39,4 @@ public class StartUp : MonoBehaviourPunCallbacks
         CanvasLoadingConnection.SetActive(false);
         base.OnConnectedToMaster();
     }
-
-    //IMPLEENTAR MÉTODO QUE FAZ APARECER O CANVASLOADINGNETWORK QUANDO DESCONECTADO
 }

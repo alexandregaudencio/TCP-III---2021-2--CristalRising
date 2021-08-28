@@ -50,7 +50,6 @@ GameObject:
   - component: {fileID: 5572543441186634803}
   - component: {fileID: 4135133243485489325}
   - component: {fileID: -4427571526771000720}
-  - component: {fileID: 8408920689219903216}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Untagged
@@ -265,24 +264,6 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
---- !u!114 &8408920689219903216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 134812347425223253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8701526de72d8774fa165e66daf050ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listFoldIsOpen: 1
-  teamsList:
-  - Name: Blue
-    Code: 1
-  - Name: Red
-    Code: 2
 --- !u!1 &219252042537730601
 GameObject:
   m_ObjectHideFlags: 0

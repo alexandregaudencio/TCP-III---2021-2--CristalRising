@@ -10,7 +10,7 @@ public class ButtonsCharactSelectManager : MonoBehaviour
     private GameObject characters;
     [SerializeField] private Button[] characterSelectButtons;
     [SerializeField] private GameObject cancelButton;
-
+    
 
     public void ChooseCharacter(GameObject characterPrefab)
     {

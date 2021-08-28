@@ -1,37 +1,59 @@
-﻿//using Photon.Pun.UtilityScripts;
-//using Photon.Pun;
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using Photon.Pun.UtilityScripts;
+﻿
+using Photon.Pun.UtilityScripts;
+using Photon.Pun;
+using Photon.Realtime;
+using UnityEngine;
 
-//public class TeamManager : PhotonTeamsManager
-//{
-//    [SerializeField] private byte myTeam = 0;
-//    //[SerializeField] private string teamNameA;
-//    //[SerializeField] private string teamNameB;
+public class TeamManager : PhotonTeamsManager
+{
+    
 
 
-//    void Start()
-//    {
-//        PhotonTeam team = new PhotonTeam();
-//        myTeam = team.Code;
-//        PhotonTeam[] x = GetAvailableTeams();
-//        for(int i = 0; i < x.Length; i++)
-//        {
-//            Debug.Log(x[i]);
-//        }
+    public void TeamDefinition(Player newPlayer)
+    {
+        int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
+        if(playerCount%2 == 1)
+        {
+            newPlayer.JoinTeam("Blue");
+        } else
+        {
+            newPlayer.JoinTeam("Red");
+        }
 
-//        if(LobbyController.instance.photonView.IsMine)
-//        {
-            
-//        }
-        
-//    }
+        DontDestroyOnLoad(gameObject);
+        //for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
+        //{
+        //    if(i%2 == 0) PhotonNetwork.PlayerList[i].JoinTeam("Blue");
+        //    else         PhotonNetwork.PlayerList[i].JoinTeam("Blue");
+        //}
 
-//    // Update is called once per frame
-//    void Update()
-//    {
-        
-//    }
-//}
+    }
+
+    void OnGUI()
+    {
+        Player[] playersTeamBlue;
+        Player[] playersTeamRed;
+
+        Instance.TryGetTeamMembers(1, out playersTeamBlue);
+        Instance.TryGetTeamMembers(2, out playersTeamRed);
+
+        GUILayout.BeginVertical();
+        GUILayout.Label("Team Blue");
+        foreach (Player p in playersTeamBlue)
+        {
+            GUILayout.Button(p.NickName/*+" "+p.GetPhotonTeam()*/);
+        }
+        GUILayout.Label("Team Red");
+        foreach (Player p in playersTeamRed)
+        {
+            GUILayout.Button(p.NickName/*+" "+p.GetPhotonTeam()*/);
+        }
+
+        GUILayout.EndVertical();
+
+    }
+
+
+
+
+}
