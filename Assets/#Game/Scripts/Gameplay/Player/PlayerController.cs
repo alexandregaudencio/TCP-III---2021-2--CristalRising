@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun.UtilityScripts;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float jumpForce;
     [SerializeField] private float maxFallSpeed;
     [SerializeField] private float fallMultiplier;
+    public GameObject teamIdentify;
     public Animator animator;
 
     private Vector3 dir;
@@ -33,6 +35,18 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         animator.speed = 10;
+
+        string team = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
+        if (team == "Red")
+        {
+            Debug.Log("Red");
+            teamIdentify.GetComponent<Renderer>().material.SetColor("_Color",Color.red);
+        }
+        else {
+            Debug.Log("Blue");
+            teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
+        }
+
     }
     private void Awake()
     {
