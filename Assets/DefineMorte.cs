@@ -12,6 +12,8 @@ using Photon.Pun.UtilityScripts;
         public GameObject[] SpawnPointsTimeAzul;
         public GameObject[] SpawnPointTimeVermelho;
         public PlayerProperty PP;
+    public float TemporizadorRespawn;
+    public bool SpawnCheck;
     public PhotonTeam TimeDesteJogador;
 
         
@@ -39,10 +41,30 @@ using Photon.Pun.UtilityScripts;
             #endregion
             avada = PP.life;
 
-            if(PP.life <=0)
+        if (PP.life <= 0)
+        {
+            SpawnCheck = true;
+        }
+        else
+            SpawnCheck = false;
+
+        if(SpawnCheck == true)
+        {
+            this.gameObject.GetComponent<PlayerController>().enabled = false;
+           // float T = 0;
+            TemporizadorRespawn += Time.deltaTime;
+            if(TemporizadorRespawn >= 5.0f)
             {
                 Morre();
+
             }
+        }
+        else
+        {
+            TemporizadorRespawn = 0.0f;
+            this.gameObject.GetComponent<PlayerController>().enabled = true ;
+
+        }
             
         }
         public void Morre()
@@ -51,6 +73,7 @@ using Photon.Pun.UtilityScripts;
 
         if (TimeDesteJogador.Name == "Blue")
             {
+            SpawnCheck = false;
                 int R = 0;
                 R = Random.Range(0, SpawnPointsTimeAzul.Length);
                 GetComponent<Transform>().position = SpawnPointsTimeAzul[R].transform.position;
@@ -59,7 +82,8 @@ using Photon.Pun.UtilityScripts;
         }
             if (TimeDesteJogador.Name == "Red")
             {
-                int W = 0;
+            SpawnCheck = false;
+            int W = 0;
                 W = UnityEngine.Random.Range(0, SpawnPointsTimeAzul.Length);
                 this.gameObject.GetComponent<Transform>().position = SpawnPointTimeVermelho[W].transform.position;
                 Debug.Log("Ai calica");
