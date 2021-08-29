@@ -381,6 +381,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3642107331660499385, guid: 32f4d5fff1272c04a9514d1438b53567,
+        type: 3}
+      propertyPath: m_Name
+      value: RedTeamSpawnPnts
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778023325582504247, guid: 32f4d5fff1272c04a9514d1438b53567,
+        type: 3}
+      propertyPath: m_Name
+      value: BlueTeamSpawnPnts
+      objectReference: {fileID: 0}
     - target: {fileID: 7184323142647856032, guid: 32f4d5fff1272c04a9514d1438b53567,
         type: 3}
       propertyPath: m_LocalPosition.z

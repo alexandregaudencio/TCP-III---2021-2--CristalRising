@@ -22,7 +22,7 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 namespace Photon.Pun.UtilityScripts
 {
     [Serializable]
-    public class PhotonTeam
+    public  class PhotonTeam
     {
         public string Name;
         public byte Code;

@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 4135133243485489325}
   - component: {fileID: -4427571526771000720}
   - component: {fileID: 8408920689219903216}
+  - component: {fileID: 3056141411973520299}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Untagged
@@ -248,6 +249,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textUiLife: {fileID: 3729285512681461506}
+  SpawnPointsTimeAzul: []
+  SpawnPointTimeVermelho: []
   life: 100
 --- !u!114 &-4427571526771000720
 MonoBehaviour:
@@ -283,6 +286,31 @@ MonoBehaviour:
     Code: 1
   - Name: Red
     Code: 2
+--- !u!114 &3056141411973520299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134812347425223253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40aa03a293f526b48bea9132657b17da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPointsTimeAzul:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  SpawnPointTimeVermelho:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  PP: {fileID: 0}
+  aaa:
+    Name: 
+    Code: 0
+  avada: 0
 --- !u!1 &219252042537730601
 GameObject:
   m_ObjectHideFlags: 0
