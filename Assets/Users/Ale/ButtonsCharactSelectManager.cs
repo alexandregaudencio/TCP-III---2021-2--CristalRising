@@ -21,7 +21,8 @@ public class ButtonsCharactSelectManager : MonoBehaviour
 
     private void Start()
     {
-       
+        PhotonNetwork.LocalPlayer.TagObject = CharacterDefault.name;
+
         //for (int i = 0; i < charactersIcons.Length; i++)
         //{
         //    PrefabIconName.Add(, charactersIcons[i].name);
