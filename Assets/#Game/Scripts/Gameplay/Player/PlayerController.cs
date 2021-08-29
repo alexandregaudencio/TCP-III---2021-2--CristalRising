@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun.UtilityScripts;
+using Photon.Realtime;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         if (!PV.IsMine)
-            Destroy(normalCam);
+            normalCam.gameObject.SetActive(false);
         else
         {
             baseFOV = normalCam.fieldOfView;
@@ -43,17 +44,20 @@ public class PlayerController : MonoBehaviour
 
         string team = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
 
-        if (team == "Red")
-        {
-            Debug.Log("Red");
-            teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
-        }
-        else
-        {
-            Debug.Log("Blue");
-            teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
-        }
+        Player[] playersTeamBlue;
+        Player[] playersTeamRed;
 
+        PhotonTeamsManager.Instance.TryGetTeamMembers("Blue", out playersTeamBlue);
+        PhotonTeamsManager.Instance.TryGetTeamMembers("Red", out playersTeamRed);
+
+        
+
+        foreach (Player p in playersTeamBlue)
+            if (GetComponent<PhotonView>().Controller.Equals(p))
+                teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
+        foreach (Player p in playersTeamRed)
+            if (GetComponent<PhotonView>().Controller.Equals(p))
+                teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
     }
     private void Awake()
     {

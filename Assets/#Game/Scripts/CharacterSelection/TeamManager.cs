@@ -6,9 +6,10 @@ using UnityEngine;
 
 public class TeamManager : PhotonTeamsManager
 {
-    
-
-
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     public void TeamDefinition(Player newPlayer)
     {
         int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
@@ -20,7 +21,6 @@ public class TeamManager : PhotonTeamsManager
             newPlayer.JoinTeam("Red");
         }
 
-        DontDestroyOnLoad(gameObject);
         //for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
         //{
         //    if(i%2 == 0) PhotonNetwork.PlayerList[i].JoinTeam("Blue");
