@@ -1,4 +1,6 @@
 ﻿using Photon.Pun;
+using Photon.Pun.UtilityScripts;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -85,8 +87,24 @@ public class Weapon : CombatControl
         Vector3 pos = mangerBullet.bulletTransform.position;
         Vector3 rot = mangerBullet.bulletTransform.rotation.eulerAngles;
 
+
+        Player[] playersTeamBlue;
+        Player[] playersTeamRed;
+
+        PhotonTeamsManager.Instance.TryGetTeamMembers("Blue", out playersTeamBlue);
+        PhotonTeamsManager.Instance.TryGetTeamMembers("Red", out playersTeamRed);
+
+        Color color = Color.white;
+        foreach (Player p in playersTeamBlue)
+            if (GetComponent<PhotonView>().Controller.Equals(p))
+                color = Color.blue;
+        foreach (Player p in playersTeamRed)
+            if (GetComponent<PhotonView>().Controller.Equals(p))
+                color = Color.red;
+
+
         if (!hit.collider)
-            bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID);
+            bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID, new Vector3(color.r,color.g,color.b));
         else
         {
             PhotonView targetId = hit.collider.gameObject.GetComponent<PhotonView>();

@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using Photon.Realtime;
+using Photon.Pun.UtilityScripts;
 
 public class Pool : MonoBehaviourPun
 {
@@ -51,7 +53,7 @@ public class Pool : MonoBehaviourPun
             bulletId = f.BulletFactory();
             vfxId = f.BulletEffect();
 
-            GameObject bullet = PhotonView.Find(bulletId).gameObject; ;
+            GameObject bullet = PhotonView.Find(bulletId).gameObject;
 
             f.photonView.RPC("PhotonSetParent", RpcTarget.All, bulletId, vfxId);
 

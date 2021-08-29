@@ -50,8 +50,6 @@ public class PlayerController : MonoBehaviour
         PhotonTeamsManager.Instance.TryGetTeamMembers("Blue", out playersTeamBlue);
         PhotonTeamsManager.Instance.TryGetTeamMembers("Red", out playersTeamRed);
 
-        
-
         foreach (Player p in playersTeamBlue)
             if (GetComponent<PhotonView>().Controller.Equals(p))
                 teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
