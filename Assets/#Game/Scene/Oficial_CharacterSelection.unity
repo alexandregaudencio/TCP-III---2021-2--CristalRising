@@ -1017,10 +1017,10 @@ RectTransform:
   m_Father: {fileID: 406702666}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.298, y: 0.41785088}
-  m_AnchorMax: {x: 0.6643959, y: 0.58400005}
-  m_AnchoredPosition: {x: 32, y: 1}
-  m_SizeDelta: {x: 163.8418, y: 12.434082}
+  m_AnchorMin: {x: 0.27712503, y: 0.41785088}
+  m_AnchorMax: {x: 0.7238751, y: 0.58400005}
+  m_AnchoredPosition: {x: -5, y: 1}
+  m_SizeDelta: {x: 9.841797, y: 12.434082}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &809741294
 GameObject:
@@ -1245,7 +1245,6 @@ GameObject:
   - component: {fileID: 859677096}
   - component: {fileID: 859677095}
   - component: {fileID: 859677094}
-  - component: {fileID: 859677098}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -1314,32 +1313,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &859677098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859677093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7824d9e2f92d9d140bd2bbd9a9b89b82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayersCharacterIcon:
-  - {fileID: 1818487835}
-  - {fileID: 166346714}
-  - {fileID: 2054761903}
-  - {fileID: 261741816}
-  - {fileID: 1548103930}
-  - {fileID: 958840795}
-  PlayersTextName:
-  - {fileID: 1702373982}
-  - {fileID: 809741296}
-  - {fileID: 1983070098}
-  - {fileID: 650737682}
-  - {fileID: 1474597592}
-  - {fileID: 2112258014}
 --- !u!1 &958840793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,7 +1548,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1025061736}
   m_OnClick:
     m_PersistentCalls:
@@ -1588,6 +1561,17 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690127109}
+        m_MethodName: SwitchingIcon
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1759,6 +1743,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 134812347425223253, guid: 282a653609ed9ae4bb918477fcbb541b,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690127109}
+        m_MethodName: SwitchingIcon
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2363,6 +2358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1690127110}
   - component: {fileID: 1690127109}
+  - component: {fileID: 1690127111}
   m_Layer: 0
   m_Name: Buttons Manager
   m_TagString: Untagged
@@ -2386,6 +2382,8 @@ MonoBehaviour:
   - {fileID: 1419608685}
   - {fileID: 1975540956}
   - {fileID: 1025061735}
+  CharacterDefault: {fileID: 134812347425223253, guid: 282a653609ed9ae4bb918477fcbb541b,
+    type: 3}
   cancelButton: {fileID: 636977737}
 --- !u!4 &1690127110
 Transform:
@@ -2401,6 +2399,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1690127111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690127108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7824d9e2f92d9d140bd2bbd9a9b89b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayersCharacterIcon:
+  - {fileID: 1818487835}
+  - {fileID: 166346714}
+  - {fileID: 2054761903}
+  - {fileID: 261741816}
+  - {fileID: 1548103930}
+  - {fileID: 958840795}
+  PlayersTextName:
+  - {fileID: 1702373982}
+  - {fileID: 809741296}
+  - {fileID: 1983070098}
+  - {fileID: 650737682}
+  - {fileID: 1474597592}
+  - {fileID: 2112258014}
+  charactersIconToSet:
+  - {fileID: 21300000, guid: bd293dc32f4aaf94e8274f2fac2cdf89, type: 3}
+  - {fileID: 21300000, guid: 56bbc6b42271d4177ac313247f47ac1f, type: 3}
+  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: 936345f7fc3934efa8119a8700d904c7, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1702373980
 GameObject:
   m_ObjectHideFlags: 0
@@ -2764,7 +2795,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1975540957}
   m_OnClick:
     m_PersistentCalls:
@@ -2777,6 +2808,17 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690127109}
+        m_MethodName: SwitchingIcon
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
