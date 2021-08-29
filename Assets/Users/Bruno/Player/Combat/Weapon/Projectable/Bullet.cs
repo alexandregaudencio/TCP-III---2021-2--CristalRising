@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviourPun, Damage
     public float damage;
     public float existenceTomeout;
     private float countTime;
+    private Color color;
     public IEffect effect;
     [HideInInspector]
     public Pool pool;
@@ -40,8 +41,10 @@ public class Bullet : MonoBehaviourPun, Damage
     }
 
     [PunRPC]
-    public void Inicialize(Vector3 point, float timeOfArrival, Vector3 pos, Vector3 rot, int targetId)
+    public void Inicialize(Vector3 point, float timeOfArrival, Vector3 pos, Vector3 rot, int targetId, Vector3 color)
     {
+        this.color = new Color(color.x, color.y, color.z,1);
+        GetComponentInChildren<Renderer>().material.SetColor("_Color", this.color);
         target = PhotonView.Find(targetId).gameObject;
         pool.Out(photonView.ViewID);
         pool.ActiveInstance();
@@ -73,6 +76,7 @@ public class Bullet : MonoBehaviourPun, Damage
     public void CombineWithMaic()
     {
         var vfx = GetComponentInChildren<Animator>();
+        vfx.gameObject. GetComponent<Renderer>().material.SetColor("_Color", color);
         vfx.transform.position = hit;
         effect.Apply(vfx);
     }
