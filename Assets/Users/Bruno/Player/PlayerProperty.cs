@@ -65,7 +65,7 @@ public class PlayerProperty : MonoBehaviour
     private void dead()
     {
         Debug.Log("you died!");
-        GameObject.Find("PlayerAvatar").GetComponent<DefineMorte>().Morre();
+       // GameObject.Find("PlayerAvatar").GetComponent<DefineMorte>().Morre();
             //throw new NotImplementedException();
             
            
