@@ -26,15 +26,9 @@ public class LobbyController: MonoBehaviourPunCallbacks
         else
         {
             instance = this;
-            //DontDestroyOnLoad(gameObject);
         }
-
     }
 
-    //private void Update()
-    //{
-
-    //}
 
     public override void OnJoinedRoom()
     {
@@ -47,7 +41,7 @@ public class LobbyController: MonoBehaviourPunCallbacks
         //int currentRoom = PhotonNetwork.PlayerList.Length;
         //playersCountText.text = PhotonNetwork.PlayerList.Length.ToString();
 
-        //ESSA LINHA AQUI NÃO TA LEGAL
+        //ESSA LINHA AQUI NÃO TA LEGAL:
         playersCountText.text = PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers;
 
         Player[] players = PhotonNetwork.PlayerList;
@@ -55,12 +49,11 @@ public class LobbyController: MonoBehaviourPunCallbacks
         {
             Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(players[i]);
         }
-
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        //ESSA LINHA AQUI NÃO TA LEGAL
+        //ESSA LINHA AQUI NÃO TA LEGAL:
         playersCountText.text = PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers;
 
 
