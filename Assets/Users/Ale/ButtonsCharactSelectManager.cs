@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using Photon.Pun;
+using Photon.Realtime;
 public class ButtonsCharactSelectManager : MonoBehaviour
 {
     //Pra dar bom os ícones os dois abaixo precisam estar na mesma ordem.
@@ -15,7 +16,7 @@ public class ButtonsCharactSelectManager : MonoBehaviour
     public void ChooseCharacter(GameObject characterPrefab)
     {
         characters = characterPrefab;
-
+        PhotonNetwork.LocalPlayer.TagObject = characterPrefab.name;
         SwitchButtonsInteractable(false);
 
     }

@@ -24,7 +24,6 @@ public class SetUpGameplay : MonoBehaviour
     void Start()
     {
         InstantiatingPlayersCharacter();
-
     }
 
     private void InstantiatingPlayersCharacter()
@@ -51,6 +50,7 @@ public class SetUpGameplay : MonoBehaviour
     void RPCInstantiateCharacter(Vector3 spawnPos, Quaternion spawnRot)
     {
         //myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), spawnPos, spawnRot, 0);
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), spawnPos, spawnRot);
+        //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), spawnPos, spawnRot);
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", PhotonNetwork.LocalPlayer.TagObject.ToString()), spawnPos, spawnRot);
     }
 }
