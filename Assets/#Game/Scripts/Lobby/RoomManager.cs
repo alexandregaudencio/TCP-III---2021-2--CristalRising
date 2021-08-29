@@ -4,14 +4,11 @@ using Photon.Realtime;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
-    //[SerializeField] private int maxPlayersRoom;
 
-    //private DefineTeam defineTeam;
-
+    [SerializeField] private TeamManager teamManager;
     private void Awake()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
-        //defineTeam = GetComponent<DefineTeam>();
     }
 
     private void Update()
@@ -19,20 +16,20 @@ public class RoomManager : MonoBehaviourPunCallbacks
         //PARA TESTES
         if (Input.GetKeyDown(KeyCode.G))
         {
-            DefineTeamAndGo();
+            if(PhotonNetwork.IsMasterClient) DefineTeamAndGo();
         }
 
-
-
+        //if( PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
+        //{
+        //    DefineTeamAndGo();
+        //}
     }
-
 
     //AÇÃO BOTÃO START
     public void StartGame()
     {
         PhotonNetwork.JoinRandomRoom();
     }
-
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
@@ -50,21 +47,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public void DefineTeamAndGo()
     {
-       GetComponent<DefineTeam>().TeamDefinition();
         PhotonNetwork.LoadLevel(RoomConfigs.CharSelecSceneIndex);
     }
 
     public override void OnJoinedRoom()
     {
-        //if(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount == RoomConfigs.maxRoomPlayer)
-        ////if(PhotonNetwork.IsMasterClient &&        if (PhotonNetwork.CurrentRoom.PlayerCount == RoomConfigs.maxRoomPlayers)
-        ////    {
-        ////        DefineTeamAndGo();
-        ////    }
-        //if(PhotonNetwork.CurrentRoom.PlayerCount = )
+
+        teamManager.TeamDefinition(PhotonNetwork.LocalPlayer);
         base.OnJoinedRoom();
     }
-
 
 
 }
