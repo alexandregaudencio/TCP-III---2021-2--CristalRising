@@ -266,8 +266,6 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
-<<<<<<< Updated upstream
-=======
 --- !u!114 &-4693200054114293454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +293,6 @@ MonoBehaviour:
     Name: 
     Code: 0
   avada: 0
->>>>>>> Stashed changes
 --- !u!1 &219252042537730601
 GameObject:
   m_ObjectHideFlags: 0
