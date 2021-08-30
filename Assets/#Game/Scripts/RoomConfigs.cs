@@ -5,7 +5,7 @@
     public const int maxPlayersTeam = maxRoomPlayers / 2;
 
     //characterSelection
-    public const int characterSelectionMaxTime = 10;
+    public const int characterSelectionMaxTime = 4;
 
     //Gameplay
     public const int gameplayMaxTime = 60;

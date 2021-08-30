@@ -13,7 +13,7 @@ public class LobbyController: MonoBehaviourPunCallbacks
     public GameObject RoomCanvas;
     
     public Text playersCountText;
-
+    
     //playerName
     [SerializeField] GameObject PlayerListItemPrefab;
     [SerializeField] Transform playerListContent;
@@ -53,11 +53,13 @@ public class LobbyController: MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        //ESSA LINHA AQUI NÃO TA LEGAL:
         playersCountText.text = PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers;
-
-
         Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(newPlayer);
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        playersCountText.text = PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers;
     }
 
     public void QuitRoom()
