@@ -43,7 +43,7 @@ public class Weapon : CombatControl
             return;
         }
 
-        int mask = LayerMask.GetMask(LayerMask.LayerToName(transform.parent.gameObject.layer));
+        int mask = LayerMask.GetMask(LayerMask.LayerToName(transform.parent.gameObject.layer), "CircleArea");
 
         if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition).origin, cam.ScreenPointToRay(Input.mousePosition).direction, out hit, maxBulletDistance, ~mask))
         {
