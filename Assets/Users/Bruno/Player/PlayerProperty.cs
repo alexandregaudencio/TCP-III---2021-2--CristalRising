@@ -57,6 +57,5 @@ public class PlayerProperty : MonoBehaviour
     private void dead()
     {
         Debug.Log("you died!");
-        throw new NotImplementedException();
     }
 }

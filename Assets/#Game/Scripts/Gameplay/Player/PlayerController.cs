@@ -42,8 +42,6 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         animator.speed = 10;
 
-        string team = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
-
         Player[] playersTeamBlue;
         Player[] playersTeamRed;
 
@@ -52,10 +50,16 @@ public class PlayerController : MonoBehaviour
 
         foreach (Player p in playersTeamBlue)
             if (GetComponent<PhotonView>().Controller.Equals(p))
+            {
                 teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
+                gameObject.layer = LayerMask.NameToLayer("Team1");
+            }
         foreach (Player p in playersTeamRed)
             if (GetComponent<PhotonView>().Controller.Equals(p))
-                teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+            {
+                teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.red); 
+                gameObject.layer = LayerMask.NameToLayer("Team2");
+            }
     }
     private void Awake()
     {
