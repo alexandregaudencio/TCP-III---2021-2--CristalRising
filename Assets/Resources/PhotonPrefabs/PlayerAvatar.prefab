@@ -266,6 +266,36 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+<<<<<<< Updated upstream
+=======
+--- !u!114 &-4693200054114293454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134812347425223253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40aa03a293f526b48bea9132657b17da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPointsTimeAzul:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  SpawnPointTimeVermelho:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  PP: {fileID: 0}
+  TemporizadorRespawn: 0
+  SpawnCheck: 0
+  TimeDesteJogador:
+    Name: 
+    Code: 0
+  avada: 0
+>>>>>>> Stashed changes
 --- !u!1 &219252042537730601
 GameObject:
   m_ObjectHideFlags: 0
