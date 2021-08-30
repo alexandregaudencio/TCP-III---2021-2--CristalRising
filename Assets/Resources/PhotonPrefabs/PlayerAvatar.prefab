@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 5572543441186634803}
   - component: {fileID: 4135133243485489325}
   - component: {fileID: -4427571526771000720}
+  - component: {fileID: -4693200054114293454}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Untagged
@@ -266,6 +267,27 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &-4693200054114293454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134812347425223253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40aa03a293f526b48bea9132657b17da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPointsTimeAzul: []
+  SpawnPointTimeVermelho: []
+  PP: {fileID: 0}
+  TemporizadorRespawn: 0
+  SpawnCheck: 0
+  TimeDesteJogador:
+    Name: 
+    Code: 0
+  avada: 0
 --- !u!1 &219252042537730601
 GameObject:
   m_ObjectHideFlags: 0
