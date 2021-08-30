@@ -13,11 +13,9 @@ public class GameplayManager : MonoBehaviour
     public TMP_Text timeToDisplay;
     public static GameplayManager instance;
     private bool endingGame = false;
-    //private PhotonView PV;
     private TimerCountdown gameplayRoomTimer;
     private void Start()
     {
-        //PV = GetComponent<PhotonView>();
         gameplayRoomTimer = GetComponent<TimerCountdown>();
         gameplayRoomTimer.CurrentTime = RoomConfigs.gameplayMaxTime;
         instance = this;
@@ -42,7 +40,7 @@ public class GameplayManager : MonoBehaviour
 
     public void EndGamebyTimer()
     {
-        Time.timeScale = 0;
+       // Time.timeScale = 0;
         endingGame = true;
         Debug.Log("Acabou o jogo pelo tempo: ");
         if (CircleAreaPoints.instance.pointsTeam1 > CircleAreaPoints.instance.pointsTeam2) 
@@ -58,26 +56,9 @@ public class GameplayManager : MonoBehaviour
             Debug.Log("EMPATE");
         }
 
-        //aqui
-        //if (!PhotonNetwork.IsMasterClient) return;
-        ///PhotonNetwork.CurrentRoom.IsOpen = false;
+       
 
     }
 
-    /* public override void OnPlayerEnteredRoom(Player newPlayer)
-     {
-
-         if (PhotonNetwork.IsMasterClient)
-         {
-             PV.RPC("SendTimer", RpcTarget.Others, gameplayRoomTimer.CurrentTime);
-         }
-         base.OnPlayerEnteredRoom(newPlayer);
-     }
-
-     [PunRPC]
-     private void SendTimer(float timeIn)
-     {
-         gameplayRoomTimer.CurrentTime = timeIn;
-     }
-     */
+   
 }

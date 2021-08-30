@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 using UnityEngine.UI;
 using TMPro;
 
@@ -9,6 +10,7 @@ public class CircleAreaPoints : MonoBehaviour
     public static CircleAreaPoints instance;
     public float pointsTeam1;
     public float pointsTeam2;
+    public PhotonView PV;
 
     [SerializeField] int maxPoints;
 
@@ -20,15 +22,17 @@ public class CircleAreaPoints : MonoBehaviour
    
     [SerializeField] int constPoint;
 
-    [SerializeField] PlayerTesteGameplaySarah[] Team1;
-    [SerializeField] PlayerTesteGameplaySarah[] Team2;
-    private int countPlayerinAreaTeam1;
-    private int countPlayerinAreaTeam2;
+  
+    public int countPlayerinAreaTeam1;
+    public int countPlayerinAreaTeam2;
 
     private int countPlayerExtraTeam1;
     private int countPlayerExtraTeam2;
 
     private bool endingGame = false;
+
+
+
     void Start()
     {
         pointsTeam1 = 0;
@@ -41,57 +45,18 @@ public class CircleAreaPoints : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        AreaCheck();
         PointsControl();
 
-        
-
     }
-    private void AreaCheck()
-    {
-        /*if (PlayerTesteGameplaySarah.instance._distance <= 3)
-        {
-            Debug.Log("Estamos dentro da area");
-        }
-        else
-        {
-            Debug.Log("Estamos fora da area");
-        }
-        
-        if (PlayerTesteGameplaySarah.instance.areaCheck == true)
-        {
-            Debug.Log("Estamos dentro da area");
-        }
-        else
-        {
-            Debug.Log("Estamos fora da area");
-        }
-       */
-    }
+ 
     private void PointsControl()
     {
-        countPlayerinAreaTeam1 = 0;
-        countPlayerinAreaTeam2 = 0;
         pointsBarImageTeam1.fillAmount = pointsTeam1 / maxPoints;
         pointsBarImageTeam2.fillAmount = pointsTeam2 / maxPoints;
 
-        for (int i = 0; i < Team1.Length; i++)
-            {
-                if (Team1[i].colissionTeam1 == true)
-                {
-                countPlayerinAreaTeam1++;
-                }
-            }
-            for (int i = 0; i < Team2.Length; i++)
-            {
-                if (Team2[i].colissionTeam2 == true)
-                {
-                countPlayerinAreaTeam2++;
-                }
-            }
-
+     
            if(countPlayerinAreaTeam1 != countPlayerinAreaTeam2)
             {
             if (pointsTeam1 < 2999 && pointsTeam2 < 2999)
@@ -113,24 +78,24 @@ public class CircleAreaPoints : MonoBehaviour
                     countPlayerExtraTeam1 = 0;
                 }
 
-                pointsTeam1 = pointsTeam1 + constPoint * Time.deltaTime * countPlayerExtraTeam1;
+                
                 string pointStringTeam1 = string.Format("{0:00}", pointsTeam1);
                 pointsUiTeam1.text = pointStringTeam1;
 
-                #region teste aparecer apenas de 50 em 50
-                //float resultado = pointsTeam1 % 50;
-                //Debug.Log(resultado);
-                /*if (resultado>-1.5 && resultado<1.5)
-                {
-                    pointsUiTeam1.text = pointStringTeam1;
-                }
-                   */
 
-                #endregion
-
-                pointsTeam2 = pointsTeam2 + constPoint * Time.deltaTime * countPlayerExtraTeam2;
+                
                 string pointStringTeam2 = string.Format("{0:00}", pointsTeam2);
                 pointsUiTeam2.text = pointStringTeam2;
+
+
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    pointsTeam1 = pointsTeam1 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam1;
+                    pointsTeam2 = pointsTeam2 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam2;
+                    PV.RPC("sendPoints", RpcTarget.Others, pointsTeam1, pointsTeam2);
+                }
+
+
             }
             else
                  {
@@ -141,6 +106,31 @@ public class CircleAreaPoints : MonoBehaviour
             
      
     }
+    [PunRPC]
+    public void RPC_sendIncrease(string team)
+    {
+        if(team=="Blue")countPlayerinAreaTeam1++;
+        if(team=="Red")countPlayerinAreaTeam2++;
+    }
+    [PunRPC]
+    public void RPC_sendDecrease(string team) 
+    {
+        if (team == "Blue") this.countPlayerinAreaTeam1--;
+        if (team == "Red") this.countPlayerinAreaTeam2--;
+    }
+
+    [PunRPC]
+    public void sendPoints(float teamPontoB, float teamPontoR)
+    {
+        
+        pointsTeam1 = teamPontoB;
+        pointsTeam2 = teamPontoR;
+
+       
+    }
+
+
+
     private void EndGamebyPoints()
     {
         
@@ -149,7 +139,43 @@ public class CircleAreaPoints : MonoBehaviour
         if (pointsTeam1 >pointsTeam2) Debug.Log("TEAM1 WINS");
         if (pointsTeam2 >pointsTeam1) Debug.Log("TEAM2 WINS");
         if (pointsTeam2 ==pointsTeam1) Debug.Log("EMPATE");
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
-  
+
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (collision.gameObject.layer==8)//team1
+             {
+                PV.RPC("RPC_sendIncrease", RpcTarget.All, "Blue");
+            }
+            if (collision.gameObject.layer == 9)//team2
+            {
+                PV.RPC("RPC_sendIncrease", RpcTarget.All, "Red");
+            }
+         }
+
+    }
+
+
+    void OnTriggerExit(Collider collision)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (collision.gameObject.layer == 8)//team1
+            {
+                PV.RPC("RPC_sendDecrease", RpcTarget.All, "Blue");
+            }
+            if (collision.gameObject.layer == 9)//team2
+            {
+                PV.RPC("RPC_sendDecrease", RpcTarget.All, "Red");
+            }
+        }
+
+    }
+
+
+
 }
