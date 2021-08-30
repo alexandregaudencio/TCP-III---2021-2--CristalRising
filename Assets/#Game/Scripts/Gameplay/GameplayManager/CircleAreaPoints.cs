@@ -12,6 +12,8 @@ public class CircleAreaPoints : MonoBehaviour
     public float pointsTeam1PerCent;
     public float pointsTeam2;
     public float pointsTeam2PerCent;
+    private float pointsTeam1Bar;
+    private float pointsTeam2Bar;
     public PhotonView PV;
 
     [SerializeField] int maxPoints;
@@ -30,7 +32,7 @@ public class CircleAreaPoints : MonoBehaviour
 
     private int countPlayerExtraTeam1;
     private int countPlayerExtraTeam2;
-
+    private float max;
     private bool endingGame = false;
 
 
@@ -55,13 +57,14 @@ public class CircleAreaPoints : MonoBehaviour
  
     private void PointsControl()
     {
-        pointsBarImageTeam1.fillAmount = pointsTeam1 / maxPoints;
-        pointsBarImageTeam2.fillAmount = pointsTeam2 / maxPoints;
+        pointsBarImageTeam1.fillAmount = pointsTeam1Bar;
+        pointsBarImageTeam2.fillAmount = pointsTeam2Bar;
 
-     
-           if(countPlayerinAreaTeam1 != countPlayerinAreaTeam2)
+
+
+           if (countPlayerinAreaTeam1 != countPlayerinAreaTeam2)
             {
-            if (pointsTeam1 < 2999 && pointsTeam2 < 2999)
+            if (pointsTeam1PerCent < 100 && pointsTeam2PerCent < 100)
             {
                 int diffPlayerinArea = countPlayerinAreaTeam1- countPlayerinAreaTeam2;
                 if (diffPlayerinArea > 0)
@@ -94,10 +97,13 @@ public class CircleAreaPoints : MonoBehaviour
                 {
                     pointsTeam1 = pointsTeam1 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam1;
                     pointsTeam2 =pointsTeam2 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam2;
-                    float max = maxPoints / 100;
+                    max = maxPoints / 100;
                     pointsTeam1PerCent = pointsTeam1 / max;
                     pointsTeam2PerCent = pointsTeam2 / max;
+                    pointsTeam1Bar= (pointsTeam1PerCent * max) / maxPoints;
+                    pointsTeam2Bar= (pointsTeam2PerCent * max) / maxPoints;
                     PV.RPC("sendPoints", RpcTarget.Others, pointsTeam1PerCent, pointsTeam2PerCent);
+                    PV.RPC("sendPointsBar", RpcTarget.Others, pointsTeam1Bar, pointsTeam2Bar);
                 }
 
 
@@ -133,6 +139,15 @@ public class CircleAreaPoints : MonoBehaviour
 
        
     }
+    [PunRPC]
+    public void sendPointsBar(float teamPontoB, float teamPontoR)
+    {
+
+        pointsTeam1Bar= teamPontoB;
+        pointsTeam2Bar = teamPontoR;
+
+
+    }
 
 
 
@@ -141,9 +156,9 @@ public class CircleAreaPoints : MonoBehaviour
         
        endingGame = true;
         Debug.Log("GAME ENDS: ");
-        if (pointsTeam1 >pointsTeam2) Debug.Log("TEAM1 WINS");
-        if (pointsTeam2 >pointsTeam1) Debug.Log("TEAM2 WINS");
-        if (pointsTeam2 ==pointsTeam1) Debug.Log("EMPATE");
+        if (pointsTeam1PerCent > pointsTeam2PerCent) Debug.Log("TEAM1 WINS");
+        if (pointsTeam2PerCent > pointsTeam1PerCent) Debug.Log("TEAM2 WINS");
+        if (pointsTeam2PerCent == pointsTeam1PerCent) Debug.Log("EMPATE");
         //Time.timeScale = 0;
     }
 

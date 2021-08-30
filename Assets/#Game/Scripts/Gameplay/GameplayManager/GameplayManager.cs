@@ -43,15 +43,15 @@ public class GameplayManager : MonoBehaviour
        // Time.timeScale = 0;
         endingGame = true;
         Debug.Log("Acabou o jogo pelo tempo: ");
-        if (CircleAreaPoints.instance.pointsTeam1 > CircleAreaPoints.instance.pointsTeam2) 
+        if (CircleAreaPoints.instance.pointsTeam1PerCent > CircleAreaPoints.instance.pointsTeam2PerCent) 
         {
             Debug.Log("TEAM1 WINS");
         }
-        else if(CircleAreaPoints.instance.pointsTeam1 < CircleAreaPoints.instance.pointsTeam2)
+        else if(CircleAreaPoints.instance.pointsTeam1PerCent < CircleAreaPoints.instance.pointsTeam2PerCent)
         {
             Debug.Log("TEAM2 WINS");
         }
-        else if(CircleAreaPoints.instance.pointsTeam1 == CircleAreaPoints.instance.pointsTeam2)
+        else if(CircleAreaPoints.instance.pointsTeam1PerCent == CircleAreaPoints.instance.pointsTeam2PerCent)
         {
             Debug.Log("EMPATE");
         }
