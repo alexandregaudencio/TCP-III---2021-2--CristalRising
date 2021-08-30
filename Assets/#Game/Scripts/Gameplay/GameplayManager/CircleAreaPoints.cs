@@ -9,7 +9,9 @@ public class CircleAreaPoints : MonoBehaviour
 {
     public static CircleAreaPoints instance;
     public float pointsTeam1;
+    public float pointsTeam1PerCent;
     public float pointsTeam2;
+    public float pointsTeam2PerCent;
     public PhotonView PV;
 
     [SerializeField] int maxPoints;
@@ -79,20 +81,23 @@ public class CircleAreaPoints : MonoBehaviour
                 }
 
                 
-                string pointStringTeam1 = string.Format("{0:00}", pointsTeam1);
-                pointsUiTeam1.text = pointStringTeam1;
+                string pointStringTeam1 = string.Format("{0:00}", pointsTeam1PerCent);
+                pointsUiTeam1.text = (pointStringTeam1 +"%");
 
 
                 
-                string pointStringTeam2 = string.Format("{0:00}", pointsTeam2);
-                pointsUiTeam2.text = pointStringTeam2;
+                string pointStringTeam2 = string.Format("{0:00}", pointsTeam2PerCent);
+                pointsUiTeam2.text = (pointStringTeam2 + "%");
 
 
                 if (PhotonNetwork.IsMasterClient)
                 {
                     pointsTeam1 = pointsTeam1 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam1;
-                    pointsTeam2 = pointsTeam2 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam2;
-                    PV.RPC("sendPoints", RpcTarget.Others, pointsTeam1, pointsTeam2);
+                    pointsTeam2 =pointsTeam2 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam2;
+                    float max = maxPoints / 100;
+                    pointsTeam1PerCent = pointsTeam1 / max;
+                    pointsTeam2PerCent = pointsTeam2 / max;
+                    PV.RPC("sendPoints", RpcTarget.Others, pointsTeam1PerCent, pointsTeam2PerCent);
                 }
 
 
@@ -122,9 +127,9 @@ public class CircleAreaPoints : MonoBehaviour
     [PunRPC]
     public void sendPoints(float teamPontoB, float teamPontoR)
     {
-        
-        pointsTeam1 = teamPontoB;
-        pointsTeam2 = teamPontoR;
+
+        pointsTeam1PerCent = teamPontoB;
+        pointsTeam2PerCent = teamPontoR;
 
        
     }
