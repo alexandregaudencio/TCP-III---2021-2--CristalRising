@@ -63,6 +63,15 @@ MonoBehaviour:
   - Use
   - ActiveInstance
   - RPCInstantiateCharacter
+  - SendPoint
+  - SendPoint1
+  - SendPoint2
+  - RPC_enviarAcrescimo
+  - RPC_enviarDecrescimo
+  - RPC_enviarPontos
+  - RPC_sendIncrease
+  - RPC_sendDecrease
+  - sendPoints
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
