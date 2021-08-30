@@ -18,7 +18,6 @@ public class PlayersCharactersVisualizing : MonoBehaviourPunCallbacks
     private Player[] myTeamMembers;
     private PhotonTeam myTeam;
 
-    // Start is called before the first frame update
     void Start()
     {
         myTeam = PhotonTeamExtensions.GetPhotonTeam(PhotonNetwork.LocalPlayer);
@@ -30,18 +29,7 @@ public class PlayersCharactersVisualizing : MonoBehaviourPunCallbacks
             PlayersTextName[i].text =  myTeamMembers[i].NickName;
             PlayersCharacterIcon[i].sprite =  charactersIconToSet[0];
         }
-
     }
-
-    //void UpdatePlayersTeamVisualizing()
-    //{
-    //    for (int i = 0; i < myTeamMembers.Length; i++)
-    //    {
-    //        PlayersTextName[i].text = myTeamMembers[i].NickName;
-    //        PlayersCharacterIcon[i].sprite = (Sprite)myTeamMembers[i].CustomProperties["characterIcon"];
-    //    }
-
-    //}
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
@@ -51,12 +39,9 @@ public class PlayersCharactersVisualizing : MonoBehaviourPunCallbacks
             {
                 int indexImg = (int)targetPlayer.CustomProperties["characterIcon"];
                 PlayersCharacterIcon[i].sprite = charactersIconToSet[indexImg];
-                //PlayersTextName[i].text = myTeamMembers[i].NickName;
             }
         }        
        
-        //UpdatePlayersTeamVisualizing();
-
     }
 
 }
