@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: circleArea
       objectReference: {fileID: 0}
+    - target: {fileID: 8357978053006258053, guid: ba32f70b973895b4ca7663af224e1d79,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8357978053006258054, guid: ba32f70b973895b4ca7663af224e1d79,
         type: 3}
       propertyPath: m_RootOrder
