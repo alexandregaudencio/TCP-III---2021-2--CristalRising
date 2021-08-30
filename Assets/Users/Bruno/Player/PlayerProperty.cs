@@ -6,20 +6,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
-
-
-
 [RequireComponent(typeof(PlayerController))]
 
 public class PlayerProperty : MonoBehaviour
 {
     public GameObject textUiLife;
-        public GameObject[] SpawnPointsTimeAzul;
-        public GameObject[] SpawnPointTimeVermelho;
+    public GameObject[] SpawnPointsTimeAzul;
+    public GameObject[] SpawnPointTimeVermelho;
 
-        public float life;
+    public float life;
     private float moveSpeed;
     private float maxJumpHeight;
 
@@ -35,7 +30,8 @@ public class PlayerProperty : MonoBehaviour
         bufferMaxJumpHight = maxJumpHeight;
 
         bufferlife = life;
-        if (GetComponent<PhotonView>().IsMine) {
+        if (GetComponent<PhotonView>().IsMine)
+        {
             textUiLife.SetActive(true);
         }
     }
@@ -65,10 +61,10 @@ public class PlayerProperty : MonoBehaviour
     private void dead()
     {
         Debug.Log("you died!");
-       // GameObject.Find("PlayerAvatar").GetComponent<DefineMorte>().Morre();
-            //throw new NotImplementedException();
-            
-           
+        // GameObject.Find("PlayerAvatar").GetComponent<DefineMorte>().Morre();
+        //throw new NotImplementedException();
+
+
     }
 }
 
