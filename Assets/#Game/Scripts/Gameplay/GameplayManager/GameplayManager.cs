@@ -8,7 +8,7 @@ using Photon.Realtime;
 using TMPro;
 using System.Linq;
 
-public class GameplayManager : MonoBehaviour
+public class GameplayManager : MonoBehaviourPunCallbacks
 {
     public TMP_Text timeToDisplay;
     public static GameplayManager instance;
@@ -44,7 +44,7 @@ public class GameplayManager : MonoBehaviour
 
     public void EndGamebyTimer()
     {
-       Time.timeScale = 0;
+      
         
         endingGame = true;
         Debug.Log("Acabou o jogo pelo tempo: ");
@@ -64,14 +64,27 @@ public class GameplayManager : MonoBehaviour
             Debug.Log("EMPATE");
             msg = ("Time is over: EMPATOU ");
         }
-        gameEnd.SetActive(true);
-        msgGameEnd.text = msg;
+        gameEndActive();
 
     }
-
+    public void gameEndActive()
+    {
+        Time.timeScale = 0;
+        gameEnd.SetActive(true);
+        msgGameEnd.text = msg;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
    public void backToMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(RoomConfigs.menuSceneIndex);
+        Application.Quit();
+        PhotonNetwork.LoadLevel(RoomConfigs.menuSceneIndex);
+        PhotonNetwork.LeaveRoom();
+
+    }
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer);
     }
 }
