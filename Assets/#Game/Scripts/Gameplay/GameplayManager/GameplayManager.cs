@@ -74,17 +74,16 @@ public class GameplayManager : MonoBehaviourPunCallbacks
         msgGameEnd.text = msg;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-    }
-   public void backToMenu()
-    {
-        Time.timeScale = 1;
-        Application.Quit();
-        PhotonNetwork.LoadLevel(RoomConfigs.menuSceneIndex);
         PhotonNetwork.LeaveRoom();
 
     }
-    public override void OnPlayerLeftRoom(Player otherPlayer)
+
+    public void backToMenu()
     {
-        base.OnPlayerLeftRoom(otherPlayer);
+        Time.timeScale = 1;
+        //Application.Quit();
+        SceneManager.LoadScene(RoomConfigs.menuSceneIndex);
+
     }
+
 }
