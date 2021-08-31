@@ -156,10 +156,24 @@ public class CircleAreaPoints : MonoBehaviour
         
        endingGame = true;
         Debug.Log("GAME ENDS: ");
-        if (pointsTeam1PerCent > pointsTeam2PerCent) Debug.Log("TEAM1 WINS");
-        if (pointsTeam2PerCent > pointsTeam1PerCent) Debug.Log("TEAM2 WINS");
-        if (pointsTeam2PerCent == pointsTeam1PerCent) Debug.Log("EMPATE");
-        //Time.timeScale = 0;
+        if (pointsTeam1PerCent > pointsTeam2PerCent)
+        {
+            Debug.Log("TEAM1 WINS");
+            GameplayManager.instance.msg = ("TEAM BLUE WINS");
+        }
+        if (pointsTeam2PerCent > pointsTeam1PerCent)
+        {
+            Debug.Log("TEAM2 WINS");
+            GameplayManager.instance.msg = ("TEAM RED WINS");
+        }
+        if (pointsTeam2PerCent == pointsTeam1PerCent)
+        {
+            Debug.Log("EMPATE");
+            GameplayManager.instance.msg = ("EMPATOU");
+        }
+         GameplayManager.instance.gameEnd.SetActive(true);
+        GameplayManager.instance.msgGameEnd.text = GameplayManager.instance.msg;
+        Time.timeScale = 0;
     }
 
 
