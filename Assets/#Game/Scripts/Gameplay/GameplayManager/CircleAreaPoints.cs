@@ -171,9 +171,7 @@ public class CircleAreaPoints : MonoBehaviour
             Debug.Log("EMPATE");
             GameplayManager.instance.msg = ("EMPATOU");
         }
-         GameplayManager.instance.gameEnd.SetActive(true);
-        GameplayManager.instance.msgGameEnd.text = GameplayManager.instance.msg;
-        Time.timeScale = 0;
+        GameplayManager.instance.gameEndActive();
     }
 
 
