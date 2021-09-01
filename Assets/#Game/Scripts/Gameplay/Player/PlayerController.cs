@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fallMultiplier;
     public GameObject teamIdentify;
     public Animator animator;
+    private Vector3 lastPosition;
 
     private Vector3 dir;
     private Rigidbody playerRb;
@@ -57,9 +58,10 @@ public class PlayerController : MonoBehaviour
         foreach (Player p in playersTeamRed)
             if (GetComponent<PhotonView>().Controller.Equals(p))
             {
-                teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.red); 
+                teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
                 gameObject.layer = LayerMask.NameToLayer("Team2");
             }
+        lastPosition = transform.position;
     }
     private void Awake()
     {
@@ -178,22 +180,18 @@ public class PlayerController : MonoBehaviour
 
         float adjustedSpeed = moveSpeed;
         if (isSprinting) adjustedSpeed *= sprintModifier;
-        if (horAxis > 0)
+
+        animator.SetFloat("horizontal", horAxis);
+        animator.SetFloat("vertical", verAxis);
+
+        if (Vector3.Distance(transform.position, lastPosition) > 0.1f)
         {
-            animator.SetTrigger("right");
+            animator.SetBool("move", true);
         }
-        if (horAxis < 0)
-        {
-            animator.SetTrigger("left");
+        else {
+            animator.SetBool("move", false);
         }
-        if (verAxis > 0)
-        {
-            animator.SetTrigger("forward");
-        }
-        if (verAxis < 0)
-        {
-            animator.SetTrigger("back");
-        }
+        lastPosition = transform.position;
         // Controla o campo de visão se o jogador estiver correndo
         if (isSprinting)
         {
