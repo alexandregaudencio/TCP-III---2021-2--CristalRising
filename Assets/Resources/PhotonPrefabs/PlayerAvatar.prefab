@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: -4693200054114293454}
   m_Layer: 0
   m_Name: PlayerAvatar
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -235,7 +235,6 @@ MonoBehaviour:
   spell: {fileID: 6070714403112781189}
   animator: {fileID: 3979610633020015315, guid: a69eedb3e9f10df4fa7787f5d31a9819,
     type: 3}
-  playerAnim: {fileID: 3394219779239411529}
 --- !u!114 &4135133243485489325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,6 +669,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8235124266387953842}
   - component: {fileID: 6070714403112781189}
+  - component: {fileID: 3599978392326839698}
+  - component: {fileID: 8769174039217842802}
   m_Layer: 0
   m_Name: meele
   m_TagString: Untagged
@@ -685,7 +686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447927055554303479}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.040283203, y: -0.27957153, z: 0.04989624}
+  m_LocalPosition: {x: 0.608, y: 0.109, z: 0.776}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 134812347425223257}
@@ -716,9 +717,42 @@ MonoBehaviour:
     armature: 0
   animator: {fileID: 0}
   trail: {fileID: 7201592036686085164}
-  sword: {fileID: 0}
-  speedAttack: 0.1
   damage: 25
+--- !u!65 &3599978392326839698
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447927055554303479}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2634206, y: 1.1382127, z: 1.2682382}
+  m_Center: {x: -0.11992645, y: -0.06910634, z: 0.1341191}
+--- !u!114 &8769174039217842802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447927055554303479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1454393394434544940
 GameObject:
   m_ObjectHideFlags: 0
@@ -2104,7 +2138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3964794161695137369
 Transform:
   m_ObjectHideFlags: 0

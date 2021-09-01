@@ -11,18 +11,20 @@ public class Controle : MonoBehaviourPun
     public Spells spell;
     public Animator animator;
     private GameObject aux;
-    public Animator playerAnim;
+    private Animator playerAnim;
     void Start()
     {
         this.transform = GetComponent<Transform>();
         if (aux)
             aux = Instantiate(animator.gameObject);
+        playerAnim = GetComponentInChildren<Animator>();
         playerAnim.speed = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
+        (spell as IActive).Aim();
         if (!photonView.IsMine)
         {
             return;
@@ -31,21 +33,17 @@ public class Controle : MonoBehaviourPun
         {
             playerAnim.SetTrigger("attack");
             //gun.Use();
-            spell.Use();
+
+            if (spell)
+            {
+                spell.Use();
+            }
             //if (photonView.IsMine)
             //    gun.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
             gun.Reload();
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (spell)
-            {
-                (spell as IActive).Aim();
-                (spell as IEffect).Apply(aux.GetComponent<Animator>());
-            }
         }
     }
 }
