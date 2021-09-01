@@ -30,11 +30,12 @@ public class Controle : MonoBehaviourPun
         if (Input.GetMouseButtonDown(0))
         {
             playerAnim.SetTrigger("attack");
-            gun.Use();
+            //gun.Use();
+            spell.Use();
             //if (photonView.IsMine)
             //    gun.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             gun.Reload();
         }

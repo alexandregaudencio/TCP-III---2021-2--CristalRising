@@ -7,6 +7,7 @@ public class Explosion : Spells, IEffect
     private GameObject target;
     public override void Use()
     {
+        //aqui eu defino a ativação de colisores em áreas tais como os presentes magia
     }
     public void Apply(Animator animator)
     {
