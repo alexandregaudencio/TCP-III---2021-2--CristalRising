@@ -47,7 +47,6 @@ public class Weapon : CombatControl
 
         if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition).origin, cam.ScreenPointToRay(Input.mousePosition).direction, out hit, maxBulletDistance, ~mask))
         {
-            Debug.Log("cagou para a porra da mascara " + LayerMask.LayerToName(transform.parent.gameObject.layer));
             Debug.DrawLine(cam.transform.position, hit.point, Color.red);
             mark = hit.point;
         }
@@ -60,8 +59,6 @@ public class Weapon : CombatControl
         #region test
         if (Physics.Raycast(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.forward, out hit, maxBulletDistance, ~mask))
         {
-            Debug.Log("enfiou a porra da mascara no cu " + LayerMask.LayerToName(transform.parent.gameObject.layer));
-
             Debug.DrawLine(mangerBullet.bulletTransform.position, hit.point, Color.green);
         }
         #endregion
