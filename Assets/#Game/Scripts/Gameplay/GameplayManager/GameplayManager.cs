@@ -17,10 +17,14 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     public GameObject gameEnd;
     public string msg;
    public Text msgGameEnd;
+    [SerializeField] GameObject spawnWallBlue;
+    [SerializeField] GameObject spawnWallRed;
+    private bool wallDown=false;
     private void Start()
     {
         gameplayRoomTimer = GetComponent<TimerCountdown>();
-        gameplayRoomTimer.CurrentTime = RoomConfigs.gameplayMaxTime;
+        gameplayRoomTimer.CurrentTime = RoomConfigs.gameplayTimeBase;
+       // gameplayRoomTimer.CurrentTime = RoomConfigs.gameplayMaxTime;
         instance = this;
         gameEnd.SetActive(false);
     }
@@ -31,8 +35,22 @@ public class GameplayManager : MonoBehaviourPunCallbacks
 
         if (gameplayRoomTimer.IsCountdownOver())
         {
-            if (endingGame) return;
-            EndGamebyTimer();
+            if (wallDown == false)
+            {
+                downWallBase();
+                gameplayRoomTimer.CurrentTime = RoomConfigs.gameplayMaxTime;
+                wallDown = true;
+
+            }
+
+            if (gameplayRoomTimer.IsCountdownStart())
+            {
+                if (wallDown == true)
+                {
+                    if (endingGame) return;
+                    EndGamebyTimer();
+                }
+            }
         }
     }
 
@@ -66,6 +84,11 @@ public class GameplayManager : MonoBehaviourPunCallbacks
         }
         gameEndActive();
 
+    }
+    private void downWallBase()
+    {
+        Destroy(spawnWallBlue);
+        Destroy(spawnWallRed);
     }
     public void gameEndActive()
     {
