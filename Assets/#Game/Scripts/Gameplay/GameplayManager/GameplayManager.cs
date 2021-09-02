@@ -98,6 +98,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
 
     }
 
