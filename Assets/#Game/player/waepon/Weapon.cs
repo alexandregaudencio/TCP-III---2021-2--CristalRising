@@ -22,15 +22,23 @@ public class Weapon : CombatControl
 
     private Vector3 mark;
     private PhotonView pv;
+    public byte MunicaoMax, MunicaoAtual;
+    //public Text municaoMax, municaoAtual;
+    public Text municaoMax, municaoAtual;
+    public float temporizadorRecarga;
+    public bool recarregando;
 
     private void Awake()
     {
+        //municaoMax = GameObject.Find("AmmoAtual").GetComponent<TextMesh>();
         mangerBullet = GetComponent<ManagerBullet>();
         this.bulletPool = GetComponent<Pool>();
         pv = GetComponentInParent<PhotonView>();
     }
     private void Start()
     {
+        MunicaoMax = 20;
+        MunicaoAtual = MunicaoMax;
         if (!pv.IsMine)
         {
             cam.gameObject.SetActive(false);
@@ -38,6 +46,27 @@ public class Weapon : CombatControl
     }
     private void Update()
     {
+        municaoAtual.text = MunicaoAtual.ToString();
+        municaoMax.text = MunicaoMax.ToString();
+        
+        if(this.MunicaoAtual <= 0)
+        {
+            recarregando = true;
+
+       
+        
+        }
+        
+        if (recarregando == true)
+        {
+            temporizadorRecarga += Time.deltaTime;
+            
+            if (temporizadorRecarga >= 2.5f)
+            {
+                Reload();
+            }
+        }
+
         if (!pv.IsMine)
         {
             return;
@@ -123,7 +152,14 @@ public class Weapon : CombatControl
     }
     public override void Reload()
     {
-        count = 0;
+       
+        
+            count = 0;
+            this.MunicaoAtual = MunicaoMax;
+            recarregando = false;
+            temporizadorRecarga = 0.0f;
+        
+       
     }
 
     public override void Aim()

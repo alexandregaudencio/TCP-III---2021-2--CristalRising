@@ -12,8 +12,11 @@ public class Controle : MonoBehaviourPun
     public Animator animator;
     private GameObject aux;
     private Animator playerAnim;
+    
+
     void Start()
     {
+
         this.transform = GetComponent<Transform>();
         if (aux)
             aux = Instantiate(animator.gameObject);
@@ -29,21 +32,28 @@ public class Controle : MonoBehaviourPun
         {
             return;
         }
-        if (Input.GetMouseButtonDown(0))
+        if (gun.MunicaoAtual > 0 && gun.recarregando ==false)
         {
-            playerAnim.SetTrigger("attack");
-            gun.Use();
+            
 
-            //if (spell)
-            //{
-            //    spell.Use();
-            //}
-            //if (photonView.IsMine)
-            //    gun.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
+            if (Input.GetMouseButtonDown(0))
+            {
+                playerAnim.SetTrigger("attack");
+                gun.Use();
+                gun.MunicaoAtual--;
+                //if (spell)
+                //{
+                //    spell.Use();
+                //}
+                //if (photonView.IsMine)
+                //    gun.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
+            }
+            
         }
+       
         if (Input.GetKeyDown(KeyCode.R))
         {
-            gun.Reload();
+            gun.recarregando = true ;
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using Photon.Pun.UtilityScripts;
+using UnityEngine.UI;
 
 
 
@@ -15,13 +16,14 @@ public class DefineMorte : MonoBehaviour
     public float TemporizadorRespawn;
     public bool SpawnCheck;
     public PhotonTeam TimeDesteJogador;
-
-
+    public GameObject CanvasDeMorte;
+    public Text TextoContador;
 
     [SerializeField] private float avada;
 
     private void Start()
     {
+        CanvasDeMorte.gameObject.SetActive(false);
         PP = this.gameObject.GetComponent<PlayerProperty>();
         TimeDesteJogador = PhotonNetwork.LocalPlayer.GetPhotonTeam();
     }
@@ -44,6 +46,11 @@ public class DefineMorte : MonoBehaviour
         if (PP.life <= 0)
         {
             SpawnCheck = true;
+            CanvasDeMorte.gameObject.SetActive(true);
+            if (CanvasDeMorte.activeInHierarchy == true)
+            {
+                TextoContador.text = TemporizadorRespawn.ToString();
+            }
         }
         else
             SpawnCheck = false;
@@ -52,7 +59,7 @@ public class DefineMorte : MonoBehaviour
         {
             this.gameObject.GetComponent<PlayerController>().enabled = false;
             // float T = 0;
-            TemporizadorRespawn += Time.deltaTime;
+                TemporizadorRespawn += Time.deltaTime;
             if (TemporizadorRespawn >= 5.0f)
             {
                 Morre();
