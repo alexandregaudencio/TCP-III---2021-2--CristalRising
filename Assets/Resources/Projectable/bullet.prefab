@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  damage: 10
+  damage: 5
+  criticalDamage: 15
   existenceTomeout: 5
   pool: {fileID: 0}
   hit: {x: 0, y: 0, z: 0}
@@ -103,8 +104,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.13517061, y: 0.11860323, z: 0.12966222}
-  m_Center: {x: 0.0027542561, y: -0.0047178864, z: -0.0055085123}
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7757270840527751956
 GameObject:
   m_ObjectHideFlags: 0

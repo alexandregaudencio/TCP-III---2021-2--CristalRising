@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviourPun, Damage
 {
     public float speed;
     public float damage;
+    public float criticalDamage;
     public float existenceTomeout;
     private float countTime;
     private Color color;
@@ -87,9 +88,12 @@ public class Bullet : MonoBehaviourPun, Damage
             //por algum motivo que eu n sei se eu colocar o fired = false embaixo dessas duas funções
             //o fired não é setado imediatamente com false, o que ocasiona em erro por chamar as funções 
             //mais de uma vez;
-            fired = false;
-            CombineWithMaic();
-            CalculateDamage();
+            if (target.GetComponent<Collider>().bounds.Contains(transform.position))
+            {
+                fired = false;
+                CombineWithMaic();
+                Invoke("CalculateDamage",0.1f);
+            }
         }
     }
     private void BulletLife()
@@ -133,13 +137,29 @@ public class Bullet : MonoBehaviourPun, Damage
     {
         if (target)
         {
+            var chunks = target.GetComponentsInChildren<ChunkDetector>();
             var playerProperty = target.GetComponent<PlayerProperty>();
-            var chunk = target.GetComponentInChildren<ChunkDetector>();
-            Debug.Log(playerProperty);
+
             if (playerProperty)
             {
-                playerProperty.Life = damage;
-                chunk.DetectHit(GetComponent<Collider>());
+                float valeu = 0;
+                foreach (var c in chunks)
+                {
+                    var result = c.DetectHit(GetComponent<Collider>());
+
+                    if (result != null)
+                    {
+                        if (result.Equals(ChunkDetector.head))
+                        {
+                            valeu = criticalDamage;
+                        }
+                        else if (result.Equals(ChunkDetector.body))
+                        {
+                            valeu = this.damage;
+                        }
+                    }
+                }
+                playerProperty.Life = valeu;
             }
         }
     }

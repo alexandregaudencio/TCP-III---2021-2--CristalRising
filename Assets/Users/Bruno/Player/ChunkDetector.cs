@@ -5,17 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class ChunkDetector : MonoBehaviour
 {
+    public const string body = "body";
+    public const string head = "head";
+
     private Collider piece;
+
     private void Start()
     {
         piece = GetComponent<Collider>();
     }
-    public void DetectHit(Collider collider)
+    public string DetectHit(Collider collider)
     {
-        Debug.Log("detect hit");
-        if (piece.bounds.Intersects(collider.bounds))
+        Debug.Log(collider.transform.position);
+        if (piece.bounds.Contains(collider.transform.position) || piece.bounds.Intersects(collider.bounds))
         {
-            Debug.Log("acertou " + name);
+            return name;
         }
+        return null;
     }
 }

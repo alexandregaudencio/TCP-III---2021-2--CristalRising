@@ -48,7 +48,6 @@ public class PlayerProperty : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(textUiLife.GetComponent<Text>());
         var tmp = textUiLife.GetComponent<Text>();
         if (tmp)
         {
