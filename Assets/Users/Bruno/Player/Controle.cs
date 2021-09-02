@@ -9,16 +9,16 @@ public class Controle : MonoBehaviourPun
     public float speed;
     public Weapon gun;
     public Spells spell;
-    public Animator animator;
+    //public Animator animator;
     private GameObject aux;
     private Animator playerAnim;
     void Start()
     {
         this.transform = GetComponent<Transform>();
-        if (aux)
-            aux = Instantiate(animator.gameObject);
-        playerAnim = GetComponentInChildren<Animator>();
-        playerAnim.speed = 10;
+        //if (aux)
+            //aux = Instantiate(animator.gameObject);
+        //playerAnim = GetComponentInChildren<Animator>();
+        //playerAnim.speed = 10;
     }
 
     // Update is called once per frame
@@ -31,8 +31,8 @@ public class Controle : MonoBehaviourPun
         }
         if (Input.GetMouseButtonDown(0))
         {
-            playerAnim.SetTrigger("attack");
-            //gun.Use();
+            //playerAnim.SetTrigger("attack");
+            gun.Use();
 
             if (spell)
             {
