@@ -9,6 +9,7 @@
 
     //Gameplay
     public const int gameplayMaxTime = 100;
+    public const int gameplayTimeBase = 10;
 
     //SceneIndex
     public const int menuSceneIndex = 0;
