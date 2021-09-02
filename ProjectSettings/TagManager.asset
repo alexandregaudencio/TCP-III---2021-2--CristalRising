@@ -6,6 +6,8 @@ TagManager:
   tags:
   - chao
   - area
+  - hit
+  - bullet
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Team1
   - Team2
   - test
-  - CircleArea
+  - weaponIgnore
   - 
   - 
   - 

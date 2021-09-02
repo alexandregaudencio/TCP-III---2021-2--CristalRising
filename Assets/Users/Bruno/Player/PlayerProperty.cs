@@ -13,10 +13,21 @@ public class PlayerProperty : MonoBehaviour
     public GameObject textUiLife;
     public GameObject[] SpawnPointsTimeAzul;
     public GameObject[] SpawnPointTimeVermelho;
-
     public float life;
+
     private float moveSpeed;
     private float maxJumpHeight;
+    public ShowDamage sd;
+
+    public float Life
+    {
+        get { return this.life; }
+        set
+        {
+            this.life -= value;
+            sd.Value = value.ToString();
+        }
+    }
 
     private float buffereMoveSpeed;
     private float bufferMaxJumpHight;
@@ -40,9 +51,9 @@ public class PlayerProperty : MonoBehaviour
         Debug.Log(textUiLife.GetComponent<Text>());
         var tmp = textUiLife.GetComponent<Text>();
         if (tmp)
+        {
             tmp.text = life.ToString();
-        if (life < 0)
-            dead();
+        }
     }
 
     internal void SetAttribute(Attribute attibut)
@@ -51,20 +62,12 @@ public class PlayerProperty : MonoBehaviour
         GetComponent<PlayerController>().jumpForce = attibut.strenght;
     }
 
-    public void Nomalize()
+    public void ResetProperty()
     {
         GetComponent<PlayerController>().moveSpeed = buffereMoveSpeed;
         GetComponent<PlayerController>().jumpForce = buffereMoveSpeed;
 
-        life = bufferlife;
-    }
-    private void dead()
-    {
-        Debug.Log("you died!");
-        // GameObject.Find("PlayerAvatar").GetComponent<DefineMorte>().Morre();
-        //throw new NotImplementedException();
-
-
+        this.life = bufferlife;
     }
 }
 

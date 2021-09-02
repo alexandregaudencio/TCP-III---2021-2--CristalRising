@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 dir;
     private Rigidbody playerRb;
-    [SerializeField] private Camera normalCam;
+    public Camera normalCam;
 
     private float maxRotationY;
     private float rotationX;
@@ -31,10 +32,18 @@ public class PlayerController : MonoBehaviour
     private bool jump, groundCheck;
 
     PhotonView PV;
+    private void Awake()
+    {
+        PV = GetComponent<PhotonView>();
+    }
     void Start()
     {
         if (!PV.IsMine)
+        {
+            normalCam.gameObject.GetComponent<PhysicsRaycaster>().enabled = false;
+            normalCam.enabled = false;
             normalCam.gameObject.SetActive(false);
+        }
         else
         {
             baseFOV = normalCam.fieldOfView;
@@ -63,14 +72,9 @@ public class PlayerController : MonoBehaviour
             }
         lastPosition = transform.position;
     }
-    private void Awake()
-    {
-        PV = GetComponent<PhotonView>();
-    }
+
     void Update()
     {
-        if (!PV.IsMine)
-            return;
         CameraRotation();
         Jumping();
 
@@ -95,8 +99,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!PV.IsMine)
-            return;
         Sprinting();
 
         // float horAxis = Input.GetAxisRaw ("Horizontal");
@@ -143,6 +145,10 @@ public class PlayerController : MonoBehaviour
 
     void CameraRotation()
     {
+        if (!PV.IsMine)
+        {
+            return;
+        }
         // Declaração da rotação da câmera e angulação mínima e máxima.
         rotationX = Mathf.Lerp(rotationX, Input.GetAxisRaw("Mouse X") * 2, 100 * Time.deltaTime);
         maxRotationY = Mathf.Clamp(maxRotationY - (Input.GetAxisRaw("Mouse Y") * 2 * 100 * Time.deltaTime), -30, 30);
@@ -172,6 +178,10 @@ public class PlayerController : MonoBehaviour
 
     private void Sprinting()
     {
+        if (!PV.IsMine)
+        {
+            return;
+        }
         float horAxis = Input.GetAxisRaw("Horizontal");
         float verAxis = Input.GetAxisRaw("Vertical");
 
@@ -188,7 +198,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("move", true);
         }
-        else {
+        else
+        {
             animator.SetBool("move", false);
         }
         lastPosition = transform.position;

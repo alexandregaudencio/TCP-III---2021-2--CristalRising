@@ -134,8 +134,13 @@ public class Bullet : MonoBehaviourPun, Damage
         if (target)
         {
             var playerProperty = target.GetComponent<PlayerProperty>();
+            var chunk = target.GetComponentInChildren<ChunkDetector>();
+            Debug.Log(playerProperty);
             if (playerProperty)
-                playerProperty.life -= damage;
+            {
+                playerProperty.Life = damage;
+                chunk.DetectHit(GetComponent<Collider>());
+            }
         }
     }
 

@@ -20,13 +20,14 @@ public class Slash : Spells, IEffect
     {
         Apply(null);
         if (target)
-            photonView.RPC("Calculate", RpcTarget.All, target.gameObject.GetComponent<PhotonView>().ViewID);
+            photonView.RPC("CalculateDamage", RpcTarget.All, target.gameObject.GetComponent<PhotonView>().ViewID);
     }
     [PunRPC]
-    private void Calculate(int targetId)
+    private void CalculateDamage(int targetId)
     {
         target = PhotonView.Find(targetId).gameObject;
-        target.GetComponent<PlayerProperty>().life -= damage;
+        target.GetComponent<PlayerProperty>().Life = damage;
+        target.GetComponent<ChunkDetector>().DetectHit(GetComponent<Collider>());
         Apply(null);
     }
     public void Apply(Animator animatorId = null)
@@ -52,5 +53,7 @@ public class Slash : Spells, IEffect
             Hertz = bufferAttack;
             trail.enabled = false;
         }
+        //devo rotacionar de acordo com a camera
+        //é diminuir e distancia a area de ataque
     }
 }
