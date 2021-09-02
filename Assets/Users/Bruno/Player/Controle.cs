@@ -32,12 +32,12 @@ public class Controle : MonoBehaviourPun
         if (Input.GetMouseButtonDown(0))
         {
             playerAnim.SetTrigger("attack");
-            //gun.Use();
+            gun.Use();
 
-            if (spell)
-            {
-                spell.Use();
-            }
+            //if (spell)
+            //{
+            //    spell.Use();
+            //}
             //if (photonView.IsMine)
             //    gun.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
         }

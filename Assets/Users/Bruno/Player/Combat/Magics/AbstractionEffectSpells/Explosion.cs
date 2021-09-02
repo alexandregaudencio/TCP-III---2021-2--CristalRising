@@ -31,7 +31,7 @@ public class Explosion : Spells, IEffect
         maxDuration -= Time.deltaTime;
         if (maxDuration <= 0)
         {
-            target.GetComponent<PlayerProperty>().Nomalize();
+            target.GetComponent<PlayerProperty>().ResetProperty();
         }
     }
 }
