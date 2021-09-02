@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-    private Camera camera;
+    private new Camera camera;
     void Start()
     {
         camera = (Camera)FindObjectOfType(typeof(Camera));
@@ -13,5 +13,10 @@ public class Billboard : MonoBehaviour
     void Update()
     {
         transform.LookAt(transform.position - camera.transform.forward);
+
+    }
+    private void LateUpdate()
+    {
+        camera = (Camera)FindObjectOfType(typeof(Camera));
     }
 }
