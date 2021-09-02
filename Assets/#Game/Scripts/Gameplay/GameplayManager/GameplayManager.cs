@@ -7,6 +7,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using System.Linq;
+using Photon.Pun.UtilityScripts;
 
 public class GameplayManager : MonoBehaviourPunCallbacks
 {
@@ -17,16 +18,26 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     public GameObject gameEnd;
     public string msg;
    public Text msgGameEnd;
+    int timer = 999;
+
+    private void Awake()
+    {
+
+    }
     private void Start()
     {
-        gameplayRoomTimer = GetComponent<TimerCountdown>();
-        gameplayRoomTimer.CurrentTime = RoomConfigs.gameplayMaxTime;
+        //gameplayRoomTimer = GetComponent<TimerCountdown>();
+        //gameplayRoomTimer.CurrentTime = RoomConfigs.gameplayMaxTime;
         instance = this;
         gameEnd.SetActive(false);
     }
 
     private void Update()
     {
+        CountdownTimer.TryGetStartTime(out timer);
+
+
+
         UIUpdate();
 
         if (gameplayRoomTimer.IsCountdownOver())
@@ -38,8 +49,10 @@ public class GameplayManager : MonoBehaviourPunCallbacks
 
     private void UIUpdate()
     {
-        string tempTimer = string.Format("{0:00}", gameplayRoomTimer.CurrentTime);
-        timeToDisplay.text = tempTimer;
+        //string tempTimer = string.Format("{0:00}",CountdownTimer);
+        //timeToDisplay.text = tempTimer;
+        //timeToDisplay.text = CountdownTimer.text;
+        
     }
 
     public void EndGamebyTimer()

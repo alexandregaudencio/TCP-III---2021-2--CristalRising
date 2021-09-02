@@ -8,14 +8,14 @@ using Photon.Realtime;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] [Range(1, 50)] public float moveSpeed;
+    [SerializeField] [Range(1, 10)] public float moveSpeed;
     [SerializeField] [Range(1, 3)] private int sprintModifier;
     [SerializeField] private Transform cameraPivot;
     [SerializeField] public float jumpForce;
     [SerializeField] private float maxFallSpeed;
     [SerializeField] private float fallMultiplier;
-    public GameObject teamIdentify;
-    public Animator animator;
+    //public GameObject teamIdentify;
+    //public Animator animator;
 
     private Vector3 dir;
     private Rigidbody playerRb;
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         }
         playerRb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
-        animator.speed = 10;
+        //animator.speed = 10;
 
         Player[] playersTeamBlue;
         Player[] playersTeamRed;
@@ -51,13 +51,13 @@ public class PlayerController : MonoBehaviour
         foreach (Player p in playersTeamBlue)
             if (GetComponent<PhotonView>().Controller.Equals(p))
             {
-                teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
+                //teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
                 gameObject.layer = LayerMask.NameToLayer("Team1");
             }
         foreach (Player p in playersTeamRed)
             if (GetComponent<PhotonView>().Controller.Equals(p))
             {
-                teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.red); 
+                //teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.red); 
                 gameObject.layer = LayerMask.NameToLayer("Team2");
             }
     }
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("chao"))
         {
-            animator.SetBool("onFloor", true);
+            //animator.SetBool("onFloor", true);
             groundCheck = true;
             debug.text = "Grounded";
         }
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
         {
             groundCheck = false;
             debug.text = "Not Grounded";
-            animator.SetBool("onFloor", false);
+            //animator.SetBool("onFloor", false);
         }
     }
 
@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
         {
             // groundCheck = false;
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            animator.SetTrigger("jump");
+            //animator.SetTrigger("jump");
         }
 
         if (playerRb.velocity.y < 0 && playerRb.velocity.y > maxFallSpeed)
@@ -170,8 +170,8 @@ public class PlayerController : MonoBehaviour
 
     private void Sprinting()
     {
-        float horAxis = Input.GetAxisRaw("Horizontal");
-        float verAxis = Input.GetAxisRaw("Vertical");
+        float horAxis = Input.GetAxis("Horizontal");
+        float verAxis = Input.GetAxis("Vertical");
 
         bool sprint = Input.GetKey(KeyCode.LeftShift) && groundCheck;
         bool isSprinting = sprint && verAxis > 0;
@@ -180,19 +180,19 @@ public class PlayerController : MonoBehaviour
         if (isSprinting) adjustedSpeed *= sprintModifier;
         if (horAxis > 0)
         {
-            animator.SetTrigger("right");
+            //animator.SetTrigger("right");
         }
         if (horAxis < 0)
         {
-            animator.SetTrigger("left");
+            //animator.SetTrigger("left");
         }
         if (verAxis > 0)
         {
-            animator.SetTrigger("forward");
+            //animator.SetTrigger("forward");
         }
         if (verAxis < 0)
         {
-            animator.SetTrigger("back");
+            //animator.SetTrigger("back");
         }
         // Controla o campo de visão se o jogador estiver correndo
         if (isSprinting)
@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
 
         // Move o jogador na direção que está virado
         dir = transform.TransformVector(new Vector3(horAxis, 0, verAxis).normalized);
-        playerRb.MovePosition(playerRb.position + dir * adjustedSpeed * Time.deltaTime);
+        playerRb.MovePosition(playerRb.position + dir * moveSpeed * Time.fixedDeltaTime);
 
     }
 
