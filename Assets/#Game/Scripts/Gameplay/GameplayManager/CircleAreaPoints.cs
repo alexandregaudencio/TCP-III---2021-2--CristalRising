@@ -39,10 +39,10 @@ public class CircleAreaPoints : MonoBehaviour
 
     void Start()
     {
-        pointsTeam1 = 0;
-        pointsTeam2 = 0;
-        countPlayerinAreaTeam1 = 0;
-        countPlayerinAreaTeam2 = 0;
+       // pointsTeam1 = 0;
+        //pointsTeam2 = 0;
+        //countPlayerinAreaTeam1 = 0;
+       // countPlayerinAreaTeam2 = 0;
         instance = this;
 
 
@@ -92,16 +92,17 @@ public class CircleAreaPoints : MonoBehaviour
                 string pointStringTeam2 = string.Format("{0:00}", pointsTeam2PerCent);
                 pointsUiTeam2.text = (pointStringTeam2 + "%");
 
+                
 
                 if (PhotonNetwork.IsMasterClient)
                 {
                     pointsTeam1 = pointsTeam1 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam1;
-                    pointsTeam2 =pointsTeam2 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam2;
+                    pointsTeam2 = pointsTeam2 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam2;
                     max = maxPoints / 100;
                     pointsTeam1PerCent = pointsTeam1 / max;
                     pointsTeam2PerCent = pointsTeam2 / max;
-                    pointsTeam1Bar= (pointsTeam1PerCent * max) / maxPoints;
-                    pointsTeam2Bar= (pointsTeam2PerCent * max) / maxPoints;
+                    pointsTeam1Bar = (pointsTeam1PerCent * max) / maxPoints;
+                    pointsTeam2Bar = (pointsTeam2PerCent * max) / maxPoints;
                     PV.RPC("sendPoints", RpcTarget.Others, pointsTeam1PerCent, pointsTeam2PerCent);
                     PV.RPC("sendPointsBar", RpcTarget.Others, pointsTeam1Bar, pointsTeam2Bar);
                 }
