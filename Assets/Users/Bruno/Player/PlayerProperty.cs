@@ -10,28 +10,27 @@ using UnityEngine.UI;
 
 public class PlayerProperty : MonoBehaviour
 {
-    public GameObject textUiLife;
     public GameObject[] SpawnPointsTimeAzul;
     public GameObject[] SpawnPointTimeVermelho;
-    public float life;
+    public Slider lifeUi;
 
     private float moveSpeed;
     private float maxJumpHeight;
     public ShowDamage sd;
 
+    private float buffereMoveSpeed;
+    private float bufferMaxJumpHight;
+    public float life;
     public float Life
     {
-        get { return this.life; }
+        get { return lifeUi.value; }
         set
         {
-            this.life -= value;
+            lifeUi.value -= value;
             sd.Value = value.ToString();
         }
     }
 
-    private float buffereMoveSpeed;
-    private float bufferMaxJumpHight;
-    private float bufferlife;
     private void Start()
     {
         moveSpeed = GetComponent<PlayerController>().moveSpeed;
@@ -40,18 +39,10 @@ public class PlayerProperty : MonoBehaviour
         buffereMoveSpeed = moveSpeed;
         bufferMaxJumpHight = maxJumpHeight;
 
-        bufferlife = life;
         if (GetComponent<PhotonView>().IsMine)
         {
-            textUiLife.SetActive(true);
-        }
-    }
-    private void Update()
-    {
-        var tmp = textUiLife.GetComponent<Text>();
-        if (tmp)
-        {
-            tmp.text = life.ToString();
+            lifeUi.maxValue = life;
+            lifeUi.value = life;
         }
     }
 
@@ -66,7 +57,7 @@ public class PlayerProperty : MonoBehaviour
         GetComponent<PlayerController>().moveSpeed = buffereMoveSpeed;
         GetComponent<PlayerController>().jumpForce = buffereMoveSpeed;
 
-        this.life = bufferlife;
+        lifeUi.value = life;
     }
 }
 
