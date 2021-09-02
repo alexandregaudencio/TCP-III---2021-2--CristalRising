@@ -219,7 +219,6 @@ MonoBehaviour:
   teamIdentify: {fileID: 4116054511908290043}
   animator: {fileID: 3394219779239411529}
   normalCam: {fileID: 5576630319804374759}
-  debug: {fileID: 0}
 --- !u!114 &5572543441186634803
 MonoBehaviour:
   m_ObjectHideFlags: 0

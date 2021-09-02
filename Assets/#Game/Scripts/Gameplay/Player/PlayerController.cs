@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
     private float baseFOV;
     private float sprintFOVModifier = 1.5f;
 
-    public Text debug;
     private bool jump, groundCheck;
 
     PhotonView PV;
@@ -72,7 +71,15 @@ public class PlayerController : MonoBehaviour
             }
         lastPosition = transform.position;
     }
-
+    private void LateUpdate()
+    {
+        if (!PV.IsMine)
+        {
+            normalCam.gameObject.GetComponent<PhysicsRaycaster>().enabled = false;
+            normalCam.enabled = false;
+            normalCam.gameObject.SetActive(false);
+        }
+    }
     void Update()
     {
         if (PV.IsMine)
@@ -132,7 +139,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("onFloor", true);
             groundCheck = true;
-            debug.text = "Grounded";
+
         }
     }
 
@@ -141,7 +148,6 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("chao"))
         {
             groundCheck = false;
-            debug.text = "Not Grounded";
             animator.SetBool("onFloor", false);
         }
     }
