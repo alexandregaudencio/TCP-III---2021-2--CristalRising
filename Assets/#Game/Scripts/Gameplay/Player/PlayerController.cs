@@ -75,8 +75,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        CameraRotation();
-        Jumping();
+        if (PV.IsMine)
+        {
+            CameraRotation();
+            Jumping();
+        }
 
         // if (transform.position.y - chao.transform.position.y > 0.1) {
         //     debug.text = "Not Grounded";
