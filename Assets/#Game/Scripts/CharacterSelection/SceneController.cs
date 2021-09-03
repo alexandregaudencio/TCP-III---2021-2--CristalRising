@@ -37,6 +37,10 @@ public class SceneController : MonoBehaviourPunCallbacks
 
     private void UIUpdate()
     {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PV.RPC("SendTimer", RpcTarget.Others, waintingRoomTimer.CurrentTime);
+        }
         string tempTimer = string.Format("{0:00}", waintingRoomTimer.CurrentTime);
         timeToDisplay.text = tempTimer;
     }
@@ -56,10 +60,10 @@ public class SceneController : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
        
-        if (PhotonNetwork.IsMasterClient)
+        /*if (PhotonNetwork.IsMasterClient)
         {
             PV.RPC("SendTimer", RpcTarget.Others, waintingRoomTimer.CurrentTime);
-        }
+        }*/
         base.OnPlayerEnteredRoom(newPlayer);
     }
 

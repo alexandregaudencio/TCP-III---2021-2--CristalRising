@@ -1085,6 +1085,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5368736721539080528, guid: 160f21419a1f25045827353b2f9ce1e2,
         type: 3}
+      propertyPath: PV
+      value: 
+      objectReference: {fileID: 1120613213}
+    - target: {fileID: 5368736721539080528, guid: 160f21419a1f25045827353b2f9ce1e2,
+        type: 3}
       propertyPath: gameEnd
       value: 
       objectReference: {fileID: 225944583}
@@ -1176,12 +1181,40 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1120613210}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1120613212}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edf7dd1e8adda4e408192df51a89e318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1120613212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5368736721539080533, guid: 160f21419a1f25045827353b2f9ce1e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1120613210}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1120613213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120613212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1159275270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,7 +1677,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 54eec534ed7fa1e44ad5546bb69ce33f, type: 2}
+  - {fileID: 2100000, guid: 8a0d56df4a4a0d74a9489135c6f691b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -33,7 +33,7 @@ public class CircleAreaPoints : MonoBehaviour
     private int countPlayerExtraTeam1;
     private int countPlayerExtraTeam2;
     private float max;
-    private bool endingGame = false;
+    public bool endingGame = false;
 
 
 
@@ -64,7 +64,7 @@ public class CircleAreaPoints : MonoBehaviour
 
            if (countPlayerinAreaTeam1 != countPlayerinAreaTeam2)
             {
-            if (pointsTeam1PerCent < 100 && pointsTeam2PerCent < 100)
+            if (pointsTeam1PerCent < 100 && pointsTeam2PerCent < 100 && endingGame==false)
             {
                 
 
