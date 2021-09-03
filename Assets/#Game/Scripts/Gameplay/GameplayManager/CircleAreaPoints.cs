@@ -66,7 +66,18 @@ public class CircleAreaPoints : MonoBehaviour
             {
             if (pointsTeam1PerCent < 100 && pointsTeam2PerCent < 100)
             {
-                int diffPlayerinArea = countPlayerinAreaTeam1- countPlayerinAreaTeam2;
+                
+
+                
+                string pointStringTeam1 = string.Format("{0:00}", pointsTeam1PerCent);
+                pointsUiTeam1.text = (pointStringTeam1 +"%");
+
+
+                
+                string pointStringTeam2 = string.Format("{0:00}", pointsTeam2PerCent);
+                pointsUiTeam2.text = (pointStringTeam2 + "%");
+
+                int diffPlayerinArea = countPlayerinAreaTeam1 - countPlayerinAreaTeam2;
                 if (diffPlayerinArea > 0)
                 {
                     countPlayerExtraTeam1 = diffPlayerinArea;
@@ -83,26 +94,17 @@ public class CircleAreaPoints : MonoBehaviour
                     countPlayerExtraTeam1 = 0;
                 }
 
-                
-                string pointStringTeam1 = string.Format("{0:00}", pointsTeam1PerCent);
-                pointsUiTeam1.text = (pointStringTeam1 +"%");
-
-
-                
-                string pointStringTeam2 = string.Format("{0:00}", pointsTeam2PerCent);
-                pointsUiTeam2.text = (pointStringTeam2 + "%");
-
-                
+                pointsTeam1 = pointsTeam1 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam1;
+                pointsTeam2 = pointsTeam2 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam2;
+                max = maxPoints / 100;
+                pointsTeam1PerCent = pointsTeam1 / max;
+                pointsTeam2PerCent = pointsTeam2 / max;
+                pointsTeam1Bar = (pointsTeam1PerCent * max) / maxPoints;
+                pointsTeam2Bar = (pointsTeam2PerCent * max) / maxPoints;
 
                 if (PhotonNetwork.IsMasterClient)
                 {
-                    pointsTeam1 = pointsTeam1 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam1;
-                    pointsTeam2 = pointsTeam2 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam2;
-                    max = maxPoints / 100;
-                    pointsTeam1PerCent = pointsTeam1 / max;
-                    pointsTeam2PerCent = pointsTeam2 / max;
-                    pointsTeam1Bar = (pointsTeam1PerCent * max) / maxPoints;
-                    pointsTeam2Bar = (pointsTeam2PerCent * max) / maxPoints;
+                    
                     PV.RPC("sendPoints", RpcTarget.Others, pointsTeam1PerCent, pointsTeam2PerCent);
                     PV.RPC("sendPointsBar", RpcTarget.Others, pointsTeam1Bar, pointsTeam2Bar);
                 }
