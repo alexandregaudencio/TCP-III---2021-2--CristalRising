@@ -20,6 +20,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     [SerializeField] GameObject spawnWallBlue;
     [SerializeField] GameObject spawnWallRed;
     private bool wallDown=false;
+    public PhotonView PV;
     private void Start()
     {
         gameplayRoomTimer = GetComponent<TimerCountdown>();
@@ -56,7 +57,11 @@ public class GameplayManager : MonoBehaviourPunCallbacks
 
     private void UIUpdate()
     {
-        string tempTimer = string.Format("{0:00}", gameplayRoomTimer.CurrentTime);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PV.RPC("sendTime", RpcTarget.Others, gameplayRoomTimer.CurrentTime);
+    }
+    string tempTimer = string.Format("{0:00}", gameplayRoomTimer.CurrentTime);
         timeToDisplay.text = tempTimer;
     }
 
@@ -65,6 +70,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
       
         
         endingGame = true;
+        CircleAreaPoints.instance.endingGame = true;
         Debug.Log("Acabou o jogo pelo tempo: ");
        
         if (CircleAreaPoints.instance.pointsTeam1PerCent > CircleAreaPoints.instance.pointsTeam2PerCent) 
@@ -109,5 +115,12 @@ public class GameplayManager : MonoBehaviourPunCallbacks
         SceneManager.LoadScene(RoomConfigs.menuSceneIndex);
 
     }
+    [PunRPC]
+    public void sendTime(float time)
+    {
 
+        gameplayRoomTimer.CurrentTime = time;
+
+
+    }
 }
