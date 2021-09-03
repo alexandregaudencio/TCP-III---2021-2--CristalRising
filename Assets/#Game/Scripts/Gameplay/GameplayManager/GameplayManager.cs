@@ -92,7 +92,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     }
     public void gameEndActive()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         gameEnd.SetActive(true);
         msgGameEnd.text = msg;
         Cursor.visible = true;
