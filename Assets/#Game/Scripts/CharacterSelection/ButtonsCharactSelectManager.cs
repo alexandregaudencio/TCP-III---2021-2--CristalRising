@@ -38,17 +38,17 @@ public class ButtonsCharactSelectManager : MonoBehaviour
     }
 
 
-    private void SetPlayerProperties(int indexPlayer)
+    private void SetPlayerProperties(int indexCharacterbutton)
     {
-        //HashProperty[]
-        HashProperty["HP"] = Characters[indexPlayer].HP;
-        HashProperty["maxHP"] = Characters[indexPlayer].HP;
-        HashProperty["damage"] = Characters[indexPlayer].damage;
-        HashProperty["ammo"] = Characters[indexPlayer].ammo;
-        HashProperty["maxAmmo"] = Characters[indexPlayer].ammo;
-        HashProperty["characterName"] = Characters[indexPlayer].characterName;
-        HashProperty["characterIndex"] = Characters[indexPlayer].characterIndex;
-        HashProperty["timerRespawn"] = RoomConfigs.timeToRespawn;
+        HashProperty["HP"] = Characters[indexCharacterbutton].HP;
+        HashProperty["maxHP"] = Characters[indexCharacterbutton].HP;
+        //HashProperty["damage"] = Characters[indexPlayer].damage;
+        //HashProperty["ammo"] = Characters[indexPlayer].ammo;
+        //HashProperty["maxAmmo"] = Characters[indexPlayer].ammo;
+        //HashProperty["characterName"] = Characters[indexPlayer].characterName;
+        HashProperty["characterIndex"] = Characters[indexCharacterbutton].characterIndex;
+        
+        HashProperty["timerRespawn"] = RoomConfigs.instance.timeToRespawn;
         HashProperty["isDead"] = false;
 
         PhotonNetwork.LocalPlayer.SetCustomProperties(HashProperty);
@@ -65,17 +65,6 @@ public class ButtonsCharactSelectManager : MonoBehaviour
 
         cancelButton.SetActive(!boolean);
     }
-
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            SwitchButtonsInteractable(true);
-        }
-    }
-
-
 
 }
 

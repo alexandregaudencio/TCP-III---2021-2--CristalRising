@@ -23,10 +23,10 @@ MonoBehaviour:
   HP: 2900
   characterIcon: {fileID: 21300000, guid: 76fac4178f48ae843a7da602568b2967, type: 3}
   ordenedHabillityIcon:
-  - {fileID: 21300000, guid: 76fac4178f48ae843a7da602568b2967, type: 3}
-  - {fileID: 21300000, guid: 76fac4178f48ae843a7da602568b2967, type: 3}
-  - {fileID: 21300000, guid: 76fac4178f48ae843a7da602568b2967, type: 3}
-  - {fileID: 21300000, guid: 76fac4178f48ae843a7da602568b2967, type: 3}
+  - {fileID: 21300000, guid: 48451b6163ecc1d4d8ed515d1cc08d05, type: 3}
+  - {fileID: 21300000, guid: 394d2789fa8d9074393e023c730a85bc, type: 3}
+  - {fileID: 21300000, guid: ac9151204df625d41b80d4eb7eb48719, type: 3}
+  - {fileID: 21300000, guid: 0f3f7de95a6c4eb47b1faab988232bbc, type: 3}
   ordenedHabillityName:
   - habilidade Q
   - Habilidade E

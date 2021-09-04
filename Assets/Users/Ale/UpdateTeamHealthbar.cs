@@ -23,7 +23,7 @@ public class UpdateTeamHealthbar : MonoBehaviourPunCallbacks
         get
         {
             PhotonTeamsManager.Instance.TryGetTeamMembers(team, out teamMembers);
-            return teamMembers[indexPlayer];
+            return indexPlayer < teamMembers.Length ? teamMembers[indexPlayer] : null;
         }
     }
 
@@ -42,7 +42,7 @@ public class UpdateTeamHealthbar : MonoBehaviourPunCallbacks
 
         if(targetPlayer == CurrentPlayer && changedProps == targetPlayer.CustomProperties["HP"])
         {
-            healthbarImg.fillAmount = HealthbarAmmount();
+            healthbarImg.fillAmount = HealthbarAmmount;
         }
     }
 
@@ -51,17 +51,18 @@ public class UpdateTeamHealthbar : MonoBehaviourPunCallbacks
     {
       if(currentPlayer != null && currentPlayer.CustomProperties.ContainsKey("HP"))
         {
-            healthbarImg.fillAmount = HealthbarAmmount();
+            healthbarImg.fillAmount = HealthbarAmmount;
         }
     }
 
 
-    private float HealthbarAmmount()
+    private float HealthbarAmmount
     {
-        float hp = (float)CurrentPlayer.CustomProperties["HP"];
-        float maxHP = (float)CurrentPlayer.CustomProperties["maxHP"];
-        return hp / maxHP;
+        get
+        {
+            float hp = (int)CurrentPlayer.CustomProperties["HP"];
+            float maxHP = (int)CurrentPlayer.CustomProperties["maxHP"];
+            return hp / maxHP;
+        }
     }
-
-
 }

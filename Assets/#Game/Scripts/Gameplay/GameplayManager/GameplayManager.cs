@@ -24,7 +24,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         gameplayRoomTimer = GetComponent<TimerCountdown>();
-        gameplayRoomTimer.CurrentTime = RoomConfigs.gameplayTimeBase;
+        gameplayRoomTimer.CurrentTime = RoomConfigs.instance.gameplayTimeBase;
        // gameplayRoomTimer.CurrentTime = RoomConfigs.gameplayMaxTime;
         instance = this;
         gameEnd.SetActive(false);
@@ -39,7 +39,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
             if (wallDown == false)
             {
                 downWallBase();
-                gameplayRoomTimer.CurrentTime = RoomConfigs.gameplayMaxTime;
+                gameplayRoomTimer.CurrentTime = RoomConfigs.instance.gameplayMaxTime;
                 wallDown = true;
 
             }
@@ -112,7 +112,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     {
         Time.timeScale = 1;
         //Application.Quit();
-        SceneManager.LoadScene(RoomConfigs.menuSceneIndex);
+        SceneManager.LoadScene(RoomConfigs.instance.menuSceneIndex);
 
     }
     [PunRPC]

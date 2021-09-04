@@ -1,29 +1,37 @@
 ﻿using UnityEngine;
 
-public static class RoomConfigs
+public  class RoomConfigs : MonoBehaviour
 {
+    public static RoomConfigs instance;
+
+    private void Start()
+    {
+        instance = this;
+    }
+
     //CreateRoomC
-    public const int maxRoomPlayers = 6;
-    public const int maxPlayersTeam = maxRoomPlayers / 2;
+    public int maxRoomPlayers = 6;
 
     //characterSelection
-    public const int characterSelectionMaxTime = 5;
+    public int characterSelectionMaxTime = 5;
 
     //Gameplay
-    public const int gameplayMaxTime = 100;
-    public const int gameplayTimeBase = 10;
+    public int gameplayMaxTime = 100;
+    public int gameplayTimeBase = 10;
 
     //SceneIndex
-    public const int menuSceneIndex = 0;
-    public const int CharSelecSceneIndex = 1;
-    public const int gameplaySceneIndex = 2;
+    public int menuSceneIndex = 0;
+    public int CharSelecSceneIndex = 1;
+    public int gameplaySceneIndex = 2;
 
 
     //Players
-    public const int timeToRespawn = 8;
+    public int timeToRespawn = 8;
 
     //team
-    public static Color blueTeamColor = new Color(0, 129, 255);
-    public static Color redTeamColor = new Color(233, 36 , 41);
+    public Color blueTeamColor = new Color(0, 129, 255, 255);
+    public Color redTeamColor = new Color(233, 36, 41, 255);
 
+
+    public Character[] charactersOrdered;
 }

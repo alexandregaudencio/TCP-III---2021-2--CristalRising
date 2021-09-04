@@ -16,7 +16,7 @@ public class TimerCountdown : MonoBehaviour
     }
     public bool IsCountdownStart()
     {
-       timePassed = RoomConfigs.gameplayMaxTime - CurrentTime ;
+       timePassed = RoomConfigs.instance.gameplayMaxTime - CurrentTime ;
         return (timePassed < 5) ? false : true;
     }
 
