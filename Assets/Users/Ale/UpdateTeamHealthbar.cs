@@ -15,35 +15,34 @@ public class UpdateTeamHealthbar : MonoBehaviourPunCallbacks
     Player[] teamMembers;
 
     Image healthbarImg;
-    Player currentPlayer;
+    private Player currentPlayer;
+    public Player CurrentPlayer { get => currentPlayer; set => currentPlayer = value; }
+
+    private Player Player
+    {
+        get
+        {
+            PhotonTeamsManager.Instance.TryGetTeamMembers(team, out teamMembers);
+            return teamMembers[indexPlayer];
+        }
+    }
+
 
     void Start()
     {
         healthbarImg = GetComponent<Image>();
-        currentPlayer = getPlayer();
-        ResetTeamProps(this.currentPlayer);
+        CurrentPlayer = Player;
+        ResetTeamProps(this.CurrentPlayer);
 
-        //if(currentPlayer == null)
-        //{
-        //    currentPlayer = getPlayer();
-        //}
+
     }
-
-    private Player getPlayer()
-    {
-        PhotonTeamsManager.Instance.TryGetTeamMembers(team, out teamMembers);
-            return teamMembers[indexPlayer];
-    }
-
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
 
-        if(targetPlayer == currentPlayer && changedProps == targetPlayer.CustomProperties["HP"])
+        if(targetPlayer == CurrentPlayer && changedProps == targetPlayer.CustomProperties["HP"])
         {
-            float hp = (float)targetPlayer.CustomProperties["HP"];
-            float maxHP = (float)targetPlayer.CustomProperties["maxHP"];
-            healthbarImg.fillAmount = hp /maxHP;
+            healthbarImg.fillAmount = HealthbarAmmount();
         }
     }
 
@@ -52,32 +51,17 @@ public class UpdateTeamHealthbar : MonoBehaviourPunCallbacks
     {
       if(currentPlayer != null && currentPlayer.CustomProperties.ContainsKey("HP"))
         {
-            float hp = (float)currentPlayer.CustomProperties["HP"];
-            float maxHP = (float)currentPlayer.CustomProperties["maxHP"];
-            healthbarImg.fillAmount = hp / maxHP;
+            healthbarImg.fillAmount = HealthbarAmmount();
         }
     }
 
 
-    //private void OnGUI()
-    //{
-    //    if (currentPlayer.CustomProperties.ContainsKey("HP"))
-    //    {
-    //        ////PROVISÓRIO
-    //        GUILayout.BeginHorizontal();
-    //        GUILayout.Label("HP" + indexPlayer + ": " + (int)currentPlayer.CustomProperties["HP"]);
-    //        //GUILayout.Label("maxHP" + indexPlayer + ": " + (int)currentPlayer.CustomProperties["maxHP"]);
-    //        //GUILayout.Label("maxAmmo" + indexPlayer + ": " + (int)currentPlayer.CustomProperties["maxAmmo"]);
-
-    //        GUILayout.EndHorizontal();
-    //    }
-    //}
-
-
-
-
-
-
+    private float HealthbarAmmount()
+    {
+        float hp = (float)CurrentPlayer.CustomProperties["HP"];
+        float maxHP = (float)CurrentPlayer.CustomProperties["maxHP"];
+        return hp / maxHP;
+    }
 
 
 }

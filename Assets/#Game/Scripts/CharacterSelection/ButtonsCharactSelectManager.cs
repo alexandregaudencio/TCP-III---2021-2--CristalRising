@@ -16,12 +16,12 @@ public class ButtonsCharactSelectManager : MonoBehaviour
     [SerializeField] private Character[] Characters;
 
     private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
-    //private ExitGames.Client.Photon.Hashtable characterIcon = new ExitGames.Client.Photon.Hashtable();
-
 
     private void Start()
     {
         PhotonNetwork.LocalPlayer.TagObject = CharacterDefault.name;
+        //define o player 0 como padrão. Daí o jogador pode escolher outro enquanto houver tempo.
+        SetPlayerProperties(0);
     }
 
 
@@ -37,15 +37,6 @@ public class ButtonsCharactSelectManager : MonoBehaviour
         SetPlayerProperties(indexImgIcon);
     }
 
-    private void SwitchButtonsInteractable(bool boolean)
-    {
-        foreach (Button buttons in characterSelectButtons)
-        {
-            buttons.interactable = boolean;
-        }
-
-        cancelButton.SetActive(!boolean);
-    }
 
     private void SetPlayerProperties(int indexPlayer)
     {
@@ -55,32 +46,35 @@ public class ButtonsCharactSelectManager : MonoBehaviour
         HashProperty["damage"] = Characters[indexPlayer].damage;
         HashProperty["ammo"] = Characters[indexPlayer].ammo;
         HashProperty["maxAmmo"] = Characters[indexPlayer].ammo;
-
         HashProperty["characterName"] = Characters[indexPlayer].characterName;
         HashProperty["characterIndex"] = Characters[indexPlayer].characterIndex;
-        PhotonNetwork.LocalPlayer.SetCustomProperties(HashProperty);
-        //foreach (DictionaryEntry hash in HashProperty)
-        //{
-        //    Debug.Log(hash.Key + ": " + hash.Value);
+        HashProperty["timerRespawn"] = RoomConfigs.timeToRespawn;
+        HashProperty["isDead"] = false;
 
-        //}
+        PhotonNetwork.LocalPlayer.SetCustomProperties(HashProperty);
+
     }
 
 
-        private void OnGUI()
+    public void SwitchButtonsInteractable(bool boolean)
+    {
+        foreach (Button buttons in characterSelectButtons)
         {
-
-        foreach (DictionaryEntry hash in HashProperty)
-        {
-            GUILayout.BeginHorizontal();
-            GUILayout.Label(hash.Key + ": " + hash.Value);
-            GUILayout.EndHorizontal();
-
+            buttons.interactable = boolean;
         }
 
-
-
+        cancelButton.SetActive(!boolean);
     }
+
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SwitchButtonsInteractable(true);
+        }
+    }
+
 
 
 }
