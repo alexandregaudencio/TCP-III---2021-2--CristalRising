@@ -214,8 +214,6 @@ MonoBehaviour:
   jumpForce: 10
   maxFallSpeed: 10
   fallMultiplier: 0
-  teamIdentify: {fileID: 4116054511908290043}
-  animator: {fileID: 3394219779239411529}
   normalCam: {fileID: 5576630319804374759}
   debug: {fileID: 1222739733093315544}
 --- !u!114 &5572543441186634803
@@ -233,8 +231,6 @@ MonoBehaviour:
   speed: 10
   gun: {fileID: 261208917441878200}
   spell: {fileID: 6070714403112781189}
-  animator: {fileID: 3979610633020015315, guid: a69eedb3e9f10df4fa7787f5d31a9819,
-    type: 3}
 --- !u!114 &4135133243485489325
 MonoBehaviour:
   m_ObjectHideFlags: 0
