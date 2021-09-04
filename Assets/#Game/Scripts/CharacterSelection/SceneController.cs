@@ -19,7 +19,7 @@ public class SceneController : MonoBehaviourPunCallbacks
     {
         PV = GetComponent<PhotonView>();
         waintingRoomTimer = GetComponent<TimerCountdown>();
-        waintingRoomTimer.CurrentTime = RoomConfigs.characterSelectionMaxTime;
+        waintingRoomTimer.CurrentTime = RoomConfigs.instance.characterSelectionMaxTime;
         
     }
 
@@ -51,7 +51,7 @@ public class SceneController : MonoBehaviourPunCallbacks
         //aqui
         if (!PhotonNetwork.IsMasterClient) return;
         PhotonNetwork.CurrentRoom.IsOpen = false;
-        PhotonNetwork.LoadLevel(RoomConfigs.gameplaySceneIndex);
+        PhotonNetwork.LoadLevel(RoomConfigs.instance.gameplaySceneIndex);
         
     }
 

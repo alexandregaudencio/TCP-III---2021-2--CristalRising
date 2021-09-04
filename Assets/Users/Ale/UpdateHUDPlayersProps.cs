@@ -6,7 +6,7 @@ using TMPro;
 using Photon.Realtime;
 using Photon.Pun;
 
-public class UpdateHUDPlayersPros : MonoBehaviourPunCallbacks
+public class UpdateHUDPlayersProps : MonoBehaviourPunCallbacks
 {
     /*[SerializeField] */
     private TMP_Text textTimerRespawn;

@@ -17,7 +17,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         //PARA TESTES
         if (Input.GetKeyDown(KeyCode.G))
         {
-            if(PhotonNetwork.IsMasterClient) PhotonNetwork.LoadLevel(RoomConfigs.CharSelecSceneIndex);
+            if(PhotonNetwork.IsMasterClient) PhotonNetwork.LoadLevel(RoomConfigs.instance.CharSelecSceneIndex);
         }
 
     }
@@ -33,7 +33,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         string roomName = Random.Range(0, 2000).ToString();
         RoomOptions roomOptions = new RoomOptions()
         {
-            MaxPlayers = RoomConfigs.maxRoomPlayers,
+            MaxPlayers = (byte)RoomConfigs.instance.maxRoomPlayers,
             IsOpen = true
         };
         PhotonNetwork.CreateRoom(roomName, roomOptions);
@@ -62,7 +62,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     IEnumerator transitionToCharactSelectScene()
     {
         yield return new WaitForSeconds(1);
-        PhotonNetwork.LoadLevel(RoomConfigs.CharSelecSceneIndex);
+        PhotonNetwork.LoadLevel(RoomConfigs.instance.CharSelecSceneIndex);
 
     }
 
