@@ -1,4 +1,6 @@
-﻿public static class RoomConfigs
+﻿using UnityEngine;
+
+public static class RoomConfigs
 {
     //CreateRoomC
     public const int maxRoomPlayers = 6;
@@ -15,5 +17,13 @@
     public const int menuSceneIndex = 0;
     public const int CharSelecSceneIndex = 1;
     public const int gameplaySceneIndex = 2;
+
+
+    //Players
+    public const int timeToRespawn = 8;
+
+    //team
+    public static Color blueTeamColor = new Color(0, 129, 255);
+    public static Color redTeamColor = new Color(233, 36 , 41);
 
 }
