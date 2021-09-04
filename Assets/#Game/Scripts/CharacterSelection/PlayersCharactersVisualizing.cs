@@ -37,7 +37,7 @@ public class PlayersCharactersVisualizing : MonoBehaviourPunCallbacks
         {
             if(myTeamMembers[i] == targetPlayer)
             {
-                int indexImg = (int)targetPlayer.CustomProperties["characterIcon"];
+                int indexImg = (int)targetPlayer.CustomProperties["characterIndex"];
                 PlayersCharacterIcon[i].sprite = charactersIconToSet[indexImg];
             }
         }        

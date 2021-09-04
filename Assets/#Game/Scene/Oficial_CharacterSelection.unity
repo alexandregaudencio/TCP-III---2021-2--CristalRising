@@ -2345,7 +2345,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.08860417, y: 0.83957714}
   m_AnchorMax: {x: 0.2364792, y: 0.92273253}
-  m_AnchoredPosition: {x: -22.699951, y: 3}
+  m_AnchoredPosition: {x: -22.699936, y: 3}
   m_SizeDelta: {x: 16.93451, y: -0.56266785}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1690127108
@@ -2385,6 +2385,13 @@ MonoBehaviour:
   CharacterDefault: {fileID: 134812347425223253, guid: 282a653609ed9ae4bb918477fcbb541b,
     type: 3}
   cancelButton: {fileID: 636977737}
+  Characters:
+  - {fileID: 11400000, guid: aaa7a7f7fa41c4c4e815c0e60758b763, type: 2}
+  - {fileID: 11400000, guid: 54902b6725618524cabbcbe8f504c24e, type: 2}
+  - {fileID: 11400000, guid: aaa7a7f7fa41c4c4e815c0e60758b763, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1690127110
 Transform:
   m_ObjectHideFlags: 0
@@ -2426,12 +2433,12 @@ MonoBehaviour:
   - {fileID: 1474597592}
   - {fileID: 2112258014}
   charactersIconToSet:
-  - {fileID: 21300000, guid: bd293dc32f4aaf94e8274f2fac2cdf89, type: 3}
-  - {fileID: 21300000, guid: 56bbc6b42271d4177ac313247f47ac1f, type: 3}
-  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 21300000, guid: 936345f7fc3934efa8119a8700d904c7, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 1bb7bb3ac3fe45949bfa3bca87100d90, type: 3}
+  - {fileID: 21300000, guid: 76fac4178f48ae843a7da602568b2967, type: 3}
+  - {fileID: 21300000, guid: 44ebd8e6f42cae445ab4b22f0a9b48a0, type: 3}
+  - {fileID: 21300000, guid: 44ebd8e6f42cae445ab4b22f0a9b48a0, type: 3}
+  - {fileID: 21300000, guid: 44ebd8e6f42cae445ab4b22f0a9b48a0, type: 3}
+  - {fileID: 21300000, guid: 44ebd8e6f42cae445ab4b22f0a9b48a0, type: 3}
 --- !u!1 &1702373980
 GameObject:
   m_ObjectHideFlags: 0

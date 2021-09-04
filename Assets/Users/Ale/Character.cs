@@ -5,25 +5,13 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Character : ScriptableObject
 {
-    [SerializeField]
-    GameObject characterPrefab;
-
-    [SerializeField]
-    string characterName, frase, Descricao;
-    [SerializeField]
-    int HP, damage, Ammo;
-    [SerializeField]
-    Sprite characterIcon;
-
-    [SerializeField]
-    Sprite[] ordenedHabillityIcon;
-    [SerializeField]
-    string[] ordenedHabillityName, ordenedHabillityDescription;
-
-
-
-    
-
+    public GameObject characterPrefab;
+    public string characterName, frase, Descricao;
+    public int characterIndex, damage, ammo;
+    public float HP;
+    public Sprite characterIcon;
+    public Sprite[] ordenedHabillityIcon;
+    public string[] ordenedHabillityName, ordenedHabillityDescription;
  
 
 }
