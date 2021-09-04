@@ -38,18 +38,18 @@ public class TeamManager : PhotonTeamsManager
         Instance.TryGetTeamMembers(2, out playersTeamRed);
 
 
-        //PROVISÓRIO
-        GUILayout.BeginVertical();
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Team Blue");
-            foreach (Player p in playersTeamBlue){GUILayout.Button(p.NickName);}
-             GUILayout.EndHorizontal();
+        ////PROVISÓRIO
+        //GUILayout.BeginVertical();
+        //    GUILayout.BeginHorizontal();
+        //    GUILayout.Label("Team Blue");
+        //    foreach (Player p in playersTeamBlue){GUILayout.Button(p.NickName);}
+        //     GUILayout.EndHorizontal();
 
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Team Red");
-            foreach (Player p in playersTeamRed) { GUILayout.Button(p.NickName); }
-            GUILayout.EndHorizontal();
-        GUILayout.EndVertical();
+        //    GUILayout.BeginHorizontal();
+        //    GUILayout.Label("Team Red");
+        //    foreach (Player p in playersTeamRed) { GUILayout.Button(p.NickName); }
+        //    GUILayout.EndHorizontal();
+        //GUILayout.EndVertical();
 
         
 
