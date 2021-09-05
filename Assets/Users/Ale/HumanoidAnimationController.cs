@@ -14,8 +14,11 @@ public class HumanoidAnimationController : MonoBehaviour
     [SerializeField] private Controle controle;
 
     PhotonView PV;
+
+    [SerializeField] private new Rigidbody rigidbody;
     void Start()
     {
+        
         animator = GetComponent<Animator>();
         controle = GetComponentInParent<Controle>();
         PV = GetComponent<PhotonView>();

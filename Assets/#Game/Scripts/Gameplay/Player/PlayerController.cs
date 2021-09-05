@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 lastPosition;
 
     private Vector3 dir;
-    private Rigidbody playerRb;
+    private Rigidbody playerRigidBody;
     public Camera normalCam;
     //public Transform rotationTransformCam;
 
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         {
             baseFOV = normalCam.fieldOfView;
         }
-        playerRb = GetComponent<Rigidbody>();
+        playerRigidBody = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         //animator.speed = 10;
 
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Sprinting();
-
+        normalCam.transform.position = cameraPivot.transform.position;
         // float horAxis = Input.GetAxisRaw ("Horizontal");
         // float verAxis = Input.GetAxisRaw ("Vertical");
 
@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
         normalCam.transform.rotation = Quaternion.Lerp(normalCam.transform.rotation, Quaternion.Euler(maxRotationY * 2, transform.eulerAngles.y, 0), 100 * Time.deltaTime);
 
         // Posição da câmera acompanha a posição do jogador.
-        normalCam.transform.position = Vector3.Lerp(normalCam.transform.position, normalCam.transform.position, 50 * Time.deltaTime);
+        normalCam.transform.position = Vector3.Lerp(normalCam.transform.position*1.0f, normalCam.transform.position, 50 * Time.deltaTime);
     }
 
     private void Jumping()
@@ -176,13 +176,13 @@ public class PlayerController : MonoBehaviour
         if (jump && groundCheck)
         {
             // groundCheck = false;
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            playerRigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             //animator.SetTrigger("jump");
         }
 
-        if (playerRb.velocity.y < 0 && playerRb.velocity.y > maxFallSpeed)
+        if (playerRigidBody.velocity.y < 0 && playerRigidBody.velocity.y > maxFallSpeed)
         {
-            playerRb.velocity += new Vector3(0, Physics.gravity.y * fallMultiplier * Time.deltaTime, 0);
+            playerRigidBody.velocity += new Vector3(0, Physics.gravity.y * fallMultiplier * Time.deltaTime, 0);
         }
     }
 
@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
 
         // Move o jogador na direção que está virado
         dir = transform.TransformVector(new Vector3(horAxis, 0, verAxis).normalized);
-        playerRb.MovePosition(playerRb.position + dir * adjustedSpeed * Time.deltaTime);
+        playerRigidBody.MovePosition(playerRigidBody.position + dir * adjustedSpeed * Time.deltaTime);
 
     }
 
