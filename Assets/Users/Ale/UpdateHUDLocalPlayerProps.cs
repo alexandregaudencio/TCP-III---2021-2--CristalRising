@@ -14,6 +14,7 @@ public class UpdateHUDLocalPlayerProps : MonoBehaviourPunCallbacks
     [SerializeField] private Image characterIcon;
     [SerializeField] private Image characterBorderIcon;
     [SerializeField] private TMP_Text charactername;
+    [SerializeField] private TMP_Text characterAmmo;
 
     Player LocalPlayer;
     byte myTeam;
@@ -45,8 +46,8 @@ public class UpdateHUDLocalPlayerProps : MonoBehaviourPunCallbacks
     {
         get
         {
-            float hp = (int)LocalPlayer.CustomProperties["HP"];
-            float maxHP = (int)LocalPlayer.CustomProperties["maxHP"];
+            int hp = (int)LocalPlayer.CustomProperties["HP"];
+            int maxHP = (int)LocalPlayer.CustomProperties["maxHP"];
             return hp / maxHP;
         }
     }
@@ -86,6 +87,7 @@ public class UpdateHUDLocalPlayerProps : MonoBehaviourPunCallbacks
         HPText.text = HPString;
         charactername.text = RoomConfigs.instance.charactersOrdered[characterIndex].characterName;
         charactername.color = TeamColor;
+
     }
 
 

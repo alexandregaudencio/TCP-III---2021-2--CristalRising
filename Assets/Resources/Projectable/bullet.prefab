@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  damage: 5
-  criticalDamage: 15
+  damage: 200
+  criticalDamage: 500
   existenceTomeout: 5
   pool: {fileID: 0}
   hit: {x: 0, y: 0, z: 0}

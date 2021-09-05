@@ -4,6 +4,7 @@ using Photon.Realtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -22,11 +23,17 @@ public class Weapon : CombatControl
 
     private Vector3 mark;
     private PhotonView pv;
-    public byte MunicaoMax, MunicaoAtual;
+    //public byte MunicaoMax, MunicaoAtual;
     //public Text municaoMax, municaoAtual;
-    public Text municaoMax, municaoAtual;
+    //public Text municaoMax, municaoAtual;
+    private int maxAmmo;
+    private int ammo;
+
     public float temporizadorRecarga;
     public bool recarregando;
+
+    public int MaxAmmo { get => maxAmmo; set => maxAmmo = value; }
+    public int Ammo { get => ammo; set => ammo = value; }
 
     private void Awake()
     {
@@ -34,11 +41,14 @@ public class Weapon : CombatControl
         mangerBullet = GetComponent<ManagerBullet>();
         this.bulletPool = GetComponent<Pool>();
         pv = GetComponentInParent<PhotonView>();
+        setAmmo();
     }
     private void Start()
     {
-        MunicaoMax = 20;
-        MunicaoAtual = MunicaoMax;
+        
+
+
+        //MunicaoAtual = MunicaoMax;
         if (!pv.IsMine)
         {
             cam.gameObject.SetActive(false);
@@ -46,15 +56,12 @@ public class Weapon : CombatControl
     }
     private void Update()
     {
-        municaoAtual.text = MunicaoAtual.ToString();
-        municaoMax.text = MunicaoMax.ToString();
+        //municaoAtual.text = MunicaoAtual.ToString();
+        //municaoMax.text = MunicaoMax.ToString();
         
-        if(this.MunicaoAtual <= 0)
+        if(ammo <= 0)
         {
-            recarregando = true;
-
-       
-        
+            recarregando = true; 
         }
         
         if (recarregando == true)
@@ -152,13 +159,10 @@ public class Weapon : CombatControl
     }
     public override void Reload()
     {
-       
-        
             count = 0;
-            this.MunicaoAtual = MunicaoMax;
+            ammo = MaxAmmo;
             recarregando = false;
-            temporizadorRecarga = 0.0f;
-        
+            temporizadorRecarga = 0.000f;        
        
     }
 
@@ -167,4 +171,12 @@ public class Weapon : CombatControl
         transform.LookAt(mark);
         //cross.rectTransform.position = Input.mousePosition;
     }
+
+    public void setAmmo()
+    {
+        int characterIndex = (int)PhotonNetwork.LocalPlayer.CustomProperties["characterIndex"];
+        ammo = RoomConfigs.instance.charactersOrdered[characterIndex].ammo;
+        MaxAmmo = RoomConfigs.instance.charactersOrdered[characterIndex].ammo;
+    }
+
 }

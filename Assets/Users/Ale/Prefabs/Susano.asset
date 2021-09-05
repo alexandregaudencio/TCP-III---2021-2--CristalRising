@@ -19,7 +19,7 @@ MonoBehaviour:
   Descricao: "Derrota seus advers\xE1rios na navalha."
   characterIndex: 0
   damage: 500
-  ammo: 0
+  ammo: 20
   HP: 4500
   characterIcon: {fileID: 21300000, guid: 1bb7bb3ac3fe45949bfa3bca87100d90, type: 3}
   ordenedHabillityIcon:
