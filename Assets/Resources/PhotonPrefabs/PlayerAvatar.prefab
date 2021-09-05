@@ -218,7 +218,6 @@ MonoBehaviour:
   maxFallSpeed: 10
   fallMultiplier: 0
   teamIdentify: {fileID: 0}
-  animator: {fileID: 0}
   normalCam: {fileID: 5576630319804374759}
 --- !u!114 &5572543441186634803
 MonoBehaviour:

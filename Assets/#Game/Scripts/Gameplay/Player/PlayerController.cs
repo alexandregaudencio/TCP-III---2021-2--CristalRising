@@ -52,24 +52,24 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         //animator.speed = 10;
 
-        Player[] playersTeamBlue;
-        Player[] playersTeamRed;
+        //Player[] playersTeamBlue;
+        //Player[] playersTeamRed;
 
-        PhotonTeamsManager.Instance.TryGetTeamMembers("Blue", out playersTeamBlue);
-        PhotonTeamsManager.Instance.TryGetTeamMembers("Red", out playersTeamRed);
+        //PhotonTeamsManager.Instance.TryGetTeamMembers("Blue", out playersTeamBlue);
+        //PhotonTeamsManager.Instance.TryGetTeamMembers("Red", out playersTeamRed);
 
-        foreach (Player p in playersTeamBlue)
-            if (GetComponent<PhotonView>().Controller.Equals(p))
-            {
-                teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
-                gameObject.layer = LayerMask.NameToLayer("Team1");
-            }
-        foreach (Player p in playersTeamRed)
-            if (GetComponent<PhotonView>().Controller.Equals(p))
-            {
-                teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
-                gameObject.layer = LayerMask.NameToLayer("Team2");
-            }
+        //foreach (Player p in playersTeamBlue)
+        //    if (GetComponent<PhotonView>().Controller.Equals(p))
+        //    {
+        //        teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
+        //        gameObject.layer = LayerMask.NameToLayer("Team1");
+        //    }
+        //foreach (Player p in playersTeamRed)
+        //    if (GetComponent<PhotonView>().Controller.Equals(p))
+        //    {
+        //        teamIdentify.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        //        gameObject.layer = LayerMask.NameToLayer("Team2");
+        //    }
         lastPosition = transform.position;
     }
     private void LateUpdate()
@@ -192,8 +192,8 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        float horAxis = Input.GetAxisRaw("Horizontal");
-        float verAxis = Input.GetAxisRaw("Vertical");
+        float horAxis = Input.GetAxis("Horizontal");
+        float verAxis = Input.GetAxis("Vertical");
 
         bool sprint = Input.GetKey(KeyCode.LeftShift) && groundCheck;
         bool isSprinting = sprint && verAxis > 0;

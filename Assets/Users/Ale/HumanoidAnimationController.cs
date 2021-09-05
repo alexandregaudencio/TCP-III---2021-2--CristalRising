@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
@@ -10,29 +11,43 @@ public class HumanoidAnimationController : MonoBehaviour
     [SerializeField] private Transform normalCam;
     [SerializeField] private Transform spine;
     [SerializeField] private Transform neck;
-    /*[SerializeField]*/ private Controle controle;
+    [SerializeField] private Controle controle;
 
+    PhotonView PV;
     void Start()
     {
         animator = GetComponent<Animator>();
         controle = GetComponentInParent<Controle>();
-
+        PV = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
-        animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+        if(PV.IsMine)
+        {
+            ProcessRunAnimation();
+            ProcessAimTransform();
+            ProcessReloading();
+            ProcessShooting();
+        }
 
-        ProcessAimTransform();
-        ProcessReloading();
 
-        if (Input.GetMouseButton(0) && !animator.GetBool("Reloading")) {
+    }
+    
+    private void ProcessShooting()
+    {
+        if (Input.GetMouseButton(0) && !animator.GetBool("Reloading"))
+        {
             animator.SetTrigger("Shoot");
         }
 
-        
+    }
+    private void ProcessRunAnimation()
+    {
+        animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
+        animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+
     }
 
     private void ProcessAimTransform()
@@ -51,6 +66,8 @@ public class HumanoidAnimationController : MonoBehaviour
         }
     }
 
+
+    //TODO
     IEnumerator DisablingReloading()
     {
         yield return new WaitForSeconds(1.5f);
