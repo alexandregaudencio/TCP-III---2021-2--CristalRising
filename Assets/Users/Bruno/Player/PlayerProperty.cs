@@ -7,9 +7,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerController))]
-
 public class PlayerProperty : MonoBehaviour
 {
+
     public GameObject[] SpawnPointsTimeAzul;
     public GameObject[] SpawnPointTimeVermelho;
     public Slider lifeUi;
@@ -26,10 +26,17 @@ public class PlayerProperty : MonoBehaviour
         get { return lifeUi.value; }
         set
         {
+            int hp = (int)PhotonNetwork.LocalPlayer.CustomProperties["HP"];
+            HashProperty["HP"] = hp - (int)value;
+            PhotonNetwork.LocalPlayer.SetCustomProperties(HashProperty);
             lifeUi.value -= value;
             sd.Value = value.ToString();
         }
     }
+
+
+    private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
+
 
     private void Start()
     {
@@ -44,6 +51,8 @@ public class PlayerProperty : MonoBehaviour
             lifeUi.maxValue = life;
             lifeUi.value = life;
         }
+
+
     }
 
     internal void SetAttribute(Attribute attibut)

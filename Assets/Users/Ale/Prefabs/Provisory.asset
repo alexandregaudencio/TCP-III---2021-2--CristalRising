@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 4932945436319576234, guid: 000098933a5b13841bcc7a649be54456,
     type: 3}
-  characterName: ProvisoryAvatar__
+  characterName: Provisory
   frase: "Personagem Provis\xF3rio."
   Descricao: Tem tudo que um personagem deste jogo precisa.
   characterIndex: 1

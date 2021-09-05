@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
 
 public class Controle : MonoBehaviourPun
 {
@@ -12,16 +13,18 @@ public class Controle : MonoBehaviourPun
     public Animator animator;
     private GameObject aux;
     private Animator playerAnim;
-    
+
+    [SerializeField] private TMP_Text ammoText;
 
     void Start()
     {
-
         this.transform = GetComponent<Transform>();
         if (aux)
             aux = Instantiate(animator.gameObject);
         playerAnim = GetComponentInChildren<Animator>();
         playerAnim.speed = 10;
+
+        UpdateAmmoText();
     }
 
     // Update is called once per frame
@@ -32,7 +35,7 @@ public class Controle : MonoBehaviourPun
         {
             return;
         }
-        if (gun.MunicaoAtual > 0 && gun.recarregando ==false)
+        if (gun.Ammo > 0 && gun.recarregando ==false)
         {
             
 
@@ -40,7 +43,8 @@ public class Controle : MonoBehaviourPun
             {
                 playerAnim.SetTrigger("attack");
                 gun.Use();
-                gun.MunicaoAtual--;
+                gun.Ammo--;
+                UpdateAmmoText();
                 //if (spell)
                 //{
                 //    spell.Use();
@@ -55,5 +59,12 @@ public class Controle : MonoBehaviourPun
         {
             gun.recarregando = true ;
         }
+
+
+    }
+
+    public void UpdateAmmoText()
+    {
+        ammoText.text = gun.Ammo.ToString() + "/" + gun.MaxAmmo.ToString();
     }
 }
