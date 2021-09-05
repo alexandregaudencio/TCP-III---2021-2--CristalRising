@@ -16,12 +16,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxFallSpeed;
     [SerializeField] private float fallMultiplier;
     public GameObject teamIdentify;
-    public Animator animator;
+    //public Animator animator;
     private Vector3 lastPosition;
 
     private Vector3 dir;
     private Rigidbody playerRb;
     public Camera normalCam;
+    //public Transform rotationTransformCam;
 
     private float maxRotationY;
     private float rotationX;
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour
         }
         playerRb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
-        animator.speed = 10;
+        //animator.speed = 10;
 
         Player[] playersTeamBlue;
         Player[] playersTeamRed;
@@ -137,7 +138,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("chao"))
         {
-            animator.SetBool("onFloor", true);
+            //animator.SetBool("onFloor", true);
             groundCheck = true;
 
         }
@@ -148,7 +149,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("chao"))
         {
             groundCheck = false;
-            animator.SetBool("onFloor", false);
+            //animator.SetBool("onFloor", false);
         }
     }
 
@@ -176,7 +177,7 @@ public class PlayerController : MonoBehaviour
         {
             // groundCheck = false;
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            animator.SetTrigger("jump");
+            //animator.SetTrigger("jump");
         }
 
         if (playerRb.velocity.y < 0 && playerRb.velocity.y > maxFallSpeed)
@@ -200,16 +201,16 @@ public class PlayerController : MonoBehaviour
         float adjustedSpeed = moveSpeed;
         if (isSprinting) adjustedSpeed *= sprintModifier;
 
-        animator.SetFloat("horizontal", horAxis);
-        animator.SetFloat("vertical", verAxis);
+        //animator.SetFloat("horizontal", horAxis);
+        //animator.SetFloat("vertical", verAxis);
 
         if (Vector3.Distance(transform.position, lastPosition) > 0.1f)
         {
-            animator.SetBool("move", true);
+            //animator.SetBool("move", true);
         }
         else
         {
-            animator.SetBool("move", false);
+            //animator.SetBool("move", false);
         }
         lastPosition = transform.position;
         // Controla o campo de visão se o jogador estiver correndo
