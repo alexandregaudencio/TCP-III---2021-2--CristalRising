@@ -980,7 +980,7 @@ GameObject:
   - component: {fileID: 1474464338627024162}
   - component: {fileID: 9149958152010802580}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasOnTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1794,7 +1794,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 60.3
+  m_Value: 50.9
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2961,7 +2961,8 @@ MonoBehaviour:
   normalCam: {fileID: 6338946919702939980}
   spine: {fileID: 5023310945300918432}
   neck: {fileID: 1113999970359446710}
-  controle: {fileID: 0}
+  controle: {fileID: 3289905193626266406}
+  rigidbody: {fileID: 7144219845932841085}
 --- !u!114 &4808409504821325168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3439,7 +3440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a3dd18378f1094dbe8fc30b510fe14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 3
   sprintModifier: 0
   cameraPivot: {fileID: 2785597577859792901}
   jumpForce: 4
