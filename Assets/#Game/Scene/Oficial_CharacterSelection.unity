@@ -378,7 +378,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Charact 1
+  m_Text: Susano
 --- !u!222 &350318866
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1224,7 +1224,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Charact 3
+  m_Text: Susano
 --- !u!222 &817861318
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2716,7 +2716,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Charact 2
+  m_Text: Humanoide
 --- !u!222 &1944278456
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2811,7 +2811,7 @@ MonoBehaviour:
         m_MethodName: ChooseCharacter
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 134812347425223253, guid: 282a653609ed9ae4bb918477fcbb541b,
+          m_ObjectArgument: {fileID: 6999511871905539392, guid: 057e4a72b95e0b14eb8f0870fa2f6ae4,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
