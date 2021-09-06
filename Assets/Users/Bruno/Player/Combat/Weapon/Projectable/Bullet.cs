@@ -138,11 +138,11 @@ public class Bullet : MonoBehaviourPun, Damage
         if (target)
         {
             var chunks = target.GetComponentsInChildren<ChunkDetector>();
-            var playerProperty = target.GetComponent<PlayerProperty>();
+            var propertyTarget = target.GetComponent<PlayerProperty>();
 
-            if (playerProperty)
+            if (propertyTarget)
             {
-                int value = 0;
+                int damageValue = 0;
                 foreach (var c in chunks)
                 {
                     var result = c.DetectHit(GetComponent<Collider>());
@@ -151,15 +151,15 @@ public class Bullet : MonoBehaviourPun, Damage
                     {
                         if (result.Equals(ChunkDetector.head))
                         {
-                            value = criticalDamage;
+                            damageValue = criticalDamage;
                         }
                         else if (result.Equals(ChunkDetector.body))
                         {
-                            value = this.damage;
+                            damageValue = this.damage;
                         }
                     }
                 }
-                playerProperty.Life = value;
+                propertyTarget.Life = damageValue;
             }
         }
     }

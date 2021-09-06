@@ -26,13 +26,15 @@ public class PlayerProperty : MonoBehaviour
     public int life;
     public int Life
     {
-        get { return (int)PhotonNetwork.LocalPlayer.CustomProperties["HP"]; }
+        get { return (int)GetComponent<PhotonView>().Controller.CustomProperties["HP"]; }
         set
         {
-            int hp = (int)PhotonNetwork.LocalPlayer.CustomProperties["HP"];
-            HashProperty["HP"] = hp - (int)value;
-            PhotonNetwork.LocalPlayer.SetCustomProperties(HashProperty);
-            //lifeUi.value -= value;
+            int hp = (int)GetComponent<PhotonView>().Controller.CustomProperties["HP"];
+            HashProperty["HP"] = hp - value;
+            
+            GetComponent<PhotonView>().Controller.SetCustomProperties(HashProperty);
+            
+            //Debug.Log("Dano em " + PhotonNetwork.LocalPlayer.NickName + " " + PhotonNetwork.LocalPlayer.CustomProperties["HP"]);
             sd.Value = value.ToString();
         }
     }
