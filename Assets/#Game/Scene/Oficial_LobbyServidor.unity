@@ -1223,7 +1223,7 @@ MonoBehaviour:
   maxRoomPlayers: 6
   characterSelectionMaxTime: 10
   gameplayMaxTime: 100
-  gameplayTimeBase: 10
+  gameplayTimeBase: 2
   menuSceneIndex: 0
   CharSelecSceneIndex: 1
   gameplaySceneIndex: 2

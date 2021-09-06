@@ -60,9 +60,9 @@ public class UpdateTeamHealthbar : MonoBehaviourPunCallbacks
     {
         get
         {
-            float hp = (int)CurrentPlayer.CustomProperties["HP"];
-            float maxHP = (int)CurrentPlayer.CustomProperties["maxHP"];
-            return hp / maxHP;
+            int hp = (int)CurrentPlayer.CustomProperties["HP"];
+            int maxHP = (int)CurrentPlayer.CustomProperties["maxHP"];
+            return (float)hp / maxHP;
         }
     }
 }
