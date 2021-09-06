@@ -44,14 +44,14 @@ public class GameplayManager : MonoBehaviourPunCallbacks
 
             }
 
-            if (gameplayRoomTimer.IsCountdownStart())
-            {
-                if (wallDown == true)
-                {
-                    if (endingGame) return;
-                    EndGamebyTimer();
-                }
-            }
+            //if (gameplayRoomTimer.IsCountdownStart())
+            //{
+            //    if (wallDown == true)
+            //    {
+            //        if (endingGame) return;
+            //        EndGamebyTimer();
+            //    }
+            //}
         }
     }
 
