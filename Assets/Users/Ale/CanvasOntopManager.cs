@@ -27,9 +27,10 @@ public class CanvasOntopManager : MonoBehaviourPunCallbacks
 
     public float GetHPpercent(int hashHP, int hashMaxHP)
     {
+        //
         int hp = hashHP;
         int maxHP = hashMaxHP;
-        return hp / maxHP;
+        return (float)hp / maxHP;
     }
 
     void Start()
@@ -45,11 +46,18 @@ public class CanvasOntopManager : MonoBehaviourPunCallbacks
 
             nicknameText.text = PV.Controller.NickName;
             HPOnTopImgfill.color = GetTeamColor(PV.Controller.GetPhotonTeam().Code);
-            HPOnTopImgfill.fillAmount = GetHPpercent((int)localPlayer.CustomProperties["HP"], (int)localPlayer.CustomProperties["maxHP"]);
+            LerpFillAmmount(HPOnTopImgfill);
         }
 
     }
 
+    private void LerpFillAmmount(Image image)
+    {
+        image.fillAmount = Mathf.Lerp(
+            image.fillAmount,
+            GetHPpercent((int)localPlayer.CustomProperties["HP"], (int)localPlayer.CustomProperties["maxHP"]),
+            Time.fixedDeltaTime*4);
+    }
 
     //TODO: Enviar para todos a atualização da barra de vida???
     //[PunRPC]
