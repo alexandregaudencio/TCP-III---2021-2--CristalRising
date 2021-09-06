@@ -7,8 +7,8 @@ using Photon.Pun;
 public class Bullet : MonoBehaviourPun, Damage
 {
     public float speed;
-    public float damage;
-    public float criticalDamage;
+    public int damage;
+    public int criticalDamage;
     public float existenceTomeout;
     private float countTime;
     private Color color;
@@ -142,7 +142,7 @@ public class Bullet : MonoBehaviourPun, Damage
 
             if (playerProperty)
             {
-                float valeu = 0;
+                int value = 0;
                 foreach (var c in chunks)
                 {
                     var result = c.DetectHit(GetComponent<Collider>());
@@ -151,15 +151,15 @@ public class Bullet : MonoBehaviourPun, Damage
                     {
                         if (result.Equals(ChunkDetector.head))
                         {
-                            valeu = criticalDamage;
+                            value = criticalDamage;
                         }
                         else if (result.Equals(ChunkDetector.body))
                         {
-                            valeu = this.damage;
+                            value = this.damage;
                         }
                     }
                 }
-                playerProperty.Life = valeu;
+                playerProperty.Life = value;
             }
         }
     }

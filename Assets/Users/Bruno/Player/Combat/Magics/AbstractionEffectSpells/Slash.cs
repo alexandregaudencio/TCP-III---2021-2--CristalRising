@@ -8,7 +8,7 @@ public class Slash : Spells, IEffect
     private GameObject target;
     public TrailRenderer trail;
     private float bufferAttack;
-    public float damage;
+    public int damage;
     private void Start()
     {
         bufferAttack = Hertz;
