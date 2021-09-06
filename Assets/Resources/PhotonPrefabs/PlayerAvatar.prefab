@@ -250,7 +250,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnPointsTimeAzul: []
   SpawnPointTimeVermelho: []
-  lifeUi: {fileID: 3463867318469000531}
   sd: {fileID: 7036054341397535706}
   life: 100
 --- !u!114 &-4427571526771000720

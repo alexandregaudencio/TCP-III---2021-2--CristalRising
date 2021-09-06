@@ -12,7 +12,7 @@ public class PlayerProperty : MonoBehaviour
 
     public GameObject[] SpawnPointsTimeAzul;
     public GameObject[] SpawnPointTimeVermelho;
-    public Slider lifeUi;
+    //public Slider lifeUi;
 
     private float moveSpeed;
     private float maxJumpHeight;
@@ -23,7 +23,7 @@ public class PlayerProperty : MonoBehaviour
 
     private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
 
-    public float life;
+    public int life;
     public int Life
     {
         get { return (int)PhotonNetwork.LocalPlayer.CustomProperties["HP"]; }
@@ -32,7 +32,7 @@ public class PlayerProperty : MonoBehaviour
             int hp = (int)PhotonNetwork.LocalPlayer.CustomProperties["HP"];
             HashProperty["HP"] = hp - (int)value;
             PhotonNetwork.LocalPlayer.SetCustomProperties(HashProperty);
-            lifeUi.value -= value;
+            //lifeUi.value -= value;
             sd.Value = value.ToString();
         }
     }
@@ -50,8 +50,8 @@ public class PlayerProperty : MonoBehaviour
 
         if (GetComponent<PhotonView>().IsMine)
         {
-            lifeUi.maxValue = life;
-            lifeUi.value = life;
+            //lifeUi.maxValue = life;
+            //lifeUi.value = life;
         }
 
 
@@ -68,7 +68,7 @@ public class PlayerProperty : MonoBehaviour
         GetComponent<PlayerController>().moveSpeed = buffereMoveSpeed;
         GetComponent<PlayerController>().jumpForce = buffereMoveSpeed;
 
-        lifeUi.value = life;
+        //lifeUi.value = life;
     }
 }
 

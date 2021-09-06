@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-    private new Camera camera;
+    private Camera cam;
     void Start()
     {
-        camera = (Camera)FindObjectOfType(typeof(Camera));
+        cam = (Camera)FindObjectOfType(typeof(Camera));
     }
 
     void Update()
     {
-        transform.LookAt(transform.position - camera.transform.forward);
+        //transform.LookAt(camera.transform.position, Vector3.up);
+        //Vector3 looAtTarget = transform.position + camera.transform.forward;
+
+        transform.LookAt(transform.position - cam.transform.forward);
 
     }
     private void LateUpdate()
     {
-        camera = (Camera)FindObjectOfType(typeof(Camera));
+        cam = (Camera)FindObjectOfType(typeof(Camera));
     }
 }

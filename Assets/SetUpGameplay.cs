@@ -14,6 +14,7 @@ public class SetUpGameplay : MonoBehaviour
     [SerializeField] private GameObject[] SpawnPointsBlue, SpawnPointsRed;
     [SerializeField] public GameObject[] Characters;
 
+    public static SetUpGameplay instance;
 
     private void Awake()
     {
@@ -23,6 +24,8 @@ public class SetUpGameplay : MonoBehaviour
 
     void Start()
     {
+        instance = this;
+
         InstantiatingPlayersCharacter();
     }
 
