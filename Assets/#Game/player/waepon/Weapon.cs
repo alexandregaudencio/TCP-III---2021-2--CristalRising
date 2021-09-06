@@ -143,18 +143,20 @@ public class Weapon : CombatControl
         //    if (GetComponent<PhotonView>().Controller.Equals(p))
         //        color = Color.red;
 
+        Player target = hit.collider.gameObject.GetComponent<PhotonView>().Controller;
+
 
         if (!hit.collider)
-            bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID/*, new Vector3(color.r,color.g,color.b)*/);
+            bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID, target /*, new Vector3(color.r,color.g,color.b)*/);
         else
         {
             PhotonView targetId = hit.collider.gameObject.GetComponent<PhotonView>();
             if (!targetId)
             {
-                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID/*, new Vector3(color.r,color.g,color.b)*/);
+                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID, target/*, new Vector3(color.r,color.g,color.b)*/);
             }
             else
-                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, targetId.ViewID/*, new Vector3(color.r,color.g,color.b)*/);
+                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, targetId.ViewID, target/*, new Vector3(color.r,color.g,color.b)*/);
         }
     }
     public override void Reload()
