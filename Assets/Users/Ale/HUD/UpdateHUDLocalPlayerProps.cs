@@ -16,25 +16,19 @@ public class UpdateHUDLocalPlayerProps : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_Text charactername;
     [SerializeField] private TMP_Text characterAmmo;
 
-    Player LocalPlayer;
+    Player localPlayer;
     byte myTeam;
 
     // Start is called before the first frame update
     void Start()
     {
-        LocalPlayer = Player;
-        myTeam = LocalPlayer.GetPhotonTeam().Code;
+        localPlayer = Player;
+        myTeam = localPlayer.GetPhotonTeam().Code;
 
         SetupLocalPlayerProps();
     }
 
-    private Player Player
-    {
-        get
-        {
-            return PhotonNetwork.LocalPlayer;
-        }
-    }
+    private Player Player => PhotonNetwork.LocalPlayer;
 
     private Color TeamColor
     {
@@ -42,12 +36,12 @@ public class UpdateHUDLocalPlayerProps : MonoBehaviourPunCallbacks
     }
 
 
-    private float HPpercent
+    public float HPpercent
     {
         get
         {
-            int hp = (int)LocalPlayer.CustomProperties["HP"];
-            int maxHP = (int)LocalPlayer.CustomProperties["maxHP"];
+            int hp = (int)localPlayer.CustomProperties["HP"];
+            int maxHP = (int)localPlayer.CustomProperties["maxHP"];
             return hp / maxHP;
         }
     }
@@ -56,8 +50,7 @@ public class UpdateHUDLocalPlayerProps : MonoBehaviourPunCallbacks
     {
         get
         {
-            return  (int)LocalPlayer.CustomProperties["HP"];
-
+            return  (int)localPlayer.CustomProperties["HP"];
         }
     }
 
@@ -65,13 +58,13 @@ public class UpdateHUDLocalPlayerProps : MonoBehaviourPunCallbacks
     {
         get
         {
-            return HPValue.ToString() + " / " + LocalPlayer.CustomProperties["maxHP"].ToString();
+            return HPValue.ToString() + " / " + localPlayer.CustomProperties["maxHP"].ToString();
         }
     }
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
-        if(LocalPlayer == targetPlayer && changedProps == targetPlayer.CustomProperties["HP"])
+        if(localPlayer == targetPlayer && changedProps == targetPlayer.CustomProperties["HP"])
         {
             HPImage.fillAmount = HPpercent;
             HPText.text = HPString;
@@ -80,7 +73,7 @@ public class UpdateHUDLocalPlayerProps : MonoBehaviourPunCallbacks
 
     private void SetupLocalPlayerProps()
     {
-        int characterIndex = (int)LocalPlayer.CustomProperties["characterIndex"];
+        int characterIndex = (int)localPlayer.CustomProperties["characterIndex"];
         //characterIcon.sprite = RoomConfigs.instance.charactersOrdered[characterIndex].characterIcon;
         characterBorderIcon.color = TeamColor;
         HPImage.fillAmount = HPpercent;

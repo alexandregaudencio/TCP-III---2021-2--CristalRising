@@ -10,12 +10,12 @@ public class DamageText : MonoBehaviour
     private float bufferTime;
     private Vector3 initialPos;
     private bool hit;
-    private Camera camera;
+    private Camera cam;
 
     private void Start()
     {
         initialPos = transform.position;
-        camera = (Camera)FindObjectOfType(typeof(Camera));
+        cam = (Camera)FindObjectOfType(typeof(Camera));
     }
 
     private void OnEnable()
@@ -35,7 +35,7 @@ public class DamageText : MonoBehaviour
             hit = false;
             Invoke("ResetPosition", 0.1f); 
         }
-        transform.rotation = Quaternion.LookRotation(transform.position - camera.transform.position);
+        transform.rotation = Quaternion.LookRotation(transform.position - cam.transform.position);
     }
 
     public void Finish()
