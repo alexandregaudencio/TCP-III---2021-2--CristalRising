@@ -17,32 +17,51 @@ public class CanvasOntopManager : MonoBehaviourPunCallbacks
     private Player Player => PhotonNetwork.LocalPlayer;
     Player localPlayer;
 
-    private Color TeamColor
+    private Color GetTeamColor( byte teamCode)
     {
-        get { return (teamCode == 1) ? RoomConfigs.instance.blueTeamColor : RoomConfigs.instance.redTeamColor; }
+        return (teamCode == 1) ? RoomConfigs.instance.blueTeamColor : RoomConfigs.instance.redTeamColor;
     }
 
-    public float HPpercent
+    Player[] playersTeamBlue;
+    Player[] playersTeamRed;
+
+    public float GetHPpercent(int hashHP, int hashMaxHP)
     {
-        get
-        {
-            int hp = (int)localPlayer.CustomProperties["HP"];
-            int maxHP = (int)localPlayer.CustomProperties["maxHP"];
-            return hp / maxHP;
-        }
+        int hp = hashHP;
+        int maxHP = hashMaxHP;
+        return hp / maxHP;
     }
 
     void Start()
     {
-        localPlayer = Player;
-        teamCode = localPlayer.GetPhotonTeam().Code;
-        
+
         //TODO: RPC para poder ajustar em todas as máquinas.
-        nicknameText.text = localPlayer.NickName;
-        HPOnTopImgfill.color = TeamColor;
-        HPOnTopImgfill.fillAmount = HPpercent;
+
+
+        if (PV.IsMine)
+        {
+            localPlayer = Player;
+            teamCode = localPlayer.GetPhotonTeam().Code;
+
+            nicknameText.text = PV.Controller.NickName;
+            HPOnTopImgfill.color = GetTeamColor(PV.Controller.GetPhotonTeam().Code);
+            HPOnTopImgfill.fillAmount = GetHPpercent((int)localPlayer.CustomProperties["HP"], (int)localPlayer.CustomProperties["maxHP"]);
+        }
 
     }
+
+
+    //TODO: Enviar para todos a atualização da barra de vida???
+    //[PunRPC]
+    //private void RPCUpdateHPontopFill(Image imageHPfill)
+    //{
+
+    //}
+
+
+
+
+
 
 
 
@@ -50,10 +69,12 @@ public class CanvasOntopManager : MonoBehaviourPunCallbacks
     {
         if (targetPlayer == localPlayer && changedProps == localPlayer.CustomProperties["HP"])
         {
-            HPOnTopImgfill.fillAmount = HPpercent;
+            HPOnTopImgfill.fillAmount = GetHPpercent((int)localPlayer.CustomProperties["HP"], (int)localPlayer.CustomProperties["maxHP"]);
             Debug.Log("O HP foi mudado.");
         }
     }
+
+
 
 
 
