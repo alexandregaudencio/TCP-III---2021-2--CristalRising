@@ -20,10 +20,13 @@ public class PlayerProperty : MonoBehaviour
 
     private float buffereMoveSpeed;
     private float bufferMaxJumpHight;
+
+    private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
+
     public float life;
-    public float Life
+    public int Life
     {
-        get { return lifeUi.value; }
+        get { return (int)PhotonNetwork.LocalPlayer.CustomProperties["HP"]; }
         set
         {
             int hp = (int)PhotonNetwork.LocalPlayer.CustomProperties["HP"];
@@ -35,7 +38,6 @@ public class PlayerProperty : MonoBehaviour
     }
 
 
-    private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
 
 
     private void Start()
