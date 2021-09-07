@@ -12,41 +12,52 @@ public class SetUpGameplay : MonoBehaviour
 {
     private PhotonView PV;
     [SerializeField] private GameObject[] SpawnPointsBlue, SpawnPointsRed;
-    [SerializeField] public GameObject[] Characters;
-
     public static SetUpGameplay instance;
 
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
     }
-
+    private int indexPlayerList;
 
     void Start()
     {
         instance = this;
-
         InstantiatingPlayersCharacter();
+        //SetIndexPlayer();
     }
 
+    //private void SetIndexPlayer()
+    //{
+    //    byte team = PhotonNetwork.LocalPlayer.GetPhotonTeam().Code;
+    //    Player[] playerTeamList;
+    //    PhotonTeamsManager.Instance.TryGetTeamMembers(team, out playerTeamList);
+    //    foreach (Player player in playerTeamList)
+    //    {
+    //        if (player == PhotonNetwork.LocalPlayer)
+    //        {
+    //            Debug.Log("Parou aaqui? " + indexPlayerList);
+    //            return;
+    //        }
+    //        indexPlayerList++;
+    //        Debug.Log(indexPlayerList);
+    //    }
+    //}
     private void InstantiatingPlayersCharacter()
     {
+        int indexPlayer = (int)PhotonNetwork.LocalPlayer.CustomProperties["indexPlayer"];
+        string pTeam = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
+        if (pTeam == "Blue")
+        {
+            PV.RPC("RPCInstantiateCharacter", PhotonNetwork.LocalPlayer, SpawnPointsBlue[indexPlayer].transform.position, SpawnPointsBlue[indexPlayer].transform.rotation);
+            //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), 
+            //SpawnPointsBlue[0].transform.position, SpawnPointsBlue[0].transform.rotation, 0);
+        }
+        if (pTeam == "Red")
+        {
+            PV.RPC("RPCInstantiateCharacter", PhotonNetwork.LocalPlayer, SpawnPointsRed[indexPlayer].transform.position, SpawnPointsRed[indexPlayer].transform.rotation);
+        }
 
-            string pTeam = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
-            
-
-            if (pTeam == "Blue")
-            {
-                PV.RPC("RPCInstantiateCharacter", PhotonNetwork.LocalPlayer, SpawnPointsBlue[0].transform.position, SpawnPointsBlue[0].transform.rotation);
-                //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), 
-                //SpawnPointsBlue[0].transform.position, SpawnPointsBlue[0].transform.rotation, 0);
-            }
-            if (pTeam == "Red")
-            {
-                PV.RPC("RPCInstantiateCharacter", PhotonNetwork.LocalPlayer, SpawnPointsRed[0].transform.position, SpawnPointsRed[0].transform.rotation);
-            }
-
-     
     }
 
     [PunRPC]

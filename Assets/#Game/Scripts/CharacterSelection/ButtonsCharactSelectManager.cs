@@ -11,42 +11,44 @@ public class ButtonsCharactSelectManager : MonoBehaviour
 {
     //Pra dar bom, a ordem de associação dos objetos via unity precisam estar na mesma ordem.
     [SerializeField] private Button[] characterSelectButtons;
-    [SerializeField] private GameObject CharacterDefault;   
+    [SerializeField] private int CharacterDefaultIndex;   
     [SerializeField] private GameObject cancelButton;
-    [SerializeField] private Character[] Characters;
+    //[SerializeField] private Character[] Characters;
 
     private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
-
     private void Start()
     {
-        PhotonNetwork.LocalPlayer.TagObject = CharacterDefault.name;
-        //define o player 0 como padrão. Daí o jogador pode escolher outro enquanto houver tempo.
-        SetPlayerProperties(0);
+        PhotonNetwork.LocalPlayer.TagObject = RoomConfigs.instance.charactersOrdered[CharacterDefaultIndex].characterPrefab.name;
+        SetPlayerProperties(CharacterDefaultIndex);
     }
 
 
-    public void ChooseCharacter(GameObject characterPrefab)
-    {
-        PhotonNetwork.LocalPlayer.TagObject = characterPrefab.name;
-        SwitchButtonsInteractable(false);
-    }
+    //public void ChooseCharacter(GameObject characterPrefab)
+    //{
+
+    //    //PhotonNetwork.LocalPlayer.TagObject = characterPrefab.name;
+    //    SwitchButtonsInteractable(false);
+    //}
 
     //AÇÃO DOS BOTÕES DE SEÇÃO DE PERSONAGENS
-    public void SwitchingIcon(int indexImgIcon)
+    public void ChooseCharacter(int characterIndex)
     {
-        SetPlayerProperties(indexImgIcon);
+        PhotonNetwork.LocalPlayer.TagObject = RoomConfigs.instance.charactersOrdered[characterIndex].characterPrefab.name;
+
+        SetPlayerProperties(characterIndex);
     }
 
 
-    private void SetPlayerProperties(int indexCharacterbutton)
+    private void SetPlayerProperties(int indexCharacter)
     {
-        HashProperty["HP"] = Characters[indexCharacterbutton].HP;
-        HashProperty["maxHP"] = Characters[indexCharacterbutton].HP;
+        
+        HashProperty["HP"] = RoomConfigs.instance.charactersOrdered[indexCharacter].HP;
+        HashProperty["maxHP"] = RoomConfigs.instance.charactersOrdered[indexCharacter].HP;
         //HashProperty["damage"] = Characters[indexPlayer].damage;
         //HashProperty["ammo"] = Characters[indexPlayer].ammo;
         //HashProperty["maxAmmo"] = Characters[indexPlayer].ammo;
-        //HashProperty["characterName"] = Characters[indexPlayer].characterName;
-        HashProperty["characterIndex"] = Characters[indexCharacterbutton].characterIndex;
+        HashProperty["characterName"] = RoomConfigs.instance.charactersOrdered[indexCharacter].characterName;
+        HashProperty["characterIndex"] = RoomConfigs.instance.charactersOrdered[indexCharacter].characterIndex;
         
         HashProperty["timerRespawn"] = RoomConfigs.instance.timeToRespawn;
         HashProperty["isDead"] = false;
