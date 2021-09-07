@@ -59,6 +59,8 @@ public class CanvasOntopManager : MonoBehaviourPunCallbacks
             Time.fixedDeltaTime*4);
     }
 
+
+
     //TODO: Enviar para todos a atualização da barra de vida???
     //[PunRPC]
     //private void RPCUpdateHPontopFill(Image imageHPfill)
