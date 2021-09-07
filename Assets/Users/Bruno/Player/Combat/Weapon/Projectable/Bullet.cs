@@ -141,7 +141,6 @@ public class Bullet : MonoBehaviourPun, Damage
             var chunks = target.GetComponentsInChildren<ChunkDetector>();
             var playerProperty = target.GetComponent<PlayerProperty>();
             Player pTarget = target.GetPhotonView().Controller;
-            Debug.Log(pTarget.NickName);
             if (playerProperty)
             {
                 int value = 0;
