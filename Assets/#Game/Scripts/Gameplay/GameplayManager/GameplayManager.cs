@@ -25,7 +25,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         gameplayRoomTimer = GetComponent<TimerCountdown>();
-        gameplayRoomTimer.CurrentTime = RoomConfigs.instance.gameplayTimeBase;
+        gameplayRoomTimer.CurrentTime = RoomConfigs.instance.heightTime;
         gameplayRoomTimer.BaseTime = RoomConfigs.instance.gameplayTimeBase;
         tempTimer = string.Format("{0:00}", gameplayRoomTimer.BaseTime);
         wallDown = false;
@@ -39,12 +39,13 @@ public class GameplayManager : MonoBehaviourPunCallbacks
 
         if (gameplayRoomTimer.IsBasedownOver() && wallDown == false)
         {
-            wallDown = true;
+            
             downWallBase();
             gameplayRoomTimer.CurrentTime = RoomConfigs.instance.gameplayMaxTime;
-            gameplayRoomTimer.BaseTime = RoomConfigs.instance.gameplayMaxTime;
+            gameplayRoomTimer.BaseTime = RoomConfigs.instance.heightTime;
+            wallDown = true;
         }
-            if (gameplayRoomTimer.IsCountdownOver() )
+            if (gameplayRoomTimer.IsCountdownOver() && wallDown==true )
         {
             if (endingGame) return;
             EndGamebyTimer();
