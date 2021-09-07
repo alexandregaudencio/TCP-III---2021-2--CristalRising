@@ -35,8 +35,6 @@ public class PlayerProperty : MonoBehaviour
             GetComponent<PhotonView>().Controller.SetCustomProperties(HashProperty);
 
             sd.Value = value.ToString();
-
-            sd.Value = value.ToString();
         }
     }
 
