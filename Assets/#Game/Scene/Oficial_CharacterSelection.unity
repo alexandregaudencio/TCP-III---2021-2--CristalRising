@@ -2385,7 +2385,7 @@ MonoBehaviour:
   - {fileID: 1419608685}
   - {fileID: 1975540956}
   - {fileID: 1025061735}
-  CharacterDefault: {fileID: 134812347425223253, guid: 282a653609ed9ae4bb918477fcbb541b,
+  CharacterDefault: {fileID: 6999511871905539392, guid: 057e4a72b95e0b14eb8f0870fa2f6ae4,
     type: 3}
   cancelButton: {fileID: 636977737}
   Characters:
