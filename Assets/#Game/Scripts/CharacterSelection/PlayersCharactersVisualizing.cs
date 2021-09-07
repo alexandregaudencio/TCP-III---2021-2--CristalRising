@@ -11,9 +11,9 @@ public class PlayersCharactersVisualizing : MonoBehaviourPunCallbacks
 {
 
     [SerializeField] private Image[] PlayersCharacterIcon;
-    [SerializeField] private TMP_Text[] PlayersTextName;
+    [SerializeField] private TMP_Text[] PlayersNickText;
 
-    [SerializeField] private Sprite[] charactersIconToSet;
+    //[SerializeField] private Sprite[] charactersIconToSet;
 
     private Player[] myTeamMembers;
     private PhotonTeam myTeam;
@@ -26,8 +26,8 @@ public class PlayersCharactersVisualizing : MonoBehaviourPunCallbacks
 
         for (int i = 0; i < myTeamMembers.Length; i++)
         {
-            PlayersTextName[i].text =  myTeamMembers[i].NickName;
-            PlayersCharacterIcon[i].sprite =  charactersIconToSet[0];
+            PlayersNickText[i].text =  myTeamMembers[i].NickName;
+            PlayersCharacterIcon[i].sprite = RoomConfigs.instance.charactersOrdered[0].characterIcon;
         }
     }
 
@@ -38,7 +38,7 @@ public class PlayersCharactersVisualizing : MonoBehaviourPunCallbacks
             if(myTeamMembers[i] == targetPlayer)
             {
                 int indexImg = (int)targetPlayer.CustomProperties["characterIndex"];
-                PlayersCharacterIcon[i].sprite = charactersIconToSet[indexImg];
+                PlayersCharacterIcon[i].sprite = RoomConfigs.instance.charactersOrdered[indexImg].characterIcon;
             }
         }        
        

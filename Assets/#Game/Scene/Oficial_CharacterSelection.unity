@@ -1556,23 +1556,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1690127109}
         m_MethodName: ChooseCharacter
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 134812347425223253, guid: 282a653609ed9ae4bb918477fcbb541b,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1690127109}
-        m_MethodName: SwitchingIcon
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1739,18 +1727,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1690127109}
         m_MethodName: ChooseCharacter
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 134812347425223253, guid: 282a653609ed9ae4bb918477fcbb541b,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1690127109}
-        m_MethodName: SwitchingIcon
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2363,7 +2339,7 @@ GameObject:
   - component: {fileID: 1690127109}
   - component: {fileID: 1690127111}
   m_Layer: 0
-  m_Name: Buttons Manager
+  m_Name: Players Character Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2385,16 +2361,8 @@ MonoBehaviour:
   - {fileID: 1419608685}
   - {fileID: 1975540956}
   - {fileID: 1025061735}
-  CharacterDefault: {fileID: 6999511871905539392, guid: 057e4a72b95e0b14eb8f0870fa2f6ae4,
-    type: 3}
+  CharacterDefaultIndex: 1
   cancelButton: {fileID: 636977737}
-  Characters:
-  - {fileID: 11400000, guid: aaa7a7f7fa41c4c4e815c0e60758b763, type: 2}
-  - {fileID: 11400000, guid: 54902b6725618524cabbcbe8f504c24e, type: 2}
-  - {fileID: 11400000, guid: aaa7a7f7fa41c4c4e815c0e60758b763, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &1690127110
 Transform:
   m_ObjectHideFlags: 0
@@ -2428,20 +2396,13 @@ MonoBehaviour:
   - {fileID: 261741816}
   - {fileID: 1548103930}
   - {fileID: 958840795}
-  PlayersTextName:
+  PlayersNickText:
   - {fileID: 1702373982}
   - {fileID: 809741296}
   - {fileID: 1983070098}
   - {fileID: 650737682}
   - {fileID: 1474597592}
   - {fileID: 2112258014}
-  charactersIconToSet:
-  - {fileID: 21300000, guid: 1bb7bb3ac3fe45949bfa3bca87100d90, type: 3}
-  - {fileID: 21300000, guid: 76fac4178f48ae843a7da602568b2967, type: 3}
-  - {fileID: 21300000, guid: 44ebd8e6f42cae445ab4b22f0a9b48a0, type: 3}
-  - {fileID: 21300000, guid: 44ebd8e6f42cae445ab4b22f0a9b48a0, type: 3}
-  - {fileID: 21300000, guid: 44ebd8e6f42cae445ab4b22f0a9b48a0, type: 3}
-  - {fileID: 21300000, guid: 44ebd8e6f42cae445ab4b22f0a9b48a0, type: 3}
 --- !u!1 &1702373980
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,18 +2774,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1690127109}
         m_MethodName: ChooseCharacter
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 6999511871905539392, guid: 057e4a72b95e0b14eb8f0870fa2f6ae4,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1690127109}
-        m_MethodName: SwitchingIcon
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
