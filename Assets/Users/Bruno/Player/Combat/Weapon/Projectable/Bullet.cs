@@ -162,7 +162,7 @@ public class Bullet : MonoBehaviourPun, Damage
                     }
                 }
 
-                playerProperty.Life(500, pTarget);
+                playerProperty.Life = value;
             }
         }
     }

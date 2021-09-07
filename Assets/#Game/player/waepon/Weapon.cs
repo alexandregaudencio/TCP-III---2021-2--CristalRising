@@ -144,9 +144,9 @@ public class Weapon : CombatControl
         //        color = Color.red;
 
 
-        //if (!hit.collider)
-        //    bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID/*, new Vector3(color.r,color.g,color.b)*/);
-        //else
+        if (!hit.collider)
+            bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID/*, new Vector3(color.r,color.g,color.b)*/);
+        else
         {
             PhotonView targetId = hit.collider.gameObject.GetComponent<PhotonView>();
             if (!targetId)
