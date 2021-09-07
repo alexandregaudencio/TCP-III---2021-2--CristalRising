@@ -26,7 +26,7 @@ public class Slash : Spells, IEffect
     private void CalculateDamage(int targetId)
     {
         target = PhotonView.Find(targetId).gameObject;
-        target.GetComponent<PlayerProperty>().Life = damage;
+        //target.GetComponent<PlayerProperty>().Life = damage;
         target.GetComponent<ChunkDetector>().DetectHit(GetComponent<Collider>());
         Apply(null);
     }

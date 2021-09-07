@@ -42,7 +42,7 @@ public class UpdateHUDLocalPlayerProps : MonoBehaviourPunCallbacks
         {
             int hp = (int)localPlayer.CustomProperties["HP"];
             int maxHP = (int)localPlayer.CustomProperties["maxHP"];
-            return hp / maxHP;
+            return (float)hp / maxHP;
         }
     }
 

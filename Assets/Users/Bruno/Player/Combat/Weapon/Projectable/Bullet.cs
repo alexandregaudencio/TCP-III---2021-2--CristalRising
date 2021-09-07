@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviourPun, Damage
     [HideInInspector]
     public string animationName;
     [HideInInspector]
-    public Player target { private get; set; }
+    public GameObject target { private get; set; }
 
     [PunRPC]
     public void ActiveAll(bool value)
@@ -43,12 +43,11 @@ public class Bullet : MonoBehaviourPun, Damage
     }
 
     [PunRPC]
-    public void Inicialize(Vector3 point, float timeOfArrival, Vector3 pos, Vector3 rot, int targetId, Player pTarget/*, Vector3 color*/)
+    public void Inicialize(Vector3 point, float timeOfArrival, Vector3 pos, Vector3 rot, int targetId/*, Vector3 color*/)
     {
         //this.color = new Color(color.x, color.y, color.z,1);
         //GetComponentInChildren<Renderer>().material.SetColor("_Color", this.color);
-        //target = PhotonView.Find(targetId).gameObject;
-        target = pTarget;
+        target = PhotonView.Find(targetId).gameObject;
         pool.Out(photonView.ViewID);
         pool.ActiveInstance();
         hit = point;
@@ -90,7 +89,7 @@ public class Bullet : MonoBehaviourPun, Damage
             //por algum motivo que eu n sei se eu colocar o fired = false embaixo dessas duas funções
             //o fired não é setado imediatamente com false, o que ocasiona em erro por chamar as funções 
             //mais de uma vez;
-            //if (target.GetComponent<Collider>().bounds.Contains(transform.position))
+            if (target.GetComponent<Collider>().bounds.Contains(transform.position))
             {
                 fired = false;
                 CombineWithMaic();
@@ -135,48 +134,41 @@ public class Bullet : MonoBehaviourPun, Damage
             Timeout();
         }
     }
-
-    private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
-
-
     public void CalculateDamage()
     {
-        if (target == PhotonNetwork.LocalPlayer)
+        if (target)
         {
-            //var chunks = targetGetComponentsInChildren<ChunkDetector>();
-            //var propertyTarget = target.GetComponent<PlayerProperty>();
+            var chunks = target.GetComponentsInChildren<ChunkDetector>();
+            var playerProperty = target.GetComponent<PlayerProperty>();
+            Player pTarget = target.GetPhotonView().Controller;
+            Debug.Log(pTarget.NickName);
+            if (playerProperty)
+            {
+                int value = 0;
+                foreach (var c in chunks)
+                {
+                    var result = c.DetectHit(GetComponent<Collider>());
 
-            //if (propertyTarget)
-            //{
-            //    int damageValue = 0;
-            //    foreach (var c in chunks)
-            //    {
-            //        var result = c.DetectHit(GetComponent<Collider>());
+                    if (result != null)
+                    {
+                        if (result.Equals(ChunkDetector.head))
+                        {
+                            value = criticalDamage;
+                        }
+                        else if (result.Equals(ChunkDetector.body))
+                        {
+                            value = this.damage;
+                        }
+                    }
+                }
 
-            //        if (result != null)
-            //        {
-            //            if (result.Equals(ChunkDetector.head))
-            //            {
-            //                damageValue = criticalDamage;
-            //            }
-            //            else if (result.Equals(ChunkDetector.body))
-            //            {
-            //                damageValue = this.damage;
-            //            }
-            //        }
-            //    }
-            //propertyTarget.Life = damageValue;
-            int hp = (int)target.CustomProperties["HP"];
-            HashProperty["HP"] = hp - 500;
-
-            target.SetCustomProperties(HashProperty);
-
-        //}
-    }
+                playerProperty.Life(500, pTarget);
+            }
+        }
     }
 
     public GameObject GetTarget()
     {
-        return /*target*/ null;
+        return target;
     }
 }
