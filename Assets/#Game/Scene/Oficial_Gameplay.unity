@@ -272,7 +272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &554593391
 Transform:
   m_ObjectHideFlags: 0
@@ -1005,7 +1005,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1488327860
 GameObject:
@@ -1139,6 +1139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6999511871905539404, guid: 057e4a72b95e0b14eb8f0870fa2f6ae4,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6999511871905539404, guid: 057e4a72b95e0b14eb8f0870fa2f6ae4,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1154,6 +1159,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6999511871905539404, guid: 057e4a72b95e0b14eb8f0870fa2f6ae4,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6999511871905539404, guid: 057e4a72b95e0b14eb8f0870fa2f6ae4,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -1166,16 +1176,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6999511871905539404, guid: 057e4a72b95e0b14eb8f0870fa2f6ae4,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6999511871905539404, guid: 057e4a72b95e0b14eb8f0870fa2f6ae4,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6999511871905539404, guid: 057e4a72b95e0b14eb8f0870fa2f6ae4,
         type: 3}
@@ -1378,7 +1378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1874329898
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1981,7 +1981,7 @@ PrefabInstance:
     - target: {fileID: 4213581589598884002, guid: 91962e7c98e471b45bdd4579982b4439,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4213581589598884002, guid: 91962e7c98e471b45bdd4579982b4439,
         type: 3}

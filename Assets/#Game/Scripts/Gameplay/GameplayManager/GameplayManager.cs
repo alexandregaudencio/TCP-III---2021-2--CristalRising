@@ -21,11 +21,14 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     [SerializeField] GameObject spawnWallRed;
     private bool wallDown=false;
     public PhotonView PV;
+    private string tempTimer;
     private void Start()
     {
         gameplayRoomTimer = GetComponent<TimerCountdown>();
         gameplayRoomTimer.CurrentTime = RoomConfigs.instance.gameplayTimeBase;
-       // gameplayRoomTimer.CurrentTime = RoomConfigs.gameplayMaxTime;
+        gameplayRoomTimer.BaseTime = RoomConfigs.instance.gameplayTimeBase;
+        tempTimer = string.Format("{0:00}", gameplayRoomTimer.BaseTime);
+        wallDown = false;
         instance = this;
         gameEnd.SetActive(false);
     }
@@ -34,24 +37,17 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     {
         UIUpdate();
 
-        if (gameplayRoomTimer.IsCountdownOver())
+        if (gameplayRoomTimer.IsBasedownOver() && wallDown == false)
         {
-            if (wallDown == false)
-            {
-                downWallBase();
-                gameplayRoomTimer.CurrentTime = RoomConfigs.instance.gameplayMaxTime;
-                wallDown = true;
-
-            }
-
-            //if (gameplayRoomTimer.IsCountdownStart())
-            //{
-            //    if (wallDown == true)
-            //    {
-            //        if (endingGame) return;
-            //        EndGamebyTimer();
-            //    }
-            //}
+            wallDown = true;
+            downWallBase();
+            gameplayRoomTimer.CurrentTime = RoomConfigs.instance.gameplayMaxTime;
+            gameplayRoomTimer.BaseTime = RoomConfigs.instance.gameplayMaxTime;
+        }
+            if (gameplayRoomTimer.IsCountdownOver() )
+        {
+            if (endingGame) return;
+            EndGamebyTimer();
         }
     }
 
@@ -60,8 +56,11 @@ public class GameplayManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             PV.RPC("sendTime", RpcTarget.Others, gameplayRoomTimer.CurrentTime);
+            PV.RPC("sendBaseTime", RpcTarget.Others, gameplayRoomTimer.BaseTime);
+            PV.RPC("SendwallDown", RpcTarget.Others, wallDown);
     }
-    string tempTimer = string.Format("{0:00}", gameplayRoomTimer.CurrentTime);
+        if(wallDown)tempTimer = string.Format("{0:00}", gameplayRoomTimer.CurrentTime);
+        if(!wallDown)tempTimer = string.Format("{0:00}", gameplayRoomTimer.BaseTime);
         timeToDisplay.text = tempTimer;
     }
 
@@ -120,6 +119,20 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     {
 
         gameplayRoomTimer.CurrentTime = time;
+
+
+    }
+    public void sendBaseTime(float time)
+    {
+
+        gameplayRoomTimer.BaseTime = time;
+
+
+    }
+    public void SendwallDown(bool wallDownMaster)
+    {
+
+        wallDown= wallDownMaster;
 
 
     }

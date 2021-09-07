@@ -6,13 +6,19 @@ public class TimerCountdown : MonoBehaviour
 {
     float maxTime;
     float currentTime;
+    float baseTime;
     float timePassed;
 
     public float CurrentTime { get => currentTime; set => currentTime = value; }
+    public float BaseTime { get => baseTime; set => baseTime = value; }
    
     public bool IsCountdownOver()
     {
         return (CurrentTime > 0.0f) ? false : true;
+    }
+    public bool IsBasedownOver()
+    {
+        return (BaseTime > 0.0f) ? false : true;
     }
     public bool IsCountdownStart()
     {
@@ -23,6 +29,7 @@ public class TimerCountdown : MonoBehaviour
     private void FixedUpdate()
     {
         if (CurrentTime >= 0) CurrentTime -= Time.fixedDeltaTime;
+        if (BaseTime >= 0) BaseTime -= Time.fixedDeltaTime;
     }
 
 }
