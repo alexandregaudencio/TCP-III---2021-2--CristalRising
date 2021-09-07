@@ -47,7 +47,6 @@ public class PlayerProperty : MonoBehaviour
        
         sd.Value = value.ToString();
         
-        Debug.Log(target.CustomProperties["HP"]);
         return (int)target.CustomProperties["HP"];
 
     }
