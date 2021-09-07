@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class Bullet : MonoBehaviourPun, Damage
 {
@@ -138,11 +139,12 @@ public class Bullet : MonoBehaviourPun, Damage
         if (target)
         {
             var chunks = target.GetComponentsInChildren<ChunkDetector>();
-            var propertyTarget = target.GetComponent<PlayerProperty>();
-
-            if (propertyTarget)
+            var playerProperty = target.GetComponent<PlayerProperty>();
+            Player pTarget = target.GetPhotonView().Controller;
+            Debug.Log(pTarget.NickName);
+            if (playerProperty)
             {
-                int damageValue = 0;
+                int value = 0;
                 foreach (var c in chunks)
                 {
                     var result = c.DetectHit(GetComponent<Collider>());
@@ -151,15 +153,16 @@ public class Bullet : MonoBehaviourPun, Damage
                     {
                         if (result.Equals(ChunkDetector.head))
                         {
-                            damageValue = criticalDamage;
+                            value = criticalDamage;
                         }
                         else if (result.Equals(ChunkDetector.body))
                         {
-                            damageValue = this.damage;
+                            value = this.damage;
                         }
                     }
                 }
-                propertyTarget.Life = damageValue;
+
+                playerProperty.Life(500, pTarget);
             }
         }
     }

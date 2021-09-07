@@ -40,7 +40,7 @@ public class UpdateTeamHealthbar : MonoBehaviourPunCallbacks
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
 
-        if(targetPlayer == CurrentPlayer && changedProps == targetPlayer.CustomProperties["HP"])
+        if(targetPlayer == CurrentPlayer /*&& changedProps == targetPlayer.CustomProperties["HP"]*/)
         {
             healthbarImg.fillAmount = HealthbarAmmount;
         }

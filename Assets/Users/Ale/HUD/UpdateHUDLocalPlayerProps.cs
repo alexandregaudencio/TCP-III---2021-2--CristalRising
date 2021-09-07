@@ -42,7 +42,8 @@ public class UpdateHUDLocalPlayerProps : MonoBehaviourPunCallbacks
         {
             int hp = (int)localPlayer.CustomProperties["HP"];
             int maxHP = (int)localPlayer.CustomProperties["maxHP"];
-            return hp / maxHP;
+            float result = (float)hp / maxHP;
+            return (float)hp / maxHP;
         }
     }
 
@@ -64,7 +65,7 @@ public class UpdateHUDLocalPlayerProps : MonoBehaviourPunCallbacks
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
-        if(localPlayer == targetPlayer && changedProps == targetPlayer.CustomProperties["HP"])
+        if(localPlayer == targetPlayer /*&&*/ /*changedProps.Keys.Equals("HP")*/)
         {
             HPImage.fillAmount = HPpercent;
             HPText.text = HPString;
