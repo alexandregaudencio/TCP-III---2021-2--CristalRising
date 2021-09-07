@@ -16,7 +16,7 @@ public class ChunkDetector : MonoBehaviour
     }
     public string DetectHit(Collider collider)
     {
-        Debug.Log(collider.transform.position);
+        //Debug.Log(collider.transform.position);
         if (piece.bounds.Contains(collider.transform.position) || piece.bounds.Intersects(collider.bounds))
         {
             return gameObject.tag;

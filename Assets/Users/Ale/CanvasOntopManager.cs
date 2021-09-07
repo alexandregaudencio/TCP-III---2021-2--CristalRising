@@ -11,78 +11,78 @@ public class CanvasOntopManager : MonoBehaviourPunCallbacks
 {
     byte teamCode;
     
-    [SerializeField] private PhotonView PV;
+    /*[SerializeField]*/ private PhotonView PV;
     [SerializeField] private Image HPOnTopImgfill;
     [SerializeField] private TMP_Text nicknameText;
-    private Player Player => PhotonNetwork.LocalPlayer;
-    Player localPlayer;
+    private Player player;
+    //Player Player;
 
     private Color GetTeamColor( byte teamCode)
     {
         return (teamCode == 1) ? RoomConfigs.instance.blueTeamColor : RoomConfigs.instance.redTeamColor;
     }
 
-    Player[] playersTeamBlue;
-    Player[] playersTeamRed;
+    //Player[] playersTeamBlue;
+    //Player[] playersTeamRed;
 
-    public float GetHPpercent(int hashHP, int hashMaxHP)
+    public float HPpercent
     {
-        //
-        int hp = hashHP;
-        int maxHP = hashMaxHP;
-        return (float)hp / maxHP;
+        get
+        {
+            int hp = (int)player.CustomProperties["HP"];
+            int maxHP = (int)player.CustomProperties["maxHP"];
+            //float result = (float)hp / maxHP;
+            return (float)hp / maxHP;
+        }
     }
 
     void Start()
     {
-
-        //TODO: RPC para poder ajustar em todas as máquinas.
-
+        player  = PhotonNetwork.LocalPlayer;
+        PV = GetComponent<PhotonView>();
 
         if (PV.IsMine)
         {
-            localPlayer = Player;
-            teamCode = localPlayer.GetPhotonTeam().Code;
-
-            nicknameText.text = PV.Controller.NickName;
-            HPOnTopImgfill.color = GetTeamColor(PV.Controller.GetPhotonTeam().Code);
-            LerpFillAmmount(HPOnTopImgfill);
-            PV.RPC("RPCUpdateHPontopFill", RpcTarget.All, 0.8f , localPlayer.NickName);
+            teamCode = player.GetPhotonTeam().Code;
+            PV.RPC("RpcSetupCanvasOntop", RpcTarget.All, player.NickName, teamCode);
+            PV.RPC("RPCUpdateHPontopFill", RpcTarget.All, HPpercent);
+            //PV.RPC("RPCUpdateHPontopFill", RpcTarget.All, 0.8f , Player.NickName);
         }
 
     }
 
-    private void LerpFillAmmount(Image image)
-    {
-        image.fillAmount = Mathf.Lerp(
-            image.fillAmount,
-            GetHPpercent((int)localPlayer.CustomProperties["HP"], (int)localPlayer.CustomProperties["maxHP"]),
-            Time.fixedDeltaTime*4);
-    }
+    //private void LerpFillAmmount(Image image)
+    //{
+    //    image.fillAmount = Mathf.Lerp(
+    //        image.fillAmount,
+    //        GetHPpercent((int)localPlayer.CustomProperties["HP"], (int)localPlayer.CustomProperties["maxHP"]),
+    //        Time.fixedDeltaTime*4);
+    //}
 
 
 
     //TODO: Enviar para todos a atualização da barra de vida???
     [PunRPC]
-    private void RPCUpdateHPontopFill(float fillAmmount, string nick)
+    private void RPCUpdateHPontopFill(float HPpercent)
+    {
+        HPOnTopImgfill.fillAmount = HPpercent;
+    }
+    [PunRPC]
+    private void RpcSetupCanvasOntop(string nick, byte team)
     {
         nicknameText.text = nick;
-        HPOnTopImgfill.fillAmount = fillAmmount;
+        HPOnTopImgfill.color = GetTeamColor(team);
+
+
     }
-
-
-
-
-
 
 
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
-        if (targetPlayer == localPlayer && changedProps == localPlayer.CustomProperties["HP"])
+        if (targetPlayer == player && PV.Controller == targetPlayer)
         {
-            HPOnTopImgfill.fillAmount = GetHPpercent((int)localPlayer.CustomProperties["HP"], (int)localPlayer.CustomProperties["maxHP"]);
-            Debug.Log("O HP foi mudado.");
+            PV.RPC("RPCUpdateHPontopFill", RpcTarget.All, HPpercent);
         }
     }
 
