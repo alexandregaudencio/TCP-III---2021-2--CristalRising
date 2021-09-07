@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using Photon.Realtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,21 +25,34 @@ public class PlayerProperty : MonoBehaviour
     private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
 
     public int life;
-    public int Life
+    //public int Life
+    //{
+    //    get { return (int)PhotonNetwork.LocalPlayer..CustomProperties["HP"]; }
+    //    set
+    //    {
+    //        int hp = (int)PhotonNetwork.LocalPlayer.CustomProperties["HP"];
+    //        HashProperty["HP"] = hp - value;
+            
+    //        PhotonNetwork.LocalPlayer.SetCustomProperties(HashProperty);
+            
+    //        //Debug.Log("Dano em " + PhotonNetwork.LocalPlayer.NickName + " " + PhotonNetwork.LocalPlayer.CustomProperties["HP"]);
+    //        sd.Value = value.ToString();
+    //    }
+    //}
+    public int Life(int value, Player target)
     {
-        get { return (int)GetComponent<PhotonView>().Controller.CustomProperties["HP"]; }
-        set
-        {
-            int hp = (int)GetComponent<PhotonView>().Controller.CustomProperties["HP"];
-            HashProperty["HP"] = hp - value;
-            
-            GetComponent<PhotonView>().Controller.SetCustomProperties(HashProperty);
-            
-            //Debug.Log("Dano em " + PhotonNetwork.LocalPlayer.NickName + " " + PhotonNetwork.LocalPlayer.CustomProperties["HP"]);
-            sd.Value = value.ToString();
-        }
+        int hp = (int)target.CustomProperties["HP"];
+        HashProperty["HP"] = hp - value;
+        target.SetCustomProperties(HashProperty);
+       
+        sd.Value = value.ToString();
+        
+        Debug.Log(target.CustomProperties["HP"]);
+        return (int)target.CustomProperties["HP"];
+
     }
 
+    
 
 
 
