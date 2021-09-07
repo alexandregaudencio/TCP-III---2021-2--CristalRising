@@ -8,6 +8,8 @@ TagManager:
   - area
   - hit
   - bullet
+  - head
+  - body
   layers:
   - Default
   - TransparentFX

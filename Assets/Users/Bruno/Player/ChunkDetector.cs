@@ -19,7 +19,7 @@ public class ChunkDetector : MonoBehaviour
         Debug.Log(collider.transform.position);
         if (piece.bounds.Contains(collider.transform.position) || piece.bounds.Intersects(collider.bounds))
         {
-            return name;
+            return gameObject.tag;
         }
         return null;
     }
