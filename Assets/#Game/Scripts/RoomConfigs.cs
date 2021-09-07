@@ -18,6 +18,7 @@ public  class RoomConfigs : MonoBehaviour
 
     //Gameplay
     public int gameplayMaxTime = 100;
+    public int heightTime = 1000;
     public int gameplayTimeBase = 10;
 
     //SceneIndex
