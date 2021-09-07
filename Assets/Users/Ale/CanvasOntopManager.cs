@@ -47,6 +47,7 @@ public class CanvasOntopManager : MonoBehaviourPunCallbacks
             nicknameText.text = PV.Controller.NickName;
             HPOnTopImgfill.color = GetTeamColor(PV.Controller.GetPhotonTeam().Code);
             LerpFillAmmount(HPOnTopImgfill);
+            PV.RPC("RPCUpdateHPontopFill", RpcTarget.All, 0.8f , localPlayer.NickName);
         }
 
     }
@@ -62,11 +63,12 @@ public class CanvasOntopManager : MonoBehaviourPunCallbacks
 
 
     //TODO: Enviar para todos a atualização da barra de vida???
-    //[PunRPC]
-    //private void RPCUpdateHPontopFill(Image imageHPfill)
-    //{
-
-    //}
+    [PunRPC]
+    private void RPCUpdateHPontopFill(float fillAmmount, string nick)
+    {
+        nicknameText.text = nick;
+        HPOnTopImgfill.fillAmount = fillAmmount;
+    }
 
 
 
