@@ -20,7 +20,7 @@ public class Slash : Spells, IEffect
     {
         Apply(null);
         if (target)
-            photonView.RPC("CalculateDamage", RpcTarget.All, target.gameObject.GetComponent<PhotonView>().ViewID);
+            GetComponent<PhotonView>().RPC("CalculateDamage", RpcTarget.All, target.gameObject.GetComponent<PhotonView>().ViewID);
     }
     [PunRPC]
     private void CalculateDamage(int targetId)

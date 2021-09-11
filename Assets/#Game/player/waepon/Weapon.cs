@@ -19,7 +19,7 @@ public class Weapon : CombatControl
     public float maxBulletDistance;
     private float timeCount;
     public Image cross;
-    public Camera cam;
+    public GameObject cam;
 
     private Vector3 mark;
     private PhotonView pv;
@@ -45,29 +45,27 @@ public class Weapon : CombatControl
     }
     private void Start()
     {
-        
-
-
         //MunicaoAtual = MunicaoMax;
-        if (!pv.IsMine)
+        if (pv.IsMine)
         {
-            cam.gameObject.SetActive(false);
+            Camera.main.transform.parent = cam.transform;
+            Camera.main.transform.SetPositionAndRotation(cam.transform.position, cam.transform.rotation);
         }
     }
     private void Update()
     {
         //municaoAtual.text = MunicaoAtual.ToString();
         //municaoMax.text = MunicaoMax.ToString();
-        
-        if(ammo <= 0)
+
+        if (ammo <= 0)
         {
-            recarregando = true; 
+            recarregando = true;
         }
-        
+
         if (recarregando == true)
         {
             temporizadorRecarga += Time.deltaTime;
-            
+
             if (temporizadorRecarga >= 2.5f)
             {
                 Reload();
@@ -81,14 +79,14 @@ public class Weapon : CombatControl
 
         int mask = LayerMask.GetMask(LayerMask.LayerToName(transform.parent.gameObject.layer), "weaponIgnore");
 
-        if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition).origin, cam.ScreenPointToRay(Input.mousePosition).direction, out hit, maxBulletDistance, ~mask))
+        if (Physics.Raycast(cam.GetComponentInChildren<Camera>().ScreenPointToRay(Input.mousePosition).origin, cam.GetComponentInChildren<Camera>().ScreenPointToRay(Input.mousePosition).direction, out hit, maxBulletDistance, ~mask))
         {
             Debug.DrawLine(cam.transform.position, hit.point, Color.red);
             mark = hit.point;
         }
         else
         {
-            var origin = cam.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2)).origin;
+            var origin = cam.GetComponentInChildren<Camera>().ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2)).origin;
             mark = (cam.transform.forward * maxBulletDistance) + origin;
             Debug.DrawLine(mangerBullet.transform.position, mark, Color.yellow);
         }
@@ -104,8 +102,10 @@ public class Weapon : CombatControl
     [PunRPC]
     public override void Use()
     {
-        if (!photonView.IsMine)
+        if (!pv.IsMine)
+        {
             return;
+        }
         if (this.count >= this.Limit)
         {
             return;
@@ -120,8 +120,9 @@ public class Weapon : CombatControl
         }
         this.count++;
 
+        ammo--;
 
-        var bullet = PhotonView.Find(GetComponent<Pool>().ActiveInstance()).gameObject.GetComponent<Bullet>();
+        var bullet = PhotonView.Find(bulletPool.ActiveInstance()).gameObject.GetComponent<Bullet>();
 
         float distance = Vector3.Distance(mangerBullet.bulletTransform.position, hit.point);
 
@@ -155,15 +156,16 @@ public class Weapon : CombatControl
             }
             else
                 bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, targetId.ViewID/*, new Vector3(color.r,color.g,color.b)*/);
+
         }
     }
     public override void Reload()
     {
-            count = 0;
-            ammo = MaxAmmo;
-            recarregando = false;
-            temporizadorRecarga = 0.000f;        
-       
+        count = 0;
+        ammo = MaxAmmo;
+        recarregando = false;
+        temporizadorRecarga = 0.000f;
+
     }
 
     public override void Aim()

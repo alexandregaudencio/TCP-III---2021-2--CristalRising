@@ -23,8 +23,8 @@ public class Explosion : Spells, IEffect
                 maxDuration = s.duration;
         }
         var e = target.GetComponent<PlayerProperty>();
-        if (e)
-            e.SetAttribute(this.attibut);
+        //if (e)
+        //    e.SetAttribute(this.attibut);
     }
     private void Update()
     {
