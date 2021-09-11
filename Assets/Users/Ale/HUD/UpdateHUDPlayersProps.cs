@@ -11,10 +11,10 @@ public class UpdateHUDPlayersProps : MonoBehaviourPunCallbacks
     /*[SerializeField] */
     private TMP_Text textTimerRespawn;
 
-
     Image playerCharacterImg;
     UpdateTeamHealthbar scriptTeamHealtbar;
 
+    private ExitGames.Client.Photon.Hashtable HashProps = new ExitGames.Client.Photon.Hashtable();
 
     private void Awake()
     {
@@ -27,29 +27,40 @@ public class UpdateHUDPlayersProps : MonoBehaviourPunCallbacks
     private void Start()
     {
         scriptTeamHealtbar = GetComponentInChildren<UpdateTeamHealthbar>();
-        textTimerRespawn.text = "";
+        //textTimerRespawn.text = "";
     }
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
-        if (targetPlayer == PhotonNetwork.LocalPlayer && changedProps == targetPlayer.CustomProperties["isDead"])
+        if (targetPlayer == scriptTeamHealtbar.CurrentPlayer)
         {
-            //CheckPlayersTimeProps((bool)targetPlayer.CustomProperties["isDead"], (string)targetPlayer.CustomProperties["timerRespawn"]);
-            //CheckPlayersCharacterIcon((bool)targetPlayer.CustomProperties["isDead"]);
+
+            if(changedProps.ContainsKey("isDead"))
+            {
+                SwitchPlayersAlive((bool)scriptTeamHealtbar.CurrentPlayer.CustomProperties["isDead"]);
+
+            }
+            if (changedProps.ContainsKey("timerRespawn"))
+            {
+                UpdatePlayersTimeRespawn();
+            }
+
         }
     }
 
-    //private void CheckPlayersCharacterIcon(bool isDead)
-    //{
-    //    playerCharacterImg.color = (isDead) ? new Color(100, 100, 100, 200) : new Color(255, 255, 255, 200);
 
-    //}
+    private void SwitchPlayersAlive(bool isDead)
+    {
+        textTimerRespawn.gameObject.SetActive(isDead);
+        //playerCharacterImg.color = (isDead) ? new Color(100, 100, 100, 200) : new Color(255, 255, 255, 200);
+
+    }
 
 
-    //private void CheckPlayersTimeProps(bool isDead, string timerToText)
-    //{
-    //  textTimerRespawn.text =  (isDead) ? timerToText :  "";
-    //}
+    private void UpdatePlayersTimeRespawn()
+    {
+        textTimerRespawn.text = scriptTeamHealtbar.CurrentPlayer.CustomProperties["timerRespawn"].ToString();
+    }
 
 
 }

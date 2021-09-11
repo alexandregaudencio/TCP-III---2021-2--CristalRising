@@ -1224,11 +1224,11 @@ MonoBehaviour:
   characterSelectionMaxTime: 2
   gameplayMaxTime: 100
   heightTime: 1000
-  gameplayTimeBase: 10
+  gameplayTimeBase: 2
   menuSceneIndex: 0
   CharSelecSceneIndex: 1
   gameplaySceneIndex: 2
-  timeToRespawn: 8
+  timeToRespawn: 3
   blueTeamColor: {r: 0, g: 0.50425196, b: 1, a: 1}
   redTeamColor: {r: 0.91764706, g: 0.14509805, b: 0.16470589, a: 1}
   charactersOrdered:

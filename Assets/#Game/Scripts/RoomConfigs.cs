@@ -11,24 +11,24 @@ public  class RoomConfigs : MonoBehaviour
     }
 
     //CreateRoomC
-    public int maxRoomPlayers = 6;
+    public int maxRoomPlayers;
 
     //characterSelection
-    public int characterSelectionMaxTime = 5;
+    public int characterSelectionMaxTime;
 
     //Gameplay
-    public int gameplayMaxTime = 100;
-    public int heightTime = 1000;
-    public int gameplayTimeBase = 10;
+    public int gameplayMaxTime;
+    public int heightTime;
+    public int gameplayTimeBase;
 
     //SceneIndex
-    public int menuSceneIndex = 0;
-    public int CharSelecSceneIndex = 1;
-    public int gameplaySceneIndex = 2;
+    public int menuSceneIndex;
+    public int CharSelecSceneIndex;
+    public int gameplaySceneIndex;
 
 
     //Players
-    public int timeToRespawn = 8;
+    public int timeToRespawn;
 
     //team
     public Color blueTeamColor = new Color(0, 129, 255, 255);
