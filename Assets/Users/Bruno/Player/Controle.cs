@@ -43,7 +43,7 @@ public class Controle : MonoBehaviourPun
             {
                 playerAnim.SetTrigger("attack");
                 gun.Use();
-                gun.Ammo--;
+            
                 UpdateAmmoText();
                 //if (spell)
                 //{

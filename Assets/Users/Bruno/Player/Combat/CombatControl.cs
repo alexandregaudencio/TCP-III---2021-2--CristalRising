@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-public abstract class CombatControl : MonoBehaviourPunCallbacks, IActive
+public abstract class CombatControl : MonoBehaviour, IActive
 {
     public float Hertz;
     public int Limit;

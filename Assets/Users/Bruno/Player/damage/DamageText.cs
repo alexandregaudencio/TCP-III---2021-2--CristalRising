@@ -15,7 +15,7 @@ public class DamageText : MonoBehaviour
     private void Start()
     {
         initialPos = transform.position;
-        cam = (Camera)FindObjectOfType(typeof(Camera));
+        cam = Camera.main;
     }
 
     private void OnEnable()
