@@ -18,8 +18,11 @@ public class UpdateTeamHealthbar : MonoBehaviourPunCallbacks
     private Player currentPlayer;
     public Player CurrentPlayer { get => currentPlayer; set => currentPlayer = value; }
 
+    public UpdateTeamHealthbar instance;
+
     private Player Player
     {
+     
         get
         {
             PhotonTeamsManager.Instance.TryGetTeamMembers(team, out teamMembers);
@@ -30,6 +33,7 @@ public class UpdateTeamHealthbar : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        instance = this;
         healthbarImg = GetComponent<Image>();
         CurrentPlayer = Player;
         ResetTeamProps(this.CurrentPlayer);
@@ -65,4 +69,6 @@ public class UpdateTeamHealthbar : MonoBehaviourPunCallbacks
             return (float)hp / maxHP;
         }
     }
+
+
 }
