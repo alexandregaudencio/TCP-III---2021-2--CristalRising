@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+
         if (!PV.IsMine)
         {
             normalCam.gameObject.GetComponent<PhysicsRaycaster>().enabled = false;
@@ -74,6 +75,8 @@ public class PlayerController : MonoBehaviour
     }
     private void LateUpdate()
     {
+        
+
         if (!PV.IsMine)
         {
             normalCam.gameObject.GetComponent<PhysicsRaycaster>().enabled = false;
@@ -88,6 +91,8 @@ public class PlayerController : MonoBehaviour
             CameraRotation();
             Jumping();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) Cursor.lockState = CursorLockMode.None;
 
         // if (transform.position.y - chao.transform.position.y > 0.1) {
         //     debug.text = "Not Grounded";

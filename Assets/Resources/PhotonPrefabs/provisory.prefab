@@ -3552,20 +3552,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40aa03a293f526b48bea9132657b17da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPointsTimeAzul:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  SpawnPointTimeVermelho:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  PP: {fileID: 0}
   TemporizadorRespawn: 0
   SpawnCheck: 0
-  TimeDesteJogador:
-    Name: 
-    Code: 0
   CanvasDeMorte: {fileID: 651563581679386868}
   TextoContador: {fileID: 6232003690181990446}
   avada: 0

@@ -11,51 +11,44 @@ using Photon.Pun.UtilityScripts;
 public class SetUpGameplay : MonoBehaviour
 {
     private PhotonView PV;
-    [SerializeField] private GameObject[] SpawnPointsBlue, SpawnPointsRed;
+    [SerializeField] private GameObject[] spawnPointsBlue, spawnPointsRed;
     public static SetUpGameplay instance;
+
+    public GameObject[] SpawnPointsBlue { get => spawnPointsBlue;}
+    public GameObject[] SpawnPointsRed { get => spawnPointsRed;}
+    int indexPlayer;
+    string pTeam;
+
+    Dictionary<string, Dictionary<int, GameObject>> spawnKeyPoints;
+
 
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
     }
-    private int indexPlayerList;
 
     void Start()
     {
         instance = this;
+        indexPlayer = (int)PhotonNetwork.LocalPlayer.CustomProperties["indexPlayer"];
+        pTeam = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
         InstantiatingPlayersCharacter();
-        //SetIndexPlayer();
     }
 
-    //private void SetIndexPlayer()
-    //{
-    //    byte team = PhotonNetwork.LocalPlayer.GetPhotonTeam().Code;
-    //    Player[] playerTeamList;
-    //    PhotonTeamsManager.Instance.TryGetTeamMembers(team, out playerTeamList);
-    //    foreach (Player player in playerTeamList)
-    //    {
-    //        if (player == PhotonNetwork.LocalPlayer)
-    //        {
-    //            Debug.Log("Parou aaqui? " + indexPlayerList);
-    //            return;
-    //        }
-    //        indexPlayerList++;
-    //        Debug.Log(indexPlayerList);
-    //    }
-    //}
+
     private void InstantiatingPlayersCharacter()
     {
         int indexPlayer = (int)PhotonNetwork.LocalPlayer.CustomProperties["indexPlayer"];
         string pTeam = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
         if (pTeam == "Blue")
         {
-            PV.RPC("RPCInstantiateCharacter", PhotonNetwork.LocalPlayer, SpawnPointsBlue[indexPlayer].transform.position, SpawnPointsBlue[indexPlayer].transform.rotation);
+            PV.RPC("RPCInstantiateCharacter", PhotonNetwork.LocalPlayer, spawnPointsBlue[indexPlayer].transform.position, spawnPointsBlue[indexPlayer].transform.rotation);
             //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), 
             //SpawnPointsBlue[0].transform.position, SpawnPointsBlue[0].transform.rotation, 0);
         }
         if (pTeam == "Red")
         {
-            PV.RPC("RPCInstantiateCharacter", PhotonNetwork.LocalPlayer, SpawnPointsRed[indexPlayer].transform.position, SpawnPointsRed[indexPlayer].transform.rotation);
+            PV.RPC("RPCInstantiateCharacter", PhotonNetwork.LocalPlayer, spawnPointsRed[indexPlayer].transform.position, spawnPointsRed[indexPlayer].transform.rotation);
         }
 
     }
@@ -67,4 +60,9 @@ public class SetUpGameplay : MonoBehaviour
         //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), spawnPos, spawnRot);
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", PhotonNetwork.LocalPlayer.TagObject.ToString()), spawnPos, spawnRot);
     }
+
+    public Vector3 LocalPlayerSpawnPoint => (pTeam == "Blue") ? spawnPointsBlue[indexPlayer].transform.position : spawnPointsRed[indexPlayer].transform.position;
+
+
+
 }

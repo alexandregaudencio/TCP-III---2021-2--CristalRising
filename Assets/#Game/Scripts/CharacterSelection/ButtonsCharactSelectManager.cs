@@ -44,9 +44,7 @@ public class ButtonsCharactSelectManager : MonoBehaviour
         
         HashProperty["HP"] = RoomConfigs.instance.charactersOrdered[indexCharacter].HP;
         HashProperty["maxHP"] = RoomConfigs.instance.charactersOrdered[indexCharacter].HP;
-        //HashProperty["damage"] = Characters[indexPlayer].damage;
         //HashProperty["ammo"] = Characters[indexPlayer].ammo;
-        //HashProperty["maxAmmo"] = Characters[indexPlayer].ammo;
         HashProperty["characterName"] = RoomConfigs.instance.charactersOrdered[indexCharacter].characterName;
         HashProperty["characterIndex"] = RoomConfigs.instance.charactersOrdered[indexCharacter].characterIndex;
         

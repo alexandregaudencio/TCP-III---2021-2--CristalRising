@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Weapon" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQABgAgBCAAAgAAgQBAAAAAAAAEAICECAAAAAAwhEA=</HashCode>
+      <FileName>Assets\#Game\player\waepon\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ButtonsCharactSelectManager" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACQAAAAAAAgQBAAAAAAAAQAAEAAAQAAAAAA=</HashCode>
+      <FileName>Assets\#Game\Scripts\CharacterSelection\ButtonsCharactSelectManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayersCharactersVisualizing" Collapsed="true">
+    <Position X="20.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAABAAAACAEAAAAAAAAAAAAAAAAAAAAAAAAAAgAAEA=</HashCode>
+      <FileName>Assets\#Game\Scripts\CharacterSelection\PlayersCharactersVisualizing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneController" Collapsed="true">
+    <Position X="20.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwQAAAEAGAAAAAAAABAAAAgAAAAAAAAAAAQACAAAAA=</HashCode>
+      <FileName>Assets\#Game\Scripts\CharacterSelection\SceneController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamManager" Collapsed="true">
+    <Position X="16.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACCAAAAAAAAAAAAAAAACAAAAAAAAAAACACAA=</HashCode>
+      <FileName>Assets\#Game\Scripts\CharacterSelection\TeamManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CircleAreaPoints" Collapsed="true">
+    <Position X="20.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAEAAUAiMAAAKIwIAAAIABAgBAAKAASgARBACABAA=</HashCode>
+      <FileName>Assets\#Game\Scripts\Gameplay\GameplayManager\CircleAreaPoints.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="D_PlayerController" Collapsed="true">
+    <Position X="15" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQACAAACAQAAAAAAAAAAAAAAAAAAEAAAAQAAAAAEA=</HashCode>
+      <FileName>Assets\#Game\Scripts\Gameplay\GameplayManager\D_PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameplayManager" Collapsed="true">
+    <Position X="20.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAAEACAAAAoEAkAQAQgAAABAAAAAAh0UAAAAEAA=</HashCode>
+      <FileName>Assets\#Game\Scripts\Gameplay\GameplayManager\GameplayManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameSetUp" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAACQA=</HashCode>
+      <FileName>Assets\#Game\Scripts\Gameplay\GameplayManager\GameSetUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PhotonPlayer" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEACAAAAAAAAAAAAAAAAAAgAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\#Game\Scripts\Gameplay\Player\PhotonPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQCwEAAFiAgAgAAAACAIAAgAAAAAkBsAAAQAACIIEA=</HashCode>
+      <FileName>Assets\#Game\Scripts\Gameplay\Player\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LobbyController" Collapsed="true">
+    <Position X="15" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAEAAAAAAAAAAAEAAAEBEAAIEEAAEAABAAEA=</HashCode>
+      <FileName>Assets\#Game\Scripts\Lobby\LobbyController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerListItem" Collapsed="true">
+    <Position X="15" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAANAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\#Game\Scripts\Lobby\PlayerListItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerNameManager" Collapsed="true">
+    <Position X="16.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgACAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\#Game\Scripts\Lobby\PlayerNameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomManager" Collapsed="true">
+    <Position X="18.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAACEAAAAAAAAAAAAAgAAAAAAAAEAAAAAAAANA=</HashCode>
+      <FileName>Assets\#Game\Scripts\Lobby\RoomManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StartUp" Collapsed="true">
+    <Position X="15" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAIAACAAAACAAEAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\#Game\Scripts\Lobby\StartUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomConfigs" Collapsed="true">
+    <Position X="15" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgIAACAASAAAUAAAAAAAAAAAABACAAUAAAgAgEAAAA=</HashCode>
+      <FileName>Assets\#Game\Scripts\RoomConfigs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TimerCountdown" Collapsed="true">
+    <Position X="20.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAgAAAAAAAAAAAAABBAEAAACBQAAAgABAAAA=</HashCode>
+      <FileName>Assets\#Game\Scripts\TimerCountdown.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSM" Collapsed="true">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAgAUAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\CSM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DefineMorte" Collapsed="true">
+    <Position X="18.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAhCAAAEAAIAAABAAQAEEAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\DefineMorte.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="hudtime" Collapsed="true">
+    <Position X="11.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\hudtime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Outline" Collapsed="true">
+    <Position X="20.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gARBAQhgABEAAAAQgAEAAAACAQAAAgAIAQAAAAAAyEg=</HashCode>
+      <FileName>Assets\QuickOutline\Scripts\Outline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAGAAAAAAAAAAAIAUABAAQAAAEAAEBAAAAAA=</HashCode>
+      <FileName>Assets\RoomController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SetUpGameplay" Collapsed="true">
+    <Position X="11.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAADAAAQAAAAAAAAAAAARAAAAAAAAQAAAAAEA=</HashCode>
+      <FileName>Assets\SetUpGameplay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CanvasOntopManager" Collapsed="true">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAEEAAAAAAAABAAACAABAABQAAQAAgAAAA=</HashCode>
+      <FileName>Assets\Users\Ale\CanvasOntopManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character" Collapsed="true">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAhAAAAABgAAAAAAIAAAAQAEAAAAAACBAAgAgAAA=</HashCode>
+      <FileName>Assets\Users\Ale\Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UpdateHUDLocalPlayerProps" Collapsed="true">
+    <Position X="9.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAkCBEAAgAAgJAAAQAAAAEAAAAQAAAAwgAAAA=</HashCode>
+      <FileName>Assets\Users\Ale\HUD\UpdateHUDLocalPlayerProps.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UpdateHUDPlayerHabillities" Collapsed="true">
+    <Position X="11.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAABACAAAAAAAIIAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Ale\HUD\UpdateHUDPlayerHabillities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UpdateHUDPlayersProps" Collapsed="true">
+    <Position X="13.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAIAAAAAAAAAAgAAAAAgAgAAEA=</HashCode>
+      <FileName>Assets\Users\Ale\HUD\UpdateHUDPlayersProps.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UpdateTeamHealthbar" Collapsed="true">
+    <Position X="15" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAACBAAAAIAAAAAAEAAAAQAACAAAAAgQwAAAA=</HashCode>
+      <FileName>Assets\Users\Ale\HUD\UpdateTeamHealthbar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HumanoidAnimationController" Collapsed="true">
+    <Position X="13.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQAIAAAAAiAIgQAAAAAAIAAAAAAAAgIAAAEQAAEAAAA=</HashCode>
+      <FileName>Assets\Users\Ale\HumanoidAnimationController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SetOutlineColor" Collapsed="true">
+    <Position X="9.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAFCABAAAAAAAAAAAAAAAABAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Ale\SetOutlineColor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamPropsController" Collapsed="true">
+    <Position X="18.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Ale\TeamPropsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Billboard" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAACAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\billboard\Billboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChunkDetector" Collapsed="true">
+    <Position X="18.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgCAAAAAAAAAAQAAAAQAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\ChunkDetector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CombatControl" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAABQAAAQAAAAAkAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\CombatControl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Cure" Collapsed="true">
+    <Position X="2.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAQAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Magics\AbstractionEffectSpells\Cure.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Explosion" Collapsed="true">
+    <Position X="5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAABAAAAAAIAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Magics\AbstractionEffectSpells\Explosion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Shild" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Magics\AbstractionEffectSpells\Shield.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Slash" Collapsed="true">
+    <Position X="7.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIADAAgBAAIQAAAAAAAAAEAIAAAAAAAAAAAYA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Magics\AbstractionEffectSpells\Slash.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Spells" Collapsed="true">
+    <Position X="5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAAAAAAAAgAAAAAAAAAAAAAAABAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Magics\Spells.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="StatusCure" Collapsed="true">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Magics\Status\AbstractionStatus\StatusCure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatusHook" Collapsed="true">
+    <Position X="7.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Magics\Status\AbstractionStatus\StatusHook.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatusStop" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Magics\Status\AbstractionStatus\StatusStop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Status" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAABAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Magics\Status\Status.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManagerBullet" Collapsed="true">
+    <Position X="18.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Weapon\ManagerBullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bullet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEQQCAAAACABggAAIAAIAQgAAEAEAUaAAggIAABAgQA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Weapon\Projectable\Bullet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pool" Collapsed="true">
+    <Position X="11.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAgEAAAADAgACAABAgAAAAAAAAAAAAAAgAAAgACACI=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Weapon\Projectable\Pool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectableFactory" Collapsed="true">
+    <Position X="13.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAACIAAAAAAIAAAAAAAAAAAAABAAAAAAoABAAAAIEA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Weapon\Projectable\ProjectableFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controle" Collapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JAQAAABQACAAAAAAAAAAAAAAAAAEBQAAAACAIAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Controle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DamageText" Collapsed="true">
+    <Position X="16.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBBAAACCAAAgAAAAAAgAAAAAAAAQAAAAAAEAAACAg=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\damage\DamageText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerProperty" Collapsed="true">
+    <Position X="18.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAkCAAAgAIAAAAAAAQAAAAAQBAAAAAAAABAAg=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\PlayerProperty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowDamage" Collapsed="true">
+    <Position X="13.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBBAAAACAAAAAAAAAAAAAAAAAAESAABAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\ShowDamage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAssister" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAiACAAgAUABAAAUIIAAAAAEAAAAAAQAAABBAI=</HashCode>
+      <FileName>Assets\Users\Romualdo\Scripts\PlayerAssister.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerTesteGameplaySarah" Collapsed="true">
+    <Position X="9.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAIBAAAAABEAABAABAAJBAQAAgAAACIgA=</HashCode>
+      <FileName>Assets\Users\Sarah\GamePlay\PlayerTesteGameplaySarah.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LobbyManager" Collapsed="true">
+    <Position X="16.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAGAAAAAAAEAAoAABgAAAAAAAAAAAAAAAkIA=</HashCode>
+      <FileName>Assets\Users\Sarah\Script\LobbyManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Photon.Realtime.Demo.ConnectAndJoinRandomLb" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEaAAEIAACAAEQAAAEACAIEAAAGBAAIEEAJAAAAAQIA=</HashCode>
+      <FileName>Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Struct Name="Attribute" Collapsed="true">
+    <Position X="9.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAADAAACQAAAACAAAAAAAI=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Attribute.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="IActive" Collapsed="true">
+    <Position X="11.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\CombatAbstraction\IActive.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IPassive" Collapsed="true">
+    <Position X="15" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\CombatAbstraction\IPassive.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Damage" Collapsed="true">
+    <Position X="9.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Damage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IEffect" Collapsed="true">
+    <Position X="13.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Users\Bruno\Player\Combat\Magics\IEffect.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

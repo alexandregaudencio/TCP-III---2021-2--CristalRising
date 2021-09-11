@@ -8,94 +8,78 @@ using UnityEngine.UI;
 
 
 
-public class DefineMorte : MonoBehaviour
+public class DefineMorte : MonoBehaviourPunCallbacks
 {
-    public GameObject[] SpawnPointsTimeAzul;
-    public GameObject[] SpawnPointTimeVermelho;
-    public PlayerProperty PP;
+    //public GameObject[] SpawnPointsTimeAzul;
+    //public GameObject[] SpawnPointTimeVermelho;
+    PlayerProperty PP;
     public float TemporizadorRespawn;
     public bool SpawnCheck;
-    public PhotonTeam TimeDesteJogador;
+    //PhotonTeam TimeDesteJogador;
     public GameObject CanvasDeMorte;
     public Text TextoContador;
 
     [SerializeField] private float avada;
+    //SetUpGameplay setUpGameplay;
+
+    private ExitGames.Client.Photon.Hashtable HashDeadProps = new ExitGames.Client.Photon.Hashtable();
+    private ExitGames.Client.Photon.Hashtable HashResetProps = new ExitGames.Client.Photon.Hashtable();
+
 
     private void Start()
     {
+        //setUpGameplay = FindObjectOfType<SetUpGameplay>();
         CanvasDeMorte.gameObject.SetActive(false);
-        PP = this.gameObject.GetComponent<PlayerProperty>();
-        TimeDesteJogador = PhotonNetwork.LocalPlayer.GetPhotonTeam();
+        //PP = GetComponent<PlayerProperty>();
+        
     }
 
-    private void Update()
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
-        #region Blue Team Spawn
-        this.SpawnPointsTimeAzul[0] = GameObject.Find("1B");
-        this.SpawnPointsTimeAzul[1] = GameObject.Find("2B");
-        this.SpawnPointsTimeAzul[2] = GameObject.Find("3B");
-        #endregion
-
-        #region Red Team Spawn
-        this.SpawnPointTimeVermelho[0] = GameObject.Find("1A");
-        this.SpawnPointTimeVermelho[1] = GameObject.Find("2A");
-        this.SpawnPointTimeVermelho[2] = GameObject.Find("3A");
-        #endregion
-        avada = PP.life;
-
-        if (PP.life <= 0)
+        if(targetPlayer == PhotonNetwork.LocalPlayer && changedProps.ContainsKey("HP"))
         {
-            SpawnCheck = true;
-            CanvasDeMorte.gameObject.SetActive(true);
-            if (CanvasDeMorte.activeInHierarchy == true)
-            {
-                TextoContador.text = TemporizadorRespawn.ToString();
-            }
-        }
-        else
-            SpawnCheck = false;
-
-        if (SpawnCheck == true)
-        {
-            this.gameObject.GetComponent<PlayerController>().enabled = false;
-            // float T = 0;
-                TemporizadorRespawn += Time.deltaTime;
-            if (TemporizadorRespawn >= 5.0f)
-            {
-                Morre();
+           if( (int)targetPlayer.CustomProperties["HP"] <= 0 && !(bool)targetPlayer.CustomProperties["isDead"]) {
+                StartCoroutine(deathEvent());
 
             }
-        }
-        else
-        {
-            TemporizadorRespawn = 0.0f;
-            this.gameObject.GetComponent<PlayerController>().enabled = true;
+            //GetComponent<PlayerController>().gameObject.SetActive(false);
 
         }
 
     }
-    public void Morre()
+
+    IEnumerator deathEvent()
     {
-        Debug.Log("Ih morri");
 
-        if (TimeDesteJogador.Name == "Blue")
+        HashDeadProps["isDead"] = true;
+        int countdown = RoomConfigs.instance.timeToRespawn;
+        while (countdown > 0)
         {
-            SpawnCheck = false;
-            int R = 0;
-            R = Random.Range(0, SpawnPointsTimeAzul.Length);
-            GetComponent<Transform>().position = SpawnPointsTimeAzul[R].transform.position;
-            GetComponent<Transform>().rotation = SpawnPointsTimeAzul[R].transform.rotation;
-            PP.life = 100; 
-        }
-        if (TimeDesteJogador.Name == "Red")
-        {
-            SpawnCheck = false;
-            int W = 0;
-            W = UnityEngine.Random.Range(0, SpawnPointsTimeAzul.Length);
-            this.gameObject.GetComponent<Transform>().position = SpawnPointTimeVermelho[W].transform.position;
-            Debug.Log("Ai calica");
-            PP.life = 100;
+            HashDeadProps["timerRespawn"] = countdown;
+            PhotonNetwork.LocalPlayer.SetCustomProperties(HashDeadProps);
+            yield return new WaitForSeconds(1);
+            countdown--;
+
         }
 
+        HashDeadProps["isDead"] = false;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(HashDeadProps);
+        ResetPlayerProps();
+        ResetCharacterProps();
+
+    }
+
+    private void ResetCharacterProps(/*bool boolean*/)
+    {
+        transform.position = SetUpGameplay.instance.LocalPlayerSpawnPoint;
+        //GetComponent<PlayerController>().gameObject.SetActive(true);
+
+    }
+
+    private void ResetPlayerProps()
+    {
+        HashResetProps["HP"] = (int)PhotonNetwork.LocalPlayer.CustomProperties["maxHP"];
+        PhotonNetwork.LocalPlayer.SetCustomProperties(HashResetProps);
     }
 }

@@ -501,7 +501,7 @@ PrefabInstance:
     - target: {fileID: 8357978053006258054, guid: ba32f70b973895b4ca7663af224e1d79,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8357978053006258054, guid: ba32f70b973895b4ca7663af224e1d79,
         type: 3}
@@ -859,7 +859,7 @@ Transform:
   m_LocalScale: {x: 4.892226, y: 4.8922243, z: 4.8922243}
   m_Children: []
   m_Father: {fileID: 1691054373}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1120613210
 PrefabInstance:
@@ -1187,10 +1187,10 @@ Transform:
   m_LocalPosition: {x: 7.0095396, y: 1.4657507, z: -5.4339285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 7184323143468079269}
   - {fileID: 1991779069}
   - {fileID: 1090265262}
   - {fileID: 882526820}
-  - {fileID: 7184323143468079269}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1534,14 +1534,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f4e0324cf2ca4587af745f028acf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPointsBlue:
+  spawnPointsBlue:
   - {fileID: 7184323144564636679}
   - {fileID: 7184323143091538792}
   - {fileID: 7184323142584257866}
   - {fileID: 1953478576}
   - {fileID: 493334594}
   - {fileID: 1368181120}
-  SpawnPointsRed:
+  spawnPointsRed:
   - {fileID: 7184323143615287031}
   - {fileID: 7184323143190729236}
   - {fileID: 7184323144406422100}
@@ -1704,7 +1704,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1691054373}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &404530811127155216
 Transform:
@@ -1940,7 +1940,7 @@ Transform:
   - {fileID: 1863488674}
   - {fileID: 472617257}
   m_Father: {fileID: 1691054373}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7184323143615287024
 Transform:
