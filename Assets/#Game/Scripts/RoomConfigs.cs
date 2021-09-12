@@ -8,6 +8,7 @@ public  class RoomConfigs : MonoBehaviour
     private void Start()
     {
         instance = this;
+        heightTime = gameplayMaxTime + gameplayTimeBase;
     }
 
     //CreateRoomC
@@ -36,4 +37,6 @@ public  class RoomConfigs : MonoBehaviour
 
 
     public Character[] charactersOrdered;
+
+   
 }
