@@ -51,7 +51,8 @@ public class UpdateHUDLocalPlayerProps : MonoBehaviourPunCallbacks
     {
         get
         {
-            return  (int)localPlayer.CustomProperties["HP"];
+           return Mathf.Clamp((int)localPlayer.CustomProperties["HP"], 0, (int)localPlayer.CustomProperties["maxHP"]);
+
         }
     }
 

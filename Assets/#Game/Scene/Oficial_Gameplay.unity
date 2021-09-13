@@ -2267,22 +2267,7 @@ PrefabInstance:
     - target: {fileID: 4213581589598884006, guid: 91962e7c98e471b45bdd4579982b4439,
         type: 3}
       propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4213581589877948692, guid: 91962e7c98e471b45bdd4579982b4439,
-        type: 3}
-      propertyPath: m_text
-      value: 999
-      objectReference: {fileID: 0}
-    - target: {fileID: 4213581589877948695, guid: 91962e7c98e471b45bdd4579982b4439,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.000022888184
-      objectReference: {fileID: 0}
-    - target: {fileID: 8312832023276335673, guid: 91962e7c98e471b45bdd4579982b4439,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.7194824
+      value: HUD_Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 8312832023750391284, guid: 91962e7c98e471b45bdd4579982b4439,
         type: 3}
