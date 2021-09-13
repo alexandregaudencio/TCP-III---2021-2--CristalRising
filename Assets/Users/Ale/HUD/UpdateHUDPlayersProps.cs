@@ -22,6 +22,7 @@ public class UpdateHUDPlayersProps : MonoBehaviourPunCallbacks
 
         playerCharacterImg = GetComponent<Image>();
         textTimerRespawn = GetComponentInChildren<TMP_Text>();
+        scriptTeamHealtbar = GetComponentInChildren<UpdateTeamHealthbar>();
 
     }
 
@@ -60,14 +61,17 @@ public class UpdateHUDPlayersProps : MonoBehaviourPunCallbacks
         }
     }
 
+    private Color TeamColor(byte team)
+    {
+        return (team == 1) ? RoomConfigs.instance.blueTeamColor : RoomConfigs.instance.redTeamColor;
+    }
 
     private void SwitchPlayersAlive(bool isDead)
     {
         textTimerRespawn.gameObject.SetActive(isDead);
-        //playerCharacterImg.color = (isDead) ? new Color(100, 100, 100, 200) : new Color(255, 255, 255, 200);
+        playerCharacterImg.color = (isDead) ? RoomConfigs.instance.noneColor : TeamColor(scriptTeamHealtbar.Team);
 
     }
-
 
     private void UpdatePlayersTimeRespawn()
     {

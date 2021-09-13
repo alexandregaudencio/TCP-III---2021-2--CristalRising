@@ -18,7 +18,7 @@ public class UpdateTeamHealthbar : MonoBehaviourPunCallbacks
     private Player currentPlayer;
     public Player CurrentPlayer { get => currentPlayer; set => currentPlayer = value; }
 
-    public UpdateTeamHealthbar instance;
+    //public UpdateTeamHealthbar instance;
 
     private Player Player
     {
@@ -33,7 +33,7 @@ public class UpdateTeamHealthbar : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        instance = this;
+        //instance = this;
         healthbarImg = GetComponent<Image>();
         CurrentPlayer = Player;
         ResetTeamProps(this.CurrentPlayer);
@@ -70,5 +70,5 @@ public class UpdateTeamHealthbar : MonoBehaviourPunCallbacks
         }
     }
 
-
+    public byte Team { get => team; set => team = value; }
 }
