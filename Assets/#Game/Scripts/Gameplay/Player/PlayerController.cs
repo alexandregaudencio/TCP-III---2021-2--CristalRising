@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
     private bool jump, groundCheck;
 
     PhotonView PV;
+
+    public bool GroundCheck { get => groundCheck; set => groundCheck = value; }
+
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -225,9 +228,10 @@ public class PlayerController : MonoBehaviour
         }
 
         // Move o jogador na direção que está virado
-        dir = transform.TransformVector(new Vector3(horAxis, 0, verAxis).normalized);
-        playerRigidBody.MovePosition(playerRigidBody.position + dir * adjustedSpeed * Time.deltaTime);
 
+        dir = Vector3.ClampMagnitude(transform.TransformVector(new Vector3(horAxis, 0, verAxis)), 1f);
+
+        playerRigidBody.MovePosition(playerRigidBody.position + dir * adjustedSpeed * Time.deltaTime);
     }
 
 }

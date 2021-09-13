@@ -2973,7 +2973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a3dd18378f1094dbe8fc30b510fe14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
+  moveSpeed: 4
   sprintModifier: 0
   cameraPivot: {fileID: 1756110272992486436}
   jumpForce: 4
@@ -2996,7 +2996,6 @@ MonoBehaviour:
   speed: 10
   gun: {fileID: 6749535795649932172}
   spell: {fileID: 735399273219520177}
-  animator: {fileID: 0}
   ammoText: {fileID: 0}
 --- !u!114 &7451727771629943705
 MonoBehaviour:
@@ -3011,7 +3010,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sd: {fileID: 4588672204390967534}
-  life: 100
 --- !u!114 &2055101634456373572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3042,7 +3040,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanvasDeMorte: {fileID: 4034182242597135573}
   TextoContador: {fileID: 7532864758435593231}
-  HUDCanvas: {fileID: 0}
 --- !u!114 &6431263120430824401
 MonoBehaviour:
   m_ObjectHideFlags: 0
