@@ -605,6 +605,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8357978053006258054, guid: ba32f70b973895b4ca7663af224e1d79,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357978053006258054, guid: ba32f70b973895b4ca7663af224e1d79,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357978053006258054, guid: ba32f70b973895b4ca7663af224e1d79,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.0095396
       objectReference: {fileID: 0}
@@ -2268,6 +2278,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HUD_Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370675593710894931, guid: 91962e7c98e471b45bdd4579982b4439,
+        type: 3}
+      propertyPath: m_Name
+      value: AmmoText
       objectReference: {fileID: 0}
     - target: {fileID: 8312832023750391284, guid: 91962e7c98e471b45bdd4579982b4439,
         type: 3}

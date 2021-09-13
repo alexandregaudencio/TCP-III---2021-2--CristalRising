@@ -11,13 +11,13 @@ public class DefineMorte : MonoBehaviourPunCallbacks
 {
     //public GameObject[] SpawnPointsTimeAzul;
     //public GameObject[] SpawnPointTimeVermelho;
-    PlayerProperty PP;
+    //PlayerProperty PP;
     //public float TemporizadorRespawn;
     //public bool SpawnCheck;
     //PhotonTeam TimeDesteJogador;
     public GameObject CanvasDeMorte;
     public Text TextoContador;
-    [SerializeField] private GameObject HUDCanvas;
+    private GameObject HUDCanvas;
 
     //[SerializeField] private float avada;
     //SetUpGameplay setUpGameplay;
@@ -32,7 +32,8 @@ public class DefineMorte : MonoBehaviourPunCallbacks
         CanvasDeMorte.gameObject.SetActive(false);
         //PP = GetComponent<PlayerProperty>();
         HUDCanvas = GameObject.Find("HUD_Canvas");
-        
+        GetComponent<Controle>().AmmoText = GameObject.Find("AmmoText");
+        GetComponent<Controle>().UpdateAmmoText();
     }
 
 

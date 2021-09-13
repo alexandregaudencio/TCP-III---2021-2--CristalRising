@@ -12,6 +12,7 @@ public class HumanoidAnimationController : MonoBehaviour
     [SerializeField] private Transform spine;
     [SerializeField] private Transform neck;
     [SerializeField] private Controle controle;
+    PlayerController playerController;
 
     PhotonView PV;
 
@@ -22,6 +23,7 @@ public class HumanoidAnimationController : MonoBehaviour
         animator = GetComponent<Animator>();
         controle = GetComponentInParent<Controle>();
         PV = GetComponent<PhotonView>();
+        playerController = GetComponentInParent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,7 @@ public class HumanoidAnimationController : MonoBehaviour
             ProcessAimTransform();
             ProcessReloading();
             ProcessShooting();
+            ProcessJump();
         }
 
 
@@ -62,7 +65,7 @@ public class HumanoidAnimationController : MonoBehaviour
     private void ProcessReloading()
     {
         //bool isReloading = controle.gun.recarregando;
-        if (Input.GetKeyDown(KeyCode.Q) && !animator.GetBool("Reloading"))
+        if (Input.GetKeyDown(KeyCode.R) && !animator.GetBool("Reloading"))
         {
             animator.SetBool("Reloading", true);
             StartCoroutine(DisablingReloading());
@@ -77,5 +80,18 @@ public class HumanoidAnimationController : MonoBehaviour
         animator.SetBool("Reloading", false);
     }
    
+    void ProcessJump()
+    {
+        if(Input.GetKeyDown(KeyCode.Space) && playerController.GroundCheck)
+        {
+            //animação de pulo
+
+        }
+        {
+            
+        }
+    }
+
+
 
 }
