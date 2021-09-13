@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9ace9b4e0dfe94ea84d3391de9c52d, type: 3}
   m_Name: Provisory
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 6999511871905539392, guid: 057e4a72b95e0b14eb8f0870fa2f6ae4,
+  characterPrefab: {fileID: 6905663331519627617, guid: 76b738e633c39e04bb45515415095154,
     type: 3}
   characterName: Provisory
   frase: "Personagem Provis\xF3rio."

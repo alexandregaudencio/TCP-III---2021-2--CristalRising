@@ -11,10 +11,6 @@ using UnityEngine.UI;
 public class PlayerProperty : MonoBehaviour
 {
 
-    public GameObject[] SpawnPointsTimeAzul;
-    public GameObject[] SpawnPointTimeVermelho;
-    //public Slider lifeUi;
-
     private float moveSpeed;
     private float maxJumpHeight;
     public ShowDamage sd;
