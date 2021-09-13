@@ -54,6 +54,8 @@ public class DefineMorte : MonoBehaviourPunCallbacks
 
         HashDeadProps["isDead"] = true;
         int countdown = RoomConfigs.instance.timeToRespawn;
+        
+        //contador
         while (countdown > 0)
         {
             HashDeadProps["timerRespawn"] = countdown;
