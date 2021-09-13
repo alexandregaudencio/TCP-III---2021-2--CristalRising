@@ -16,6 +16,7 @@ public class UpdateHUDPlayersProps : MonoBehaviourPunCallbacks
 
     private ExitGames.Client.Photon.Hashtable HashProps = new ExitGames.Client.Photon.Hashtable();
 
+   
     private void Awake()
     {
 
@@ -26,8 +27,19 @@ public class UpdateHUDPlayersProps : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        scriptTeamHealtbar = GetComponentInChildren<UpdateTeamHealthbar>();
-        //textTimerRespawn.text = "";
+            //TODO: ajustar para acessar o scriptTeamH em tempo realtime
+            //Debug.Log(scriptTeamHealtbar.instance.CurrentPlayer);
+            //DisablePlayerProp();
+       
+
+            scriptTeamHealtbar = GetComponentInChildren<UpdateTeamHealthbar>();
+        textTimerRespawn.text = "";
+    }
+
+    void DisablePlayerProp()
+    {
+        playerCharacterImg.color = RoomConfigs.instance.noneColor;
+        //scriptTeamHealtbar.HealthbarImg.fillAmount = 0f;
     }
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
