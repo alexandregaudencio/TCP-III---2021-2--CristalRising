@@ -13,6 +13,8 @@ public class HumanoidAnimationController : MonoBehaviour
     [SerializeField] private Transform neck;
     [SerializeField] private Controle controle;
     PlayerController playerController;
+    private Weapon Weapon;
+
 
     PhotonView PV;
 
@@ -24,6 +26,8 @@ public class HumanoidAnimationController : MonoBehaviour
         controle = GetComponentInParent<Controle>();
         PV = GetComponent<PhotonView>();
         playerController = GetComponentInParent<PlayerController>();
+        Weapon = GetComponentInChildren<Weapon>();
+
     }
 
     // Update is called once per frame
@@ -36,8 +40,8 @@ public class HumanoidAnimationController : MonoBehaviour
             ProcessReloading();
             ProcessShooting();
             ProcessJump();
+           
         }
-
 
     }
     
@@ -62,14 +66,15 @@ public class HumanoidAnimationController : MonoBehaviour
         //spine.rotation = Quaternion.EulerAngles(normalCam.rotation.x, normalCam.rotation.y,normalCam.rotation.z);
     }
 
-    private void ProcessReloading()
+    public void ProcessReloading()
     {
         //bool isReloading = controle.gun.recarregando;
-        if (Input.GetKeyDown(KeyCode.R) && !animator.GetBool("Reloading"))
-        {
-            animator.SetBool("Reloading", true);
-            StartCoroutine(DisablingReloading());
-        }
+        //if (Input.GetKeyDown(KeyCode.R) && !Weapon)
+        //{
+        //    animator.SetBool("Reloading", true);
+        //    StartCoroutine(DisablingReloading());
+        //}
+
     }
 
 
@@ -82,14 +87,13 @@ public class HumanoidAnimationController : MonoBehaviour
    
     void ProcessJump()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && playerController.GroundCheck)
-        {
-            //animação de pulo
-
-        }
-        {
-            
-        }
+        animator.SetBool("Jumping", !playerController.GroundCheck);
+        //if(Input.GetKeyDown(KeyCode.Space) && playerController.GroundCheck)
+        //{
+             
+        //}
+   
+        
     }
 
 
