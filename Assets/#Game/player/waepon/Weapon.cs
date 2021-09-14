@@ -57,7 +57,10 @@ public class Weapon : CombatControl
         //municaoAtual.text = MunicaoAtual.ToString();
         //municaoMax.text = MunicaoMax.ToString();
 
-        if (ammo <= 0)
+        if(Input.GetKeyDown(KeyCode.R) && !recarregando) recarregando = true;
+
+
+        if (ammo <= 0 && Input.GetMouseButtonDown(0) && !recarregando)
         {
             recarregando = true;
         }

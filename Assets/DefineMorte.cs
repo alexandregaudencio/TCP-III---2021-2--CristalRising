@@ -19,6 +19,7 @@ public class DefineMorte : MonoBehaviourPunCallbacks
     public Text TextoContador;
     private GameObject HUDCanvas;
 
+
     //[SerializeField] private float avada;
     //SetUpGameplay setUpGameplay;
 
