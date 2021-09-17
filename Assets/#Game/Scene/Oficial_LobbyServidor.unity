@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRoomPlayers: 6
-  characterSelectionMaxTime: 2
+  characterSelectionMaxTime: 45
   gameplayMaxTime: 100
   heightTime: 0
   gameplayTimeBase: 2

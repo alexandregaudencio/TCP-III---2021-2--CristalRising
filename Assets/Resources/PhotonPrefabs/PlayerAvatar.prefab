@@ -234,8 +234,7 @@ MonoBehaviour:
   speed: 10
   gun: {fileID: 261208917441878200}
   spell: {fileID: 6070714403112781189}
-  animator: {fileID: 0}
-  ammoText: {fileID: 5656395554449607537}
+  ammoText: {fileID: 0}
 --- !u!114 &4135133243485489325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,10 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f164eb27f608caf4d8b6b9035392e427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPointsTimeAzul: []
-  SpawnPointTimeVermelho: []
   sd: {fileID: 7036054341397535706}
-  life: 100
 --- !u!114 &-4427571526771000720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,11 +276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40aa03a293f526b48bea9132657b17da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TemporizadorRespawn: 0
-  SpawnCheck: 0
   CanvasDeMorte: {fileID: 7635677572277606369}
   TextoContador: {fileID: 3927481637241769787}
-  avada: 0
 --- !u!1 &219252042537730601
 GameObject:
   m_ObjectHideFlags: 0
