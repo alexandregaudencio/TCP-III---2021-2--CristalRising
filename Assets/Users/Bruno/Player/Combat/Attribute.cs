@@ -12,4 +12,5 @@ using UnityEngine;
     public float weapon;
     public float spell;
     public float armature;
+
 }

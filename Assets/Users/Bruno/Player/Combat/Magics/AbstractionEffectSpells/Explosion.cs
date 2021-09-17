@@ -9,6 +9,7 @@ public class Explosion : Spells, IEffect
     {
         //aqui eu defino a ativação de colisores em áreas tais como os presentes magia
     }
+
     public void Apply(Animator animator)
     {
         target = animator.gameObject.GetComponentInParent<Bullet>().GetTarget();

@@ -6,4 +6,9 @@ using UnityEngine;
 public class StatusCure : Status
 {
     public float value;
+
+    public override void Apply()
+    {
+        base.Apply();
+    }
 }

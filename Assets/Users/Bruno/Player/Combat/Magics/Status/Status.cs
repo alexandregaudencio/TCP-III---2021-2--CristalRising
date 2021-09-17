@@ -6,5 +6,6 @@ public class Status : ScriptableObject
 {
     public Image icon;
     public float duration;
-    public virtual void Apply() { }
+    public virtual void Apply() {
+    }
 }

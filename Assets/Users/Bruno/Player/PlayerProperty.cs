@@ -38,9 +38,7 @@ public class PlayerProperty : MonoBehaviour
         }
     }
 
-    
-
-
+    public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
 
     private void Start()
     {
