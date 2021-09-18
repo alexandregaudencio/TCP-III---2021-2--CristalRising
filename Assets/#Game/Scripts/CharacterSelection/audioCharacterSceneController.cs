@@ -13,7 +13,7 @@ public class audioCharacterSceneController :  MonoBehaviourPunCallbacks
     public PhotonView PV;
     public static audioCharacterSceneController instance;
     public int characterSceneTimeSamples;
-    private bool characterSceneTrue;
+    public bool characterSceneTrue;
     public void Start()
     {
         //characterScene = GetComponent<AudioSource>();

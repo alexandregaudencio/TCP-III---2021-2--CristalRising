@@ -26,6 +26,7 @@ public class SceneController : MonoBehaviourPunCallbacks
         
         audioCharacterSceneScript = GetComponent<audioCharacterSceneController>();
         audioCharacterSceneScript.audioCharacterScenePVMine("selectCharacter");
+        audioCharacterSceneScript.audioCharacterScenePV("characterScene");
     }
 
     // Update is called once per frame
@@ -39,8 +40,6 @@ public class SceneController : MonoBehaviourPunCallbacks
             StartGame();
         }
 
-        
-        if (waintingRoomTimer.CurrentTime >44.95f) audioCharacterSceneScript.audioCharacterScenePV("characterScene");
         
     }
 
