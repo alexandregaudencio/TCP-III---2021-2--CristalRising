@@ -13,17 +13,19 @@ public class audioCharacterSceneController :  MonoBehaviourPunCallbacks
     public PhotonView PV;
     public static audioCharacterSceneController instance;
     public int characterSceneTimeSamples;
+    private bool characterSceneTrue;
     public void Start()
     {
         //characterScene = GetComponent<AudioSource>();
         //PV = GetComponent<PhotonView>();
+        characterSceneTrue = false;
         instance = this;
         //characterSceneTimeSamples = 0;
        
     }
     private void FixedUpdate()
     {
-        sendImeSample("characterScene");
+        if(characterSceneTrue)sendImeSample("characterScene");
     }
     public void audioCharacterScenePV(string nameAudio)
     {
@@ -35,6 +37,18 @@ public class audioCharacterSceneController :  MonoBehaviourPunCallbacks
                
             }
         }
+        if (!PhotonNetwork.IsMasterClient)
+        {
+
+            if (nameAudio == "characterScene")
+            {
+                characterSceneTrue = true;
+                PV.RPC("SendTrue", RpcTarget.MasterClient, "characterScene", characterSceneTrue);
+            }
+
+           
+
+        }
     }
     public void sendImeSample(string nameAudio)
     {
@@ -44,6 +58,7 @@ public class audioCharacterSceneController :  MonoBehaviourPunCallbacks
             {
                  characterSceneTimeSamples = characterScene.timeSamples;
                 PV.RPC("SendAudio", RpcTarget.Others, "characterScene", characterSceneTimeSamples);
+                characterSceneTrue = false;
             }
         }
     }
@@ -74,5 +89,11 @@ public class audioCharacterSceneController :  MonoBehaviourPunCallbacks
         }
 
 
+    }
+
+    [PunRPC]
+    private void SendTrue(string name, bool istrue)
+    {
+        if (name == "characterScene") characterSceneTrue = istrue;
     }
 }
