@@ -37,3 +37,6 @@ MonoBehaviour:
   - "Descri\xE7\xE3o da habilidade E."
   - "Descri\xE7\xE3o da habilidade F."
   - "Descri\xE7\xE3o da habilidade direto do Mouse."
+  selectCharacter: {fileID: 8300000, guid: 5e6ec171b24ae1b40ac29508112d888f, type: 3}
+  gameStarted: {fileID: 8300000, guid: 63dc2e44063965143951789d7e3fa858, type: 3}
+  fired: {fileID: 8300000, guid: a2aebfb55cde61747b8984a981c54d7a, type: 3}

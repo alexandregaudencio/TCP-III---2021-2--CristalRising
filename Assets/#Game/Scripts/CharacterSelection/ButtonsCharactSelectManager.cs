@@ -35,7 +35,8 @@ public class ButtonsCharactSelectManager : MonoBehaviour
     {
         PhotonNetwork.LocalPlayer.TagObject = RoomConfigs.instance.charactersOrdered[characterIndex].characterPrefab.name;
         string id = characterIndex.ToString();
-        audioCharacterSceneController.instance.audioCharacterScenePVMine("b."+ id);
+        audioCharacterSceneController.instance.audioPlayerVoiceLines("characterSelected", characterIndex);
+
         SetPlayerProperties(characterIndex);
     }
 

@@ -12,6 +12,8 @@ public class Character : ScriptableObject
     public Sprite characterIcon;
     public Sprite[] ordenedHabillityIcon;
     public string[] ordenedHabillityName, ordenedHabillityDescription;
- 
+    public AudioClip selectCharacter;
+    public AudioClip gameStarted;
+    public AudioClip fired;
 
 }

@@ -1326,7 +1326,7 @@ MonoBehaviour:
   characterSelectionMaxTime: 5
   gameplayMaxTime: 50
   heightTime: 0
-  gameplayTimeBase: 10
+  gameplayTimeBase: 5
   menuSceneIndex: 0
   CharSelecSceneIndex: 1
   gameplaySceneIndex: 2

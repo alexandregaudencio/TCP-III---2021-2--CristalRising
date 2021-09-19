@@ -68,8 +68,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     }
     private void voiceLineStartGame()
     {
-        
-        audioGameplaySceneScript.audioGameplayPVMine("v." + setUpGameplay.GetComponent<SetUpGameplay>().id);
+        audioGameplaySceneScript.audioPlayerVoiceLines("startGame", setUpGameplay.GetComponent<SetUpGameplay>().id);
 
     }
     private void UIUpdate()
