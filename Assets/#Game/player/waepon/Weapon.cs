@@ -13,6 +13,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Pool))]
 public class Weapon : CombatControl
 {
+    [SerializeField] GameObject setUpGameplay;
     private ManagerBullet mangerBullet;
     private Pool bulletPool;
     private RaycastHit hit;
@@ -124,6 +125,9 @@ public class Weapon : CombatControl
         this.count++;
 
         ammo--;
+        //audio tiro
+        int characterIndex = (int)PhotonNetwork.LocalPlayer.CustomProperties["characterIndex"];
+        audioGameplayController.instance.audioPlayerFire("fire", characterIndex);
 
         var bullet = PhotonView.Find(bulletPool.ActiveInstance()).gameObject.GetComponent<Bullet>();
 

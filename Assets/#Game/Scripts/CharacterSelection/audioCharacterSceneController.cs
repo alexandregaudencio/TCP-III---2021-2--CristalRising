@@ -9,7 +9,8 @@ public class audioCharacterSceneController :  MonoBehaviourPunCallbacks
     
     [SerializeField] AudioSource characterScene;
     [SerializeField] AudioSource selectCharacter;
-    [SerializeField] AudioSource[] buttonChooseCharacter;
+    [SerializeField] AudioSource buttonCharacterAudio;
+    private AudioClip voiceLines;
     public PhotonView PV;
     public static audioCharacterSceneController instance;
     public int characterSceneTimeSamples;
@@ -27,6 +28,7 @@ public class audioCharacterSceneController :  MonoBehaviourPunCallbacks
     {
         if(characterSceneTrue)sendImeSample("characterScene");
     }
+    //masterclient manda pra todos
     public void audioCharacterScenePV(string nameAudio)
     {
         if (PhotonNetwork.IsMasterClient)
@@ -46,10 +48,9 @@ public class audioCharacterSceneController :  MonoBehaviourPunCallbacks
                 PV.RPC("SendTrue", RpcTarget.MasterClient, "characterScene", characterSceneTrue);
             }
 
-           
-
         }
     }
+    //manda o timesample
     public void sendImeSample(string nameAudio)
     {
         if (PhotonNetwork.IsMasterClient)
@@ -62,6 +63,7 @@ public class audioCharacterSceneController :  MonoBehaviourPunCallbacks
             }
         }
     }
+    //audio local
     public void audioCharacterScenePVMine(string nameAudio)
     {
 
@@ -69,15 +71,15 @@ public class audioCharacterSceneController :  MonoBehaviourPunCallbacks
         {
             selectCharacter.Play();
         }
-        if (nameAudio[0].Equals('b'))
-        {
-            string[] infoCharacter = nameAudio.Split('.');
-            int numCharacter;
-            int.TryParse(infoCharacter[1], out numCharacter);
-            buttonChooseCharacter[numCharacter].Play();
-        }
+       
     }
-
+    //falas
+    public void audioPlayerVoiceLines(string nameVoice, int id)
+    {
+        if(nameVoice== "characterSelected") voiceLines = RoomConfigs.instance.charactersOrdered[id].selectCharacter;
+        buttonCharacterAudio.clip = voiceLines;
+        buttonCharacterAudio.Play();
+    }
 
    [PunRPC]
     private void SendAudio(string audio, int timeSample)

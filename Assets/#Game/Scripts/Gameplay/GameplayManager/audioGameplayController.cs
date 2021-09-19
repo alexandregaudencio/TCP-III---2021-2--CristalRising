@@ -8,11 +8,19 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
 
     [SerializeField] AudioSource gameplayScene;
     [SerializeField] AudioSource secondsRemaning;
-    [SerializeField] AudioSource[] voiceLineCharacter;
+    [SerializeField] AudioSource fireAudio;
+    [SerializeField] AudioSource startGameVoice;
+    [SerializeField] AudioSource fireSource;
+    [SerializeField] AudioSource[] tiroPlaced;
+
+    
+    private AudioClip voiceLines;
+    private AudioClip fired;
     public PhotonView PV;
     public static audioGameplayController instance;
-    public int gameplaySceneTimeSamples;
-    public int secondsRemaningTimeSamples;
+    private int gameplaySceneTimeSamples;
+    private int secondsRemaningTimeSamples;
+    private int fireTimeSamples;
     private bool secondsRemaningTrue;
     private bool gameplaySceneTrue;
     public void Start()
@@ -30,6 +38,8 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
        if(gameplaySceneTrue) sendImeSample("gameplayScene");
         if (secondsRemaningTrue) sendImeSample("secondsRemaning");
     }
+   
+    //masterclient manda pra todos
     public void audioGameplayScenePV(string nameAudio)
     {
         if (PhotonNetwork.IsMasterClient)
@@ -37,13 +47,11 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
             if (nameAudio == "gameplayScene")
             {
                 gameplayScene.Play();
-               // gameplaySceneTrue = true;
 
             }
             if (nameAudio == "secondsRemaning")
             {
                 secondsRemaning.Play();
-               // secondsRemaningTrue = true;
 
             }
         }
@@ -66,7 +74,14 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
         }
        
     }
-    public void sendImeSample(string nameAudio)
+    //local
+    public void audioCharacterScenePVMine(int identificador)
+    {
+        if(PV.IsMine)tiroPlaced[identificador].Play();
+        
+    }
+        //manda o timesample
+        public void sendImeSample(string nameAudio)
     {
         if (PhotonNetwork.IsMasterClient)
         {
@@ -84,22 +99,33 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
             }
         }
     }
-    public  void audioGameplayPVMine(string nameAudio)
+    //falas
+    public void audioPlayerVoiceLines(string nameVoice, int id)
     {
+        if (nameVoice == "startGame") voiceLines = RoomConfigs.instance.charactersOrdered[id].gameStarted;
+        startGameVoice.clip = voiceLines;
+        startGameVoice.Play();
+    }
+    //tiro
+    public void audioPlayerFire(string nameVoice, int id)
+    {
+         fired = RoomConfigs.instance.charactersOrdered[id].fired;
+        fireSource.clip = fired;
+        fireSource.Play();
+        fireTimeSamples = fireAudio.timeSamples;
+        PV.RPC("SendAudioPlayer", RpcTarget.Others, nameVoice, fireTimeSamples);
+    }
 
-       
-        if (nameAudio[0].Equals('v'))
+    [PunRPC]
+    private void SendAudioPlayer(string audio, int timeSample)
+    {
+        if (audio == "fire")
         {
-            string[] infoCharacter = nameAudio.Split('.');
-            int numCharacter;
-            int.TryParse(infoCharacter[1], out numCharacter);
-            voiceLineCharacter[numCharacter].Play();
-
+            fireAudio.Play();
+            fireAudio.timeSamples = timeSample;
 
         }
     }
-
-
     [PunRPC]
     private void SendAudio(string audio, int timeSample)
     {
