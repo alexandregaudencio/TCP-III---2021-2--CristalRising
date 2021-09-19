@@ -8,7 +8,7 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
 
     [SerializeField] AudioSource gameplayScene;
     [SerializeField] AudioSource secondsRemaning;
-    [SerializeField] AudioSource[] buttonChooseCharacter;
+    [SerializeField] AudioSource[] voiceLineCharacter;
     public PhotonView PV;
     public static audioGameplayController instance;
     public int gameplaySceneTimeSamples;
@@ -84,19 +84,18 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
             }
         }
     }
-    public void audioGameplayPVMine(string nameAudio)
+    public  void audioGameplayPVMine(string nameAudio)
     {
 
-        if (nameAudio.Equals("secondsRemaning"))
-        {
-            secondsRemaning.Play();
-        }
-        if (nameAudio[0].Equals('b'))
+       
+        if (nameAudio[0].Equals('v'))
         {
             string[] infoCharacter = nameAudio.Split('.');
             int numCharacter;
             int.TryParse(infoCharacter[1], out numCharacter);
-            buttonChooseCharacter[numCharacter].Play();
+            voiceLineCharacter[numCharacter].Play();
+
+
         }
     }
 

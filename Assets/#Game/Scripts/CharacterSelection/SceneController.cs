@@ -25,8 +25,7 @@ public class SceneController : MonoBehaviourPunCallbacks
         waintingRoomTimer.CurrentTime = RoomConfigs.instance.characterSelectionMaxTime;
         
         audioCharacterSceneScript = GetComponent<audioCharacterSceneController>();
-        audioCharacterSceneScript.audioCharacterScenePVMine("selectCharacter");
-        audioCharacterSceneScript.audioCharacterScenePV("characterScene");
+        audioCharacterScene();
     }
 
     // Update is called once per frame
@@ -42,7 +41,11 @@ public class SceneController : MonoBehaviourPunCallbacks
 
         
     }
-
+    private void audioCharacterScene()
+    {
+        audioCharacterSceneScript.audioCharacterScenePVMine("selectCharacter");
+        audioCharacterSceneScript.audioCharacterScenePV("characterScene");
+    }
     private void UIUpdate()
     {
         if (PhotonNetwork.IsMasterClient)

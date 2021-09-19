@@ -10,6 +10,7 @@ using System.Linq;
 
 public class GameplayManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] GameObject setUpGameplay;
     public TMP_Text timeToDisplay;
     public static GameplayManager instance;
     private bool endingGame = false;
@@ -34,12 +35,13 @@ public class GameplayManager : MonoBehaviourPunCallbacks
         gameEnd.SetActive(false);
 
         audioGameplaySceneScript = GetComponent<audioGameplayController>();
+
     }
 
     private void Update()
     {
         UIUpdate();
-
+        audioFortySecondsRemaning();
         if (gameplayRoomTimer.IsBasedownOver() && wallDown == false)
         {
             
@@ -47,19 +49,29 @@ public class GameplayManager : MonoBehaviourPunCallbacks
             gameplayRoomTimer.CurrentTime = RoomConfigs.instance.gameplayMaxTime;
             gameplayRoomTimer.BaseTime = RoomConfigs.instance.heightTime;
             wallDown = true;
+            voiceLineStartGame();
         }
             if (gameplayRoomTimer.IsCountdownOver() && wallDown==true )
         {
             if (endingGame) return;
             EndGamebyTimer();
         }
+       
+    }
+    private void audioFortySecondsRemaning()
+    {
         if (gameplayRoomTimer.CurrentTime < 41.1f && gameplayRoomTimer.CurrentTime > 40.9f)
         {
             audioGameplaySceneScript.audioGameplayScenePV("gameplayScene");
             audioGameplaySceneScript.audioGameplayScenePV("secondsRemaning");
         }
     }
+    private void voiceLineStartGame()
+    {
+        
+        audioGameplaySceneScript.audioGameplayPVMine("v." + setUpGameplay.GetComponent<SetUpGameplay>().id);
 
+    }
     private void UIUpdate()
     {
         if (PhotonNetwork.IsMasterClient)
