@@ -153,10 +153,12 @@ public class Bullet : MonoBehaviourPun, Damage
                         if (result.Equals(ChunkDetector.head))
                         {
                             value = criticalDamage;
+                            audioGameplayController.instance.audioCharacterScenePVMine(0);
                         }
                         else if (result.Equals(ChunkDetector.body))
                         {
                             value = this.damage;
+                            audioGameplayController.instance.audioCharacterScenePVMine(1);
                         }
                     }
                 }
