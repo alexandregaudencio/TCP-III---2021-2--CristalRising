@@ -7,6 +7,7 @@ using Photon.Realtime;
 
 public class Bullet : MonoBehaviourPun, Damage
 {
+    public static Bullet instance;
     public float speed;
     public int damage;
     public int criticalDamage;
@@ -24,12 +25,19 @@ public class Bullet : MonoBehaviourPun, Damage
     public Vector3 hit;
     [HideInInspector]
     public string animationName;
+    public int whoFiredCharacter;
+    public string whoFiredName;
     [HideInInspector]
     public GameObject target { private get; set; }
 
+    public void Start()
+    {
+        instance = this;
+    }
     [PunRPC]
     public void ActiveAll(bool value)
     {
+        
         GameObject me = PhotonView.Find(photonView.ViewID).gameObject;
 
         PhotonView.Find(me.GetComponentInChildren<PhotonView>().ViewID).gameObject.SetActive(value);
@@ -43,11 +51,14 @@ public class Bullet : MonoBehaviourPun, Damage
     }
 
     [PunRPC]
-    public void Inicialize(Vector3 point, float timeOfArrival, Vector3 pos, Vector3 rot, int targetId/*, Vector3 color*/)
+    public void Inicialize(Vector3 point, float timeOfArrival, Vector3 pos, Vector3 rot, int targetId, string name/*, Vector3 color*/)
     {
         //this.color = new Color(color.x, color.y, color.z,1);
         //GetComponentInChildren<Renderer>().material.SetColor("_Color", this.color);
         target = PhotonView.Find(targetId).gameObject;
+        //whoFiredCharacter =(int)player.CustomProperties["characterIndex"];
+        //whoFiredName = player.NickName;
+        whoFiredName = name;
         pool.Out(photonView.ViewID);
         pool.ActiveInstance();
         hit = point;
@@ -153,12 +164,12 @@ public class Bullet : MonoBehaviourPun, Damage
                         if (result.Equals(ChunkDetector.head))
                         {
                             value = criticalDamage;
-                            audioGameplayController.instance.audioCharacterScenePVMine(0);
+                            audioGameplayController.instance.audioCharacterScenePVMine(0, whoFiredName);
                         }
                         else if (result.Equals(ChunkDetector.body))
                         {
                             value = this.damage;
-                            audioGameplayController.instance.audioCharacterScenePVMine(1);
+                            audioGameplayController.instance.audioCharacterScenePVMine(1, whoFiredName);
                         }
                     }
                 }

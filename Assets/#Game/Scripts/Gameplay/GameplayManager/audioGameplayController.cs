@@ -178,7 +178,7 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
         }
         if (audio == "firstBlood")
         {
-            firstBloodSource.clip = clip;
+            //firstBloodSource.clip = clip;
             firstBloodSource.Play();
             firstBloodSource.timeSamples = timeSample;
 
