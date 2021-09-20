@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Pun.UtilityScripts;
 
 public class audioGameplayController : MonoBehaviourPunCallbacks
 {
@@ -12,6 +13,7 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     [SerializeField] AudioSource startGameVoice;
     [SerializeField] AudioSource fireSource;
     [SerializeField] AudioSource[] tiroPlaced;
+    [SerializeField] AudioSource[] audioCircleArea;
 
     
     private AudioClip voiceLines;
@@ -23,6 +25,8 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     private int fireTimeSamples;
     private bool secondsRemaningTrue;
     private bool gameplaySceneTrue;
+    public bool dominouBlue=true;
+    public bool dominouRed=true;
     public void Start()
     {
         gameplaySceneTrue = false;
@@ -114,6 +118,34 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
         fireSource.Play();
         fireTimeSamples = fireAudio.timeSamples;
         PV.RPC("SendAudioPlayer", RpcTarget.Others, nameVoice, fireTimeSamples);
+    }
+    public void audioAreaRed()
+    {
+        string pTeam = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
+        if (pTeam == "Blue")
+        {
+            audioCircleArea[0].Play();
+        }
+        if (pTeam == "Red")
+        {
+            audioCircleArea[1].Play();
+           
+        }
+        dominouRed = false;
+    }
+    public void audioAreaBlue()
+    {
+        string pTeam = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
+        if (pTeam == "Blue")
+        {
+            audioCircleArea[1].Play();
+            
+        }
+        if (pTeam == "Red")
+        {
+            audioCircleArea[0].Play();
+        }
+        dominouBlue = false;
     }
 
     [PunRPC]

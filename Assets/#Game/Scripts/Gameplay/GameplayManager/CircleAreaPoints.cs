@@ -62,8 +62,8 @@ public class CircleAreaPoints : MonoBehaviour
 
 
 
-           if (countPlayerinAreaTeam1 != countPlayerinAreaTeam2)
-            {
+          // if (countPlayerinAreaTeam1 != countPlayerinAreaTeam2)
+           // {
             if (pointsTeam1PerCent < 100 && pointsTeam2PerCent < 100 && endingGame==false)
             {
                 
@@ -82,16 +82,22 @@ public class CircleAreaPoints : MonoBehaviour
                 {
                     countPlayerExtraTeam1 = diffPlayerinArea;
                     countPlayerExtraTeam2 = 0;
+                   audioGameplayController.instance.dominouBlue = true;
+                if (audioGameplayController.instance.dominouRed == true) audioGameplayController.instance.audioAreaRed();
                 }
                 else if (diffPlayerinArea < 0)
                 {
                     countPlayerExtraTeam2 = -diffPlayerinArea;
                     countPlayerExtraTeam1 = 0;
+                audioGameplayController.instance.dominouRed = true;
+                if (audioGameplayController.instance.dominouBlue == true) audioGameplayController.instance.audioAreaBlue();
                 }
                 else if (diffPlayerinArea == 0)
                 {
                     countPlayerExtraTeam2 = 0;
                     countPlayerExtraTeam1 = 0;
+                    audioGameplayController.instance.dominouBlue = true;
+                    audioGameplayController.instance.dominouRed = true;
                 }
 
                 pointsTeam1 = pointsTeam1 + constPoint * Time.fixedDeltaTime * countPlayerExtraTeam1;
@@ -116,7 +122,7 @@ public class CircleAreaPoints : MonoBehaviour
                     if (endingGame) return;
                     EndGamebyPoints();
                 } 
-        }
+      //  }
             
      
     }

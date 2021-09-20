@@ -15,5 +15,10 @@ public class Character : ScriptableObject
     public AudioClip selectCharacter;
     public AudioClip gameStarted;
     public AudioClip fired;
+    public AudioClip firstBlood;
+    public AudioClip skill1;
+    public AudioClip skill2;
+    public AudioClip skill3;
+    public AudioClip ultimate;
 
 }
