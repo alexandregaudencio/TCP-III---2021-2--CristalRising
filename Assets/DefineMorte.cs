@@ -18,6 +18,8 @@ public class DefineMorte : MonoBehaviourPunCallbacks
     public GameObject CanvasDeMorte;
     public Text TextoContador;
     private GameObject HUDCanvas;
+    private string namePlayerBullet;
+    private int characterIndexBullet;
 
 
     //[SerializeField] private float avada;
@@ -44,7 +46,10 @@ public class DefineMorte : MonoBehaviourPunCallbacks
         {
            if(changedProps.ContainsKey("HP") && (int)targetPlayer.CustomProperties["HP"] <= 0 && !(bool)targetPlayer.CustomProperties["isDead"]) {
                 StartCoroutine(deathEvent());
-           }
+               
+                //chamar audio
+                //contarKill
+            }
 
            if(changedProps.ContainsKey("isDead"))
             {
@@ -53,9 +58,15 @@ public class DefineMorte : MonoBehaviourPunCallbacks
         }
 
     }
-
+    private void playerBullet()
+    {
+       namePlayerBullet= Bullet.instance.namePlayer;
+        characterIndexBullet = Bullet.instance.characterIndex;
+    }
     IEnumerator deathEvent()
     {
+        playerBullet();
+        audioGameplayController.instance.audioFirstBlood("firstBlood", characterIndexBullet);
         HashDeadProps["isDead"] = true;
         int countdown = RoomConfigs.instance.timeToRespawn;
         
