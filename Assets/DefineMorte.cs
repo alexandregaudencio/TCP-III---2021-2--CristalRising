@@ -60,8 +60,8 @@ public class DefineMorte : MonoBehaviourPunCallbacks
     }
     private void playerBullet()
     {
-       namePlayerBullet= Bullet.instance.namePlayer;
-        characterIndexBullet = Bullet.instance.characterIndex;
+        namePlayerBullet = Bullet.instance.whoFiredName;
+        characterIndexBullet = Bullet.instance.whoFiredCharacter;
     }
     IEnumerator deathEvent()
     {

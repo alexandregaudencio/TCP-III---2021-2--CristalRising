@@ -154,16 +154,16 @@ public class Weapon : CombatControl
         int indexPlayer = (int)PhotonNetwork.LocalPlayer.CustomProperties["indexPlayer"];
         string name = PhotonNetwork.LocalPlayer.NickName;
         if (!hit.collider)
-            bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID, name, PhotonNetwork.LocalPlayer/*, new Vector3(color.r,color.g,color.b)*/);
+            bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID, name/*, new Vector3(color.r,color.g,color.b)*/);
         else
         {
             PhotonView targetId = hit.collider.gameObject.GetComponent<PhotonView>();
             if (!targetId)
             {
-                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID, name, PhotonNetwork.LocalPlayer/*, new Vector3(color.r,color.g,color.b)*/);
+                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID, name/*, new Vector3(color.r,color.g,color.b)*/);
             }
             else
-                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, targetId.ViewID, name, PhotonNetwork.LocalPlayer/*, new Vector3(color.r,color.g,color.b)*/);
+                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, targetId.ViewID, name/*, new Vector3(color.r,color.g,color.b)*/);
 
         }
     }
