@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviourPun, Damage
     [PunRPC]
     public void ActiveAll(bool value)
     {
-        
+
         GameObject me = PhotonView.Find(photonView.ViewID).gameObject;
 
         PhotonView.Find(me.GetComponentInChildren<PhotonView>().ViewID).gameObject.SetActive(value);
@@ -51,7 +51,7 @@ public class Bullet : MonoBehaviourPun, Damage
     }
 
     [PunRPC]
-    public void Inicialize(Vector3 point, float timeOfArrival, Vector3 pos, Vector3 rot, int targetId, string name/*, Vector3 color*/)
+    public void Inicialize(Vector3 point, float timeOfArrival, Vector3 pos, Vector3 rot, int targetId/*, string name*/)
     {
         //this.color = new Color(color.x, color.y, color.z,1);
         //GetComponentInChildren<Renderer>().material.SetColor("_Color", this.color);
@@ -104,7 +104,7 @@ public class Bullet : MonoBehaviourPun, Damage
             {
                 fired = false;
                 CombineWithMaic();
-                Invoke("CalculateDamage",0.1f);
+                Invoke("CalculateDamage", 0.1f);
             }
         }
     }
@@ -164,12 +164,12 @@ public class Bullet : MonoBehaviourPun, Damage
                         if (result.Equals(ChunkDetector.head))
                         {
                             value = criticalDamage;
-                            //audioGameplayController.instance.audioCharacterScenePVMine(0, whoFiredName);
+                            audioGameplayController.instance.audioCharacterScenePVMine(0);
                         }
                         else if (result.Equals(ChunkDetector.body))
                         {
                             value = this.damage;
-                            //audioGameplayController.instance.audioCharacterScenePVMine(1, whoFiredName);
+                            audioGameplayController.instance.audioCharacterScenePVMine(1);
                         }
                     }
                 }
