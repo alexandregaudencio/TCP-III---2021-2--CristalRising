@@ -50,23 +50,23 @@ public class DefineMorte : MonoBehaviourPunCallbacks
                 //chamar audio
                 //contarKill
             }
-
+            
            if(changedProps.ContainsKey("isDead"))
-            {
+           {
                 SwitchObjectsOnDeath((bool)targetPlayer.CustomProperties["isDead"]);
-            }
+           }
         }
 
     }
-    private void playerBullet()
-    {
-        namePlayerBullet = Bullet.instance.whoFiredName;
-        characterIndexBullet = Bullet.instance.whoFiredCharacter;
-    }
+    //private void playerBullet()
+    //{
+    //    namePlayerBullet = Bullet.instance.whoFiredName;
+    //    characterIndexBullet = Bullet.instance.whoFiredCharacter;
+    //}
     IEnumerator deathEvent()
     {
-        playerBullet();
-        audioGameplayController.instance.audioFirstBlood("firstBlood", characterIndexBullet);
+        //playerBullet();
+        //audioGameplayController.instance.audioFirstBlood("firstBlood", characterIndexBullet);
         HashDeadProps["isDead"] = true;
         int countdown = RoomConfigs.instance.timeToRespawn;
         
@@ -99,7 +99,6 @@ public class DefineMorte : MonoBehaviourPunCallbacks
     private void ResetCharacterProps(/*bool boolean*/)
     {
         transform.position = SetUpGameplay.instance.LocalPlayerSpawnPoint;
-        
     }
 
     private void ResetPlayerProps()

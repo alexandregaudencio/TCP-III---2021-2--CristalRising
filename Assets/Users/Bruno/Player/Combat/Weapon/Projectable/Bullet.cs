@@ -150,9 +150,9 @@ public class Bullet : MonoBehaviourPun, Damage
         if (target)
         {
             var chunks = target.GetComponentsInChildren<ChunkDetector>();
-            var playerProperty = target.GetComponent<PlayerProperty>();
+            var targetPlayerProperty = target.GetComponent<PlayerProperty>();
             Player pTarget = target.GetPhotonView().Controller;
-            if (playerProperty)
+            if (targetPlayerProperty)
             {
                 int value = 0;
                 foreach (var c in chunks)
@@ -164,17 +164,17 @@ public class Bullet : MonoBehaviourPun, Damage
                         if (result.Equals(ChunkDetector.head))
                         {
                             value = criticalDamage;
-                            audioGameplayController.instance.audioCharacterScenePVMine(0, whoFiredName);
+                            //audioGameplayController.instance.audioCharacterScenePVMine(0, whoFiredName);
                         }
                         else if (result.Equals(ChunkDetector.body))
                         {
                             value = this.damage;
-                            audioGameplayController.instance.audioCharacterScenePVMine(1, whoFiredName);
+                            //audioGameplayController.instance.audioCharacterScenePVMine(1, whoFiredName);
                         }
                     }
                 }
 
-                playerProperty.Life = value;
+                targetPlayerProperty.Life = value;
             }
         }
     }
