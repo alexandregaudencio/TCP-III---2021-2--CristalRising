@@ -10,20 +10,23 @@ public class Controle : MonoBehaviourPun
     public float speed;
     public Weapon gun;
     public Spells spell;
-    public Animator animator;
+    //public Animator animator;
     private GameObject aux;
     private Animator playerAnim;
 
-    [SerializeField] private TMP_Text ammoText;
+    [SerializeField] private GameObject ammoText;
+
+    public GameObject AmmoText { get => ammoText; set => ammoText = value; }
 
     void Start()
     {
         this.transform = GetComponent<Transform>();
-        if (aux)
-            aux = Instantiate(animator.gameObject);
+        //if (aux)
+        //    aux = Instantiate(animator.gameObject);
         playerAnim = GetComponentInChildren<Animator>();
         playerAnim.speed = 10;
 
+        ammoText = GameObject.Find("AmmoText");
         UpdateAmmoText();
     }
 
@@ -35,15 +38,15 @@ public class Controle : MonoBehaviourPun
         {
             return;
         }
-        if (gun.Ammo > 0 && gun.recarregando ==false)
+        if (gun.Ammo > 0 && gun.recarregando == false)
         {
-            
+
 
             if (Input.GetMouseButtonDown(0))
             {
-                playerAnim.SetTrigger("attack");
+                //playerAnim.SetTrigger("attack");
                 gun.Use();
-            
+
                 UpdateAmmoText();
                 //if (spell)
                 //{
@@ -52,12 +55,12 @@ public class Controle : MonoBehaviourPun
                 //if (photonView.IsMine)
                 //    gun.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
             }
-            
+
         }
-       
+
         if (Input.GetKeyDown(KeyCode.R))
         {
-            gun.recarregando = true ;
+            gun.recarregando = true;
         }
 
 
@@ -65,6 +68,6 @@ public class Controle : MonoBehaviourPun
 
     public void UpdateAmmoText()
     {
-        ammoText.text = gun.Ammo.ToString() + "/" + gun.MaxAmmo.ToString();
+        ammoText.GetComponent<TMP_Text>().text = gun.Ammo.ToString() + "/" + gun.MaxAmmo.ToString();
     }
 }

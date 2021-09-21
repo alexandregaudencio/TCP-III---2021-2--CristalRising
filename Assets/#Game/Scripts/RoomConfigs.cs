@@ -8,6 +8,7 @@ public  class RoomConfigs : MonoBehaviour
     private void Start()
     {
         instance = this;
+        heightTime = gameplayMaxTime + gameplayTimeBase;
     }
 
     //CreateRoomC
@@ -33,7 +34,9 @@ public  class RoomConfigs : MonoBehaviour
     //team
     public Color blueTeamColor = new Color(0, 129, 255, 255);
     public Color redTeamColor = new Color(233, 36, 41, 255);
-
+    public Color noneColor;
 
     public Character[] charactersOrdered;
+
+   
 }
