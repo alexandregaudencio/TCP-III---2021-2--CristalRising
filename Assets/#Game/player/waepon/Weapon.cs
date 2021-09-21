@@ -13,6 +13,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Pool))]
 public class Weapon : CombatControl
 {
+    [SerializeField] GameObject setUpGameplay;
     private ManagerBullet mangerBullet;
     private Pool bulletPool;
     private RaycastHit hit;
@@ -57,7 +58,10 @@ public class Weapon : CombatControl
         //municaoAtual.text = MunicaoAtual.ToString();
         //municaoMax.text = MunicaoMax.ToString();
 
-        if (ammo <= 0)
+        if(Input.GetKeyDown(KeyCode.R) && !recarregando) recarregando = true;
+
+
+        if (ammo <= 0 && Input.GetMouseButtonDown(0) && !recarregando)
         {
             recarregando = true;
         }
@@ -121,6 +125,9 @@ public class Weapon : CombatControl
         this.count++;
 
         ammo--;
+        //audio tiro
+        int characterIndex = (int)PhotonNetwork.LocalPlayer.CustomProperties["characterIndex"];
+        audioGameplayController.instance.audioPlayerFire("fire", characterIndex);
 
         var bullet = PhotonView.Find(bulletPool.ActiveInstance()).gameObject.GetComponent<Bullet>();
 

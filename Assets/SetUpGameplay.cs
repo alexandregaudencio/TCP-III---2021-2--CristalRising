@@ -10,7 +10,9 @@ using Photon.Pun.UtilityScripts;
 
 public class SetUpGameplay : MonoBehaviour
 {
+    
     private PhotonView PV;
+    public int id;
     [SerializeField] private GameObject[] spawnPointsBlue, spawnPointsRed;
     public static SetUpGameplay instance;
 
@@ -35,8 +37,8 @@ public class SetUpGameplay : MonoBehaviour
         InstantiatingPlayersCharacter();
     }
 
-
-    private void InstantiatingPlayersCharacter()
+   
+        private void InstantiatingPlayersCharacter()
     {
         int indexPlayer = (int)PhotonNetwork.LocalPlayer.CustomProperties["indexPlayer"];
         string pTeam = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
@@ -59,6 +61,8 @@ public class SetUpGameplay : MonoBehaviour
         //myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), spawnPos, spawnRot, 0);
         //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), spawnPos, spawnRot);
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", PhotonNetwork.LocalPlayer.TagObject.ToString()), spawnPos, spawnRot);
+        if (PhotonNetwork.LocalPlayer.TagObject.ToString() == "PlayerAvatar") id = 0;
+        if (PhotonNetwork.LocalPlayer.TagObject.ToString() == "provisory") id = 1;
     }
 
     public Vector3 LocalPlayerSpawnPoint => (pTeam == "Blue") ? spawnPointsBlue[indexPlayer].transform.position : spawnPointsRed[indexPlayer].transform.position;

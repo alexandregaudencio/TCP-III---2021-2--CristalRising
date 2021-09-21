@@ -10,17 +10,22 @@ using System.Linq;
 
 public class SceneController : MonoBehaviourPunCallbacks
 {
+    public static SceneController instance;
     public TMP_Text timeToDisplay;
 
     private bool startingGame = false;
     private PhotonView PV;
     private TimerCountdown waintingRoomTimer;
+    private audioCharacterSceneController audioCharacterSceneScript;
     private void Start()
     {
+        instance = this;
         PV = GetComponent<PhotonView>();
         waintingRoomTimer = GetComponent<TimerCountdown>();
         waintingRoomTimer.CurrentTime = RoomConfigs.instance.characterSelectionMaxTime;
         
+        audioCharacterSceneScript = GetComponent<audioCharacterSceneController>();
+        audioCharacterScene();
     }
 
     // Update is called once per frame
@@ -33,8 +38,14 @@ public class SceneController : MonoBehaviourPunCallbacks
             if (startingGame) return;
             StartGame();
         }
-    }
 
+        
+    }
+    private void audioCharacterScene()
+    {
+        audioCharacterSceneScript.audioCharacterScenePVMine("selectCharacter");
+        audioCharacterSceneScript.audioCharacterScenePV("characterScene");
+    }
     private void UIUpdate()
     {
         if (PhotonNetwork.IsMasterClient)
@@ -72,6 +83,8 @@ public class SceneController : MonoBehaviourPunCallbacks
     {
         waintingRoomTimer.CurrentTime = timeIn;
     }
+
+  
     //public void DelayCancel()
     //{
     //    PhotonNetwork.LeaveRoom();
