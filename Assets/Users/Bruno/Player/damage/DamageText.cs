@@ -27,7 +27,7 @@ public class DamageText : MonoBehaviour
     {
         if (bufferTime > 0)
         {
-            transform.localPosition += Vector3.up * Time.deltaTime * speed;
+            transform.position += Vector3.up * Time.deltaTime * speed;
             bufferTime -= Time.deltaTime;
         }
         else
