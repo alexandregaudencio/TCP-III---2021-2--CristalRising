@@ -53,6 +53,7 @@ public class Weapon : CombatControl
             Camera.main.transform.SetPositionAndRotation(cam.transform.position, cam.transform.rotation);
         }
     }
+
     private void Update()
     {
         //municaoAtual.text = MunicaoAtual.ToString();
@@ -103,6 +104,7 @@ public class Weapon : CombatControl
         this.timeCount -= Time.deltaTime;
         Aim();
     }
+
     [PunRPC]
     public override void Use()
     {
@@ -126,9 +128,9 @@ public class Weapon : CombatControl
 
         ammo--;
         //audio tiro
-        int characterIndex = (int)PhotonNetwork.LocalPlayer.CustomProperties["characterIndex"];
+        //int characterIndex = (int)PhotonNetwork.LocalPlayer.CustomProperties["characterIndex"];
         
-        audioGameplayController.instance.audioPlayerFire("fire", characterIndex);
+        //audioGameplayController.instance.audioPlayerFire("fire", characterIndex);
 
         var bullet = PhotonView.Find(bulletPool.ActiveInstance()).gameObject.GetComponent<Bullet>();
 
@@ -151,19 +153,20 @@ public class Weapon : CombatControl
         //foreach (Player p in playersTeamRed)
         //    if (GetComponent<PhotonView>().Controller.Equals(p))
         //        color = Color.red;
-        int indexPlayer = (int)PhotonNetwork.LocalPlayer.CustomProperties["indexPlayer"];
-        string name = PhotonNetwork.LocalPlayer.NickName;
+
+        //int indexPlayer = (int)PhotonNetwork.LocalPlayer.CustomProperties["indexPlayer"];
+        //string name = PhotonNetwork.LocalPlayer.NickName;
         if (!hit.collider)
-            bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID, name/*, new Vector3(color.r,color.g,color.b)*/);
+            bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID /*name*//*, new Vector3(color.r,color.g,color.b)*/);
         else
         {
             PhotonView targetId = hit.collider.gameObject.GetComponent<PhotonView>();
             if (!targetId)
             {
-                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID, name/*, new Vector3(color.r,color.g,color.b)*/);
+                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID /*name*//*, new Vector3(color.r,color.g,color.b)*/);
             }
             else
-                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, targetId.ViewID, name/*, new Vector3(color.r,color.g,color.b)*/);
+                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, targetId.ViewID /*name*//*, new Vector3(color.r,color.g,color.b)*/);
 
         }
     }
