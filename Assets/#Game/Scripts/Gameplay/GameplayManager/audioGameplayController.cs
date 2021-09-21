@@ -86,14 +86,14 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
        
     }
     //local
-    public void audioCharacterScenePVMine(int identificador, string id)
+    public void audioCharacterScenePVMine(int identificador/*, string id*/)
     {
         //if(PV.IsMine)
         //int indexPlayer = (int)PhotonNetwork.LocalPlayer.CustomProperties["indexPlayer"];
         //Debug.Log("id : " + id);
         string name = PhotonNetwork.LocalPlayer.NickName;
-        if (name == id) tiroPlaced[identificador].Play();
-        Debug.Log("id : " + id);
+        /*if (name == id) */tiroPlaced[identificador].Play();
+        //Debug.Log("id : " + id);
     }
     //manda o timesample
     public void sendImeSample(string nameAudio)
