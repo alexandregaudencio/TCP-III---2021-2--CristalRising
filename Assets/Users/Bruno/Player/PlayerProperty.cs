@@ -38,10 +38,6 @@ public class PlayerProperty : MonoBehaviour
         }
     }
 
-    
-
-
-
     private void Start()
     {
         moveSpeed = GetComponent<PlayerController>().moveSpeed;
@@ -67,8 +63,9 @@ public class PlayerProperty : MonoBehaviour
 
     public void ResetProperty()
     {
-        GetComponent<PlayerController>().moveSpeed = buffereMoveSpeed;
-        GetComponent<PlayerController>().jumpForce = buffereMoveSpeed;
+        Debug.LogWarning("a alteração dos dados de velocidade e pulo dessa forma está gerando o error de inverção de inputs! por hora está desativado.");
+        //GetComponent<PlayerController>().moveSpeed = buffereMoveSpeed;
+        //GetComponent<PlayerController>().jumpForce = buffereMoveSpeed;
 
         //lifeUi.value = life;
     }
