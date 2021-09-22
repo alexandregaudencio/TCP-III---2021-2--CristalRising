@@ -28,11 +28,13 @@ public class PlayerProperty : MonoBehaviour
         {
             int hp = (int)GetComponent<PhotonView>().Controller.CustomProperties["HP"];
             HashProperty["HP"] = hp - value;
+            
             GetComponent<PhotonView>().Controller.SetCustomProperties(HashProperty);
 
             sd.Value = value.ToString();
         }
     }
+
 
 
     private void Start()
@@ -57,5 +59,13 @@ public class PlayerProperty : MonoBehaviour
 
         //lifeUi.value = life;
     }
+
+    public void OtherMethodsForDamage()
+    {
+
+    }
+
+
+
 }
 

@@ -27,6 +27,11 @@ public class Bullet : MonoBehaviourPun, Damage
     public string animationName;
     public int whoFiredCharacter;
     public string whoFiredName;
+
+    public event Action DamageEvent;
+
+    private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
+
     [HideInInspector]
     public GameObject target { private get; set; }
 
@@ -170,11 +175,19 @@ public class Bullet : MonoBehaviourPun, Damage
                         {
                             value = this.damage;
                             audioGameplayController.instance.audioCharacterScenePVMine(1);
+
                         }
                     }
                 }
 
                 targetPlayerProperty.Life = value;
+                
+                if(targetPlayerProperty.Life - value <= 0 && !(bool)PhotonNetwork.LocalPlayer.CustomProperties["isDead"])
+                {
+                    DamageEvent += UpdateKillCount;
+                }
+                DamageEvent.Invoke();
+                
             }
         }
     }
@@ -183,4 +196,33 @@ public class Bullet : MonoBehaviourPun, Damage
     {
         return target;
     }
+
+    private void OnDamage()
+    {
+        //Debug.Log("ON Fire damage!");
+        //Debug.Log("alvo: " + target.GetPhotonView().Controller.NickName);
+    }
+
+    private void UpdateKillCount()
+    {
+        int killCount = (int)PhotonNetwork.LocalPlayer.CustomProperties["killCount"];
+        HashProperty["killCount"] = killCount + 1;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(HashProperty);
+        Debug.Log(PhotonNetwork.LocalPlayer.NickName + " kill: " + (int)PhotonNetwork.LocalPlayer.CustomProperties["killCount"]);
+    }
+
+    private void Destroy()
+    {
+        DamageEvent += OnDamage;
+
+    }
+
+
+    private void OnDesable()
+    {
+        //DamageEvent -= OnDamage;
+        //DamageEvent -= OnDeathTarget;
+    }
+
+
 }
