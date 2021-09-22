@@ -24,9 +24,7 @@ public class Weapon : CombatControl
 
     private Vector3 mark;
     private PhotonView pv;
-    //public byte MunicaoMax, MunicaoAtual;
-    //public Text municaoMax, municaoAtual;
-    //public Text municaoMax, municaoAtual;
+
     private int maxAmmo;
     private int ammo;
 
@@ -38,7 +36,6 @@ public class Weapon : CombatControl
 
     private void Awake()
     {
-        //municaoMax = GameObject.Find("AmmoAtual").GetComponent<TextMesh>();
         mangerBullet = GetComponent<ManagerBullet>();
         this.bulletPool = GetComponent<Pool>();
         pv = GetComponentInParent<PhotonView>();
@@ -46,7 +43,6 @@ public class Weapon : CombatControl
     }
     private void Start()
     {
-        //MunicaoAtual = MunicaoMax;
         if (pv.IsMine)
         {
             Camera.main.transform.parent = cam.transform;
@@ -56,8 +52,6 @@ public class Weapon : CombatControl
 
     private void Update()
     {
-        //municaoAtual.text = MunicaoAtual.ToString();
-        //municaoMax.text = MunicaoMax.ToString();
 
         if(Input.GetKeyDown(KeyCode.R) && !recarregando) recarregando = true;
 
@@ -138,21 +132,6 @@ public class Weapon : CombatControl
 
         Vector3 pos = mangerBullet.bulletTransform.position;
         Vector3 rot = mangerBullet.bulletTransform.rotation.eulerAngles;
-
-
-        //Player[] playersTeamBlue;
-        //Player[] playersTeamRed;
-
-        //PhotonTeamsManager.Instance.TryGetTeamMembers("Blue", out playersTeamBlue);
-        //PhotonTeamsManager.Instance.TryGetTeamMembers("Red", out playersTeamRed);
-
-        //Color color = Color.white;
-        //foreach (Player p in playersTeamBlue)
-        //    if (GetComponent<PhotonView>().Controller.Equals(p))
-        //        color = Color.blue;
-        //foreach (Player p in playersTeamRed)
-        //    if (GetComponent<PhotonView>().Controller.Equals(p))
-        //        color = Color.red;
 
         //int indexPlayer = (int)PhotonNetwork.LocalPlayer.CustomProperties["indexPlayer"];
         //string name = PhotonNetwork.LocalPlayer.NickName;
