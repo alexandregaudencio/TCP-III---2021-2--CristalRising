@@ -31,9 +31,8 @@ public class PlayerProperty : MonoBehaviour
         set
         {
             int hp = (int)GetComponent<PhotonView>().Controller.CustomProperties["HP"];
-            HashProperty["HP"] = hp - value;
+            HashProperty["HP"] = hp + value;
             GetComponent<PhotonView>().Controller.SetCustomProperties(HashProperty);
-
             sd.Value = value.ToString();
         }
     }
