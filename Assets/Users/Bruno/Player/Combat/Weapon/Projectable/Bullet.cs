@@ -143,7 +143,7 @@ public class Bullet : MonoBehaviourPun, Damage
             Player pTarget = target.GetPhotonView().Controller;
             if (playerProperty)
             {
-                int value = 0;
+                int value = this.damage;
                 foreach (var c in chunks)
                 {
                     var result = c.DetectHit(GetComponent<Collider>());
@@ -157,13 +157,11 @@ public class Bullet : MonoBehaviourPun, Damage
                         }
                         else if (result.Equals(ChunkDetector.body))
                         {
-                            value = this.damage;
                             audioGameplayController.instance.audioCharacterScenePVMine(1);
                         }
                     }
                 }
-
-                playerProperty.Life = value;
+                playerProperty.Life = -value;
             }
         }
     }

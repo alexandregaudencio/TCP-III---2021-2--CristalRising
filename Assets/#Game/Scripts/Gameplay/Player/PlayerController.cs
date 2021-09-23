@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private float sprintFOVModifier = 1.5f;
 
     private bool jump, groundCheck;
+    public Status status;
 
     PhotonView PV;
 
@@ -86,6 +87,10 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        if (status is StatusStop)
+        {
+            return;
+        }
         if (PV.IsMine)
         {
             CameraRotation();
@@ -115,7 +120,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (status is StatusStop) {
+            return;
+        }
         Sprinting();
+
         // float horAxis = Input.GetAxisRaw ("Horizontal");
         // float verAxis = Input.GetAxisRaw ("Vertical");
 
@@ -144,7 +153,7 @@ public class PlayerController : MonoBehaviour
         {
             //animator.SetBool("onFloor", true);
             groundCheck = true;
-
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 
@@ -164,6 +173,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         // Declaração da rotação da câmera e angulação mínima e máxima.
+
         rotationX = Mathf.Lerp(rotationX, Input.GetAxisRaw("Mouse X") * 2, 100 * Time.deltaTime);
         maxRotationY = Mathf.Clamp(maxRotationY - (Input.GetAxisRaw("Mouse Y") * 2 * 100 * Time.deltaTime), -30, 30);
         // Rotação da câmera através do mouse.
@@ -231,7 +241,14 @@ public class PlayerController : MonoBehaviour
 
         dir = Vector3.ClampMagnitude(transform.TransformVector(new Vector3(horAxis, 0, verAxis)), 1f);
 
-        playerRigidBody.MovePosition(playerRigidBody.position + dir * adjustedSpeed * Time.deltaTime);
+        if (status is StatusHook || status is StatusStop)
+        {
+            playerRigidBody.MovePosition(playerRigidBody.position + dir * 0 * Time.deltaTime);
+        }
+        else
+        {
+            playerRigidBody.MovePosition(playerRigidBody.position + dir * adjustedSpeed * Time.deltaTime);
+        }
     }
 
 }
