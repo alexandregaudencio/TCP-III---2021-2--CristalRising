@@ -15,7 +15,6 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     [SerializeField] AudioSource fireSource;
     [SerializeField] AudioSource[] tiroPlaced;
     [SerializeField] AudioSource[] audioCircleArea;
-
     
     private AudioClip voiceLines;
     private AudioClip fired;
@@ -209,6 +208,21 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
         if(name== "gameplayScene" )gameplaySceneTrue = istrue;
         if(name== "secondsRemaning") secondsRemaningTrue = istrue;
 
-
     }
+
+
+    [PunRPC]
+    private void PlayAudioToAll()
+    {
+        int index = (int)PhotonNetwork.LocalPlayer.CustomProperties["characterIndex"];
+        fireAudio.clip = RoomConfigs.instance.charactersOrdered[index].firstBlood;
+        fireAudio.Play();
+        Debug.Log("Toca som de first blood");
+    }
+
+
+
+
+
+
 }
