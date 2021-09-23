@@ -182,12 +182,15 @@ public class Bullet : MonoBehaviourPun, Damage
 
                 targetPlayerProperty.Life = value;
                 
-                if(targetPlayerProperty.Life - value <= 0 && !(bool)PhotonNetwork.LocalPlayer.CustomProperties["isDead"])
+                if(targetPlayerProperty.Life - value <= 0 && !(bool)target.gameObject.GetPhotonView().Controller.CustomProperties["isDead"])
                 {
-                    DamageEvent += UpdateKillCount;
+                    UpdateKillCount();
+
+                    if ((int)PhotonNetwork.LocalPlayer.CustomProperties["killCount"] == 0) 
+                        FirstBlood();
                 }
-                DamageEvent.Invoke();
-                
+
+  
             }
         }
     }
@@ -197,32 +200,23 @@ public class Bullet : MonoBehaviourPun, Damage
         return target;
     }
 
-    private void OnDamage()
-    {
-        //Debug.Log("ON Fire damage!");
-        //Debug.Log("alvo: " + target.GetPhotonView().Controller.NickName);
-    }
-
     private void UpdateKillCount()
     {
         int killCount = (int)PhotonNetwork.LocalPlayer.CustomProperties["killCount"];
         HashProperty["killCount"] = killCount + 1;
         PhotonNetwork.LocalPlayer.SetCustomProperties(HashProperty);
-        Debug.Log(PhotonNetwork.LocalPlayer.NickName + " kill: " + (int)PhotonNetwork.LocalPlayer.CustomProperties["killCount"]);
+        //Debug.Log(PhotonNetwork.LocalPlayer.NickName + " kill: " + (int)PhotonNetwork.LocalPlayer.CustomProperties["killCount"]);
+    
     }
 
-    private void Destroy()
+    private void FirstBlood()
     {
-        DamageEvent += OnDamage;
+        
+        audioGameplayController.instance.PV.RPC("PlayAudioToAll", RpcTarget.All);
+        Debug.Log("PRIMEIRO ABATE.");
 
     }
 
-
-    private void OnDesable()
-    {
-        //DamageEvent -= OnDamage;
-        //DamageEvent -= OnDeathTarget;
-    }
 
 
 }

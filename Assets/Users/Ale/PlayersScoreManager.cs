@@ -28,7 +28,7 @@ public class PlayersScoreManager : MonoBehaviourPunCallbacks
             if (changedProps.ContainsKey("HP") && (int)targetPlayer.CustomProperties["HP"] <= 0 && !(bool)targetPlayer.CustomProperties["isDead"])
             {
 
-                HashProps["isDead"] = true;
+                //HashProps["isDead"] = true;
                 HashProps["deathCount"] = (int)targetPlayer.CustomProperties["deathCount"] + 1;
                 PhotonNetwork.LocalPlayer.SetCustomProperties(HashProps);
             }

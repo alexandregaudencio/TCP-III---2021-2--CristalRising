@@ -19,7 +19,7 @@ MonoBehaviour:
   Descricao: Tem tudo que um personagem deste jogo precisa.
   characterIndex: 1
   damage: 300
-  ammo: 10
+  ammo: 20
   HP: 2900
   characterIcon: {fileID: 21300000, guid: 76fac4178f48ae843a7da602568b2967, type: 3}
   ordenedHabillityIcon:
