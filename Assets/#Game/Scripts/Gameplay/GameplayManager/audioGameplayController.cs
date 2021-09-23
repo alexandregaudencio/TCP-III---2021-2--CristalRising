@@ -212,12 +212,11 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
 
 
     [PunRPC]
-    private void PlayAudioToAll()
+    private void PlayFirstBloodAudio()
     {
         int index = (int)PhotonNetwork.LocalPlayer.CustomProperties["characterIndex"];
         fireAudio.clip = RoomConfigs.instance.charactersOrdered[index].firstBlood;
         fireAudio.Play();
-        Debug.Log("Toca som de first blood");
     }
 
 
