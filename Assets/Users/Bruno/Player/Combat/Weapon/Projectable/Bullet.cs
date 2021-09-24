@@ -184,8 +184,8 @@ public class Bullet : MonoBehaviourPun, Damage
                 
                 if(targetPlayerProperty.Life - value <= 0 && !(bool)target.gameObject.GetPhotonView().Controller.CustomProperties["isDead"])
                 {
-                    UpdateKillCount();
                     IsFirstBlood();
+                    UpdateKillCount();
 
 
                 }
@@ -211,15 +211,21 @@ public class Bullet : MonoBehaviourPun, Damage
 
     private void IsFirstBlood()
     {
-        //foreach (Player player in PhotonNetwork.PlayerList)
-        //{
-        //    if ((int)player.CustomProperties["killCount"] > 0)
-        //    {
-        //        return;
-        //    }
-        //}
-        Debug.Log("PRIMEIRO ABATE.");
-        audioGameplayController.instance.PV.RPC("PlayFirstBloodAudio", RpcTarget.All);
+        bool killEcxist = false;
+        foreach (Player player in PhotonNetwork.PlayerList)
+        {
+            if ((int)player.CustomProperties["killCount"] > 0)
+            {
+                killEcxist = true;
+            }
+        }
+
+        if(!killEcxist)
+        {
+            //Debug.Log("PRIMEIRO ABATE.");
+            audioGameplayController.instance.PV.RPC("PlayFirstBloodAudio", RpcTarget.All);
+
+        }
 
     }
 
