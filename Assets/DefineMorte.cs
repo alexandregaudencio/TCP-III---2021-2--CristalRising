@@ -18,6 +18,8 @@ public class DefineMorte : MonoBehaviourPunCallbacks
     public GameObject CanvasDeMorte;
     public Text TextoContador;
     private GameObject HUDCanvas;
+    private string namePlayerBullet;
+    private int characterIndexBullet;
 
 
     //[SerializeField] private float avada;
@@ -44,18 +46,27 @@ public class DefineMorte : MonoBehaviourPunCallbacks
         {
            if(changedProps.ContainsKey("HP") && (int)targetPlayer.CustomProperties["HP"] <= 0 && !(bool)targetPlayer.CustomProperties["isDead"]) {
                 StartCoroutine(deathEvent());
-           }
-
-           if(changedProps.ContainsKey("isDead"))
-            {
-                SwitchObjectsOnDeath((bool)targetPlayer.CustomProperties["isDead"]);
+               
+                //chamar audio
+                //contarKill
             }
+            
+           if(changedProps.ContainsKey("isDead"))
+           {
+                SwitchObjectsOnDeath((bool)targetPlayer.CustomProperties["isDead"]);
+           }
         }
 
     }
-
+    //private void playerBullet()
+    //{
+    //    namePlayerBullet = Bullet.instance.whoFiredName;
+    //    characterIndexBullet = Bullet.instance.whoFiredCharacter;
+    //}
     IEnumerator deathEvent()
     {
+        //playerBullet();
+        //audioGameplayController.instance.audioFirstBlood("firstBlood", characterIndexBullet);
         HashDeadProps["isDead"] = true;
         int countdown = RoomConfigs.instance.timeToRespawn;
         
@@ -88,7 +99,6 @@ public class DefineMorte : MonoBehaviourPunCallbacks
     private void ResetCharacterProps(/*bool boolean*/)
     {
         transform.position = SetUpGameplay.instance.LocalPlayerSpawnPoint;
-        
     }
 
     private void ResetPlayerProps()

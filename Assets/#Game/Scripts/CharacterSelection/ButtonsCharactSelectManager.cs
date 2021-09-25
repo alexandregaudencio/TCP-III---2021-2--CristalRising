@@ -49,7 +49,8 @@ public class ButtonsCharactSelectManager : MonoBehaviour
         //HashProperty["ammo"] = Characters[indexPlayer].ammo;
         HashProperty["characterName"] = RoomConfigs.instance.charactersOrdered[indexCharacter].characterName;
         HashProperty["characterIndex"] = RoomConfigs.instance.charactersOrdered[indexCharacter].characterIndex;
-        
+        HashProperty["killCount"] = 0;
+        HashProperty["deathCount"] = 0;
         HashProperty["timerRespawn"] = RoomConfigs.instance.timeToRespawn;
         HashProperty["isDead"] = false;
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Pun.UtilityScripts;
 
 public class audioGameplayController : MonoBehaviourPunCallbacks
 {
@@ -9,20 +10,26 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     [SerializeField] AudioSource gameplayScene;
     [SerializeField] AudioSource secondsRemaning;
     [SerializeField] AudioSource fireAudio;
+    [SerializeField] AudioSource firstBloodSource;
     [SerializeField] AudioSource startGameVoice;
     [SerializeField] AudioSource fireSource;
     [SerializeField] AudioSource[] tiroPlaced;
+    [SerializeField] AudioSource[] audioCircleArea;
 
     
     private AudioClip voiceLines;
     private AudioClip fired;
+    private AudioClip firstBloodClip;
     public PhotonView PV;
     public static audioGameplayController instance;
     private int gameplaySceneTimeSamples;
     private int secondsRemaningTimeSamples;
     private int fireTimeSamples;
+    private int firstbloodTimeSamples;
     private bool secondsRemaningTrue;
     private bool gameplaySceneTrue;
+    public bool dominouBlue=true;
+    public bool dominouRed=true;
     public void Start()
     {
         gameplaySceneTrue = false;
@@ -37,6 +44,10 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     {
        if(gameplaySceneTrue) sendImeSample("gameplayScene");
         if (secondsRemaningTrue) sendImeSample("secondsRemaning");
+
+        //int indexPlayer = (int)PhotonNetwork.LocalPlayer.CustomProperties["indexPlayer"];
+        //string pTeam = PhotonNetwork.LocalPlayer.NickName;
+        //Debug.Log("nome :"  + pTeam);
     }
    
     //masterclient manda pra todos
@@ -75,13 +86,17 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
        
     }
     //local
-    public void audioCharacterScenePVMine(int identificador)
+    public void audioCharacterScenePVMine(int identificador/*, string id*/)
     {
-        if(PV.IsMine)tiroPlaced[identificador].Play();
-        
+        //if(PV.IsMine)
+        //int indexPlayer = (int)PhotonNetwork.LocalPlayer.CustomProperties["indexPlayer"];
+        //Debug.Log("id : " + id);
+        string name = PhotonNetwork.LocalPlayer.NickName;
+        /*if (name == id) */tiroPlaced[identificador].Play();
+        //Debug.Log("id : " + id);
     }
-        //manda o timesample
-        public void sendImeSample(string nameAudio)
+    //manda o timesample
+    public void sendImeSample(string nameAudio)
     {
         if (PhotonNetwork.IsMasterClient)
         {
@@ -113,16 +128,59 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
         fireSource.clip = fired;
         fireSource.Play();
         fireTimeSamples = fireAudio.timeSamples;
-        PV.RPC("SendAudioPlayer", RpcTarget.Others, nameVoice, fireTimeSamples);
+        PV.RPC("SendAudioPlayer", RpcTarget.Others, nameVoice, fireTimeSamples, fired);
+    }
+    public void audioFirstBlood(string nameVoice, int id)
+    {
+        firstBloodClip = RoomConfigs.instance.charactersOrdered[1].firstBlood;
+        firstBloodSource.clip = firstBloodClip;
+        firstBloodSource.Play();
+        firstbloodTimeSamples = firstBloodSource.timeSamples;
+        PV.RPC("SendAudioPlayer", RpcTarget.Others, nameVoice, firstbloodTimeSamples, firstBloodClip);
+    }
+    public void audioAreaRed()
+    {
+        string pTeam = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
+        if (pTeam == "Blue")
+        {
+            audioCircleArea[0].Play();
+        }
+        if (pTeam == "Red")
+        {
+            audioCircleArea[1].Play();
+           
+        }
+        dominouRed = false;
+    }
+    public void audioAreaBlue()
+    {
+        string pTeam = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
+        if (pTeam == "Blue")
+        {
+            audioCircleArea[1].Play();
+            
+        }
+        if (pTeam == "Red")
+        {
+            audioCircleArea[0].Play();
+        }
+        dominouBlue = false;
     }
 
     [PunRPC]
-    private void SendAudioPlayer(string audio, int timeSample)
+    private void SendAudioPlayer(string audio, int timeSample, AudioClip clip)
     {
         if (audio == "fire")
         {
             fireAudio.Play();
             fireAudio.timeSamples = timeSample;
+
+        }
+        if (audio == "firstBlood")
+        {
+            //firstBloodSource.clip = clip;
+            firstBloodSource.Play();
+            firstBloodSource.timeSamples = timeSample;
 
         }
     }

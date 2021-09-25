@@ -54,6 +54,8 @@ MonoBehaviour:
   pool: {fileID: 0}
   hit: {x: 0, y: 0, z: 0}
   animationName: 
+  whoFiredCharacter: 0
+  whoFiredName: 
 --- !u!114 &3168647795763510970
 MonoBehaviour:
   m_ObjectHideFlags: 0

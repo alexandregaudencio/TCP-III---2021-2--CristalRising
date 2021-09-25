@@ -11,10 +11,6 @@ using UnityEngine.UI;
 public class PlayerProperty : MonoBehaviour
 {
 
-    public GameObject[] SpawnPointsTimeAzul;
-    public GameObject[] SpawnPointTimeVermelho;
-    //public Slider lifeUi;
-
     private float moveSpeed;
     private float maxJumpHeight;
     public ShowDamage sd;
@@ -24,7 +20,7 @@ public class PlayerProperty : MonoBehaviour
 
     private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
 
-    public int life;
+    private int life;
     public int Life
     {
         get { return (int)GetComponent<PhotonView>().Controller.CustomProperties["HP"]; }
@@ -32,11 +28,14 @@ public class PlayerProperty : MonoBehaviour
         {
             int hp = (int)GetComponent<PhotonView>().Controller.CustomProperties["HP"];
             HashProperty["HP"] = hp - value;
+            
             GetComponent<PhotonView>().Controller.SetCustomProperties(HashProperty);
 
             sd.Value = value.ToString();
         }
     }
+
+
 
     private void Start()
     {
@@ -45,14 +44,6 @@ public class PlayerProperty : MonoBehaviour
 
         buffereMoveSpeed = moveSpeed;
         bufferMaxJumpHight = maxJumpHeight;
-
-        if (GetComponent<PhotonView>().IsMine)
-        {
-            //lifeUi.maxValue = life;
-            //lifeUi.value = life;
-        }
-
-
     }
 
     internal void SetAttribute(Attribute attibut)
@@ -63,11 +54,18 @@ public class PlayerProperty : MonoBehaviour
 
     public void ResetProperty()
     {
-        Debug.LogWarning("a alteração dos dados de velocidade e pulo dessa forma está gerando o error de inverção de inputs! por hora está desativado.");
-        //GetComponent<PlayerController>().moveSpeed = buffereMoveSpeed;
-        //GetComponent<PlayerController>().jumpForce = buffereMoveSpeed;
+        GetComponent<PlayerController>().moveSpeed = buffereMoveSpeed;
+        GetComponent<PlayerController>().jumpForce = buffereMoveSpeed;
 
         //lifeUi.value = life;
     }
+
+    public void OtherMethodsForDamage()
+    {
+
+    }
+
+
+
 }
 

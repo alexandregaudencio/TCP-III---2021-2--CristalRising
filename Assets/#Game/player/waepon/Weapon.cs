@@ -24,9 +24,7 @@ public class Weapon : CombatControl
 
     private Vector3 mark;
     private PhotonView pv;
-    //public byte MunicaoMax, MunicaoAtual;
-    //public Text municaoMax, municaoAtual;
-    //public Text municaoMax, municaoAtual;
+
     private int maxAmmo;
     private int ammo;
 
@@ -38,7 +36,6 @@ public class Weapon : CombatControl
 
     private void Awake()
     {
-        //municaoMax = GameObject.Find("AmmoAtual").GetComponent<TextMesh>();
         mangerBullet = GetComponent<ManagerBullet>();
         this.bulletPool = GetComponent<Pool>();
         pv = GetComponentInParent<PhotonView>();
@@ -46,17 +43,15 @@ public class Weapon : CombatControl
     }
     private void Start()
     {
-        //MunicaoAtual = MunicaoMax;
         if (pv.IsMine)
         {
             Camera.main.transform.parent = cam.transform;
             Camera.main.transform.SetPositionAndRotation(cam.transform.position, cam.transform.rotation);
         }
     }
+
     private void Update()
     {
-        //municaoAtual.text = MunicaoAtual.ToString();
-        //municaoMax.text = MunicaoMax.ToString();
 
         if(Input.GetKeyDown(KeyCode.R) && !recarregando) recarregando = true;
 
@@ -103,6 +98,7 @@ public class Weapon : CombatControl
         this.timeCount -= Time.deltaTime;
         Aim();
     }
+
     [PunRPC]
     public override void Use()
     {
@@ -126,8 +122,9 @@ public class Weapon : CombatControl
 
         ammo--;
         //audio tiro
-        int characterIndex = (int)PhotonNetwork.LocalPlayer.CustomProperties["characterIndex"];
-        audioGameplayController.instance.audioPlayerFire("fire", characterIndex);
+        //int characterIndex = (int)PhotonNetwork.LocalPlayer.CustomProperties["characterIndex"];
+        
+        //audioGameplayController.instance.audioPlayerFire("fire", characterIndex);
 
         var bullet = PhotonView.Find(bulletPool.ActiveInstance()).gameObject.GetComponent<Bullet>();
 
@@ -136,33 +133,19 @@ public class Weapon : CombatControl
         Vector3 pos = mangerBullet.bulletTransform.position;
         Vector3 rot = mangerBullet.bulletTransform.rotation.eulerAngles;
 
-
-        //Player[] playersTeamBlue;
-        //Player[] playersTeamRed;
-
-        //PhotonTeamsManager.Instance.TryGetTeamMembers("Blue", out playersTeamBlue);
-        //PhotonTeamsManager.Instance.TryGetTeamMembers("Red", out playersTeamRed);
-
-        //Color color = Color.white;
-        //foreach (Player p in playersTeamBlue)
-        //    if (GetComponent<PhotonView>().Controller.Equals(p))
-        //        color = Color.blue;
-        //foreach (Player p in playersTeamRed)
-        //    if (GetComponent<PhotonView>().Controller.Equals(p))
-        //        color = Color.red;
-
-
+        //int indexPlayer = (int)PhotonNetwork.LocalPlayer.CustomProperties["indexPlayer"];
+        //string name = PhotonNetwork.LocalPlayer.NickName;
         if (!hit.collider)
-            bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID/*, new Vector3(color.r,color.g,color.b)*/);
+            bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID /*name*//*, new Vector3(color.r,color.g,color.b)*/);
         else
         {
             PhotonView targetId = hit.collider.gameObject.GetComponent<PhotonView>();
             if (!targetId)
             {
-                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID/*, new Vector3(color.r,color.g,color.b)*/);
+                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, bullet.photonView.ViewID /*name*//*, new Vector3(color.r,color.g,color.b)*/);
             }
             else
-                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, targetId.ViewID/*, new Vector3(color.r,color.g,color.b)*/);
+                bullet.photonView.RPC("Inicialize", RpcTarget.All, mark, distance, pos, rot, targetId.ViewID /*name*//*, new Vector3(color.r,color.g,color.b)*/);
 
         }
     }
