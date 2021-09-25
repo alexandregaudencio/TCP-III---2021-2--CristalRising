@@ -16,7 +16,7 @@ public class Cure : Spells, IEffect
     public override void Aim()
     {
         var origin = transform.position;
-        int mask = LayerMask.GetMask("Team1", "Team2");
+        int mask = LayerMask.GetMask(LayerMask.LayerToName(transform.parent.gameObject.layer));
 
         Debug.DrawRay(origin, dir.forward * reach, Color.white);
         if (Physics.Raycast(origin, dir.forward, out hit, reach, mask))
@@ -33,13 +33,17 @@ public class Cure : Spells, IEffect
     public override void Use()
     {
         Aim();
-        foreach (var s in status)
-        {
-            GetComponentInParent<PlayerController>().status = s;
-        }
+       
         if (target)
         {
-            //target.GetComponent<PlayerProperty>().Life += life;
+            foreach (var s in status)
+            {
+                GetComponentInParent<PlayerController>().status = s;
+            }
+            if (target.layer.Equals(transform.parent.gameObject.layer))
+            {
+                return;
+            }
             for (int i = 0; i < transform.childCount; i++)
             {
                 GameObject children = transform.GetChild(i).gameObject;
