@@ -3729,6 +3729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hertz: 0.1
   Limit: 100
+  setUpGameplay: {fileID: 0}
   maxBulletDistance: 300
   cross: {fileID: 0}
   cam: {fileID: 2236878628811150811}
