@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d20373995096146932c6943e4fdebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hertz: 0
-  Limit: 0
+  Hertz: 2
+  Limit: 100
   status:
   - {fileID: 11400000, guid: fdc7307ae89710d4388c43f5774efeb8, type: 2}
   attibut:

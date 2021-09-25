@@ -620,6 +620,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: circleArea
       objectReference: {fileID: 0}
+    - target: {fileID: 8357978053006258053, guid: ba32f70b973895b4ca7663af224e1d79,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8357978053006258054, guid: ba32f70b973895b4ca7663af224e1d79,
         type: 3}
       propertyPath: m_RootOrder
@@ -987,7 +992,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090265258}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.0095396, y: -1.4657507, z: 5.4339285}
+  m_LocalPosition: {x: -7, y: -1.4657507, z: 5.3}
   m_LocalScale: {x: 4.892226, y: 4.8922243, z: 4.8922243}
   m_Children: []
   m_Father: {fileID: 1691054373}

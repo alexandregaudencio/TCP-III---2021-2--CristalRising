@@ -33,16 +33,24 @@ public class Tug : Spells, IEffect
     public override void Aim()
     {
         var origin = relocateTarget.position;
-        var dir = relocateTarget.forward;
-        int mask = LayerMask.GetMask("Team1", "Team2");
+        var dir = GetComponentInParent<PlayerController>().cam.transform.forward;
+        int mask = LayerMask.GetMask("Team1", "Team2"); 
+        int weaponIgnore = LayerMask.GetMask("weaponIgnore");
 
         Debug.DrawRay(origin, dir * reach, Color.white);
-        if (Physics.Raycast(origin, dir, out hit, reach, mask))
+        if (Physics.Raycast(origin, dir, out hit, reach, ~weaponIgnore))
         {
             Debug.DrawLine(origin, hit.point, Color.red);
-            target = hit.collider.gameObject;
+            var player = hit.collider.GetComponentInParent<PlayerController>();
+            if (player)
+            {
+                if (((1 << player.gameObject.layer) & mask) == (1 << player.gameObject.layer))
+                    target = hit.collider.gameObject;
+            }
+
         }
-        else {
+        else
+        {
             target = null;
         }
     }
@@ -53,6 +61,12 @@ public class Tug : Spells, IEffect
         if (time <= 0)
         {
             time = Hertz;
+
+            foreach (var statu in status)
+            {
+                statu.Apply();
+            }
+
             if (target)
             {
                 zero = transform.parent.transform.position + Vector3.down / 2;
@@ -61,17 +75,13 @@ public class Tug : Spells, IEffect
 
                 Apply();
 
-                foreach (var statu in status)
-                {
-                    statu.Apply();
-                }
                 pull = true;
             }
             else
             {
                 zero = transform.parent.transform.position + Vector3.down / 2;
                 start = relocateTarget.position;
-                end = relocateTarget.forward * reach;
+                end = transform.position + GetComponentInParent<PlayerController>().cam.transform.forward * reach;
 
                 pull = false;
 
