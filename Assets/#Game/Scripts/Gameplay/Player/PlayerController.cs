@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     private float baseFOV;
     private float sprintFOVModifier = 1.5f;
 
+    public  bool vai = true;
+
     private bool jump, groundCheck;
 
     PhotonView PV;
@@ -116,6 +118,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Sprinting();
+        
         // float horAxis = Input.GetAxisRaw ("Horizontal");
         // float verAxis = Input.GetAxisRaw ("Vertical");
 
@@ -198,6 +201,7 @@ public class PlayerController : MonoBehaviour
         }
         float horAxis = Input.GetAxis("Horizontal");
         float verAxis = Input.GetAxis("Vertical");
+       
 
         bool sprint = Input.GetKey(KeyCode.LeftShift) && groundCheck;
         bool isSprinting = sprint && verAxis > 0;
@@ -228,10 +232,24 @@ public class PlayerController : MonoBehaviour
         }
 
         // Move o jogador na direção que está virado
-
+       
         dir = Vector3.ClampMagnitude(transform.TransformVector(new Vector3(horAxis, 0, verAxis)), 1f);
-
+     
         playerRigidBody.MovePosition(playerRigidBody.position + dir * adjustedSpeed * Time.deltaTime);
+        
+      
+        if ((horAxis!=0 && vai == true) || (verAxis != 0 && vai == true ))
+        {
+            audioGameplayController.instance.walkSource.Play();
+            vai = false;
+        }
+        if (horAxis == 0 && vai == false && verAxis == 0)
+        {
+            audioGameplayController.instance.walkSource.Stop();
+            vai = true;
+        }
+       
+       
     }
 
 }

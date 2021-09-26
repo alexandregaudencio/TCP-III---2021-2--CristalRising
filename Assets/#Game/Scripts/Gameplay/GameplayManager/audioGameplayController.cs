@@ -12,6 +12,7 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     [SerializeField] AudioSource fireAudio;
     [SerializeField] AudioSource firstBloodSource;
     [SerializeField] AudioSource startGameVoice;
+    public AudioSource walkSource;
     [SerializeField] AudioSource fireSource;
     [SerializeField] AudioSource[] tiroPlaced;
     [SerializeField] AudioSource[] audioCircleArea;
@@ -122,6 +123,7 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
             //= voiceLines;
             startGameVoice.Play();
        }
+      
     }
     //tiro
     public void audioPlayerFire(string audioName, AudioSource audioSource)
