@@ -116,9 +116,12 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     //falas
     public void audioPlayerVoiceLines(string nameVoice, int id)
     {
-        if (nameVoice == "startGame") startGameVoice.clip = RoomConfigs.instance.charactersOrdered[id].gameStarted;
-         //= voiceLines;
-        startGameVoice.Play();
+        if (nameVoice == "startGame")
+        {
+            startGameVoice.clip = RoomConfigs.instance.charactersOrdered[1].gameStarted;
+            //= voiceLines;
+            startGameVoice.Play();
+       }
     }
     //tiro
     public void audioPlayerFire(string audioName, AudioSource audioSource)
