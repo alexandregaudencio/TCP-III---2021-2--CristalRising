@@ -133,7 +133,7 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
         audioSource.clip = shootAudio;
         audioSource.Play();
         fireTimeSamples = audioSource.timeSamples;
-        PV.RPC("SendAudioPlayer", RpcTarget.All, audioName, fireTimeSamples);
+        PV.RPC("SendAudioPlayer", RpcTarget.Others, audioName, fireTimeSamples);
     }
 
     public void audioFirstBlood(string nameVoice, int id)
@@ -177,13 +177,13 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     [PunRPC]
     private void SendAudioPlayer(string audioName, int timeSample)
     {
-        //if (audioName == "shoot")
-        //{
-        //    fireAudio.Play();
-        //    fireAudio.timeSamples = timeSample;
+        if (audioName == "shoot")
+        {
+          fireAudio.Play();
+          fireAudio.timeSamples = timeSample;
 
 
-        //}
+        }
         if (audioName == "firstBlood")
         {
             //firstBloodSource.clip = clip;
