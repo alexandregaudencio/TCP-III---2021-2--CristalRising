@@ -23,12 +23,6 @@ public class ButtonsCharactSelectManager : MonoBehaviour
     }
 
 
-    //public void ChooseCharacter(GameObject characterPrefab)
-    //{
-
-    //    //PhotonNetwork.LocalPlayer.TagObject = characterPrefab.name;
-    //    SwitchButtonsInteractable(false);
-    //}
 
     //AÇÃO DOS BOTÕES DE SEÇÃO DE PERSONAGENS
     public void ChooseCharacter(int characterIndex)
