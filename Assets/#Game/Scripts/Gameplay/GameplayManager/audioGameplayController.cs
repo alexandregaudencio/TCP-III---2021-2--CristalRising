@@ -12,6 +12,7 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     [SerializeField] AudioSource fireAudio;
     [SerializeField] AudioSource firstBloodSource;
     [SerializeField] AudioSource startGameVoice;
+    public AudioSource walkSource;
     [SerializeField] AudioSource fireSource;
     [SerializeField] AudioSource[] tiroPlaced;
     [SerializeField] AudioSource[] audioCircleArea;
@@ -116,9 +117,13 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     //falas
     public void audioPlayerVoiceLines(string nameVoice, int id)
     {
-        if (nameVoice == "startGame") startGameVoice.clip = RoomConfigs.instance.charactersOrdered[id].gameStarted;
-         //= voiceLines;
-        startGameVoice.Play();
+        if (nameVoice == "startGame")
+        {
+            startGameVoice.clip = RoomConfigs.instance.charactersOrdered[1].gameStarted;
+            //= voiceLines;
+            startGameVoice.Play();
+       }
+      
     }
     //tiro
     public void audioPlayerFire(string audioName, AudioSource audioSource)
@@ -130,7 +135,7 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
         audioSource.clip = shootAudio;
         audioSource.Play();
         fireTimeSamples = audioSource.timeSamples;
-        PV.RPC("SendAudioPlayer", RpcTarget.All, audioName, fireTimeSamples);
+        PV.RPC("SendAudioPlayer", RpcTarget.Others, audioName, fireTimeSamples);
     }
 
     public void audioFirstBlood(string nameVoice, int id)
@@ -174,13 +179,13 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     [PunRPC]
     private void SendAudioPlayer(string audioName, int timeSample)
     {
-        //if (audioName == "shoot")
-        //{
-        //    fireAudio.Play();
-        //    fireAudio.timeSamples = timeSample;
+        if (audioName == "shoot")
+        {
+          fireAudio.Play();
+          fireAudio.timeSamples = timeSample;
 
 
-        //}
+        }
         if (audioName == "firstBlood")
         {
             //firstBloodSource.clip = clip;
