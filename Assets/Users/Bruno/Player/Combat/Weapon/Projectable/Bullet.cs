@@ -135,6 +135,7 @@ public class Bullet : MonoBehaviourPun, Damage
         {
             EndAniamtion();
         }
+
     }
     private void EndAniamtion()
     {
@@ -157,6 +158,7 @@ public class Bullet : MonoBehaviourPun, Damage
             var chunks = target.GetComponentsInChildren<ChunkDetector>();
             var targetPlayerProperty = target.GetComponent<PlayerProperty>();
             Player pTarget = target.GetPhotonView().Controller;
+
             if (targetPlayerProperty)
             {
                 int value = 0;
@@ -173,7 +175,7 @@ public class Bullet : MonoBehaviourPun, Damage
                         }
                         else if (result.Equals(ChunkDetector.body))
                         {
-                            value = this.damage;
+                            value = damage;
                             audioGameplayController.instance.audioCharacterScenePVMine(1);
 
                         }
@@ -185,7 +187,7 @@ public class Bullet : MonoBehaviourPun, Damage
                 if(targetPlayerProperty.Life - value <= 0 && !(bool)target.gameObject.GetPhotonView().Controller.CustomProperties["isDead"])
                 {
                     IsFirstBlood();
-                    UpdateKillCount();
+                    KillScore();
 
 
                 }
@@ -200,7 +202,7 @@ public class Bullet : MonoBehaviourPun, Damage
         return target;
     }
 
-    private void UpdateKillCount()
+    private void KillScore()
     {
         int killCount = (int)PhotonNetwork.LocalPlayer.CustomProperties["killCount"];
         HashProperty["killCount"] = killCount + 1;
@@ -228,7 +230,6 @@ public class Bullet : MonoBehaviourPun, Damage
         }
 
     }
-
 
 
 }

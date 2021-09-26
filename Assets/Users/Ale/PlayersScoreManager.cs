@@ -32,9 +32,7 @@ public class PlayersScoreManager : MonoBehaviourPunCallbacks
                 HashProps["deathCount"] = (int)targetPlayer.CustomProperties["deathCount"] + 1;
                 PhotonNetwork.LocalPlayer.SetCustomProperties(HashProps);
             }
-
         }
-
     }
 
     private void UpdateScoreUI()

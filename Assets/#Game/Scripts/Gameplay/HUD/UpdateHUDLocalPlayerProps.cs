@@ -13,8 +13,9 @@ public class UpdateHUDLocalPlayerProps : MonoBehaviourPunCallbacks
     [SerializeField] private Image HPImage;
     [SerializeField] private Image characterIcon;
     [SerializeField] private Image characterBorderIcon;
-    [SerializeField] private TMP_Text charactername;
-    [SerializeField] private TMP_Text characterAmmo;
+    [SerializeField] private TMP_Text characterName;
+    [SerializeField] private Image characterNameBg;
+    //[SerializeField] private TMP_Text characterAmmo;
 
     Player localPlayer;
     byte myTeam;
@@ -80,8 +81,8 @@ public class UpdateHUDLocalPlayerProps : MonoBehaviourPunCallbacks
         characterBorderIcon.color = TeamColor;
         HPImage.fillAmount = HPpercent;
         HPText.text = HPString;
-        charactername.text = RoomConfigs.instance.charactersOrdered[characterIndex].characterName;
-        charactername.color = TeamColor;
+        characterName.text = RoomConfigs.instance.charactersOrdered[characterIndex].characterName;
+        characterNameBg.color = TeamColor;
 
     }
 
