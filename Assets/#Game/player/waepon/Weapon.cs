@@ -121,10 +121,11 @@ public class Weapon : CombatControl
         this.count++;
 
         ammo--;
+
+        PlayAudioFire();
         //audio tiro
-        //int characterIndex = (int)PhotonNetwork.LocalPlayer.CustomProperties["characterIndex"];
-        
-        //audioGameplayController.instance.audioPlayerFire("fire", characterIndex);
+
+
 
         var bullet = PhotonView.Find(bulletPool.ActiveInstance()).gameObject.GetComponent<Bullet>();
 
@@ -169,6 +170,13 @@ public class Weapon : CombatControl
         int characterIndex = (int)PhotonNetwork.LocalPlayer.CustomProperties["characterIndex"];
         ammo = RoomConfigs.instance.charactersOrdered[characterIndex].ammo;
         MaxAmmo = RoomConfigs.instance.charactersOrdered[characterIndex].ammo;
+    }
+
+    private void PlayAudioFire()
+    {
+        AudioSource audioSorce = GetComponent<AudioSource>();
+        audioGameplayController.instance.audioPlayerFire("shoot", audioSorce);
+
     }
 
 }
