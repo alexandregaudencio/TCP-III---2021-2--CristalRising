@@ -23,7 +23,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     private bool wallDown=false;
     public PhotonView PV;
     private string tempTimer;
-    private audioGameplayController audioGameplaySceneScript;
+    public audioGameplayController audioGameplaySceneScript;
     private void Start()
     {
         gameplayRoomTimer = GetComponent<TimerCountdown>();
@@ -33,8 +33,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
         wallDown = false;
         instance = this;
         gameEnd.SetActive(false);
-
-        audioGameplaySceneScript = GetComponent<audioGameplayController>();
+        
 
     }
 
@@ -48,8 +47,9 @@ public class GameplayManager : MonoBehaviourPunCallbacks
             downWallBase();
             gameplayRoomTimer.CurrentTime = RoomConfigs.instance.gameplayMaxTime;
             gameplayRoomTimer.BaseTime = RoomConfigs.instance.heightTime;
-            wallDown = true;
+
             voiceLineStartGame();
+            wallDown = true;
         }
             if (gameplayRoomTimer.IsCountdownOver() && wallDown==true )
         {
@@ -69,7 +69,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     private void voiceLineStartGame()
     {
         //GetComponent<audioCharacterSceneController>().audioPlayerVoiceLines("startGame", 1);
-        audioGameplaySceneScript.audioPlayerVoiceLines("startGame", 1);
+        audioGameplaySceneScript.audioPlayerVoiceLines("startGame",1);
 
     }
     private void UIUpdate()

@@ -3541,7 +3541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f4e0324cf2ca4587af745f028acf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
   spawnPointsBlue:
   - {fileID: 7184323144564636679}
   - {fileID: 7184323143091538792}
@@ -7522,6 +7521,7 @@ MonoBehaviour:
   spawnWallBlue: {fileID: 1874329897}
   spawnWallRed: {fileID: 554593390}
   PV: {fileID: 7}
+  audioGameplaySceneScript: {fileID: 5368736720418607634}
 --- !u!4 &5368736720418607628
 Transform:
   m_ObjectHideFlags: 0
