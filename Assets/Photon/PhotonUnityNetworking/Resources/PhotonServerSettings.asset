@@ -83,6 +83,12 @@ MonoBehaviour:
   - SendAudio
   - SendAudioPlayer
   - SendTrue
+  - PlayAudioToAll
+  - PlayAudioToMyTeam
+  - PlayFirstBloodAudio
+  - SwitchColliders
+  - SwitchEnableColliders
+  - PlayAudioInWeapon
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
