@@ -10,6 +10,11 @@ public class Controle : MonoBehaviourPun
     public float speed;
     public Weapon gun;
     public Spells spell;
+    public Spells spellHabillityQ;
+    public Spells spellHabillityE;
+    public Spells spellHabillityF;
+    public Spells spellHabillityRightMouse;
+
     //public Animator animator;
     private GameObject aux;
     private Animator playerAnim;
@@ -42,13 +47,13 @@ public class Controle : MonoBehaviourPun
             if (Input.GetMouseButtonDown(0))
             {
                 //playerAnim.SetTrigger("attack");
-                gun.Use();
+                //gun.Use();
 
                 UpdateAmmoText();
-                //if (spell)
-                //{
-                //    spell.Use();
-                //}
+                if (spell)
+                {
+                    spell.Use();
+                }
                 //if (photonView.IsMine)
                 //    gun.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
             }

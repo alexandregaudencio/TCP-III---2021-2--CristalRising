@@ -14,6 +14,11 @@ public class Character : ScriptableObject
     public string[] ordenedHabillityName, ordenedHabillityDescription;
     public AudioClip selectCharacter;
     public AudioClip gameStarted;
-    public AudioClip fired;
+    public AudioClip shoot;
+    public AudioClip firstBlood;
+    public AudioClip skill1;
+    public AudioClip skill2;
+    public AudioClip skill3;
+    public AudioClip ultimate;
 
 }
