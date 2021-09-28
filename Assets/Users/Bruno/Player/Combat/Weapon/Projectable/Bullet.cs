@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviourPun, Damage
     public int whoFiredCharacter;
     public string whoFiredName;
 
-    public event Action DamageEvent;
+    //public event Action DamageEvent;
 
     private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
 
@@ -179,15 +179,7 @@ public class Bullet : MonoBehaviourPun, Damage
                         }
                     }
                 }
-
                 targetPlayerProperty.Life = value;
-                
-                if(targetPlayerProperty.Life - value <= 0 && !(bool)PhotonNetwork.LocalPlayer.CustomProperties["isDead"])
-                {
-                    DamageEvent += UpdateKillCount;
-                }
-                DamageEvent.Invoke();
-                
             }
         }
     }
@@ -210,19 +202,4 @@ public class Bullet : MonoBehaviourPun, Damage
         PhotonNetwork.LocalPlayer.SetCustomProperties(HashProperty);
         Debug.Log(PhotonNetwork.LocalPlayer.NickName + " kill: " + (int)PhotonNetwork.LocalPlayer.CustomProperties["killCount"]);
     }
-
-    private void Destroy()
-    {
-        DamageEvent += OnDamage;
-
-    }
-
-
-    private void OnDesable()
-    {
-        //DamageEvent -= OnDamage;
-        //DamageEvent -= OnDeathTarget;
-    }
-
-
 }
