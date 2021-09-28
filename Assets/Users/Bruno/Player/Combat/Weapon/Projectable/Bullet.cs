@@ -7,6 +7,7 @@ using Photon.Realtime;
 
 public class Bullet : MonoBehaviourPun, Damage
 {
+    public static Bullet instance;
     public float speed;
     public int damage;
     public int criticalDamage;
@@ -24,12 +25,24 @@ public class Bullet : MonoBehaviourPun, Damage
     public Vector3 hit;
     [HideInInspector]
     public string animationName;
+    public int whoFiredCharacter;
+    public string whoFiredName;
+
+    //public event Action DamageEvent;
+
+    private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
+
     [HideInInspector]
     public GameObject target { private get; set; }
 
+    public void Start()
+    {
+        instance = this;
+    }
     [PunRPC]
     public void ActiveAll(bool value)
     {
+
         GameObject me = PhotonView.Find(photonView.ViewID).gameObject;
 
         PhotonView.Find(me.GetComponentInChildren<PhotonView>().ViewID).gameObject.SetActive(value);
@@ -43,11 +56,14 @@ public class Bullet : MonoBehaviourPun, Damage
     }
 
     [PunRPC]
-    public void Inicialize(Vector3 point, float timeOfArrival, Vector3 pos, Vector3 rot, int targetId/*, Vector3 color*/)
+    public void Inicialize(Vector3 point, float timeOfArrival, Vector3 pos, Vector3 rot, int targetId/*, string name*/)
     {
         //this.color = new Color(color.x, color.y, color.z,1);
         //GetComponentInChildren<Renderer>().material.SetColor("_Color", this.color);
         target = PhotonView.Find(targetId).gameObject;
+        //whoFiredCharacter =(int)player.CustomProperties["characterIndex"];
+        //whoFiredName = player.NickName;
+        whoFiredName = name;
         pool.Out(photonView.ViewID);
         pool.ActiveInstance();
         hit = point;
@@ -93,7 +109,7 @@ public class Bullet : MonoBehaviourPun, Damage
             {
                 fired = false;
                 CombineWithMaic();
-                Invoke("CalculateDamage",0.1f);
+                Invoke("CalculateDamage", 0.1f);
             }
         }
     }
@@ -139,11 +155,11 @@ public class Bullet : MonoBehaviourPun, Damage
         if (target)
         {
             var chunks = target.GetComponentsInChildren<ChunkDetector>();
-            var playerProperty = target.GetComponent<PlayerProperty>();
+            var targetPlayerProperty = target.GetComponent<PlayerProperty>();
             Player pTarget = target.GetPhotonView().Controller;
-            if (playerProperty)
+            if (targetPlayerProperty)
             {
-                int value = this.damage;
+                int value = 0;
                 foreach (var c in chunks)
                 {
                     var result = c.DetectHit(GetComponent<Collider>());
@@ -157,11 +173,13 @@ public class Bullet : MonoBehaviourPun, Damage
                         }
                         else if (result.Equals(ChunkDetector.body))
                         {
+                            value = this.damage;
                             audioGameplayController.instance.audioCharacterScenePVMine(1);
+
                         }
                     }
                 }
-                playerProperty.Life = -value;
+                targetPlayerProperty.Life = value;
             }
         }
     }
@@ -169,5 +187,19 @@ public class Bullet : MonoBehaviourPun, Damage
     public GameObject GetTarget()
     {
         return target;
+    }
+
+    private void OnDamage()
+    {
+        //Debug.Log("ON Fire damage!");
+        //Debug.Log("alvo: " + target.GetPhotonView().Controller.NickName);
+    }
+
+    private void UpdateKillCount()
+    {
+        int killCount = (int)PhotonNetwork.LocalPlayer.CustomProperties["killCount"];
+        HashProperty["killCount"] = killCount + 1;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(HashProperty);
+        Debug.Log(PhotonNetwork.LocalPlayer.NickName + " kill: " + (int)PhotonNetwork.LocalPlayer.CustomProperties["killCount"]);
     }
 }
