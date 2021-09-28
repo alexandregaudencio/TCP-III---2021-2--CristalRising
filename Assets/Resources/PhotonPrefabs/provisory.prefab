@@ -2023,7 +2023,7 @@ MonoBehaviour:
   Hertz: 0
   Limit: 0
   status: []
-  attibut:
+  attribute:
     strenght: 0
     defense: 0
     speed: 0
@@ -2981,6 +2981,7 @@ MonoBehaviour:
   fallMultiplier: 0
   teamIdentify: {fileID: 7427564909222235855}
   cam: {fileID: 2236878628811150811}
+  vai: 1
 --- !u!114 &1395708618395504391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2996,6 +2997,10 @@ MonoBehaviour:
   speed: 10
   gun: {fileID: 6749535795649932172}
   spell: {fileID: 735399273219520177}
+  spellHabillityQ: {fileID: 0}
+  spellHabillityE: {fileID: 0}
+  spellHabillityF: {fileID: 0}
+  spellHabillityRightMouse: {fileID: 0}
   ammoText: {fileID: 0}
 --- !u!114 &7451727771629943705
 MonoBehaviour:
