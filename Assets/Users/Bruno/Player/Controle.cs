@@ -47,7 +47,7 @@ public class Controle : MonoBehaviourPun
             if (Input.GetMouseButtonDown(0))
             {
                 //playerAnim.SetTrigger("attack");
-                //gun.Use();
+                gun.Use();
 
                 UpdateAmmoText();
                 if (spell)

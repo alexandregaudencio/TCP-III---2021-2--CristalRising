@@ -29,8 +29,9 @@ public class PlayerController : MonoBehaviour
     private float baseFOV;
     private float sprintFOVModifier = 1.5f;
 
+    public  bool vai = true;
+
     private bool jump, groundCheck;
-    public Status status;
 
     PhotonView PV;
 
@@ -87,10 +88,6 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        if (status is StatusStop)
-        {
-            return;
-        }
         if (PV.IsMine)
         {
             CameraRotation();
@@ -120,11 +117,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (status is StatusStop) {
-            return;
-        }
         Sprinting();
-
+        
         // float horAxis = Input.GetAxisRaw ("Horizontal");
         // float verAxis = Input.GetAxisRaw ("Vertical");
 
@@ -153,7 +147,7 @@ public class PlayerController : MonoBehaviour
         {
             //animator.SetBool("onFloor", true);
             groundCheck = true;
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+
         }
     }
 
@@ -173,7 +167,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
         // Declaração da rotação da câmera e angulação mínima e máxima.
-
         rotationX = Mathf.Lerp(rotationX, Input.GetAxisRaw("Mouse X") * 2, 100 * Time.deltaTime);
         maxRotationY = Mathf.Clamp(maxRotationY - (Input.GetAxisRaw("Mouse Y") * 2 * 100 * Time.deltaTime), -30, 30);
         // Rotação da câmera através do mouse.
@@ -208,6 +201,7 @@ public class PlayerController : MonoBehaviour
         }
         float horAxis = Input.GetAxis("Horizontal");
         float verAxis = Input.GetAxis("Vertical");
+       
 
         bool sprint = Input.GetKey(KeyCode.LeftShift) && groundCheck;
         bool isSprinting = sprint && verAxis > 0;
@@ -238,17 +232,24 @@ public class PlayerController : MonoBehaviour
         }
 
         // Move o jogador na direção que está virado
-
+       
         dir = Vector3.ClampMagnitude(transform.TransformVector(new Vector3(horAxis, 0, verAxis)), 1f);
-
-        if (status is StatusHook || status is StatusStop)
+     
+        playerRigidBody.MovePosition(playerRigidBody.position + dir * adjustedSpeed * Time.deltaTime);
+        
+      
+        if ((horAxis!=0 && vai == true) || (verAxis != 0 && vai == true ))
         {
-            playerRigidBody.MovePosition(playerRigidBody.position + dir * 0 * Time.deltaTime);
+            audioGameplayController.instance.walkSource.Play();
+            vai = false;
         }
-        else
+        if (horAxis == 0 && vai == false && verAxis == 0)
         {
-            playerRigidBody.MovePosition(playerRigidBody.position + dir * adjustedSpeed * Time.deltaTime);
+            audioGameplayController.instance.walkSource.Stop();
+            vai = true;
         }
+       
+       
     }
 
 }

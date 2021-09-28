@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using Photon.Pun.UtilityScripts;
 using System.Linq;
 
 public class GameplayManager : MonoBehaviourPunCallbacks
@@ -15,7 +16,8 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     public static GameplayManager instance;
     private bool endingGame = false;
     private TimerCountdown gameplayRoomTimer;
-    public GameObject gameEnd;
+    public GameObject vitoriaUi;
+    public GameObject derrotaUi;
     public string msg;
    public Text msgGameEnd;
     [SerializeField] GameObject spawnWallBlue;
@@ -23,7 +25,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     private bool wallDown=false;
     public PhotonView PV;
     private string tempTimer;
-    private audioGameplayController audioGameplaySceneScript;
+    public audioGameplayController audioGameplaySceneScript;
     private void Start()
     {
         gameplayRoomTimer = GetComponent<TimerCountdown>();
@@ -32,9 +34,9 @@ public class GameplayManager : MonoBehaviourPunCallbacks
         tempTimer = string.Format("{0:00}", gameplayRoomTimer.BaseTime);
         wallDown = false;
         instance = this;
-        gameEnd.SetActive(false);
-
-        audioGameplaySceneScript = GetComponent<audioGameplayController>();
+        vitoriaUi.SetActive(false);
+        derrotaUi.SetActive(false);
+        
 
     }
 
@@ -48,8 +50,9 @@ public class GameplayManager : MonoBehaviourPunCallbacks
             downWallBase();
             gameplayRoomTimer.CurrentTime = RoomConfigs.instance.gameplayMaxTime;
             gameplayRoomTimer.BaseTime = RoomConfigs.instance.heightTime;
-            wallDown = true;
+
             voiceLineStartGame();
+            wallDown = true;
         }
             if (gameplayRoomTimer.IsCountdownOver() && wallDown==true )
         {
@@ -69,7 +72,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     private void voiceLineStartGame()
     {
         //GetComponent<audioCharacterSceneController>().audioPlayerVoiceLines("startGame", 1);
-        audioGameplaySceneScript.audioPlayerVoiceLines("startGame", 1);
+        audioGameplaySceneScript.audioPlayerVoiceLines("startGame",1);
 
     }
     private void UIUpdate()
@@ -87,8 +90,8 @@ public class GameplayManager : MonoBehaviourPunCallbacks
 
     public void EndGamebyTimer()
     {
-      
-        
+        string pTeam = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
+
         endingGame = true;
         CircleAreaPoints.instance.endingGame = true;
         Debug.Log("Acabou o jogo pelo tempo: ");
@@ -97,11 +100,29 @@ public class GameplayManager : MonoBehaviourPunCallbacks
         {
             Debug.Log("TEAM1 WINS");
             msg = ("Time is over: TEAM BLUE WINS ");
+            if (pTeam == "Blue")
+            {
+                vitoriaUi.SetActive(true);
+            }
+            if (pTeam == "Red")
+            {
+                derrotaUi.SetActive(true);
+            }
+
         }
         else if(CircleAreaPoints.instance.pointsTeam1PerCent < CircleAreaPoints.instance.pointsTeam2PerCent)
         {
             Debug.Log("TEAM2 WINS");
             msg = ("Time is over: TEAM RED WINS ");
+            if (pTeam == "Blue")
+            {
+                derrotaUi.SetActive(true);
+            }
+            if (pTeam == "Red")
+            {
+                vitoriaUi.SetActive(true);
+            }
+            
         }
         else if(CircleAreaPoints.instance.pointsTeam1PerCent == CircleAreaPoints.instance.pointsTeam2PerCent)
         {
@@ -119,8 +140,9 @@ public class GameplayManager : MonoBehaviourPunCallbacks
     public void gameEndActive()
     {
         //Time.timeScale = 0;
-        gameEnd.SetActive(true);
-        msgGameEnd.text = msg;
+       
+        
+        //msgGameEnd.text = msg;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         PhotonNetwork.LeaveRoom();
