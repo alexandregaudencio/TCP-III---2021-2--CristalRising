@@ -7,8 +7,4 @@ public interface Damage
 {
     void CalculateDamage();
     GameObject GetTarget();
-
-    //event Action DamageEvent;
-
-
 }

@@ -2032,7 +2032,6 @@ MonoBehaviour:
     spell: 0
     armature: 0
   animator: {fileID: 0}
-  trail: {fileID: 0}
   damage: 25
 --- !u!65 &8070057379322916518
 BoxCollider:
