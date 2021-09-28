@@ -35,6 +35,7 @@ public class PlayerProperty : MonoBehaviour
         }
     }
 
+    public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
 
 
     private void Start()
@@ -60,10 +61,10 @@ public class PlayerProperty : MonoBehaviour
         //lifeUi.value = life;
     }
 
-    public void OtherMethodsForDamage()
-    {
+    //public void OtherMethodsForDamage()
+    //{
 
-    }
+    //}
 
 
 

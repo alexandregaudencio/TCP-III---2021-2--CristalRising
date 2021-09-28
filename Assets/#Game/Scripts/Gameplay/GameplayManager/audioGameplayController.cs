@@ -15,10 +15,9 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     [SerializeField] AudioSource fireSource;
     [SerializeField] AudioSource[] tiroPlaced;
     [SerializeField] AudioSource[] audioCircleArea;
-
     
     private AudioClip voiceLines;
-    private AudioClip fired;
+    private AudioClip shootAudio;
     private AudioClip firstBloodClip;
     public PhotonView PV;
     public static audioGameplayController instance;
@@ -117,19 +116,23 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     //falas
     public void audioPlayerVoiceLines(string nameVoice, int id)
     {
-        if (nameVoice == "startGame") voiceLines = RoomConfigs.instance.charactersOrdered[id].gameStarted;
-        startGameVoice.clip = voiceLines;
+        if (nameVoice == "startGame") startGameVoice.clip = RoomConfigs.instance.charactersOrdered[id].gameStarted;
+         //= voiceLines;
         startGameVoice.Play();
     }
     //tiro
-    public void audioPlayerFire(string nameVoice, int id)
-    {
-         fired = RoomConfigs.instance.charactersOrdered[id].fired;
-        fireSource.clip = fired;
-        fireSource.Play();
-        fireTimeSamples = fireAudio.timeSamples;
-        PV.RPC("SendAudioPlayer", RpcTarget.Others, nameVoice, fireTimeSamples, fired);
+    public void audioPlayerFire(string audioName, AudioSource audioSource)
+    {   
+        //if(nameVoice == ) ....
+        int characterIndex = (int)PhotonNetwork.LocalPlayer.CustomProperties["characterIndex"];
+        shootAudio = RoomConfigs.instance.charactersOrdered[characterIndex].shoot;
+
+        audioSource.clip = shootAudio;
+        audioSource.Play();
+        fireTimeSamples = audioSource.timeSamples;
+        PV.RPC("SendAudioPlayer", RpcTarget.All, audioName, fireTimeSamples);
     }
+
     public void audioFirstBlood(string nameVoice, int id)
     {
         firstBloodClip = RoomConfigs.instance.charactersOrdered[1].firstBlood;
@@ -137,6 +140,7 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
         firstBloodSource.Play();
         firstbloodTimeSamples = firstBloodSource.timeSamples;
         PV.RPC("SendAudioPlayer", RpcTarget.Others, nameVoice, firstbloodTimeSamples, firstBloodClip);
+    
     }
     public void audioAreaRed()
     {
@@ -168,15 +172,16 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    private void SendAudioPlayer(string audio, int timeSample, AudioClip clip)
+    private void SendAudioPlayer(string audioName, int timeSample)
     {
-        if (audio == "fire")
-        {
-            fireAudio.Play();
-            fireAudio.timeSamples = timeSample;
+        //if (audioName == "shoot")
+        //{
+        //    fireAudio.Play();
+        //    fireAudio.timeSamples = timeSample;
 
-        }
-        if (audio == "firstBlood")
+
+        //}
+        if (audioName == "firstBlood")
         {
             //firstBloodSource.clip = clip;
             firstBloodSource.Play();
@@ -200,7 +205,6 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
             
         }
 
-
     }
 
     [PunRPC]
@@ -209,6 +213,20 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
         if(name== "gameplayScene" )gameplaySceneTrue = istrue;
         if(name== "secondsRemaning") secondsRemaningTrue = istrue;
 
-
     }
+
+
+    [PunRPC]
+    private void PlayFirstBloodAudio()
+    {
+        int index = (int)PhotonNetwork.LocalPlayer.CustomProperties["characterIndex"];
+        fireAudio.clip = RoomConfigs.instance.charactersOrdered[index].firstBlood;
+        fireAudio.Play();
+    }
+
+
+
+
+
+
 }

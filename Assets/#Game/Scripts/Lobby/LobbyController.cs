@@ -11,7 +11,10 @@ public class LobbyController: MonoBehaviourPunCallbacks
     public static LobbyController instance;
     public GameObject LobbyCanvas;
     public GameObject RoomCanvas;
-    
+    public GameObject PopUpCanvas;
+    public GameObject GaleriaCanvas;
+    public GameObject CréditosCanvas;
+    public GameObject OpcoesCanvas;
     public Text playersCountText;
     
     //playerName
@@ -86,8 +89,35 @@ public class LobbyController: MonoBehaviourPunCallbacks
     //    this.LobbyCanvas.SetActive(true);
     //    //this.PreRoomCanvas.SetActive(false);
     //}
+    public void BotaoX()
+    {
+        PopUpCanvas.gameObject.SetActive(true);
+    }
+    public void BotaoCancelar()
+    {
+        PopUpCanvas.gameObject.SetActive(false);
+    }
+    public void BotaoSairJogo()
+    {
+        Application.Quit();
+    }
+
+    public void BotaoGaleria()
+    {
+
+    }
+
+    public void BotaoCreditos()
+    {
 
 
+    }
+
+
+    public void BotaoOpcoes()
+    {
+
+    }
 
 }
 
