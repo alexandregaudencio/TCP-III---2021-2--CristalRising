@@ -10,12 +10,12 @@ public class Cure : Spells, IEffect
     private RaycastHit hit;
     public float reach;
     public int life;
-    public Transform dir;
     public String animationName;
 
     public override void Aim()
     {
         var origin = transform.position;
+        var dir = GetComponentInParent<PlayerController>().cam.transform;
         int mask = LayerMask.GetMask(LayerMask.LayerToName(transform.parent.gameObject.layer));
 
         Debug.DrawRay(origin, dir.forward * reach, Color.white);
@@ -50,9 +50,8 @@ public class Cure : Spells, IEffect
                 if (!children.activeInHierarchy)
                 {
                     target.GetComponent<PlayerProperty>().Life = life;
-                    var go = target.GetComponentInChildren<Cure>().gameObject;
-                    go.transform.GetChild(0).gameObject.SetActive(true);
-                    var animator = go.GetComponentInChildren<Animator>();
+                    transform.GetChild(0).gameObject.SetActive(true);
+                    var animator = GetComponentInChildren<Animator>();
                     Apply(animator);
                 }
             }
@@ -72,7 +71,6 @@ public class Cure : Spells, IEffect
                 animator.gameObject.SetActive(false);
                 animator = null;
                 GetComponentInParent<PlayerController>().status = null;
-
             }
         }
     }
