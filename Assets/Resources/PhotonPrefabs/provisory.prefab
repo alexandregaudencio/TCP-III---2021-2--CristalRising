@@ -894,8 +894,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.63518214, y: 1.4224192, z: 0.5822847}
-  m_Center: {x: 0.00367029, y: 0.712496, z: 0.010871351}
+  m_Size: {x: 0.63518214, y: 1.4224192, z: 0.53018147}
+  m_Center: {x: 0.0036702752, y: 0.712496, z: 0.03692296}
 --- !u!114 &7855266380298183067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1031,7 +1031,7 @@ MonoBehaviour:
   speed: 1
   damagePrefab: {fileID: 1802018724099264198, guid: 4fec7d41036d00e448872727dc320c0e,
     type: 3}
-  amountDamage: 100
+  amountDamage: 10
 --- !u!114 &2969840457713575681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2956,10 +2956,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25937518
+  m_Radius: 0.27383173
   m_Height: 1.7743143
   m_Direction: 1
-  m_Center: {x: 0.0054418743, y: 0.23715717, z: 0.011974603}
+  m_Center: {x: 0.0054418743, y: 0.23715717, z: 0.13486028}
 --- !u!114 &4004612285133258397
 MonoBehaviour:
   m_ObjectHideFlags: 0
