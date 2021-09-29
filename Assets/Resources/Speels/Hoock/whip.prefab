@@ -50,7 +50,7 @@ MonoBehaviour:
   Limit: 100
   status:
   - {fileID: 11400000, guid: fdc7307ae89710d4388c43f5774efeb8, type: 2}
-  attibut:
+  attribute:
     strenght: 0
     defense: 0
     speed: 0
@@ -80,7 +80,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0a0e1f358c803da46a4abbd55a5f539b, type: 2}
+  - {fileID: 2100000, guid: 8c3fb23122cd20f47ba518c65a6b7668, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

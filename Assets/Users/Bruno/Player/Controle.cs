@@ -60,9 +60,25 @@ public class Controle : MonoBehaviourPun
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (spell)
+            if (spellHabillityQ)
             {
-                spell.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
+                spellHabillityQ.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
+                //spell.Use();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (spellHabillityE)
+            {
+                spellHabillityE.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
+                //spell.Use();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (spellHabillityF)
+            {
+                spellHabillityF.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
                 //spell.Use();
             }
         }
