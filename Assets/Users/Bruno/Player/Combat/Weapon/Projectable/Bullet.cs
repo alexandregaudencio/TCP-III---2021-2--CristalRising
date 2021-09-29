@@ -164,6 +164,7 @@ public class Bullet : MonoBehaviourPun, Damage
                 {
                     var result = c.DetectHit(GetComponent<Collider>());
 
+                    value = this.damage;
                     if (result != null)
                     {
                         if (result.Equals(ChunkDetector.head))
@@ -173,13 +174,11 @@ public class Bullet : MonoBehaviourPun, Damage
                         }
                         else if (result.Equals(ChunkDetector.body))
                         {
-                            value = this.damage;
                             audioGameplayController.instance.audioCharacterScenePVMine(1);
-
                         }
                     }
                 }
-                targetPlayerProperty.Life = value;
+                targetPlayerProperty.Life = -value;
             }
         }
     }

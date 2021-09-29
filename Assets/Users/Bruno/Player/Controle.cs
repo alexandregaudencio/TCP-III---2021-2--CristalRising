@@ -74,14 +74,7 @@ public class Controle : MonoBehaviourPun
                 //spell.Use();
             }
         }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (spellHabillityF)
-            {
-                spellHabillityF.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
-                //spell.Use();
-            }
-        }
+        
         if (Input.GetKeyDown(KeyCode.R))
         {
             gun.recarregando = true;
