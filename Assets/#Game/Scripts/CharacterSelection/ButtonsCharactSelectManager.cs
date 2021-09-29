@@ -52,16 +52,16 @@ public class ButtonsCharactSelectManager : MonoBehaviour
 
     }
 
+    //public void SwitchButtonsInteractable(bool boolean)
+    //{
+    //    foreach (Button buttons in characterSelectButtons)
+    //    {
+    //        buttons.interactable = boolean;
+    //    }
 
-    public void SwitchButtonsInteractable(bool boolean)
-    {
-        foreach (Button buttons in characterSelectButtons)
-        {
-            buttons.interactable = boolean;
-        }
+    //    cancelButton.SetActive(!boolean);
+    //}
 
-        cancelButton.SetActive(!boolean);
-    }
 
 }
 
