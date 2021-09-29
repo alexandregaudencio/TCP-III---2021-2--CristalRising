@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private bool jump, groundCheck;
 
     PhotonView PV;
+    public Status status;
 
     public bool GroundCheck { get => groundCheck; set => groundCheck = value; }
 
