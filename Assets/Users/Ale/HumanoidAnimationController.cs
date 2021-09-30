@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,12 +40,22 @@ public class HumanoidAnimationController : MonoBehaviour
             ProcessAimTransform();
             ProcessReloading();
             ProcessShooting();
+            ProcessHabiliityOne();
+            ProcessHabiliityTwo();
             ProcessJump();
            
         }
 
     }
-    
+
+    private void ProcessHabiliityOne()
+    {
+        animator.SetTrigger("Habillity_1");
+    }
+    private void ProcessHabiliityTwo()
+    {
+        animator.SetTrigger("Habillity_2");
+    }
     private void ProcessShooting()
     {
         if (Input.GetMouseButton(0) && !animator.GetBool("Reloading"))
