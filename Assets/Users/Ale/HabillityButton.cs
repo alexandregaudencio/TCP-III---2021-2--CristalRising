@@ -11,9 +11,11 @@ public class HabillityButton : MonoBehaviour
 
     [SerializeField] private TMP_Text characterNameText;
     [SerializeField] private TMP_Text characterDescriptText;
+    [SerializeField] private GameObject habillityObj;
 
- 
-   
+
+
+
     public void UpdateUIProps()
     {
         Character character = RoomConfigs.instance.charactersOrdered[characterIndex];
@@ -23,10 +25,17 @@ public class HabillityButton : MonoBehaviour
         //Name
         characterNameText.text = character.name;
         characterDescriptText.text = character.Descricao;
-        
-        //nome da arma
 
-        //descrição da arma
     }
+
+    public void ShowHabillityDetails()
+    {
+        Character character = RoomConfigs.instance.charactersOrdered[characterIndex];
+        TMP_Text[] texts = habillityObj.GetComponentsInChildren<TMP_Text>();
+        texts[0].text = character.ordenedHabillityName[habillityIndex];
+        texts[1].text = character.ordenedHabillityDescription[habillityIndex];
+
+    }
+
 
 }
