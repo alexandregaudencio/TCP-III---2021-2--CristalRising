@@ -2593,7 +2593,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1976455333}
-        m_MethodName: QuitRoom
+        m_MethodName: BotaoSairJogo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3180,7 +3180,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 906, y: 329}
+  m_AnchoredPosition: {x: 906, y: 360}
   m_SizeDelta: {x: 69.54758, y: 59.06263}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616021049
@@ -3959,10 +3959,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRoomPlayers: 6
-  characterSelectionMaxTime: 5
+  characterSelectionMaxTime: 45
   gameplayMaxTime: 100
   heightTime: 0
-  gameplayTimeBase: 5
+  gameplayTimeBase: 10
   menuSceneIndex: 0
   CharSelecSceneIndex: 1
   gameplaySceneIndex: 2
