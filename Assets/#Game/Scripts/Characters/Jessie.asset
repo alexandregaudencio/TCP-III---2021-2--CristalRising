@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9ace9b4e0dfe94ea84d3391de9c52d, type: 3}
   m_Name: Jessie
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 0}
+  characterPrefab: {fileID: 6905663331519627617, guid: 322f4846e86001e4593f08efa82b3806,
+    type: 3}
   characterName: 'Jessie '
   frase: Personagem CowGirl
   Descricao: Tem tudo que um personagem deste jogo precisa.
