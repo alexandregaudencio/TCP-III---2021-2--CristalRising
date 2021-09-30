@@ -491,12 +491,12 @@ RectTransform:
   - {fileID: 633796414}
   - {fileID: 1392669769}
   - {fileID: 877096518}
-  m_Father: {fileID: 576888191}
-  m_RootOrder: 8
+  m_Father: {fileID: 1314242363}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 913.8, y: -124.58}
+  m_AnchoredPosition: {x: 413.57782, y: -97.57976}
   m_SizeDelta: {x: 632.4103, y: 556.8153}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &124118053
@@ -805,7 +805,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 187589059}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 187589062}
+        m_MethodName: ShowHabillityDetails
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &187589062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,6 +833,7 @@ MonoBehaviour:
   characterIndex: 0
   characterNameText: {fileID: 849287518}
   characterDescriptText: {fileID: 1241965447}
+  habillityObj: {fileID: 124118051}
 --- !u!1 &198258991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1891,7 +1903,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 540971386}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 540971389}
+        m_MethodName: ShowHabillityDetails
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &540971389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1908,6 +1931,7 @@ MonoBehaviour:
   characterIndex: 0
   characterNameText: {fileID: 849287518}
   characterDescriptText: {fileID: 1241965447}
+  habillityObj: {fileID: 124118051}
 --- !u!1 &550751961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2015,9 +2039,6 @@ RectTransform:
   - {fileID: 198258992}
   - {fileID: 98348679}
   - {fileID: 905686590}
-  - {fileID: 849287517}
-  - {fileID: 710922757}
-  - {fileID: 124118052}
   m_Father: {fileID: 1798485035}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2222,7 +2243,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Descicao da habilidade
+  m_text: '-'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3550016d370e4aa4d9148a67bc447fa6, type: 2}
   m_sharedMaterial: {fileID: 2040896102991703467, guid: 3550016d370e4aa4d9148a67bc447fa6,
@@ -2650,7 +2671,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 710922757}
-  - component: {fileID: 710922758}
   m_Layer: 5
   m_Name: HabillitiesButtons
   m_TagString: Untagged
@@ -2674,30 +2694,14 @@ RectTransform:
   - {fileID: 1894758406}
   - {fileID: 1820911599}
   - {fileID: 540971385}
-  m_Father: {fileID: 576888191}
-  m_RootOrder: 7
+  m_Father: {fileID: 1314242363}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 950, y: 255}
+  m_AnchoredPosition: {x: 449.77783, y: 282.00024}
   m_SizeDelta: {x: 854.76556, y: 202.34741}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &710922758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710922756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e7b6f98e1153fd46a8de3601740d706, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  habillityIndex: 0
-  characterIndex: 0
-  characterNameText: {fileID: 0}
-  characterDescriptText: {fileID: 0}
 --- !u!1 &731310131
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,7 +2717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &731310132
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2733,7 +2737,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.27712503, y: 0.41785088}
   m_AnchorMax: {x: 0.7238751, y: 0.58400005}
-  m_AnchoredPosition: {x: 352.84006, y: -532.9999}
+  m_AnchoredPosition: {x: 352.8402, y: -532.9999}
   m_SizeDelta: {x: 9.841797, y: 12.434082}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &807046504
@@ -3055,12 +3059,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1241965449}
-  m_Father: {fileID: 576888191}
-  m_RootOrder: 6
+  m_Father: {fileID: 1798485035}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 877.19995, y: 461.7709}
+  m_AnchoredPosition: {x: 376.97775, y: 488.77115}
   m_SizeDelta: {x: 600.1445, y: 90.4682}
   m_Pivot: {x: 0.5, y: 0.49999997}
 --- !u!114 &849287518
@@ -3631,7 +3635,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 877096520}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1690127112}
+        m_MethodName: ChooseCharacter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &877096520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5038,6 +5053,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1314242362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1314242363}
+  m_Layer: 5
+  m_Name: BoxHabillities
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1314242363
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314242362}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 710922757}
+  - {fileID: 124118052}
+  m_Father: {fileID: 1798485035}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1333822182
 GameObject:
   m_ObjectHideFlags: 0
@@ -5169,7 +5221,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 48f0512b8a1956d4686e5f657a24be02, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 109924e833e016d438e2acd547907d25, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5243,8 +5295,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Certa habilidade faz isso e aquilo. Mas [e normal ter habilidades que n'ao
-    faz isso ou aqui. basta apenas aprecisar o que ela faz
+  m_text: '-'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -5441,7 +5492,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1394193148}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1394193151}
+        m_MethodName: ShowHabillityDetails
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1394193151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5458,6 +5520,7 @@ MonoBehaviour:
   characterIndex: 0
   characterNameText: {fileID: 849287518}
   characterDescriptText: {fileID: 1241965447}
+  habillityObj: {fileID: 124118051}
 --- !u!1 &1419608683
 GameObject:
   m_ObjectHideFlags: 0
@@ -5737,7 +5800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1545930212
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5883,8 +5946,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 3372220415
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6075,12 +6138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5873a6cd0f3ed24c8ae6965c99738c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterSelectButtons:
-  - {fileID: 1419608685}
-  - {fileID: 1975540956}
-  - {fileID: 1025061735}
-  CharacterDefaultIndex: 1
-  cancelButton: {fileID: 0}
 --- !u!4 &1690127110
 Transform:
   m_ObjectHideFlags: 0
@@ -6102,7 +6159,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690127108}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7824d9e2f92d9d140bd2bbd9a9b89b82, type: 3}
   m_Name: 
@@ -6121,6 +6178,10 @@ MonoBehaviour:
   - {fileID: 650737682}
   - {fileID: 1474597592}
   - {fileID: 2112258014}
+  charClassIcon:
+  - {fileID: 21300000, guid: 778c246c17b8f384db503a0ddb9e07ac, type: 3}
+  - {fileID: 21300000, guid: a1aa8bac7a5afd343bc10588eab7dde4, type: 3}
+  - {fileID: 21300000, guid: 2eba9ca9eae2f79448729d004bc1810c, type: 3}
 --- !u!114 &1690127112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6331,7 +6392,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 48f0512b8a1956d4686e5f657a24be02, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 109924e833e016d438e2acd547907d25, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -6479,7 +6540,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 48f0512b8a1956d4686e5f657a24be02, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 109924e833e016d438e2acd547907d25, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -6526,6 +6587,8 @@ RectTransform:
   m_Children:
   - {fileID: 1351369818}
   - {fileID: 576888191}
+  - {fileID: 849287517}
+  - {fileID: 1314242363}
   m_Father: {fileID: 406702666}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6729,7 +6792,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1820911600}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1820911603}
+        m_MethodName: ShowHabillityDetails
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1820911603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6746,6 +6820,7 @@ MonoBehaviour:
   characterIndex: 0
   characterNameText: {fileID: 849287518}
   characterDescriptText: {fileID: 1241965447}
+  habillityObj: {fileID: 124118051}
 --- !u!1 &1894695285
 GameObject:
   m_ObjectHideFlags: 0
@@ -6940,7 +7015,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1894758407}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1894758410}
+        m_MethodName: ShowHabillityDetails
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1894758410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6957,6 +7043,7 @@ MonoBehaviour:
   characterIndex: 0
   characterNameText: {fileID: 849287518}
   characterDescriptText: {fileID: 1241965447}
+  habillityObj: {fileID: 124118051}
 --- !u!1 &1944278453
 GameObject:
   m_ObjectHideFlags: 0

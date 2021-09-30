@@ -19,7 +19,7 @@ MonoBehaviour:
   Descricao: Tem tudo que um personagem deste jogo precisa.
   characterIndex: 1
   damage: 300
-  ammo: 20
+  ammo: 30
   HP: 2900
   characterIcon: {fileID: 21300000, guid: 76fac4178f48ae843a7da602568b2967, type: 3}
   ordenedHabillityIcon:
@@ -27,15 +27,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 394d2789fa8d9074393e023c730a85bc, type: 3}
   - {fileID: 21300000, guid: ac9151204df625d41b80d4eb7eb48719, type: 3}
   - {fileID: 21300000, guid: 0f3f7de95a6c4eb47b1faab988232bbc, type: 3}
+  - {fileID: 21300000, guid: 0f3f7de95a6c4eb47b1faab988232bbc, type: 3}
   ordenedHabillityName:
   - habilidade Q
   - Habilidade E
   - Habilidade F
   - Habilidade direto do Mouse
+  - Habilidade direto do Mouse
   ordenedHabillityDescription:
   - "Descri\xE7\xE3o da habilidade Q."
   - "Descri\xE7\xE3o da habilidade E."
   - "Descri\xE7\xE3o da habilidade F."
+  - "Descri\xE7\xE3o da habilidade direto do Mouse."
   - "Descri\xE7\xE3o da habilidade direto do Mouse."
   selectCharacter: {fileID: 8300000, guid: 5e6ec171b24ae1b40ac29508112d888f, type: 3}
   gameStarted: {fileID: 8300000, guid: 63dc2e44063965143951789d7e3fa858, type: 3}
