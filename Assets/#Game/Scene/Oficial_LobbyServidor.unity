@@ -1494,7 +1494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.049624998, y: 0.4898519}
   m_AnchorMax: {x: 0.261, y: 0.5508519}
-  m_AnchoredPosition: {x: 31.5, y: -284}
+  m_AnchoredPosition: {x: 31.500011, y: -284}
   m_SizeDelta: {x: 69.006226, y: 54.134827}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &874350517
@@ -2271,7 +2271,7 @@ PrefabInstance:
     - target: {fileID: 4300086474952107678, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1292
+      value: 1292.0021
       objectReference: {fileID: 0}
     - target: {fileID: 4300086474952107678, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
@@ -2839,7 +2839,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.049624998, y: 0.4898519}
   m_AnchorMax: {x: 0.261, y: 0.5508519}
-  m_AnchoredPosition: {x: 31.5, y: -191}
+  m_AnchoredPosition: {x: 31.500011, y: -191}
   m_SizeDelta: {x: 69.006226, y: 54.134827}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1381283583
@@ -3180,8 +3180,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 906, y: 360}
-  m_SizeDelta: {x: 69.54758, y: 59.06263}
+  m_AnchoredPosition: {x: 895.8, y: 359.02}
+  m_SizeDelta: {x: 69.54758, y: 70.06782}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616021049
 MonoBehaviour:
@@ -3258,7 +3258,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: b8e5907c496807c47b07284093906454, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3959,7 +3959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRoomPlayers: 6
-  characterSelectionMaxTime: 45
+  characterSelectionMaxTime: 2
   gameplayMaxTime: 300
   heightTime: 0
   gameplayTimeBase: 10
@@ -3967,6 +3967,8 @@ MonoBehaviour:
   CharSelecSceneIndex: 1
   gameplaySceneIndex: 2
   timeToRespawn: 3
+  mouseScrollingX: 1
+  mouseScrollingY: 0.597
   blueTeamColor: {r: 0.36862746, g: 0.5294118, b: 0.92156863, a: 1}
   redTeamColor: {r: 0.63529414, g: 0.09019608, b: 0.0627451, a: 1}
   noneColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 0.78431374}
@@ -4030,7 +4032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.049624998, y: 0.4898519}
   m_AnchorMax: {x: 0.261, y: 0.5508519}
-  m_AnchoredPosition: {x: 31.5, y: -99}
+  m_AnchoredPosition: {x: 31.500011, y: -99}
   m_SizeDelta: {x: 69.006226, y: 54.134827}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2043647019
