@@ -1494,7 +1494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.049624998, y: 0.4898519}
   m_AnchorMax: {x: 0.261, y: 0.5508519}
-  m_AnchoredPosition: {x: 31.500011, y: -284}
+  m_AnchoredPosition: {x: 31.500015, y: -284}
   m_SizeDelta: {x: 69.006226, y: 54.134827}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &874350517
@@ -2271,12 +2271,17 @@ PrefabInstance:
     - target: {fileID: 4300086474952107678, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1292.0021
+      value: 1292.002
       objectReference: {fileID: 0}
     - target: {fileID: 4300086474952107678, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 225.99988
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
@@ -2326,11 +2331,6 @@ PrefabInstance:
     - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
@@ -2839,7 +2839,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.049624998, y: 0.4898519}
   m_AnchorMax: {x: 0.261, y: 0.5508519}
-  m_AnchoredPosition: {x: 31.500011, y: -191}
+  m_AnchoredPosition: {x: 31.500015, y: -191}
   m_SizeDelta: {x: 69.006226, y: 54.134827}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1381283583
@@ -3959,13 +3959,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRoomPlayers: 6
-<<<<<<< HEAD
-  characterSelectionMaxTime: 20
-  gameplayMaxTime: 100
-=======
-  characterSelectionMaxTime: 2
+  characterSelectionMaxTime: 8
   gameplayMaxTime: 300
->>>>>>> main
   heightTime: 0
   gameplayTimeBase: 10
   menuSceneIndex: 0
@@ -4037,7 +4032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.049624998, y: 0.4898519}
   m_AnchorMax: {x: 0.261, y: 0.5508519}
-  m_AnchoredPosition: {x: 31.500011, y: -99}
+  m_AnchoredPosition: {x: 31.500015, y: -99}
   m_SizeDelta: {x: 69.006226, y: 54.134827}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2043647019
