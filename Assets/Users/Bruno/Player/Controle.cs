@@ -38,15 +38,12 @@ public class Controle : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        (spell as IActive).Aim();
         if (!photonView.IsMine)
         {
             return;
         }
         if (gun.Ammo > 0 && gun.recarregando == false)
         {
-
-
             if (Input.GetMouseButtonDown(0))
             {
                 //playerAnim.SetTrigger("attack");
@@ -60,9 +57,24 @@ public class Controle : MonoBehaviourPun
                 //if (photonView.IsMine)
                 //    gun.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
             }
-
         }
-
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (spellHabillityQ)
+            {
+                spellHabillityQ.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
+                //spell.Use();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (spellHabillityE)
+            {
+                spellHabillityE.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
+                //spell.Use();
+            }
+        }
+        
         if (Input.GetKeyDown(KeyCode.R))
         {
             gun.recarregando = true;

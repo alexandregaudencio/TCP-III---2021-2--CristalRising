@@ -134,8 +134,8 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
 
         audioSource.clip = shootAudio;
         audioSource.Play();
-        fireTimeSamples = audioSource.timeSamples;
-        PV.RPC("SendAudioPlayer", RpcTarget.Others, audioName, fireTimeSamples);
+       // fireTimeSamples = audioSource.timeSamples;
+       // PV.RPC("SendAudioPlayer", RpcTarget.Others, audioName, fireTimeSamples);
     }
 
     public void audioFirstBlood(string nameVoice, int id)
@@ -147,6 +147,7 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
         PV.RPC("SendAudioPlayer", RpcTarget.Others, nameVoice, firstbloodTimeSamples, firstBloodClip);
     
     }
+    //pegar times player propets
     public void audioAreaRed()
     {
         string pTeam = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;

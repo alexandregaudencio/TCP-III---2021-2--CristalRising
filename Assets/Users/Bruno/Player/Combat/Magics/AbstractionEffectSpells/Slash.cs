@@ -6,7 +6,7 @@ using Photon.Pun;
 public class Slash : Spells, IEffect
 {
     private GameObject target;
-    public TrailRenderer trail;
+    //public TrailRenderer trail;
     private float bufferAttack;
     public int damage;
     private void Start()
@@ -32,7 +32,7 @@ public class Slash : Spells, IEffect
     }
     public void Apply(Animator animatorId = null)
     {
-        trail.enabled = true;
+        //trail.enabled = true;
     }
     private void OnTriggerStay(Collider other)
     {
@@ -51,7 +51,7 @@ public class Slash : Spells, IEffect
         if (Hertz < 0)
         {
             Hertz = bufferAttack;
-            trail.enabled = false;
+            //trail.enabled = false;
         }
         //devo rotacionar de acordo com a camera
         //é diminuir e distancia a area de ataque

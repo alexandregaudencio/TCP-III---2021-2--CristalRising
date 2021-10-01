@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b9ace9b4e0dfe94ea84d3391de9c52d, type: 3}
+  m_Name: Jessie
+  m_EditorClassIdentifier: 
+  characterPrefab: {fileID: 0}
+  characterName: 'Jessie '
+  frase: Personagem CowGirl
+  Descricao: Tem tudo que um personagem deste jogo precisa.
+  characterIndex: 3
+  damage: 50
+  ammo: 10
+  HP: 600
+  characterIcon: {fileID: 21300000, guid: 70c27bcbea928ea4a9dd8cd6e7b17be0, type: 3}
+  ordenedHabillityIcon:
+  - {fileID: 21300000, guid: c7e122da793a54646bb7c6506e3e03e6, type: 3}
+  - {fileID: 21300000, guid: a0fa0730a0649e14c9c2dde32a368475, type: 3}
+  - {fileID: 21300000, guid: 249e0e68a8844aa4a86ed3dcf80d1648, type: 3}
+  - {fileID: 21300000, guid: 451aca426cceced4087321795f4fbabb, type: 3}
+  ordenedHabillityName:
+  - Habilidade direto do Mouse
+  - Habilidade F
+  - Habilidade Q
+  - Habilidade E
+  ordenedHabillityDescription:
+  - Rajada de balas
+  - "Prende advers\xE1rio na corda e puxa"
+  - "Redu\xE7\xE3o de dano"
+  - Inimigos seguem ela
+  selectCharacter: {fileID: 8300000, guid: 3786960a5c0ba384985265d76afd2ed3, type: 3}
+  gameStarted: {fileID: 8300000, guid: 6f2608e3d179d1642b60a21f035999e2, type: 3}
+  shoot: {fileID: 8300000, guid: a2aebfb55cde61747b8984a981c54d7a, type: 3}
+  firstBlood: {fileID: 8300000, guid: 9f8210805b63a6247b1040060665d4ef, type: 3}
+  ultimate: {fileID: 8300000, guid: 9365b23394e05864a95189388d8e9bc2, type: 3}

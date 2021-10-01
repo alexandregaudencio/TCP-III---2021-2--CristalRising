@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "Spell/Hook", order = 1)]
 public class StatusHook : Status
 {
- 
+
 }
