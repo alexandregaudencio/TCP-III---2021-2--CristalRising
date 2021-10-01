@@ -12012,6 +12012,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: cenario (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7647273abbf542e44892499a9d50c224,
+        type: 3}
+      propertyPath: m_TagString
+      value: chao
+      objectReference: {fileID: 0}
     - target: {fileID: 1540255758573454295, guid: 7647273abbf542e44892499a9d50c224,
         type: 3}
       propertyPath: m_IsActive
@@ -18090,13 +18095,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9b0318f34eff3ce4ca230522add06104, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.13
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 72
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
