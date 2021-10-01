@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,6 +17,12 @@ public class CharacterSelectionUIProps : MonoBehaviour
     private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
 
 
+    private void Start()
+    {
+        //int n = Int32.Parse(UnityEngine.Random.Range(0, 6).ToString());
+        PhotonNetwork.LocalPlayer.TagObject = RoomConfigs.instance.charactersOrdered[0].characterPrefab.name;
+
+    }
 
     private void SetUICharProps(int characterIndex)
     {
