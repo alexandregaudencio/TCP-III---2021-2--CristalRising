@@ -27,9 +27,10 @@ public  class RoomConfigs : MonoBehaviour
     public int CharSelecSceneIndex;
     public int gameplaySceneIndex;
 
-
     //Players
     public int timeToRespawn;
+    [Range(0, 2f)] public float mouseScrollingX;
+    [Range(0, 2f)] public float mouseScrollingY;
 
     //team
     public Color blueTeamColor = new Color(0, 129, 255, 255);
@@ -37,6 +38,7 @@ public  class RoomConfigs : MonoBehaviour
     public Color noneColor;
 
     public Character[] charactersOrdered;
+
 
    
 }

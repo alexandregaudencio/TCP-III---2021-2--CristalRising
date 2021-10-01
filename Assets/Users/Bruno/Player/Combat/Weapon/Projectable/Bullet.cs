@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviourPun, Damage
     public int whoFiredCharacter;
     public string whoFiredName;
 
-    public event Action DamageEvent;
+    //public event Action DamageEvent;
 
     private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
 
@@ -135,7 +135,6 @@ public class Bullet : MonoBehaviourPun, Damage
         {
             EndAniamtion();
         }
-
     }
     private void EndAniamtion()
     {
@@ -158,7 +157,6 @@ public class Bullet : MonoBehaviourPun, Damage
             var chunks = target.GetComponentsInChildren<ChunkDetector>();
             var targetPlayerProperty = target.GetComponent<PlayerProperty>();
             Player pTarget = target.GetPhotonView().Controller;
-
             if (targetPlayerProperty)
             {
                 int value = 0;
@@ -166,6 +164,7 @@ public class Bullet : MonoBehaviourPun, Damage
                 {
                     var result = c.DetectHit(GetComponent<Collider>());
 
+                    value = this.damage;
                     if (result != null)
                     {
                         if (result.Equals(ChunkDetector.head))
@@ -175,24 +174,11 @@ public class Bullet : MonoBehaviourPun, Damage
                         }
                         else if (result.Equals(ChunkDetector.body))
                         {
-                            value = damage;
                             audioGameplayController.instance.audioCharacterScenePVMine(1);
-
                         }
                     }
                 }
-
-                targetPlayerProperty.Life = value;
-                
-                if(targetPlayerProperty.Life - value <= 0 && !(bool)target.gameObject.GetPhotonView().Controller.CustomProperties["isDead"])
-                {
-                    IsFirstBlood();
-                    KillScore();
-
-
-                }
-
-
+                targetPlayerProperty.Life = -value;
             }
         }
     }
@@ -202,34 +188,17 @@ public class Bullet : MonoBehaviourPun, Damage
         return target;
     }
 
-    private void KillScore()
+    private void OnDamage()
+    {
+        //Debug.Log("ON Fire damage!");
+        //Debug.Log("alvo: " + target.GetPhotonView().Controller.NickName);
+    }
+
+    private void UpdateKillCount()
     {
         int killCount = (int)PhotonNetwork.LocalPlayer.CustomProperties["killCount"];
         HashProperty["killCount"] = killCount + 1;
         PhotonNetwork.LocalPlayer.SetCustomProperties(HashProperty);
-        //Debug.Log(PhotonNetwork.LocalPlayer.NickName + " kill: " + (int)PhotonNetwork.LocalPlayer.CustomProperties["killCount"]);
-    
+        Debug.Log(PhotonNetwork.LocalPlayer.NickName + " kill: " + (int)PhotonNetwork.LocalPlayer.CustomProperties["killCount"]);
     }
-
-    private void IsFirstBlood()
-    {
-        bool killEcxist = false;
-        foreach (Player player in PhotonNetwork.PlayerList)
-        {
-            if ((int)player.CustomProperties["killCount"] > 0)
-            {
-                killEcxist = true;
-            }
-        }
-
-        if(!killEcxist)
-        {
-            //Debug.Log("PRIMEIRO ABATE.");
-            audioGameplayController.instance.PV.RPC("PlayFirstBloodAudio", RpcTarget.All);
-
-        }
-
-    }
-
-
 }

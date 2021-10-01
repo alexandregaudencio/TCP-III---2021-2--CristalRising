@@ -45,8 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hertz: 0.2
   Limit: 50
-  status:
-  - {fileID: 11400000, guid: fdc7307ae89710d4388c43f5774efeb8, type: 2}
+  status: []
   attibut:
     strenght: -15
     defense: 0

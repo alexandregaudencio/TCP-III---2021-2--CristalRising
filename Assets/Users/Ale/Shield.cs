@@ -15,7 +15,7 @@ public class Shield : Spells, IEffect
     public override void BuildElement()
     {
         //Se fosse uma habilidade de alterar a propriedade de um personagem;
-        GetComponentInParent<PlayerProperty>().MoveSpeed = attribute.speed;
+        //GetComponentInParent<PlayerProperty>().MoveSpeed = attribute.speed;
     }
 
     public override void Aim()

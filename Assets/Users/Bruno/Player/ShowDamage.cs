@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -25,7 +26,15 @@ public class ShowDamage : MonoBehaviour
                 if (!damages[i].gameObject.activeInHierarchy)
                 {
                     damages[i].SetActive(true);
-                    damages[i].GetComponent<TextMeshPro>().text = "-"+ value.ToString();
+                    if (Int32.Parse(value) < 0)
+                    {
+                        damages[i].GetComponent<TextMeshPro>().color = new Color32(255, 0, 0, 255);
+                    }
+                    else
+                    {
+                        damages[i].GetComponent<TextMeshPro>().color = new Color32(0, 255, 0, 255);
+                    }
+                    damages[i].GetComponent<TextMeshPro>().text = value.ToString();
                     check = true;
                     break;
                 }
@@ -33,7 +42,15 @@ public class ShowDamage : MonoBehaviour
             if (!check)
             {
                 var instance = Instantiate(damagePrefab);
-                instance.GetComponent<TextMeshPro>().text = "-" + value.ToString();
+                if (Int32.Parse(value) < 0)
+                {
+                    instance.GetComponent<TextMeshPro>().color = new Color32(255, 0, 0, 255);
+                }
+                else
+                {
+                    instance.GetComponent<TextMeshPro>().color = new Color32(0, 255, 0, 255);
+                }
+                instance.GetComponent<TextMeshPro>().text = value.ToString();
                 instance.transform.SetParent(transform);
                 damages.Add(instance);
             }

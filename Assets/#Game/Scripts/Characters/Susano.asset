@@ -18,14 +18,27 @@ MonoBehaviour:
   frase: Grande e Forte
   Descricao: "Derrota seus advers\xE1rios na navalha."
   characterIndex: 0
-  damage: 500
-  ammo: 20
-  HP: 4500
-  characterIcon: {fileID: 21300000, guid: 1bb7bb3ac3fe45949bfa3bca87100d90, type: 3}
+  damage: 85
+  ammo: 30
+  HP: 500
+  characterIcon: {fileID: 21300000, guid: d2032483c1f7d3a4fb2b255d79bf5fc2, type: 3}
   ordenedHabillityIcon:
-  - {fileID: 21300000, guid: b44604b68f031db469c2846219b7aa72, type: 3}
-  - {fileID: 21300000, guid: 59d938bcb8801bc4db5e9d7161978074, type: 3}
   - {fileID: 21300000, guid: 56147cc568011e744be700f153d17d93, type: 3}
+  - {fileID: 21300000, guid: 59d938bcb8801bc4db5e9d7161978074, type: 3}
+  - {fileID: 21300000, guid: b44604b68f031db469c2846219b7aa72, type: 3}
   - {fileID: 21300000, guid: f8570eaddd61fe746bd9ba93a13dce78, type: 3}
-  ordenedHabillityName: []
-  ordenedHabillityDescription: []
+  ordenedHabillityName:
+  - "Bot\xE3o direito"
+  - F
+  - Q
+  - E
+  ordenedHabillityDescription:
+  - escudo de 1600 HP
+  - escudo de 100 hp em aliado
+  - 
+  - atordoa inimigos em volta
+  selectCharacter: {fileID: 0}
+  gameStarted: {fileID: 0}
+  shoot: {fileID: 8300000, guid: a2aebfb55cde61747b8984a981c54d7a, type: 3}
+  firstBlood: {fileID: 0}
+  ultimate: {fileID: 0}

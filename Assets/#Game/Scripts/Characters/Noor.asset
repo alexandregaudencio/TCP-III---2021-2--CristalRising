@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b9ace9b4e0dfe94ea84d3391de9c52d, type: 3}
+  m_Name: Noor
+  m_EditorClassIdentifier: 
+  characterPrefab: {fileID: 0}
+  characterName: Noor
+  frase: Personagem Cura
+  Descricao: Tem tudo que um personagem deste jogo precisa.
+  characterIndex: 6
+  damage: 50
+  ammo: 10
+  HP: 100
+  characterIcon: {fileID: 21300000, guid: c08d68d80b1c9fa49aa383f1375df6bc, type: 3}
+  ordenedHabillityIcon:
+  - {fileID: 21300000, guid: c0e803ce4d9945c46ba7c7ed9d953de4, type: 3}
+  - {fileID: 21300000, guid: 3462f3744ff24f945aafaee53378a04e, type: 3}
+  - {fileID: 21300000, guid: 4a44a730c0f8a55478986f6c6fdb9c00, type: 3}
+  - {fileID: 21300000, guid: 22a6ecc9917e23a45ba1b300778a6d68, type: 3}
+  ordenedHabillityName:
+  - Habilidade direto do Mouse
+  - Habilidade F
+  - Habilidade Q
+  - Habilidade E
+  ordenedHabillityDescription:
+  - 
+  - 
+  - 
+  - 
+  selectCharacter: {fileID: 8300000, guid: 0458ea99032026a468554d848c817045, type: 3}
+  gameStarted: {fileID: 8300000, guid: 9b08c49dbd18ca042b8f11fa8d9630b0, type: 3}
+  shoot: {fileID: 8300000, guid: a2aebfb55cde61747b8984a981c54d7a, type: 3}
+  firstBlood: {fileID: 8300000, guid: 4dbbd79f0e24ac84493e053292ad3d3e, type: 3}
+  ultimate: {fileID: 8300000, guid: b64179597ca1fd946a8b3f41b3b0584a, type: 3}
