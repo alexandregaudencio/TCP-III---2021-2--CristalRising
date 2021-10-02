@@ -4528,6 +4528,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
         type: 3}
+      propertyPath: m_SynchronizeParameters.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[0].SynchronizeType
       value: 1
       objectReference: {fileID: 0}
@@ -4556,6 +4561,61 @@ PrefabInstance:
       propertyPath: m_SynchronizeParameters.Array.data[5].SynchronizeType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[0].Type
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[0].Name
+      value: Shoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[1].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[1].Name
+      value: Reloading
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[2].Name
+      value: Habillity_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[3].Type
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[3].Name
+      value: Habillity_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[4].Type
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[4].Name
+      value: Habillity_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[5].Type
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[5].Name
+      value: Habillity_2
+      objectReference: {fileID: 0}
     - target: {fileID: 4377228248464360964, guid: 2448dad92765bb5418759349f1354bc4,
         type: 3}
       propertyPath: m_LocalRotation.y
@@ -4576,6 +4636,11 @@ PrefabInstance:
       propertyPath: rigidbody
       value: 
       objectReference: {fileID: 6760963902197685340}
+    - target: {fileID: 7903486469598958266, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: drawBones
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8830892542660758228, guid: 2448dad92765bb5418759349f1354bc4,
         type: 3}
       propertyPath: ObservedComponents.Array.data[0]
