@@ -2086,7 +2086,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6c2d236819554ba499daa893f942959b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2c16191dfb330d4458d4e028045f425e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2418,7 +2418,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.049624998, y: 0.4898519}
   m_AnchorMax: {x: 0.261, y: 0.5508519}
-  m_AnchoredPosition: {x: 31.50002, y: -284}
+  m_AnchoredPosition: {x: 31.5, y: -284}
   m_SizeDelta: {x: 69.006226, y: 54.134827}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &874350517
@@ -4282,7 +4282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.049624998, y: 0.4898519}
   m_AnchorMax: {x: 0.261, y: 0.5508519}
-  m_AnchoredPosition: {x: 31.50002, y: -191}
+  m_AnchoredPosition: {x: 31.5, y: -191}
   m_SizeDelta: {x: 69.006226, y: 54.134827}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1381283583
@@ -6151,7 +6151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxRoomPlayers: 6
   characterSelectionMaxTime: 8
-  gameplayMaxTime: 300
+  gameplayMaxTime: 150
   heightTime: 0
   gameplayTimeBase: 10
   menuSceneIndex: 0
@@ -6223,7 +6223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.049624998, y: 0.4898519}
   m_AnchorMax: {x: 0.261, y: 0.5508519}
-  m_AnchoredPosition: {x: 31.50002, y: -99}
+  m_AnchoredPosition: {x: 31.5, y: -99}
   m_SizeDelta: {x: 69.006226, y: 54.134827}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2043647019
