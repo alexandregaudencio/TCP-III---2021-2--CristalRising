@@ -19,26 +19,29 @@ MonoBehaviour:
   Descricao: "Derrota seus advers\xE1rios na navalha."
   characterIndex: 0
   damage: 85
-  ammo: 30
+  ammo: 15
   HP: 500
   characterIcon: {fileID: 21300000, guid: d2032483c1f7d3a4fb2b255d79bf5fc2, type: 3}
   ordenedHabillityIcon:
+  - {fileID: 21300000, guid: c7d0cdeaccdef9c4293e9145b7760299, type: 3}
   - {fileID: 21300000, guid: 56147cc568011e744be700f153d17d93, type: 3}
   - {fileID: 21300000, guid: 59d938bcb8801bc4db5e9d7161978074, type: 3}
   - {fileID: 21300000, guid: b44604b68f031db469c2846219b7aa72, type: 3}
   - {fileID: 21300000, guid: f8570eaddd61fe746bd9ba93a13dce78, type: 3}
   ordenedHabillityName:
   - "Bot\xE3o direito"
+  - "Bot\xE3o esquerda"
   - F
   - Q
   - E
   ordenedHabillityDescription:
+  - Tiro padrao
   - escudo de 1600 HP
   - escudo de 100 hp em aliado
-  - 
+  - "sem descri\xE7\xE3o"
   - atordoa inimigos em volta
-  selectCharacter: {fileID: 0}
-  gameStarted: {fileID: 0}
+  selectCharacter: {fileID: 8300000, guid: 2857983ce7f0b624b88d21dc84878311, type: 3}
+  gameStarted: {fileID: 8300000, guid: 2857983ce7f0b624b88d21dc84878311, type: 3}
   shoot: {fileID: 8300000, guid: a2aebfb55cde61747b8984a981c54d7a, type: 3}
-  firstBlood: {fileID: 0}
-  ultimate: {fileID: 0}
+  firstBlood: {fileID: 8300000, guid: 3816818da4da0a640a566edc5288bfbd, type: 3}
+  ultimate: {fileID: 8300000, guid: e7c578a4a2794db47bf2f94775c61e7f, type: 3}

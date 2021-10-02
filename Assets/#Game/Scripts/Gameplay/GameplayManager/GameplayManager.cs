@@ -128,6 +128,7 @@ public class GameplayManager : MonoBehaviourPunCallbacks
         {
             Debug.Log("EMPATE");
             msg = ("Time is over: EMPATOU ");
+            vitoriaUi.SetActive(true);
         }
         gameEndActive();
 

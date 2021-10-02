@@ -18,26 +18,29 @@ MonoBehaviour:
   Descricao: Tem tudo que um personagem deste jogo precisa.
   characterIndex: 5
   damage: 30
-  ammo: 10
+  ammo: 20
   HP: 100
   characterIcon: {fileID: 21300000, guid: fd06e74313eb0114896a55e4c9aacd6d, type: 3}
   ordenedHabillityIcon:
+  - {fileID: 21300000, guid: 5f8a34dde2dcba445ae5747209c1b801, type: 3}
   - {fileID: 21300000, guid: 091d9aec21c0fca4cb923f17303b1955, type: 3}
   - {fileID: 21300000, guid: b4204d6143d0b3047b9d7053ebeae0b6, type: 3}
   - {fileID: 21300000, guid: e35ec07661fc25947a7a46f9eeee9205, type: 3}
-  - {fileID: 21300000, guid: 897a23c6826684440aa23c184b900df3, type: 3}
+  - {fileID: 21300000, guid: f2c9ab807b685fc4689642e1fbcca1ab, type: 3}
   ordenedHabillityName:
+  - Habilidade esquerda do Mouse
   - Habilidade direto do Mouse
   - Habilidade F
   - Habilidade Q
   - Habilidade E
   ordenedHabillityDescription:
+  - Tiro padrao
   - Abre portal q silencia
   - Amplifica cura aos aliados
   - Cria portal q aumenta velocidade
   - Troca de lugar com inimigo
-  selectCharacter: {fileID: 0}
-  gameStarted: {fileID: 0}
+  selectCharacter: {fileID: 8300000, guid: cd4e592df81f06040b81bc7ed27b7808, type: 3}
+  gameStarted: {fileID: 8300000, guid: a342dd3793896e34084705dd104fc9ac, type: 3}
   shoot: {fileID: 8300000, guid: a2aebfb55cde61747b8984a981c54d7a, type: 3}
-  firstBlood: {fileID: 0}
-  ultimate: {fileID: 0}
+  firstBlood: {fileID: 8300000, guid: c0b361a27ff57d94d8cb128a25cf3aec, type: 3}
+  ultimate: {fileID: 8300000, guid: ca4846c549e04fa4c9ecd4477df55e6d, type: 3}
