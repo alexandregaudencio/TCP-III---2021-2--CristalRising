@@ -15,18 +15,19 @@ public class HumanoidAnimationController : MonoBehaviour
     [SerializeField] private Controle controle;
     PlayerController playerController;
     private Weapon Weapon;
-
+    private float aux;
 
     PhotonView PV;
 
     [SerializeField] private new Rigidbody rigidbody;
     void Start()
     {
-        
+
         animator = GetComponent<Animator>();
         controle = GetComponentInParent<Controle>();
         PV = GetComponent<PhotonView>();
         playerController = GetComponentInParent<PlayerController>();
+        rigidbody = GetComponentInParent<Rigidbody>();
         Weapon = GetComponentInChildren<Weapon>();
 
     }
@@ -34,7 +35,7 @@ public class HumanoidAnimationController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if(PV.IsMine)
+        if (PV.IsMine)
         {
             ProcessRunAnimation();
             ProcessAimTransform();
@@ -43,18 +44,23 @@ public class HumanoidAnimationController : MonoBehaviour
             ProcessHabiliityOne();
             ProcessHabiliityTwo();
             ProcessJump();
-           
         }
 
     }
 
     private void ProcessHabiliityOne()
     {
-        animator.SetTrigger("Habillity_1");
+        if (Input.GetKeyDown(KeyCode.Q) && !animator.GetBool("Reloading"))
+        {
+            animator.SetTrigger("Habillity_1");
+        }
     }
     private void ProcessHabiliityTwo()
     {
-        animator.SetTrigger("Habillity_2");
+        if (Input.GetKeyDown(KeyCode.E) && !animator.GetBool("Reloading"))
+        {
+            animator.SetTrigger("Habillity_2");
+        }
     }
     private void ProcessShooting()
     {
@@ -85,7 +91,8 @@ public class HumanoidAnimationController : MonoBehaviour
         //    animator.SetBool("Reloading", true);
         //    StartCoroutine(DisablingReloading());
         //}
-
+        if (Input.GetKeyDown(KeyCode.R))
+            animator.SetTrigger("Reloading");
     }
 
 
@@ -95,18 +102,23 @@ public class HumanoidAnimationController : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         animator.SetBool("Reloading", false);
     }
-   
+
     void ProcessJump()
     {
-        animator.SetBool("Jumping", !playerController.GroundCheck);
-        //if(Input.GetKeyDown(KeyCode.Space) && playerController.GroundCheck)
-        //{
-             
-        //}
-   
-        
+        animator.SetBool("OnFloor", playerController.GroundCheck);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetTrigger("Jumping");
+        }
+        if (!playerController.GroundCheck)
+        {
+            aux = Mathf.Lerp(aux, rigidbody.velocity.normalized.y, 0.05f);
+        }
+        else
+        {
+            aux = 0;
+        }
+        animator.SetFloat("JumpDir", aux);
     }
-
-
-
 }

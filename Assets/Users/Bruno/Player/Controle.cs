@@ -58,29 +58,30 @@ public class Controle : MonoBehaviourPun
                 //    gun.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
             }
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
-            if (spellHabillityQ)
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                spellHabillityQ.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
-                //spell.Use();
+                if (spellHabillityQ)
+                {
+                    spellHabillityQ.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
+                    //spell.Use();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (spellHabillityE)
+                {
+                    spellHabillityE.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
+                    //spell.Use();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                gun.recarregando = true;
             }
         }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (spellHabillityE)
-            {
-                spellHabillityE.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
-                //spell.Use();
-            }
-        }
-        
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            gun.recarregando = true;
-        }
-
-
     }
 
     public void UpdateAmmoText()
