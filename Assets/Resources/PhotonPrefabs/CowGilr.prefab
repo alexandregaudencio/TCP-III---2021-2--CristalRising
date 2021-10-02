@@ -4526,6 +4526,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[0].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[1].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[2].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[3].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[4].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172880626494350616, guid: 2448dad92765bb5418759349f1354bc4,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[5].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4377228248464360964, guid: 2448dad92765bb5418759349f1354bc4,
         type: 3}
       propertyPath: m_LocalRotation.y

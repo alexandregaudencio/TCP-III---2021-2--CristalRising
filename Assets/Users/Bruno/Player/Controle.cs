@@ -50,10 +50,10 @@ public class Controle : MonoBehaviourPun
                 gun.Use();
 
                 UpdateAmmoText();
-                if (spell)
-                {
-                    spell.Use();
-                }
+                //if (spell)
+                //{
+                //    spell.Use();
+                //}
                 //if (photonView.IsMine)
                 //    gun.GetComponent<PhotonView>().RPC("Use", RpcTarget.All);
             }
