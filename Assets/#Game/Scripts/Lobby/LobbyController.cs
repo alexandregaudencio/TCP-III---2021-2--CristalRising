@@ -109,10 +109,15 @@ public class LobbyController: MonoBehaviourPunCallbacks
 
     public void BotaoCreditos()
     {
-
+        this.LobbyCanvas.SetActive(false);
+        this.CréditosCanvas.SetActive(true);
 
     }
-
+    public void BotaoVoltarCredito()
+    {
+        this.CréditosCanvas.SetActive(false);
+        this.LobbyCanvas.SetActive(true);
+    }
 
     public void BotaoOpcoes()
     {
