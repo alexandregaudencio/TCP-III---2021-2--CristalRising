@@ -1,33 +1,34 @@
 ﻿using Photon.Pun;
-using System;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 
 [RequireComponent(typeof(Animator))]
-public class HumanoidAnimationController : MonoBehaviourPun
+public class HumanoidAnimationController : MonoBehaviourPunCallbacks
 {
     private Animator animator;
     [SerializeField] private Transform normalCam;
     [SerializeField] private Transform spine;
-    [SerializeField] private Transform neck;
+    //[SerializeField] private Vector3 spineRotationOffset;
+    //[SerializeField] private Transform neck;
     [SerializeField] private Controle controle;
     PlayerController playerController;
     private Weapon Weapon;
-    private float aux;
+    
+
 
     PhotonView PV;
 
     [SerializeField] private new Rigidbody rigidbody;
     void Start()
     {
-
+        
         animator = GetComponent<Animator>();
         controle = GetComponentInParent<Controle>();
         PV = GetComponent<PhotonView>();
         playerController = GetComponentInParent<PlayerController>();
-        rigidbody = GetComponentInParent<Rigidbody>();
         Weapon = GetComponentInChildren<Weapon>();
 
     }
@@ -35,33 +36,18 @@ public class HumanoidAnimationController : MonoBehaviourPun
     // Update is called once per frame
     void LateUpdate()
     {
-        if (PV.IsMine)
+        if(PV.IsMine)
         {
             ProcessRunAnimation();
-            GetComponent<PhotonView>().RPC("ProcessAimTransform",RpcTarget.All);
+            ProcessAimTransform();
             ProcessReloading();
             ProcessShooting();
-            ProcessHabiliityOne();
-            ProcessHabiliityTwo();
             ProcessJump();
+           
         }
 
     }
-
-    private void ProcessHabiliityOne()
-    {
-        if (Input.GetKeyDown(KeyCode.Q) && !animator.GetBool("Reloading"))
-        {
-            animator.SetTrigger("Habillity_1");
-        }
-    }
-    private void ProcessHabiliityTwo()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && !animator.GetBool("Reloading"))
-        {
-            animator.SetTrigger("Habillity_2");
-        }
-    }
+    
     private void ProcessShooting()
     {
         if (Input.GetMouseButton(0) && !animator.GetBool("Reloading"))
@@ -76,23 +62,25 @@ public class HumanoidAnimationController : MonoBehaviourPun
         animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
 
     }
-    [PunRPC]
+
     private void ProcessAimTransform()
     {
         spine.rotation = normalCam.rotation;
+        //spine.rotation = Quaternion.EulerAngles(normalCam.rotation.x+spineRotationOffset.x, 
+        //    normalCam.rotation.y+spineRotationOffset.y,
+        //    normalCam.rotation.z + spineRotationOffset.z);
         //spine.rotation = Quaternion.EulerAngles(normalCam.rotation.x, normalCam.rotation.y,normalCam.rotation.z);
     }
 
     public void ProcessReloading()
     {
-        //bool isReloading = controle.gun.recarregando;
-        //if (Input.GetKeyDown(KeyCode.R) && !Weapon)
-        //{
-        //    animator.SetBool("Reloading", true);
-        //    StartCoroutine(DisablingReloading());
-        //}
-        if (Input.GetKeyDown(KeyCode.R))
-            animator.SetTrigger("Reloading");
+        bool isReloading = controle.gun.recarregando;
+        if (Input.GetKeyDown(KeyCode.R) && !Weapon)
+        {
+            animator.SetBool("Reloading", true);
+            //StartCoroutine(DisablingReloading());
+        }
+
     }
 
 
@@ -105,20 +93,21 @@ public class HumanoidAnimationController : MonoBehaviourPun
 
     void ProcessJump()
     {
-        animator.SetBool("OnFloor", playerController.GroundCheck);
+        animator.SetBool("Jumping", !playerController.GroundCheck);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+
+    }
+
+    public void StopReloading()
+    {
+        animator.SetBool("Reloading", false);
+    }
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
+    {
+        if(targetPlayer == PhotonNetwork.LocalPlayer)
         {
-            animator.SetTrigger("Jumping");
+            animator.SetBool("Death", (bool)targetPlayer.CustomProperties["isDead"]);
         }
-        if (!playerController.GroundCheck)
-        {
-            aux = Mathf.Lerp(aux, rigidbody.velocity.normalized.y, 0.05f);
-        }
-        else
-        {
-            aux = 0;
-        }
-        animator.SetFloat("JumpDir", aux);
     }
 }
