@@ -12,6 +12,10 @@ public class CharacterSelectionUIProps : MonoBehaviour
     [SerializeField] private TMP_Text characterName;
     [SerializeField] private TMP_Text characterDescription;
 
+    [SerializeField] private Image ImageRenderCharacter;
+    //[SerializeField] private Sprite[] allCorpinhoCharacter;
+    [SerializeField] private GameObject selectionButton;
+
     private int characterIndex;
 
     private ExitGames.Client.Photon.Hashtable HashProperty = new ExitGames.Client.Photon.Hashtable();
@@ -21,7 +25,7 @@ public class CharacterSelectionUIProps : MonoBehaviour
     {
         //int n = Int32.Parse(UnityEngine.Random.Range(0, 6).ToString());
         PhotonNetwork.LocalPlayer.TagObject = RoomConfigs.instance.charactersOrdered[0].characterPrefab.name;
-
+        SetPlayerProperties(0);
     }
 
     private void SetUICharProps(int characterIndex)
@@ -67,6 +71,12 @@ public class CharacterSelectionUIProps : MonoBehaviour
 
         SetUICharProps(characterIndex);
         SetPlayerProperties(characterIndex);
+        SetImgRender(characterIndex);
+    }
+
+    private void SetImgRender(int indexRender)
+    {
+        ImageRenderCharacter.sprite = RoomConfigs.instance.charactersOrdered[indexRender].characterIcon;
     }
 
     public void ChooseCharacter()
@@ -75,6 +85,14 @@ public class CharacterSelectionUIProps : MonoBehaviour
         PhotonNetwork.LocalPlayer.TagObject = RoomConfigs.instance.charactersOrdered[characterIndex].characterPrefab.name;
         audioCharacterSceneController.instance.audioPlayerVoiceLines("characterSelected", characterIndex);
 
+        DeactiveSelectButton();
     }
 
+
+    private void DeactiveSelectButton()
+    {
+        selectionButton.SetActive(false);
+            //Button[] button = FindObjectsOfType<Button>();
+            //fore
+    }
 }
