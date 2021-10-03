@@ -38,7 +38,7 @@ public class HumanoidAnimationController : MonoBehaviourPun
         if (PV.IsMine)
         {
             ProcessRunAnimation();
-            GetComponent<PhotonView>().RPC("ProcessAimTransform",RpcTarget.All);
+            ProcessAimTransform();
             ProcessReloading();
             ProcessShooting();
             ProcessHabiliityOne();
@@ -76,7 +76,6 @@ public class HumanoidAnimationController : MonoBehaviourPun
         animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
 
     }
-    [PunRPC]
     private void ProcessAimTransform()
     {
         spine.rotation = normalCam.rotation;
