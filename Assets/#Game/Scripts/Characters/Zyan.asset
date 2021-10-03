@@ -18,22 +18,25 @@ MonoBehaviour:
   frase: Personagem Raposa
   Descricao: Tem tudo que um personagem deste jogo precisa.
   characterIndex: 2
-  damage: 30
-  ammo: 6
+  damage: 80
+  ammo: 15
   HP: 250
   characterIcon: {fileID: 21300000, guid: 20fbadb0b26c31f48be487ad6c7e692e, type: 3}
   ordenedHabillityIcon:
+  - {fileID: 21300000, guid: d1568a87a39f1094e9528d03d948af6a, type: 3}
   - {fileID: 21300000, guid: c7c090b3def426d46b3e09a4287cd974, type: 3}
   - {fileID: 21300000, guid: 84374c249026e654fb00ce6851ae4f44, type: 3}
   - {fileID: 21300000, guid: a5aa30efbf3d72d40927c02b44fd0e86, type: 3}
   - {fileID: 21300000, guid: 6b340462c739e854582bf417c5e880be, type: 3}
   ordenedHabillityName:
   - Habilidade direto do Mouse
+  - Habilidade esquerda do Mouse
   - Habilidade F
   - Habilidade Q
   - Habilidade E
   ordenedHabillityDescription:
-  - 
+  - Tiro padrao
+  - "sem descri\xE7\xE3o"
   - Entra debaixo da areia
   - Transforma corpo em areia
   - Transforma-se em furacao

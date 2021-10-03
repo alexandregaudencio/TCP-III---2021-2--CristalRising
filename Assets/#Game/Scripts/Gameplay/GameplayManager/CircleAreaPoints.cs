@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 using TMPro;
+using Photon.Pun.UtilityScripts;
 
 public class CircleAreaPoints : MonoBehaviour
 {
@@ -162,23 +163,37 @@ public class CircleAreaPoints : MonoBehaviour
 
     private void EndGamebyPoints()
     {
-        
-       endingGame = true;
+        string pTeam = PhotonNetwork.LocalPlayer.GetPhotonTeam().Name;
+        endingGame = true;
         Debug.Log("GAME ENDS: ");
         if (pointsTeam1PerCent > pointsTeam2PerCent)
         {
-            Debug.Log("TEAM1 WINS");
-            GameplayManager.instance.msg = ("TEAM BLUE WINS");
+            if (pTeam == "Blue")
+            {
+               GameplayManager.instance.vitoriaUi.SetActive(true);
+            }
+            if (pTeam == "Red")
+            {
+                GameplayManager.instance.derrotaUi.SetActive(true);
+            }
+
         }
         if (pointsTeam2PerCent > pointsTeam1PerCent)
         {
-            Debug.Log("TEAM2 WINS");
-            GameplayManager.instance.msg = ("TEAM RED WINS");
+            if (pTeam == "Blue")
+            {
+                GameplayManager.instance.derrotaUi.SetActive(true);
+            }
+            if (pTeam == "Red")
+            {
+                GameplayManager.instance.vitoriaUi.SetActive(true);
+            }
         }
         if (pointsTeam2PerCent == pointsTeam1PerCent)
         {
             Debug.Log("EMPATE");
             GameplayManager.instance.msg = ("EMPATOU");
+            GameplayManager.instance.vitoriaUi.SetActive(true);
         }
         GameplayManager.instance.gameEndActive();
     }
