@@ -104,9 +104,14 @@ public class LobbyController: MonoBehaviourPunCallbacks
 
     public void BotaoGaleria()
     {
-
+        this.LobbyCanvas.SetActive(false);
+        this.GaleriaCanvas.SetActive(true);
     }
-
+    public void BotaoGaleriaVoltar()
+    {
+        this.LobbyCanvas.SetActive(true);
+        this.GaleriaCanvas.SetActive(false);
+    }
     public void BotaoCreditos()
     {
         this.LobbyCanvas.SetActive(false);
