@@ -172,6 +172,7 @@ public class PlayerController : MonoBehaviour
         maxRotationY = Mathf.Clamp(maxRotationY - (Input.GetAxisRaw("Mouse Y") * 2 * 100 * Time.deltaTime), -30, 30);
         // Rotação da câmera através do mouse.
         transform.Rotate(0, rotationX, 0, Space.World);
+
         cam.transform.rotation = Quaternion.Lerp(cam.transform.rotation, Quaternion.Euler(maxRotationY * 2, transform.eulerAngles.y, 0), 100 * Time.deltaTime);
 
         // Posição da câmera acompanha a posição do jogador.
