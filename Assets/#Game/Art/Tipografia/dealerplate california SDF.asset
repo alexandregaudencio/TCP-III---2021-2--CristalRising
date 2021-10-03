@@ -933,6 +933,10 @@ MonoBehaviour:
     m_Unicode: 66
     m_GlyphIndex: 62
     m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 231
+    m_GlyphIndex: 105
+    m_Scale: 1
   m_AtlasTextures:
   - {fileID: 40408369964932767}
   m_AtlasTextureIndex: 0
@@ -5580,7 +5584,6 @@ Texture2D:
   m_MipCount: 1
   m_IsReadable: 1
   m_IgnoreMasterTextureLimit: 0
-  m_IsPreProcessed: 0
   m_StreamingMipmaps: 0
   m_StreamingMipmapsPriority: 0
   m_AlphaIsTransparency: 0

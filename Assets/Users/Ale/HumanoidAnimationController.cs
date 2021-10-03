@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 
 [RequireComponent(typeof(Animator))]
-public class HumanoidAnimationController : MonoBehaviour
+public class HumanoidAnimationController : MonoBehaviourPun
 {
     private Animator animator;
     [SerializeField] private Transform normalCam;
@@ -38,7 +38,7 @@ public class HumanoidAnimationController : MonoBehaviour
         if (PV.IsMine)
         {
             ProcessRunAnimation();
-            ProcessAimTransform();
+            GetComponent<PhotonView>().RPC("ProcessAimTransform",RpcTarget.All);
             ProcessReloading();
             ProcessShooting();
             ProcessHabiliityOne();
@@ -76,7 +76,7 @@ public class HumanoidAnimationController : MonoBehaviour
         animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
 
     }
-
+    [PunRPC]
     private void ProcessAimTransform()
     {
         spine.rotation = normalCam.rotation;
