@@ -36,10 +36,10 @@ MonoBehaviour:
   - Habilidade E
   ordenedHabillityDescription:
   - Tiro padrao
-  - SEM DESCRICAO
-  - SEM DESCRICAO
-  - SEM DESCRICAO
-  - SEM DESCRICAO
+  - Cura aliado selecionado com o spray curativo
+  - "Corre na dire\xE7\xE3o seleciona recuperando um pouco de vida"
+  - Aumenta o dano do tiro
+  - "Utiliza seu kit de primeiro socorros para reviver at\xE9 2 aliados mortos "
   selectCharacter: {fileID: 8300000, guid: 0458ea99032026a468554d848c817045, type: 3}
   gameStarted: {fileID: 8300000, guid: 9b08c49dbd18ca042b8f11fa8d9630b0, type: 3}
   shoot: {fileID: 8300000, guid: 4f4e0d3909cdc77429e68b1db9e655a5, type: 3}

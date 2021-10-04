@@ -17,7 +17,7 @@ MonoBehaviour:
   characterName: Zyan
   frase: Personagem Raposa
   Descricao: Tem tudo que um personagem deste jogo precisa.
-  characterIndex: 2
+  characterIndex: 0
   damage: 80
   ammo: 15
   HP: 250
@@ -42,6 +42,6 @@ MonoBehaviour:
   - Transforma-se em furacao
   selectCharacter: {fileID: 8300000, guid: c769ff5a0e274fc49b9b5ac7e47c976a, type: 3}
   gameStarted: {fileID: 8300000, guid: 9322af36e9000164683218b9aa1dc3b9, type: 3}
-  shoot: {fileID: 8300000, guid: a2aebfb55cde61747b8984a981c54d7a, type: 3}
+  shoot: {fileID: 8300000, guid: 6dffa8a5b5ef0ed4ea64426258c19f8a, type: 3}
   firstBlood: {fileID: 8300000, guid: 4ed3574862406aa469590caf2cd9c25c, type: 3}
   ultimate: {fileID: 8300000, guid: 0c5693534b64e994c883a45b04442dc7, type: 3}

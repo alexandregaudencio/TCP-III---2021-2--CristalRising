@@ -16,7 +16,7 @@ MonoBehaviour:
   characterName: Shui
   frase: "Grande xam\xE3"
   Descricao: Tem tudo que um personagem deste jogo precisa.
-  characterIndex: 5
+  characterIndex: 4
   damage: 30
   ammo: 20
   HP: 100
@@ -41,6 +41,6 @@ MonoBehaviour:
   - Troca de lugar com inimigo
   selectCharacter: {fileID: 8300000, guid: cd4e592df81f06040b81bc7ed27b7808, type: 3}
   gameStarted: {fileID: 8300000, guid: a342dd3793896e34084705dd104fc9ac, type: 3}
-  shoot: {fileID: 8300000, guid: a2aebfb55cde61747b8984a981c54d7a, type: 3}
+  shoot: {fileID: 8300000, guid: 6acc10b70298e3c4eb34efa777ced8ef, type: 3}
   firstBlood: {fileID: 8300000, guid: c0b361a27ff57d94d8cb128a25cf3aec, type: 3}
   ultimate: {fileID: 8300000, guid: ca4846c549e04fa4c9ecd4477df55e6d, type: 3}
