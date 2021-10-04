@@ -17,7 +17,7 @@ MonoBehaviour:
   characterName: NIck
   frase: Projeto alquimista
   Descricao: Tem tudo que um personagem deste jogo precisa.
-  characterIndex: 4
+  characterIndex: 2
   damage: 10
   ammo: 40
   HP: 200
@@ -42,6 +42,6 @@ MonoBehaviour:
   - "Explos\xE3o"
   selectCharacter: {fileID: 8300000, guid: 10e8d88aed1f1f849adce03559ed807b, type: 3}
   gameStarted: {fileID: 8300000, guid: ad5359bb4a8a68f4b9423818e0f90303, type: 3}
-  shoot: {fileID: 8300000, guid: a2aebfb55cde61747b8984a981c54d7a, type: 3}
+  shoot: {fileID: 8300000, guid: dcfa942fd56abb9459f2a43a494f95e9, type: 3}
   firstBlood: {fileID: 8300000, guid: 080fdb9958007434f8fd116ab12da967, type: 3}
   ultimate: {fileID: 8300000, guid: 21610353b6bc2ac4bbc05c5b8ef54627, type: 3}

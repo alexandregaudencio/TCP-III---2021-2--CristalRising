@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9ace9b4e0dfe94ea84d3391de9c52d, type: 3}
   m_Name: Susano
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 134812347425223253, guid: 282a653609ed9ae4bb918477fcbb541b,
+  characterPrefab: {fileID: 6905663331519627617, guid: 76b738e633c39e04bb45515415095154,
     type: 3}
   characterName: Susano
   frase: Grande e Forte
   Descricao: "Derrota seus advers\xE1rios na navalha."
-  characterIndex: 0
+  characterIndex: 3
   damage: 85
   ammo: 15
   HP: 500
@@ -42,6 +42,6 @@ MonoBehaviour:
   - atordoa inimigos em volta
   selectCharacter: {fileID: 8300000, guid: 2857983ce7f0b624b88d21dc84878311, type: 3}
   gameStarted: {fileID: 8300000, guid: 2857983ce7f0b624b88d21dc84878311, type: 3}
-  shoot: {fileID: 8300000, guid: a2aebfb55cde61747b8984a981c54d7a, type: 3}
+  shoot: {fileID: 8300000, guid: 8027a097b7128e141adfac5162dc3626, type: 3}
   firstBlood: {fileID: 8300000, guid: 3816818da4da0a640a566edc5288bfbd, type: 3}
   ultimate: {fileID: 8300000, guid: e7c578a4a2794db47bf2f94775c61e7f, type: 3}
