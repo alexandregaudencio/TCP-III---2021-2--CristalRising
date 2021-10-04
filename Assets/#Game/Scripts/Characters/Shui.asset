@@ -15,11 +15,11 @@ MonoBehaviour:
   characterPrefab: {fileID: 0}
   characterName: Shui
   frase: "Grande xam\xE3"
-  Descricao: Tem tudo que um personagem deste jogo precisa.
+  Descricao: "A grande Xam\xE3"
   characterIndex: 4
-  damage: 30
-  ammo: 20
-  HP: 100
+  damage: 300
+  ammo: 30
+  HP: 2400
   characterIcon: {fileID: 21300000, guid: fd06e74313eb0114896a55e4c9aacd6d, type: 3}
   ordenedHabillityIcon:
   - {fileID: 21300000, guid: 5f8a34dde2dcba445ae5747209c1b801, type: 3}

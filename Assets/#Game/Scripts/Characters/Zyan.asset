@@ -15,12 +15,12 @@ MonoBehaviour:
   characterPrefab: {fileID: 6905663331519627617, guid: 76b738e633c39e04bb45515415095154,
     type: 3}
   characterName: Zyan
-  frase: Personagem Raposa
-  Descricao: Tem tudo que um personagem deste jogo precisa.
+  frase: O Terror do deserto
+  Descricao: O Terror do deserto
   characterIndex: 0
-  damage: 80
-  ammo: 15
-  HP: 250
+  damage: 400
+  ammo: 25
+  HP: 2000
   characterIcon: {fileID: 21300000, guid: 20fbadb0b26c31f48be487ad6c7e692e, type: 3}
   ordenedHabillityIcon:
   - {fileID: 21300000, guid: d1568a87a39f1094e9528d03d948af6a, type: 3}

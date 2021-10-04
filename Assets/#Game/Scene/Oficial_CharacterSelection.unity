@@ -4546,6 +4546,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterPropertiesInfo
       objectReference: {fileID: 0}
+    - target: {fileID: 6349262908034395550, guid: a95c059817aa6bc43ae28c12b6acd430,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6349262908034395551, guid: a95c059817aa6bc43ae28c12b6acd430,
         type: 3}
       propertyPath: m_Pivot.x
