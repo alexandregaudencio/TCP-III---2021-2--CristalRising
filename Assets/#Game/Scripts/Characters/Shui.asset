@@ -28,16 +28,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e35ec07661fc25947a7a46f9eeee9205, type: 3}
   - {fileID: 21300000, guid: f2c9ab807b685fc4689642e1fbcca1ab, type: 3}
   ordenedHabillityName:
-  - Habilidade esquerda do Mouse
-  - Habilidade direto do Mouse
-  - Habilidade F
-  - Habilidade Q
-  - Habilidade E
+  - Manopla
+  - Portal Debilitante
+  - Aura de Cura
+  - Portal da velocidade
+  - Troca equivalente
   ordenedHabillityDescription:
   - Tiro padrao
-  - Abre portal q silencia
-  - Amplifica cura aos aliados
-  - Cria portal q aumenta velocidade
+  - Cria um portal  que silencia aliados.
+  - "Cria um portal no ch\xE3o que cura aliados"
+  - "Cria um portal no ch\xE3o q aumenta velocidade de aliados dentro da \xE1rea
+    do portal."
   - Troca de lugar com inimigo
   selectCharacter: {fileID: 8300000, guid: cd4e592df81f06040b81bc7ed27b7808, type: 3}
   gameStarted: {fileID: 8300000, guid: a342dd3793896e34084705dd104fc9ac, type: 3}
