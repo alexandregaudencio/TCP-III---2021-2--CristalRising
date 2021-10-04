@@ -29,17 +29,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b44604b68f031db469c2846219b7aa72, type: 3}
   - {fileID: 21300000, guid: f8570eaddd61fe746bd9ba93a13dce78, type: 3}
   ordenedHabillityName:
-  - "Bot\xE3o direito"
-  - "Bot\xE3o esquerda"
-  - F
-  - Q
-  - E
+  - Espada
+  - "Espada Et\xE9rea"
+  - Muralha astral
+  - Escudo astral
+  - Grito de Guerra
   ordenedHabillityDescription:
-  - Tiro padrao
-  - escudo de 1600 HP
-  - escudo de 100 hp em aliado
-  - "sem descri\xE7\xE3o"
-  - atordoa inimigos em volta
+  - "Ataque padr\xE3o de espada."
+  - "Sua espada quebrada se completa com energia et\xE9ria para atingir inimigos
+    a m\xE9dia dist\xE2ncia."
+  - Sua forma astral conjunra um grande escudo.
+  - conjura um escudo em um aliado.
+  - "Sua foram astral canaliza um poderoso grito que atordoa todos os inimigos pr\xF3ximos."
   selectCharacter: {fileID: 8300000, guid: 2857983ce7f0b624b88d21dc84878311, type: 3}
   gameStarted: {fileID: 8300000, guid: 2857983ce7f0b624b88d21dc84878311, type: 3}
   shoot: {fileID: 8300000, guid: 8027a097b7128e141adfac5162dc3626, type: 3}

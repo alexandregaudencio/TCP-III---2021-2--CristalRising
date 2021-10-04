@@ -29,17 +29,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a5aa30efbf3d72d40927c02b44fd0e86, type: 3}
   - {fileID: 21300000, guid: 6b340462c739e854582bf417c5e880be, type: 3}
   ordenedHabillityName:
-  - Habilidade direto do Mouse
-  - Habilidade esquerda do Mouse
-  - Habilidade F
-  - Habilidade Q
-  - Habilidade E
+  - Bala de areia
+  - Terror do Deserto
+  - "apari\xE7\xE3o de areia"
+  - Desfazer-se
+  - Vortice Final
   ordenedHabillityDescription:
-  - Tiro padrao
-  - "sem descri\xE7\xE3o"
-  - Entra debaixo da areia
-  - Transforma corpo em areia
-  - Transforma-se em furacao
+  - "Tiro padr\xE3o."
+  - "Causa muito dano a curta Dist\xE2ncia."
+  - Entra de baixo da Terra por 4 segundos, podendo se locomover.
+  - "Transforma seu corpo em areia, ficando invuner\xE1vel."
+  - "Tronsforma-se em um furac\xE3o de areia causando alto dano a todos os inimigos
+    em certa \xE1rea."
   selectCharacter: {fileID: 8300000, guid: c769ff5a0e274fc49b9b5ac7e47c976a, type: 3}
   gameStarted: {fileID: 8300000, guid: 9322af36e9000164683218b9aa1dc3b9, type: 3}
   shoot: {fileID: 8300000, guid: 6dffa8a5b5ef0ed4ea64426258c19f8a, type: 3}
