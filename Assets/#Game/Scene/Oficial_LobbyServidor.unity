@@ -4392,7 +4392,7 @@ PrefabInstance:
     - target: {fileID: 4688115790278964299, guid: 82445f544fbbe57499687a3e6c034e47,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 768.4127
+      value: 854.4707
       objectReference: {fileID: 0}
     - target: {fileID: 4688115790278964299, guid: 82445f544fbbe57499687a3e6c034e47,
         type: 3}
@@ -4402,7 +4402,7 @@ PrefabInstance:
     - target: {fileID: 4688115790278964299, guid: 82445f544fbbe57499687a3e6c034e47,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -85.100006
+      value: -30.9
       objectReference: {fileID: 0}
     - target: {fileID: 7526982527941451667, guid: 82445f544fbbe57499687a3e6c034e47,
         type: 3}
@@ -4543,6 +4543,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9054244355639522345, guid: 82445f544fbbe57499687a3e6c034e47,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 95
       objectReference: {fileID: 0}
     - target: {fileID: 9054244355639522347, guid: 82445f544fbbe57499687a3e6c034e47,
         type: 3}
@@ -9910,7 +9915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRoomPlayers: 12
-  characterSelectionMaxTime: 8
+  characterSelectionMaxTime: 45
   gameplayMaxTime: 500
   heightTime: 0
   gameplayTimeBase: 10

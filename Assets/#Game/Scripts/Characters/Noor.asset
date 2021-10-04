@@ -19,7 +19,7 @@ MonoBehaviour:
   Descricao: "M\xE9dica de combate"
   characterIndex: 5
   damage: 250
-  ammo: 20
+  ammo: 30
   HP: 2100
   characterIcon: {fileID: 21300000, guid: 0ed175e8340e15442bcc08acd0934d16, type: 3}
   ordenedHabillityIcon:
