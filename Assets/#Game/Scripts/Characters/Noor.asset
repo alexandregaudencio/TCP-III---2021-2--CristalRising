@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9ace9b4e0dfe94ea84d3391de9c52d, type: 3}
   m_Name: Noor
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 0}
+  characterPrefab: {fileID: 3332855036249393758, guid: 3341e119e6176e946a17b70d8a76d734,
+    type: 3}
   characterName: Noor
   frase: Personagem Cura
   Descricao: Tem tudo que um personagem deste jogo precisa.
-  characterIndex: 6
+  characterIndex: 5
   damage: 50
   ammo: 30
   HP: 100
-  characterIcon: {fileID: 21300000, guid: c08d68d80b1c9fa49aa383f1375df6bc, type: 3}
+  characterIcon: {fileID: 21300000, guid: 0ed175e8340e15442bcc08acd0934d16, type: 3}
   ordenedHabillityIcon:
   - {fileID: 21300000, guid: fa1f43c29d5d9aa4998b1287c4a527a6, type: 3}
   - {fileID: 21300000, guid: c0e803ce4d9945c46ba7c7ed9d953de4, type: 3}
