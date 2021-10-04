@@ -20,7 +20,7 @@ MonoBehaviour:
   characterIndex: 1
   damage: 400
   ammo: 40
-  HP: 2900
+  HP: 2500
   characterIcon: {fileID: 21300000, guid: 70c27bcbea928ea4a9dd8cd6e7b17be0, type: 3}
   ordenedHabillityIcon:
   - {fileID: 21300000, guid: 5958d6af9fec5ef4c9eee0336e98ff69, type: 3}
