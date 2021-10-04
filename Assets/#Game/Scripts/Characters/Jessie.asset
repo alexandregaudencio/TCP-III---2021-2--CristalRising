@@ -17,10 +17,10 @@ MonoBehaviour:
   characterName: 'Jessie '
   frase: Personagem CowGirl
   Descricao: Tem tudo que um personagem deste jogo precisa.
-  characterIndex: 0
+  characterIndex: 1
   damage: 50
   ammo: 20
-  HP: 600
+  HP: 1200
   characterIcon: {fileID: 21300000, guid: 70c27bcbea928ea4a9dd8cd6e7b17be0, type: 3}
   ordenedHabillityIcon:
   - {fileID: 21300000, guid: 5958d6af9fec5ef4c9eee0336e98ff69, type: 3}
