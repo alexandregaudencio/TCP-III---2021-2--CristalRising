@@ -4577,7 +4577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1381283582, guid: 5ddb7c108f891af43a776de2986aeba8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -187.3
+      value: -187.30002
       objectReference: {fileID: 0}
     - target: {fileID: 2043647018, guid: 5ddb7c108f891af43a776de2986aeba8, type: 3}
       propertyPath: m_RootOrder
@@ -4963,7 +4963,7 @@ PrefabInstance:
     - target: {fileID: 4300086474952107678, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1292.0017
+      value: 1292.0012
       objectReference: {fileID: 0}
     - target: {fileID: 4300086474952107678, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
@@ -9555,12 +9555,12 @@ MonoBehaviour:
   redTeamColor: {r: 0.63529414, g: 0.09019608, b: 0.0627451, a: 1}
   noneColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 0.78431374}
   charactersOrdered:
+  - {fileID: 11400000, guid: 76f5b04772c80f74882894bfd01b64f2, type: 2}
   - {fileID: 11400000, guid: 54902b6725618524cabbcbe8f504c24e, type: 2}
   - {fileID: 11400000, guid: 54902b6725618524cabbcbe8f504c24e, type: 2}
   - {fileID: 11400000, guid: 54902b6725618524cabbcbe8f504c24e, type: 2}
   - {fileID: 11400000, guid: 54902b6725618524cabbcbe8f504c24e, type: 2}
-  - {fileID: 11400000, guid: 54902b6725618524cabbcbe8f504c24e, type: 2}
-  - {fileID: 11400000, guid: 54902b6725618524cabbcbe8f504c24e, type: 2}
+  - {fileID: 11400000, guid: 8b9ed6071698b324bb5b1023dfa2b442, type: 2}
 --- !u!4 &2036991082
 Transform:
   m_ObjectHideFlags: 0

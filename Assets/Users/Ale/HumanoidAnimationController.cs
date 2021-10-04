@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using Photon.Realtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 
 [RequireComponent(typeof(Animator))]
-public class HumanoidAnimationController : MonoBehaviourPun
+public class HumanoidAnimationController : MonoBehaviourPunCallbacks
 {
     private Animator animator;
     [SerializeField] private Transform normalCam;
@@ -120,4 +121,16 @@ public class HumanoidAnimationController : MonoBehaviourPun
         }
         animator.SetFloat("JumpDir", aux);
     }
+
+
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
+    {
+        if (targetPlayer == PhotonNetwork.LocalPlayer)
+        {
+            animator.SetBool("Death", (bool)targetPlayer.CustomProperties["isDead"]);
+        }
+    }
+
+
 }
