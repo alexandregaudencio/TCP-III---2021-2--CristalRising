@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9ace9b4e0dfe94ea84d3391de9c52d, type: 3}
   m_Name: Nick
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 0}
+  characterPrefab: {fileID: 6905663331519627617, guid: 9ca21e3236dcfef4996b120f074cf8cd,
+    type: 3}
   characterName: NIck
   frase: Projeto alquimista
   Descricao: Tem tudo que um personagem deste jogo precisa.
