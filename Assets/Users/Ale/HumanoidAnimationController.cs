@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.Animations.Rigging;
 
 [RequireComponent(typeof(Animator))]
 public class HumanoidAnimationController : MonoBehaviourPunCallbacks
@@ -122,8 +123,6 @@ public class HumanoidAnimationController : MonoBehaviourPunCallbacks
         animator.SetFloat("JumpDir", aux);
     }
 
-
-
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
         if (targetPlayer == PhotonNetwork.LocalPlayer)
@@ -131,6 +130,11 @@ public class HumanoidAnimationController : MonoBehaviourPunCallbacks
             animator.SetBool("Death", (bool)targetPlayer.CustomProperties["isDead"]);
         }
     }
-
-
+    private void Update()
+    {
+        if (animator.GetBool("isDead"))
+            GetComponentInChildren<Rig>().weight = 0;
+        else
+            GetComponentInChildren<Rig>().weight = 1;
+    }
 }
