@@ -16,11 +16,11 @@ MonoBehaviour:
     type: 3}
   characterName: 'Jessie '
   frase: Personagem CowGirl
-  Descricao: A Xerife Encantadora
+  Descricao: Tem tudo que um personagem deste jogo precisa.
   characterIndex: 1
-  damage: 400
-  ammo: 40
-  HP: 2500
+  damage: 50
+  ammo: 20
+  HP: 1200
   characterIcon: {fileID: 21300000, guid: 70c27bcbea928ea4a9dd8cd6e7b17be0, type: 3}
   ordenedHabillityIcon:
   - {fileID: 21300000, guid: 5958d6af9fec5ef4c9eee0336e98ff69, type: 3}
@@ -29,17 +29,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 249e0e68a8844aa4a86ed3dcf80d1648, type: 3}
   - {fileID: 21300000, guid: 451aca426cceced4087321795f4fbabb, type: 3}
   ordenedHabillityName:
-  - "Tiro padr\xE3o"
-  - Rajada de balas
-  - "Lan\xE7ador de gigantes"
-  - "La\xE7o protetor"
-  - Chamado a boiada
+  - Habilidade esquerda do Mouse
+  - Habilidade direto do Mouse
+  - Habilidade F
+  - Habilidade Q
+  - Habilidade E
   ordenedHabillityDescription:
   - "Tiro padr\xE3o"
   - Rajada de balas
-  - "Prende advers\xE1rio na corda e o puxa"
-  - "Gira seu la\xE7o, reduzindo dano de inimigos."
-  - "Toca seu berrante chamando a aten\xE7\xE3o, atraindo seu inimigos para perto."
+  - "Prende advers\xE1rio na corda e puxa"
+  - "Redu\xE7\xE3o de dano"
+  - Inimigos seguem ela
   selectCharacter: {fileID: 8300000, guid: 3786960a5c0ba384985265d76afd2ed3, type: 3}
   gameStarted: {fileID: 8300000, guid: 6f2608e3d179d1642b60a21f035999e2, type: 3}
   shoot: {fileID: 8300000, guid: c4a6078197ef8244880ab83fcc4cc002, type: 3}

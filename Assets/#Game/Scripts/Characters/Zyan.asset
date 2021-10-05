@@ -15,12 +15,12 @@ MonoBehaviour:
   characterPrefab: {fileID: 6905663331519627617, guid: 76b738e633c39e04bb45515415095154,
     type: 3}
   characterName: Zyan
-  frase: O Terror do deserto
-  Descricao: O Terror do deserto
-  characterIndex: 0
-  damage: 400
-  ammo: 25
-  HP: 2000
+  frase: Personagem Raposa
+  Descricao: Tem tudo que um personagem deste jogo precisa.
+  characterIndex: 2
+  damage: 80
+  ammo: 15
+  HP: 250
   characterIcon: {fileID: 21300000, guid: 20fbadb0b26c31f48be487ad6c7e692e, type: 3}
   ordenedHabillityIcon:
   - {fileID: 21300000, guid: d1568a87a39f1094e9528d03d948af6a, type: 3}
@@ -29,20 +29,19 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a5aa30efbf3d72d40927c02b44fd0e86, type: 3}
   - {fileID: 21300000, guid: 6b340462c739e854582bf417c5e880be, type: 3}
   ordenedHabillityName:
-  - Bala de areia
-  - Terror do Deserto
-  - "apari\xE7\xE3o de areia"
-  - Desfazer-se
-  - Vortice Final
+  - Habilidade direto do Mouse
+  - Habilidade esquerda do Mouse
+  - Habilidade F
+  - Habilidade Q
+  - Habilidade E
   ordenedHabillityDescription:
-  - "Tiro padr\xE3o."
-  - "Causa muito dano a curta Dist\xE2ncia."
-  - Entra de baixo da Terra por 4 segundos, podendo se locomover.
-  - "Transforma seu corpo em areia, ficando invuner\xE1vel."
-  - "Tronsforma-se em um furac\xE3o de areia causando alto dano a todos os inimigos
-    em certa \xE1rea."
+  - Tiro padrao
+  - "sem descri\xE7\xE3o"
+  - Entra debaixo da areia
+  - Transforma corpo em areia
+  - Transforma-se em furacao
   selectCharacter: {fileID: 8300000, guid: c769ff5a0e274fc49b9b5ac7e47c976a, type: 3}
   gameStarted: {fileID: 8300000, guid: 9322af36e9000164683218b9aa1dc3b9, type: 3}
-  shoot: {fileID: 8300000, guid: 6dffa8a5b5ef0ed4ea64426258c19f8a, type: 3}
+  shoot: {fileID: 8300000, guid: a2aebfb55cde61747b8984a981c54d7a, type: 3}
   firstBlood: {fileID: 8300000, guid: 4ed3574862406aa469590caf2cd9c25c, type: 3}
   ultimate: {fileID: 8300000, guid: 0c5693534b64e994c883a45b04442dc7, type: 3}

@@ -119,8 +119,7 @@ public class audioGameplayController : MonoBehaviourPunCallbacks
     {
         if (nameVoice == "startGame")
         {
-            int characterIndex = (int)PhotonNetwork.LocalPlayer.CustomProperties["characterIndex"];
-            startGameVoice.clip = RoomConfigs.instance.charactersOrdered[characterIndex].gameStarted;
+            startGameVoice.clip = RoomConfigs.instance.charactersOrdered[1].gameStarted;
             //= voiceLines;
             startGameVoice.Play();
        }

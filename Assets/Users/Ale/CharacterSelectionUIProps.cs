@@ -92,6 +92,7 @@ public class CharacterSelectionUIProps : MonoBehaviour
     private void DeactiveSelectButton()
     {
         selectionButton.SetActive(false);
-
+            //Button[] button = FindObjectsOfType<Button>();
+            //fore
     }
 }
