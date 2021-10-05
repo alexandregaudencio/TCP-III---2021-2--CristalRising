@@ -5,6 +5,7 @@ using UnityEngine;
 public class ManagerBullet : MonoBehaviour
 {
     public Transform[] bulletTransform;
+    [HideInInspector]
     public Transform current;
 
     private int count = 0;
