@@ -4714,7 +4714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 874350516, guid: 5ddb7c108f891af43a776de2986aeba8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -322.42004
+      value: -322.42007
       objectReference: {fileID: 0}
     - target: {fileID: 874350517, guid: 5ddb7c108f891af43a776de2986aeba8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4778,7 +4778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1381283582, guid: 5ddb7c108f891af43a776de2986aeba8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -187.30003
+      value: -187.30005
       objectReference: {fileID: 0}
     - target: {fileID: 1698901896, guid: 5ddb7c108f891af43a776de2986aeba8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -5201,7 +5201,7 @@ PrefabInstance:
     - target: {fileID: 3574716336406455727, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 20.59961
+      value: 20.599611
       objectReference: {fileID: 0}
     - target: {fileID: 4300086474952107678, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
@@ -5216,7 +5216,12 @@ PrefabInstance:
     - target: {fileID: 4300086474952107678, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 225.99974
+      value: 225.99976
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
@@ -5266,11 +5271,6 @@ PrefabInstance:
     - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
@@ -10057,7 +10057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRoomPlayers: 12
-  characterSelectionMaxTime: 45
+  characterSelectionMaxTime: 3
   gameplayMaxTime: 500
   heightTime: 0
   gameplayTimeBase: 10

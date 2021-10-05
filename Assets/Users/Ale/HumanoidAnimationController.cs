@@ -127,7 +127,7 @@ public class HumanoidAnimationController : MonoBehaviourPunCallbacks
     {
         if (targetPlayer == PhotonNetwork.LocalPlayer)
         {
-            animator.SetBool("Death", (bool)targetPlayer.CustomProperties["isDead"]);
+            animator.SetBool("isDead", (bool)targetPlayer.CustomProperties["isDead"]);
         }
     }
     private void Update()
