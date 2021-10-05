@@ -90,9 +90,9 @@ public class Weapon : CombatControl
             Debug.DrawLine(mangerBullet.transform.position, mark, Color.yellow);
         }
         #region test
-        if (Physics.Raycast(mangerBullet.bulletTransform.position, mangerBullet.bulletTransform.forward, out hit, maxBulletDistance, ~mask))
+        if (Physics.Raycast(mangerBullet.current.position, mangerBullet.current.forward, out hit, maxBulletDistance, ~mask))
         {
-            Debug.DrawLine(mangerBullet.bulletTransform.position, hit.point, Color.green);
+            Debug.DrawLine(mangerBullet.current.position, hit.point, Color.green);
         }
         #endregion
         this.timeCount -= Time.deltaTime;
@@ -129,10 +129,10 @@ public class Weapon : CombatControl
 
         var bullet = PhotonView.Find(bulletPool.ActiveInstance()).gameObject.GetComponent<Bullet>();
 
-        float distance = Vector3.Distance(mangerBullet.bulletTransform.position, hit.point);
+        float distance = Vector3.Distance(mangerBullet.current.position, hit.point);
 
-        Vector3 pos = mangerBullet.bulletTransform.position;
-        Vector3 rot = mangerBullet.bulletTransform.rotation.eulerAngles;
+        Vector3 pos = mangerBullet.current.position;
+        Vector3 rot = mangerBullet.current.rotation.eulerAngles;
 
         //int indexPlayer = (int)PhotonNetwork.LocalPlayer.CustomProperties["indexPlayer"];
         //string name = PhotonNetwork.LocalPlayer.NickName;
