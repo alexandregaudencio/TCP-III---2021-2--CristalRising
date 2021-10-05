@@ -1210,7 +1210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a3dd18378f1094dbe8fc30b510fe14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 6
   sprintModifier: 0
   cameraPivot: {fileID: 5344698660444298222}
   jumpForce: 4
@@ -1851,7 +1851,7 @@ Animator:
   m_GameObject: {fileID: 1665976972967026706}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a936864f52a802d49ab3c8ed7efcd4b8, type: 3}
-  m_Controller: {fileID: 9100000, guid: d273ddcd54aa3b743a3c2273abcd705f, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5041,7 +5041,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8f9666591632a4792310560a59e0a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTransform: {fileID: 2985781299960769026}
+  bulletTransform:
+  - {fileID: 0}
+  current: {fileID: 0}
 --- !u!114 &3598622400912887
 MonoBehaviour:
   m_ObjectHideFlags: 0
