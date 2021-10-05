@@ -3559,7 +3559,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2c16191dfb330d4458d4e028045f425e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.45
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4384,6 +4384,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 4049.7534
       objectReference: {fileID: 0}
+    - target: {fileID: 3988475895871043913, guid: 82445f544fbbe57499687a3e6c034e47,
+        type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988475895871043913, guid: 82445f544fbbe57499687a3e6c034e47,
+        type: 3}
+      propertyPath: m_Padding.m_Bottom
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4688115790278964299, guid: 82445f544fbbe57499687a3e6c034e47,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -5201,7 +5211,7 @@ PrefabInstance:
     - target: {fileID: 3574716336406455727, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 20.599598
+      value: 20.59961
       objectReference: {fileID: 0}
     - target: {fileID: 4300086474952107678, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
@@ -5217,11 +5227,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 225.99976
-      objectReference: {fileID: 0}
-    - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
@@ -5271,6 +5276,11 @@ PrefabInstance:
     - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6785148941449091340, guid: 5ddb7c108f891af43a776de2986aeba8,
@@ -10057,7 +10067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRoomPlayers: 12
-  characterSelectionMaxTime: 8
+  characterSelectionMaxTime: 45
   gameplayMaxTime: 500
   heightTime: 0
   gameplayTimeBase: 10
@@ -10071,11 +10081,11 @@ MonoBehaviour:
   redTeamColor: {r: 0.63529414, g: 0.09019608, b: 0.0627451, a: 1}
   noneColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 0.78431374}
   charactersOrdered:
-  - {fileID: 11400000, guid: 54902b6725618524cabbcbe8f504c24e, type: 2}
+  - {fileID: 11400000, guid: d3737d52d43363241afa5a733643af40, type: 2}
   - {fileID: 11400000, guid: 76f5b04772c80f74882894bfd01b64f2, type: 2}
   - {fileID: 11400000, guid: cd420becf72e38341ac31cf98c3cc8dc, type: 2}
-  - {fileID: 11400000, guid: 54902b6725618524cabbcbe8f504c24e, type: 2}
-  - {fileID: 11400000, guid: 54902b6725618524cabbcbe8f504c24e, type: 2}
+  - {fileID: 11400000, guid: aaa7a7f7fa41c4c4e815c0e60758b763, type: 2}
+  - {fileID: 11400000, guid: 878224a9d381cac4fb9457ec4ad995a9, type: 2}
   - {fileID: 11400000, guid: 8b9ed6071698b324bb5b1023dfa2b442, type: 2}
 --- !u!4 &2036991082
 Transform:
