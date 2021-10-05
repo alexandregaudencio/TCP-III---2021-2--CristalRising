@@ -43,19 +43,15 @@ public class Cure : Spells, IEffect
             {
                 return;
             }
-            for (int i = 0; i < transform.childCount; i++)
+            GameObject children = transform.GetChild(0).gameObject;
+            if (!children.activeInHierarchy)
             {
-                GameObject children = transform.GetChild(i).gameObject;
-                Debug.Log(children.activeInHierarchy);
-                if (!children.activeInHierarchy)
-                {
-                    Debug.Log(children.activeInHierarchy);
-                    target.GetComponent<PlayerProperty>().Life = life;
-                    transform.GetChild(0).gameObject.SetActive(true);
-                    var animator = GetComponentInChildren<Animator>();
-                    Apply(animator);
-                }
+                target.GetComponent<PlayerProperty>().Life = life;
+                transform.GetChild(0).gameObject.SetActive(true);
+                var animator = GetComponentInChildren<Animator>();
+                Apply(animator);
             }
+
         }
     }
     public void Apply(Animator animator)

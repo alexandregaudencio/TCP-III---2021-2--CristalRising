@@ -9,6 +9,10 @@ public class ManagerBullet : MonoBehaviour
     public Transform current;
 
     private int count = 0;
+    private void Start()
+    {
+        current = bulletTransform[count % bulletTransform.Length];
+    }
 
     private void Update()
     {
