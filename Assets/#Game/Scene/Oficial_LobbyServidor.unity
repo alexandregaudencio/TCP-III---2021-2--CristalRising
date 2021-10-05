@@ -5201,7 +5201,7 @@ PrefabInstance:
     - target: {fileID: 3574716336406455727, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 20.599611
+      value: 20.599598
       objectReference: {fileID: 0}
     - target: {fileID: 4300086474952107678, guid: 5ddb7c108f891af43a776de2986aeba8,
         type: 3}
@@ -10057,7 +10057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRoomPlayers: 12
-  characterSelectionMaxTime: 3
+  characterSelectionMaxTime: 8
   gameplayMaxTime: 500
   heightTime: 0
   gameplayTimeBase: 10

@@ -15,6 +15,8 @@ public class HumanoidAnimationController : MonoBehaviourPunCallbacks
     [SerializeField] private Transform spine;
     [SerializeField] private Transform neck;
     [SerializeField] private Controle controle;
+    private bool value;
+
     PlayerController playerController;
     private Weapon Weapon;
     private float aux;
@@ -39,6 +41,7 @@ public class HumanoidAnimationController : MonoBehaviourPunCallbacks
     {
         if (PV.IsMine)
         {
+            value = GetComponentInParent<PlayerController>().gameObject.GetComponentInChildren<Weapon>().Ammo > 0;
             ProcessRunAnimation();
             ProcessAimTransform();
             ProcessReloading();
@@ -52,21 +55,21 @@ public class HumanoidAnimationController : MonoBehaviourPunCallbacks
 
     private void ProcessHabiliityOne()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && !animator.GetBool("Reloading"))
+        if (Input.GetKeyDown(KeyCode.Q) && value)
         {
             animator.SetTrigger("Habillity_1");
         }
     }
     private void ProcessHabiliityTwo()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !animator.GetBool("Reloading"))
+        if (Input.GetKeyDown(KeyCode.E) && value)
         {
             animator.SetTrigger("Habillity_2");
         }
     }
     private void ProcessShooting()
     {
-        if (Input.GetMouseButton(0) && !animator.GetBool("Reloading"))
+        if (Input.GetMouseButton(0) && value)
         {
             animator.SetTrigger("Shoot");
         }
@@ -92,16 +95,8 @@ public class HumanoidAnimationController : MonoBehaviourPunCallbacks
         //    animator.SetBool("Reloading", true);
         //    StartCoroutine(DisablingReloading());
         //}
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && !value)
             animator.SetTrigger("Reloading");
-    }
-
-
-    //TODO
-    IEnumerator DisablingReloading()
-    {
-        yield return new WaitForSeconds(1.5f);
-        animator.SetBool("Reloading", false);
     }
 
     void ProcessJump()

@@ -33,7 +33,6 @@ public class Cure : Spells, IEffect
     public override void Use()
     {
         Aim();
-        Debug.Log(target);
         if (target)
         {
             foreach (var s in status)
@@ -47,8 +46,10 @@ public class Cure : Spells, IEffect
             for (int i = 0; i < transform.childCount; i++)
             {
                 GameObject children = transform.GetChild(i).gameObject;
+                Debug.Log(children.activeInHierarchy);
                 if (!children.activeInHierarchy)
                 {
+                    Debug.Log(children.activeInHierarchy);
                     target.GetComponent<PlayerProperty>().Life = life;
                     transform.GetChild(0).gameObject.SetActive(true);
                     var animator = GetComponentInChildren<Animator>();

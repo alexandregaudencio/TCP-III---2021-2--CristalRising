@@ -6774,6 +6774,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: Jumping
+  - Type: 9
+    SynchronizeType: 1
+    Name: isDead
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -17347,11 +17350,6 @@ PrefabInstance:
       propertyPath: dir
       value: 
       objectReference: {fileID: 7570247935034092909}
-    - target: {fileID: 7064896876616478443, guid: fe1b6bfd69320ad4b8294cdc9487dd1e,
-        type: 3}
-      propertyPath: Hertz
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8196086961227524844, guid: fe1b6bfd69320ad4b8294cdc9487dd1e,
         type: 3}
       propertyPath: m_IsActive

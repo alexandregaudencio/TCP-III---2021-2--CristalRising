@@ -6017,7 +6017,7 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Horizontal
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: Shoot
   - Type: 4
     SynchronizeType: 1
@@ -6025,6 +6025,21 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: Jumping
+  - Type: 1
+    SynchronizeType: 0
+    Name: JumpDir
+  - Type: 4
+    SynchronizeType: 1
+    Name: OnFloor
+  - Type: 4
+    SynchronizeType: 1
+    Name: isDead
+  - Type: 9
+    SynchronizeType: 1
+    Name: Habillity_1
+  - Type: 9
+    SynchronizeType: 1
+    Name: Habillity_2
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0

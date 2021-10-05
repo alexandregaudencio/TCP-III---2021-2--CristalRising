@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13312fe2785fa34fb5ef427bb2a8a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hertz: 10
+  Hertz: 3
   Limit: 50
   status:
   - {fileID: 11400000, guid: fdc7307ae89710d4388c43f5774efeb8, type: 2}
-  attibut:
+  attribute:
     strenght: 0
     defense: 0
     speed: 0
@@ -59,8 +59,7 @@ MonoBehaviour:
     armature: 0
   animator: {fileID: 0}
   reach: 100
-  life: 100
-  dir: {fileID: 0}
+  life: 200
   animationName: Wave
 --- !u!114 &2772863285860342116
 MonoBehaviour:
@@ -96,10 +95,25 @@ PrefabInstance:
       propertyPath: m_SynchronizeParameters.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1185641166990909189, guid: ed0f7b7e36f15de46a5c032574d712aa,
+        type: 3}
+      propertyPath: m_SynchronizeLayers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185641166990909189, guid: ed0f7b7e36f15de46a5c032574d712aa,
+        type: 3}
+      propertyPath: m_SynchronizeLayers.Array.data[0].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5671244720831030240, guid: ed0f7b7e36f15de46a5c032574d712aa,
         type: 3}
       propertyPath: m_Name
       value: CureVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671244720831030240, guid: ed0f7b7e36f15de46a5c032574d712aa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5671244720831030243, guid: ed0f7b7e36f15de46a5c032574d712aa,
         type: 3}
