@@ -33,7 +33,7 @@ public class Cure : Spells, IEffect
     public override void Use()
     {
         Aim();
-       
+        Debug.Log(target);
         if (target)
         {
             foreach (var s in status)
