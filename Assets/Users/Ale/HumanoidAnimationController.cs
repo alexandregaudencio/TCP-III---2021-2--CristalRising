@@ -95,7 +95,7 @@ public class HumanoidAnimationController : MonoBehaviourPunCallbacks
         //    animator.SetBool("Reloading", true);
         //    StartCoroutine(DisablingReloading());
         //}
-        if (Input.GetKeyDown(KeyCode.R) && !value)
+        if (Input.GetKeyDown(KeyCode.R))
             animator.SetTrigger("Reloading");
     }
 
