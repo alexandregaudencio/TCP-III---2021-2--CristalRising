@@ -39,16 +39,16 @@ public class Cure : Spells, IEffect
             {
                 GetComponentInParent<PlayerController>().status = s;
             }
-            if (target.layer.Equals(transform.parent.gameObject.layer))
+            if (!target.layer.Equals(transform.parent.gameObject.layer))
             {
                 return;
             }
-            GameObject children = transform.GetChild(0).gameObject;
+            GameObject children = target.GetComponentInChildren<Cure>().transform.GetChild(0).gameObject;
             if (!children.activeInHierarchy)
             {
                 target.GetComponent<PlayerProperty>().Life = life;
-                transform.GetChild(0).gameObject.SetActive(true);
-                var animator = GetComponentInChildren<Animator>();
+                children.gameObject.SetActive(true);
+                var animator = children.GetComponentInChildren<Animator>();
                 Apply(animator);
             }
 
