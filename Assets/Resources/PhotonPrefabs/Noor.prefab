@@ -1415,7 +1415,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8f9666591632a4792310560a59e0a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTransform: {fileID: 758872398264884983}
+  bulletTransform:
+  - {fileID: 0}
+  current: {fileID: 0}
 --- !u!114 &2588275405012347138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6002,6 +6004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalCam: {fileID: 1773179834990077522}
   spine: {fileID: 2405504770463313364}
+  neck: {fileID: 0}
   controle: {fileID: 7119056722479875128}
   rigidbody: {fileID: 3190432068577531747}
 --- !u!1 &6909220060555889854
