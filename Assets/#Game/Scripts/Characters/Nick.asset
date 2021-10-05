@@ -16,11 +16,11 @@ MonoBehaviour:
     type: 3}
   characterName: NIck
   frase: Projeto alquimista
-  Descricao: Tem tudo que um personagem deste jogo precisa.
-  characterIndex: 4
-  damage: 10
-  ammo: 40
-  HP: 200
+  Descricao: O mestre alquimista
+  characterIndex: 2
+  damage: 250
+  ammo: 25
+  HP: 2700
   characterIcon: {fileID: 21300000, guid: dbe8f464d592446478372a6d4d295be8, type: 3}
   ordenedHabillityIcon:
   - {fileID: 21300000, guid: 664f524922f7a024ba170e423bf11a19, type: 3}
@@ -29,19 +29,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ac9151204df625d41b80d4eb7eb48719, type: 3}
   - {fileID: 21300000, guid: 0f3f7de95a6c4eb47b1faab988232bbc, type: 3}
   ordenedHabillityName:
-  - Habilidade esquerda do Mouse
-  - Habilidade direto do Mouse
-  - Habilidade F
-  - Habilidade Q
-  - Habilidade E
+  - "Arma qu\xEDmica"
+  - Mistura grudenta
+  - "Gole do sumi\xE7o"
+  - "Fraco de mat\xE9ria"
+  - "KABUUM Qu\xEDmico"
   ordenedHabillityDescription:
-  - Tiro padrao
-  - "Causa lentid\xE3o"
-  - "Fica invis\xEDve"
-  - Teleporte
-  - "Explos\xE3o"
+  - "Tiro padr\xE3o"
+  - "Utiliza sua po\xE7\xE3o grudenta para criar uma po\xE7a no ch\xE3o que causa
+    lentid\xE3o"
+  - "Fica invis\xEDvel por 4 segundos"
+  - "Teleporta-se usando frasco com mat\xE9ria de vest\xEDgios de entrela\xE7amento
+    qu\xE3ntico."
+  - "Uma explos\xE3o seguida de nuvem de fuma\xE7a t\xF3xica."
   selectCharacter: {fileID: 8300000, guid: 10e8d88aed1f1f849adce03559ed807b, type: 3}
   gameStarted: {fileID: 8300000, guid: ad5359bb4a8a68f4b9423818e0f90303, type: 3}
-  shoot: {fileID: 8300000, guid: a2aebfb55cde61747b8984a981c54d7a, type: 3}
+  shoot: {fileID: 8300000, guid: dcfa942fd56abb9459f2a43a494f95e9, type: 3}
   firstBlood: {fileID: 8300000, guid: 080fdb9958007434f8fd116ab12da967, type: 3}
   ultimate: {fileID: 8300000, guid: 21610353b6bc2ac4bbc05c5b8ef54627, type: 3}
