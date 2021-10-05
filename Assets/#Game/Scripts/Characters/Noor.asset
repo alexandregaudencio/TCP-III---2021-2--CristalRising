@@ -16,11 +16,11 @@ MonoBehaviour:
     type: 3}
   characterName: Noor
   frase: Personagem Cura
-  Descricao: Tem tudo que um personagem deste jogo precisa.
+  Descricao: "M\xE9dica de combate"
   characterIndex: 5
-  damage: 50
+  damage: 250
   ammo: 30
-  HP: 100
+  HP: 2100
   characterIcon: {fileID: 21300000, guid: 0ed175e8340e15442bcc08acd0934d16, type: 3}
   ordenedHabillityIcon:
   - {fileID: 21300000, guid: fa1f43c29d5d9aa4998b1287c4a527a6, type: 3}
@@ -29,17 +29,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4a44a730c0f8a55478986f6c6fdb9c00, type: 3}
   - {fileID: 21300000, guid: 22a6ecc9917e23a45ba1b300778a6d68, type: 3}
   ordenedHabillityName:
-  - Habilidade esquerda do Mouse
-  - Habilidade direto do Mouse
-  - Habilidade F
-  - Habilidade Q
-  - Habilidade E
+  - Quad blasters
+  - Spray Curativo
+  - Amplicador blaster
+  - Salve se quem puder
+  - "\xDAltimos socorros"
   ordenedHabillityDescription:
   - Tiro padrao
-  - SEM DESCRICAO
-  - SEM DESCRICAO
-  - SEM DESCRICAO
-  - SEM DESCRICAO
+  - Cura aliado selecionado com o spray curativo
+  - Dispara um tiro amplicador em um aliado, aumentando seu dano.
+  - Recupera um pouco da vida
+  - "Utiliza seu kit de primeiro socorros para reviver at\xE9 2 aliados mortos "
   selectCharacter: {fileID: 8300000, guid: 0458ea99032026a468554d848c817045, type: 3}
   gameStarted: {fileID: 8300000, guid: 9b08c49dbd18ca042b8f11fa8d9630b0, type: 3}
   shoot: {fileID: 8300000, guid: 4f4e0d3909cdc77429e68b1db9e655a5, type: 3}

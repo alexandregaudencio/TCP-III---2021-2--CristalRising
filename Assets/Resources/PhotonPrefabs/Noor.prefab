@@ -2709,7 +2709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a3dd18378f1094dbe8fc30b510fe14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 13
+  moveSpeed: 8
   sprintModifier: 0
   cameraPivot: {fileID: 7623328855365709595}
   jumpForce: 4
